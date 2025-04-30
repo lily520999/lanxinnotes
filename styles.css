@@ -27,25 +27,44 @@ img {
 }
 
 /* YouTube图标样式 */
-.youtube-icon {
-    width: 24px !important;
-    height: 24px !important;
+.youtube-icon,
+.footer-youtube-img {
+    width: 18px !important;
+    height: 18px !important;
     margin-right: 5px;
 }
 
-.footer-youtube-img {
-    width: 24px !important;
-    height: 24px !important;
-}
-
-.nav-link.youtube {
+.nav-link.youtube,
+.nav-link.bilibili {
     display: flex;
     align-items: center;
 }
 
-.social-icon img[alt="YouTube"] {
-    width: 20px !important;
-    height: 20px !important;
+.social-icon img[alt="YouTube"],
+.social-icon img[alt="哔哩哔哩"] {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* 明确指定所有YouTube/哔哩哔哩相关图标尺寸 */
+img[src*="youtube-logo.png"] {
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 5px;
+}
+
+.youtube-subscription img,
+.bilibili-subscription img {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.youtube-icon, 
+.footer-youtube-img, 
+img[alt="YouTube"], 
+img[alt="哔哩哔哩"] {
+    max-width: 18px !important;
+    max-height: 18px !important;
 }
 
 /* 关于页面图片样式 */

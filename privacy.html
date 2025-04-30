@@ -7,6 +7,67 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>隐私政策 - 兰心运营笔记</title>
+    <!-- GitHub Pages 路径修复脚本 -->
+    <script>
+        // 检测网站环境并设置基础路径
+        function detectEnvironment() {
+            const hostname = window.location.hostname;
+            const isGitHubPages = hostname.includes('github.io');
+            const isCustomDomain = hostname === 'lanxinnotes.com';
+            const pathname = window.location.pathname;
+            
+            // 创建meta标签记录环境信息
+            const metaEnv = document.createElement('meta');
+            metaEnv.name = 'website-environment';
+            
+            if (isGitHubPages) {
+                // GitHub Pages环境
+                const repoName = pathname.split('/')[1];
+                
+                // 创建base标签
+                const baseTag = document.createElement('base');
+                baseTag.href = '/' + repoName + '/';
+                document.head.appendChild(baseTag);
+                
+                metaEnv.content = 'github-pages';
+                console.log('GitHub Pages 环境已检测，基础路径已设置为:', baseTag.href);
+            } else if (isCustomDomain) {
+                // 自定义域名环境
+                const baseTag = document.createElement('base');
+                baseTag.href = '/';
+                document.head.appendChild(baseTag);
+                
+                metaEnv.content = 'custom-domain';
+                console.log('自定义域名环境已检测，基础路径已设置为: /');
+            } else {
+                // 本地开发环境
+                metaEnv.content = 'local-development';
+                console.log('本地开发环境已检测');
+            }
+            
+            document.head.appendChild(metaEnv);
+        }
+        
+        // 执行环境检测
+        detectEnvironment();
+    </script>
+    
+    <!-- Service Worker 注册 -->
+    <script>
+        // 检查浏览器是否支持Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // 注册Service Worker
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker 注册成功，范围:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker 注册失败:', error);
+                    });
+            });
+        }
+    </script>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
@@ -29,7 +90,7 @@
                 </div>
                 <a href="faq.html" class="nav-link">常见问题</a>
                 <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link youtube">
-                    <img src="images/youtube-logo.png" alt="YouTube" class="youtube-icon">
+                    <img src="images/youtube-logo.png" alt="YouTube" class="youtube-icon" style="width:18px;height:18px;">
                     YouTube
                 </a>
             </nav>
@@ -167,7 +228,9 @@
                     </div>
                     <p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" class="social-icon">
+                            <img src="images/youtube-logo.png" alt="YouTube" style="width:18px;height:18px;">
+                        </a>
                     </div>
                 </div>
                 
@@ -186,13 +249,13 @@
                     <h4 class="footer-heading">关注我们</h4>
                     <div class="footer-subscription">
                         <div class="youtube-subscription">
-                            <img src="images/youtube-logo.png" alt="YouTube频道" class="footer-youtube-img">
+                            <img src="images/youtube-logo.png" alt="YouTube频道" class="footer-youtube-img" style="width:18px;height:18px;">
                             <div class="youtube-info">
                                 <h5 class="youtube-title">YouTube频道</h5>
                                 <p class="youtube-description">点击订阅获取最新视频</p>
                             </div>
                         </div>
-                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="btn vip-btn" style="margin-top: 10px;">前往YouTube频道</a>
+                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="btn vip-btn" style="margin-top: 10px;" target="_blank">前往YouTube频道</a>
                     </div>
                 </div>
             </div>
