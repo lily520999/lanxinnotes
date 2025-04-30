@@ -27,44 +27,47 @@ img {
 }
 
 /* YouTube图标样式 */
-.youtube-icon,
-.footer-youtube-img {
+.bilibili-icon,
+.footer-bilibili-img {
     width: 18px !important;
     height: 18px !important;
-    margin-right: 5px;
+    vertical-align: middle;
+    margin-right: 4px;
 }
 
-.nav-link.youtube,
-.nav-link.bilibili {
-    display: flex;
-    align-items: center;
+.nav-link.bilibili,
+.nav-link.bilibili:hover {
+    color: #00a1d6;  /* 哔哩哔哩品牌色 */
 }
 
-.social-icon img[alt="YouTube"],
-.social-icon img[alt="哔哩哔哩"] {
+.social-icon img[alt="哔哩哔哩"],
+.social-icon img[alt="哔哩哔哩"]:hover {
     width: 18px !important;
     height: 18px !important;
+    border-radius: 50%;
 }
 
-/* 明确指定所有YouTube/哔哩哔哩相关图标尺寸 */
-img[src*="youtube-logo.png"] {
+/* 明确指定所有哔哩哔哩相关图标尺寸 */
+img[src*="youtube-logo.jpg"] {
     width: 18px !important;
     height: 18px !important;
-    margin-right: 5px;
+    border-radius: 50%;
 }
 
-.youtube-subscription img,
-.bilibili-subscription img {
+.bilibili-subscription img,
+.bilibili-subscription .footer-bilibili-img {
     width: 18px !important;
     height: 18px !important;
+    margin-right: 10px;
 }
 
-.youtube-icon, 
-.footer-youtube-img, 
-img[alt="YouTube"], 
-img[alt="哔哩哔哩"] {
-    max-width: 18px !important;
-    max-height: 18px !important;
+.bilibili-icon,
+.footer-bilibili-img,
+img[alt="哔哩哔哩"],
+img[src*="youtube-logo.jpg"] {
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50%;
 }
 
 /* 关于页面图片样式 */
@@ -1588,4 +1591,207 @@ body.menu-open {
 
 .auth-buttons .btn {
     margin-left: 15px;
+}
+
+/* 课程卡片样式 */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.course-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    position: relative;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.course-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.course-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.course-card:hover .course-img {
+    transform: scale(1.05);
+}
+
+.course-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.premium-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #FFD700;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.course-content {
+    padding: 20px;
+}
+
+.course-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.course-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    height: 63px;
+    overflow: hidden;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #777;
+}
+
+.course-lessons::before {
+    content: '📚 ';
+}
+
+.course-duration::before {
+    content: '⏱️ ';
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* 页面头部样式 */
+.page-header {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.page-description {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* CTA部分样式 */
+.cta-section {
+    background-color: #5a67d8;
+    color: white;
+    padding: 60px 0;
+    margin: 50px 0 0;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.benefits-list {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 30px;
+    max-width: 500px;
+}
+
+.benefits-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.benefits-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.btn-large {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header {
+        padding: 40px 0;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .cta-section {
+        padding: 40px 0;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.6rem;
+    }
 } 

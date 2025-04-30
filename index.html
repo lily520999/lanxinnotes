@@ -13,12 +13,20 @@
         function detectEnvironment() {
             const hostname = window.location.hostname;
             const isGitHubPages = hostname.includes('github.io');
-            const isCustomDomain = hostname === 'lanxinnotes.com';
+            const isCustomDomain = hostname === 'lanxinnotes.com' || hostname === 'www.lanxinnotes.com';
             const pathname = window.location.pathname;
+            
+            console.log('当前环境信息 - 主机名:', hostname, '路径名:', pathname);
             
             // 创建meta标签记录环境信息
             const metaEnv = document.createElement('meta');
             metaEnv.name = 'website-environment';
+            
+            // 移除可能存在的重复base标签
+            const existingBase = document.querySelector('base');
+            if (existingBase) {
+                existingBase.remove();
+            }
             
             if (isGitHubPages) {
                 // GitHub Pages环境
@@ -31,6 +39,10 @@
                 
                 metaEnv.content = 'github-pages';
                 console.log('GitHub Pages 环境已检测，基础路径已设置为:', baseTag.href);
+                
+                // 添加环境变量到window对象
+                window.siteEnvironment = 'github-pages';
+                window.siteBasePath = '/' + repoName + '/';
             } else if (isCustomDomain) {
                 // 自定义域名环境
                 const baseTag = document.createElement('base');
@@ -39,10 +51,23 @@
                 
                 metaEnv.content = 'custom-domain';
                 console.log('自定义域名环境已检测，基础路径已设置为: /');
+                
+                // 添加环境变量到window对象
+                window.siteEnvironment = 'custom-domain';
+                window.siteBasePath = '/';
             } else {
-                // 本地开发环境
+                // 本地开发环境或其他环境
                 metaEnv.content = 'local-development';
                 console.log('本地开发环境已检测');
+                
+                // 添加环境变量到window对象
+                window.siteEnvironment = 'local-development';
+                window.siteBasePath = './';
+                
+                // 创建base标签确保本地资源正确加载
+                const baseTag = document.createElement('base');
+                baseTag.href = './';
+                document.head.appendChild(baseTag);
             }
             
             document.head.appendChild(metaEnv);
@@ -57,8 +82,16 @@
         // 检查浏览器是否支持Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
+                // 获取Service Worker路径
+                let swPath = './service-worker.js';
+                if (window.siteEnvironment === 'github-pages') {
+                    swPath = window.siteBasePath + 'service-worker.js';
+                } else if (window.siteEnvironment === 'custom-domain') {
+                    swPath = '/service-worker.js';
+                }
+                
                 // 注册Service Worker
-                navigator.serviceWorker.register('./service-worker.js')
+                navigator.serviceWorker.register(swPath)
                     .then(registration => {
                         console.log('Service Worker 注册成功，范围:', registration.scope);
                     })
@@ -103,8 +136,8 @@
             border-radius: 50%;
         }
         .youtube-icon, .footer-youtube-img {
-            width: 18px !important;
-            height: 18px !important;
+            width: 24px !important;
+            height: 24px !important;
         }
     </style>
     
@@ -289,7 +322,7 @@
                             <img src="images/n2. alipay.png" alt="支付宝" width="18" height="18" onerror="this.onerror=null; this.src='https://via.placeholder.com/18';">
                         </a>
                         <a href="https://space.bilibili.com/1798377475" class="social-icon" target="_blank">
-                            <img src="images/youtube-logo.png" alt="哔哩哔哩" width="18" height="18" class="footer-youtube-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/18';">
+                            <img src="images/youtube-logo.jpg" alt="哔哩哔哩" width="18" height="18" class="footer-youtube-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/18';">
                         </a>
                     </div>
                 </div>
