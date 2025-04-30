@@ -1,215 +1,136 @@
-// 兰心运营笔记 Service Worker
-const CACHE_NAME = 'lanxin-cache-v1';
+// Service Worker 版本
+const CACHE_VERSION = 'v1.2';
+const CACHE_NAME = `lanxin-cache-${CACHE_VERSION}`;
 
-// 需要缓存的静态资源
-const STATIC_ASSETS = [
-  './',
-  './index.html',
-  './styles.css',
-  './script.js',
-  './ai-tools.css',
-  './content-creation.css',
-  './ecommerce.css',
-  './membership.css',
-  './images/lanxin-logo.png',
-  './images/ai-tools.png',
-  './images/ecommerce.png',
-  './images/video-courses.jpg',
-  './images/youtube-logo.png',
-  './images/n1. wechat-pay.png',
-  './images/n2. alipay.png',
-  './images/n3. wechat-qr.png',
-  './images/n4. alipay-qr.png'
+// 需要缓存的资源列表
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/hot-courses.html',
+  '/styles.css',
+  '/script.js',
+  '/images/lanxin-logo.png',
+  '/images/ai-tools.png',
+  '/images/ecommerce.png',
+  '/images/video-courses.jpg',
+  '/images/youtube-logo.jpg'
 ];
 
-// 安装 Service Worker
+// 安装 Service Worker 并缓存核心资源
 self.addEventListener('install', event => {
   console.log('Service Worker 安装中...');
-  
-  // 预缓存静态资源
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('缓存静态资源中...');
-        return cache.addAll(STATIC_ASSETS);
-      })
-      .then(() => {
-        console.log('静态资源缓存完成');
-        return self.skipWaiting();
-      })
-      .catch(error => {
-        console.error('预缓存失败:', error);
+        console.log('缓存资源中...');
+        
+        // 尝试缓存所有资源，但跳过失败的缓存
+        const cachePromises = urlsToCache.map(url => {
+          // 使用绝对路径，这样在自定义域名下也能正常工作
+          const absoluteUrl = new URL(url, self.location.origin).href;
+          return fetch(absoluteUrl, { 
+            mode: 'no-cors',  // 添加跨域支持
+            credentials: 'same-origin'
+          })
+          .then(response => {
+            if(response.status === 200) {
+              return cache.put(absoluteUrl, response);
+            } else {
+              console.log(`缓存 ${absoluteUrl} 失败: ${response.status}`);
+              return Promise.resolve();
+            }
+          })
+          .catch(error => {
+            console.log(`缓存 ${absoluteUrl} 出错: ${error.message}`);
+            return Promise.resolve();
+          });
+        });
+        
+        // 返回一个Promise，即使部分资源加载失败，也不会影响Service Worker安装
+        return Promise.all(cachePromises);
       })
   );
+  
+  // 立即激活
+  self.skipWaiting();
 });
 
-// 激活 Service Worker
+// 激活时清理旧缓存
 self.addEventListener('activate', event => {
   console.log('Service Worker 激活中...');
   
-  // 清理旧缓存
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.filter(name => name !== CACHE_NAME)
-          .map(name => {
-            console.log('删除旧缓存:', name);
-            return caches.delete(name);
-          })
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            console.log('清理旧缓存:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
       );
     }).then(() => {
-      console.log('Service Worker 现已激活');
+      console.log('Service Worker 现在控制所有页面');
       return self.clients.claim();
     })
   );
 });
 
-// 处理资源请求
+// 拦截请求并提供缓存响应
 self.addEventListener('fetch', event => {
-  // 只处理GET请求
-  if (event.request.method !== 'GET') return;
+  console.log('Service Worker: 拦截请求', event.request.url);
   
-  // 检查请求URL是否有效
-  if (!event.request.url.startsWith('http')) return;
-  
-  // 处理图片请求的特殊策略
-  if (event.request.url.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i)) {
-    handleImageRequest(event);
+  // 处理导航请求
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match('/index.html');
+      })
+    );
     return;
   }
   
-  // 普通资源的缓存策略：缓存优先，网络回退
+  // 对于其他资源，先尝试网络，网络失败时使用缓存
   event.respondWith(
-    caches.match(event.request)
-      .then(cachedResponse => {
-        if (cachedResponse) {
-          // 返回缓存的响应
-          return cachedResponse;
+    fetch(event.request)
+      .then(response => {
+        // 复制响应，因为响应只能使用一次
+        const responseToCache = response.clone();
+        
+        // 如果是有效响应，则更新缓存
+        if (response.status === 200) {
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            });
         }
         
-        // 如果缓存中没有，则从网络获取
-        return fetch(event.request)
-          .then(response => {
-            // 检查响应有效性
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
+        return response;
+      })
+      .catch(() => {
+        // 网络请求失败时，尝试从缓存中获取
+        return caches.match(event.request)
+          .then(cachedResponse => {
+            if (cachedResponse) {
+              return cachedResponse;
             }
             
-            // 将新响应存入缓存
-            const responseToCache = response.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
+            // 如果是HTML请求，并且没有缓存，则返回index.html
+            if (event.request.url.match(/\.html$/) || event.request.url.endsWith('/')) {
+              return caches.match('/index.html');
+            }
             
-            return response;
-          })
-          .catch(error => {
-            console.error('网络请求失败:', error);
-            // 这里可以返回一个备用响应
-            return new Response('网络请求失败，请检查您的网络连接', {
-              status: 503,
-              statusText: 'Service Unavailable',
-              headers: new Headers({
-                'Content-Type': 'text/plain'
-              })
+            // 对于不在缓存中的资源，尝试提供一个占位符或默认响应
+            if (event.request.url.match(/\.(jpg|jpeg|png|gif|svg)$/i)) {
+              return fetch('https://via.placeholder.com/300');
+            }
+            
+            // 对于其他资源，返回简单的404响应
+            return new Response('资源未找到', {
+              status: 404,
+              headers: { 'Content-Type': 'text/plain' }
             });
           });
       })
   );
-});
-
-// 图片请求的特殊处理
-function handleImageRequest(event) {
-  event.respondWith(
-    // 先检查缓存
-    caches.match(event.request)
-      .then(cachedResponse => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        
-        // 尝试网络请求
-        return fetch(event.request)
-          .then(response => {
-            // 检查响应有效性
-            if (!response || response.status !== 200) {
-              throw new Error('图片加载失败');
-            }
-            
-            // 缓存新的响应
-            const responseToCache = response.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-            
-            return response;
-          })
-          .catch(error => {
-            console.error('图片加载失败:', error, event.request.url);
-            
-            // 尝试不同的路径格式
-            const originalUrl = new URL(event.request.url);
-            const imagePath = originalUrl.pathname.split('/').pop();
-            
-            // 尝试以下不同的路径
-            const alternativePaths = [
-              `/images/${imagePath}`,
-              `images/${imagePath}`,
-              `/${imagePath}`
-            ];
-            
-            // 如果在GitHub Pages上，添加仓库路径
-            if (originalUrl.hostname.includes('github.io')) {
-              const pathParts = originalUrl.pathname.split('/');
-              if (pathParts.length > 1) {
-                const repoName = pathParts[1];
-                alternativePaths.push(`/${repoName}/images/${imagePath}`);
-              }
-            }
-            
-            // 尝试所有备选路径
-            return tryAlternativePaths(alternativePaths);
-          });
-      })
-  );
-}
-
-// 尝试备选路径
-async function tryAlternativePaths(paths) {
-  for (const path of paths) {
-    try {
-      const response = await fetch(path);
-      if (response && response.status === 200) {
-        // 缓存成功的响应
-        const responseToCache = response.clone();
-        const cache = await caches.open(CACHE_NAME);
-        cache.put(path, responseToCache);
-        return response;
-      }
-    } catch (error) {
-      console.log(`路径 ${path} 加载失败:`, error);
-    }
-  }
-  
-  // 所有尝试都失败，返回一个占位图像
-  return caches.match('./images/placeholder.png')
-    .then(response => {
-      if (response) return response;
-      
-      // 如果没有占位图像，返回一个1x1透明像素作为备用
-      return new Response(
-        new Blob([
-          new Uint8Array([
-            0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x01, 0x00, 0x01, 0x00, 0x80, 0x00,
-            0x00, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x21, 0xF9, 0x04, 0x01, 0x00,
-            0x00, 0x00, 0x00, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00,
-            0x00, 0x02, 0x01, 0x44, 0x00, 0x3B
-          ])
-        ], {
-          type: 'image/gif'
-        })
-      );
-    });
-} 
+}); 

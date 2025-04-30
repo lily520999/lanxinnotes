@@ -1,5 +1,8 @@
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('网站初始化开始，当前环境:', window.siteEnvironment || '未检测到环境变量');
+    console.log('当前页面URL:', window.location.href);
+    
     // 清理可能存在的旧移动菜单和下拉内容
     cleanupPreviousMenu();
     
@@ -11,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 移动端导航菜单
     initMobileNav();
+    
+    // 修复图片路径
+    fixImagePaths();
     
     // 为所有工具图标添加错误处理
     document.querySelectorAll('.tool-icon').forEach(img => {
@@ -35,81 +41,60 @@ function handleImageErrors() {
     const allImages = document.querySelectorAll('img');
     console.log('处理图片加载错误，总图片数：', allImages.length);
     
+    // 获取当前环境信息
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    const isCustomDomain = window.location.hostname === 'lanxinnotes.com' || window.location.hostname === 'www.lanxinnotes.com';
+    const repoName = isGitHubPages ? window.location.pathname.split('/')[1] : '';
+    
+    // 定义可能的基础路径
+    const basePaths = [];
+    
+    // 根据环境添加可能的基础路径
+    if (isGitHubPages) {
+        basePaths.push(`/${repoName}/images/`);
+        basePaths.push(`/${repoName}/`);
+    } 
+    
+    if (isCustomDomain) {
+        // 自定义域名环境
+        basePaths.push('/images/');
+        basePaths.push('/');
+    } else {
+        // 非自定义域名环境
+        basePaths.push('images/');
+        basePaths.push('./images/');
+        basePaths.push('../images/');
+        basePaths.push('');
+    }
+    
+    // 预加载重要图片
+    preloadImportantImages(basePaths);
+    
     // 为每个图片添加错误处理
     allImages.forEach(img => {
         // 保存原始图片路径
         const originalSrc = img.src;
+        const imageName = originalSrc.split('/').pop();
         
         // 添加图片懒加载
         if (!img.hasAttribute('loading')) {
             img.setAttribute('loading', 'lazy');
         }
         
+        // 图片加载失败处理函数
         img.onerror = function() {
             console.log('图片加载失败:', originalSrc);
             
-            // 尝试修复常见的路径问题
-            if (originalSrc.includes('lanxin-logo.png')) {
-                // 尝试不同的路径
-                // 先尝试相对路径
-                this.src = 'images/lanxin-logo.png';
-                console.log('尝试修复图片路径 (相对路径):', this.src);
-                
-                // 设置一个备用错误处理
-                this.onerror = function() {
-                    if (window.location.hostname.includes('github.io')) {
-                        const repoName = window.location.pathname.split('/')[1];
-                        this.src = '/' + repoName + '/images/lanxin-logo.png';
-                        console.log('尝试修复图片路径 (GitHub Pages):', this.src);
-                    } else if (window.location.hostname === 'lanxinnotes.com') {
-                        this.src = '/images/lanxin-logo.png';
-                        console.log('尝试修复图片路径 (自定义域名):', this.src);
-                    }
-                    
-                    // 最终失败处理
-                    this.onerror = function() {
-                        console.log('图片加载失败，所有尝试均未成功:', originalSrc);
-                        this.style.border = '1px dashed #ccc';
-                        this.style.padding = '5px';
-                        this.onerror = null;
-                    };
-                };
-            } else if (originalSrc.includes('images/')) {
-                // 解析图片名称
-                const pathParts = originalSrc.split('/');
-                const imageName = pathParts[pathParts.length - 1];
-                
-                // 先尝试相对路径
-                this.src = 'images/' + imageName;
-                console.log('尝试修复图片路径 (相对路径):', this.src);
-                
-                // 设置备用错误处理
-                this.onerror = function() {
-                    if (window.location.hostname.includes('github.io')) {
-                        const repoName = window.location.pathname.split('/')[1];
-                        this.src = '/' + repoName + '/images/' + imageName;
-                        console.log('尝试修复图片路径 (GitHub Pages):', this.src);
-                    } else if (window.location.hostname === 'lanxinnotes.com') {
-                        this.src = '/images/' + imageName;
-                        console.log('尝试修复图片路径 (自定义域名):', this.src);
-                    }
-                    
-                    // 最终失败处理
-                    this.onerror = function() {
-                        console.log('图片加载失败，所有尝试均未成功:', originalSrc);
-                        this.style.border = '1px dashed #ccc';
-                        this.style.padding = '5px';
-                        this.onerror = null;
-                    };
-                };
-            }
+            // 阻止可能的无限循环
+            this.onerror = null;
+            
+            // 获取图片文件名
+            const fileName = imageName.split('?')[0]; // 移除URL参数
+            
+            // 尝试不同的路径
+            tryAlternativePaths(img, fileName, basePaths);
         };
     });
-    
-    // 无论是否在GitHub Pages上，都尝试修复图片路径
-    fixImagePaths();
-    // 预加载重要图片
-    preloadImportantImages();
 }
 
 // 修复所有环境下的图片路径
@@ -117,16 +102,16 @@ function fixImagePaths() {
     console.log('开始修复图片路径');
     const allImages = document.querySelectorAll('img');
     const isGitHubPages = window.location.hostname.includes('github.io');
-    const isCustomDomain = window.location.hostname === 'lanxinnotes.com';
+    const isCustomDomain = window.location.hostname === 'lanxinnotes.com' || window.location.hostname === 'www.lanxinnotes.com';
     
     allImages.forEach(img => {
         // 获取原始src
         const originalSrc = img.getAttribute('src');
         console.log('检查图片路径:', originalSrc);
         
-        if (originalSrc) {
+        if (originalSrc && !originalSrc.startsWith('http') && !originalSrc.startsWith('data:')) {
             // 分析路径类型
-            if (originalSrc.includes('images/')) {
+            if (originalSrc.includes('images/') || originalSrc.includes('/images/')) {
                 // 解析图片名称
                 const pathParts = originalSrc.split('/');
                 const imageName = pathParts[pathParts.length - 1];
@@ -142,47 +127,114 @@ function fixImagePaths() {
                     img.setAttribute('src', newSrc);
                     console.log('自定义域名路径修复:', originalSrc, ' -> ', newSrc);
                 } else {
-                    const newSrc = 'images/' + imageName;
-                    img.setAttribute('src', newSrc);
-                    console.log('本地环境路径修复:', originalSrc, ' -> ', newSrc);
+                    // 本地环境保持相对路径
+                    if (!originalSrc.startsWith('images/')) {
+                        const newSrc = 'images/' + imageName;
+                        img.setAttribute('src', newSrc);
+                        console.log('本地环境路径修复:', originalSrc, ' -> ', newSrc);
+                    }
                 }
             }
         }
     });
 }
 
+// 尝试多个替代路径加载图片
+function tryAlternativePaths(imgElement, fileName, basePaths) {
+    let pathIndex = 0;
+    let success = false;
+    
+    // 创建一个测试用的隐藏图片元素
+    const testImg = new Image();
+    testImg.style.display = 'none';
+    document.body.appendChild(testImg);
+    
+    // 尝试下一个路径
+    function tryNextPath() {
+        if (pathIndex >= basePaths.length || success) {
+            // 所有路径都尝试过了或已成功，移除测试图片
+            document.body.removeChild(testImg);
+            
+            // 如果所有路径都失败，使用占位图
+            if (!success) {
+                console.log('所有路径尝试失败，使用占位图');
+                
+                // 设置图片对应的alt文本作为占位图的文本
+                let altText = imgElement.alt || '图片';
+                imgElement.src = 'https://via.placeholder.com/300?text=' + encodeURIComponent(altText);
+                imgElement.style.border = '1px dashed #ddd';
+                imgElement.style.background = '#f9f9f9';
+            }
+            return;
+        }
+        
+        // 构建完整路径
+        const path = basePaths[pathIndex] + fileName;
+        console.log('尝试路径:', path);
+        
+        // 设置测试图片的加载事件
+        testImg.onload = function() {
+            // 成功加载，设置原始图片的src
+            success = true;
+            imgElement.src = path;
+            console.log('图片加载成功:', path);
+            document.body.removeChild(testImg);
+        };
+        
+        testImg.onerror = function() {
+            // 加载失败，尝试下一个路径
+            pathIndex++;
+            setTimeout(tryNextPath, 0);
+        };
+        
+        // 开始尝试加载
+        testImg.src = path;
+    }
+    
+    // 开始首次尝试
+    tryNextPath();
+}
+
 // 预加载重要图片
-function preloadImportantImages() {
+function preloadImportantImages(basePaths = []) {
     // 要预加载的重要图片列表
     const importantImages = [
         'lanxin-logo.png',
         'ai-tools.png',
         'ecommerce.png',
         'video-courses.jpg',
-        'youtube-logo.png'
+        'youtube-logo.jpg'
     ];
     
     const isGitHubPages = window.location.hostname.includes('github.io');
-    const isCustomDomain = window.location.hostname === 'lanxinnotes.com';
+    const isCustomDomain = window.location.hostname === 'lanxinnotes.com' || window.location.hostname === 'www.lanxinnotes.com';
     
-    // 创建预加载元素
+    // 为每个重要图片尝试所有可能的路径
     importantImages.forEach(imageName => {
-        const preloadLink = document.createElement('link');
-        preloadLink.rel = 'preload';
-        preloadLink.as = 'image';
+        // 如果没有提供basePaths，生成默认的路径集
+        const paths = basePaths.length > 0 ? basePaths : [];
         
-        // 根据环境使用正确的路径
-        if (isGitHubPages) {
-            const repoName = window.location.pathname.split('/')[1];
-            preloadLink.href = '/' + repoName + '/images/' + imageName;
-        } else if (isCustomDomain) {
-            preloadLink.href = '/images/' + imageName;
-        } else {
-            preloadLink.href = 'images/' + imageName;
+        if (paths.length === 0) {
+            if (isGitHubPages) {
+                const repoName = window.location.pathname.split('/')[1];
+                paths.push(`/${repoName}/images/`);
+            } else if (isCustomDomain) {
+                paths.push('/images/');
+            } else {
+                paths.push('images/');
+            }
         }
         
-        document.head.appendChild(preloadLink);
-        console.log('预加载图片:', preloadLink.href);
+        // 为每个路径创建预加载链接
+        paths.forEach(path => {
+            const preloadLink = document.createElement('link');
+            preloadLink.rel = 'preload';
+            preloadLink.as = 'image';
+            preloadLink.href = path + imageName;
+            
+            document.head.appendChild(preloadLink);
+            console.log('预加载图片:', preloadLink.href);
+        });
     });
 }
 
