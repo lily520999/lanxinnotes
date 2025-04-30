@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 视频教程权限控制
     controlVideoAccess();
+    
+    // 初始化分页功能
+    initPagination();
 });
 
 // 处理所有图片的加载错误
@@ -587,4 +590,113 @@ function controlVideoAccess() {
             video.parentNode.replaceChild(placeholder, video);
         }
     });
+}
+
+// 分页功能初始化
+function initPagination() {
+    const paginationContainer = document.querySelector('.pagination');
+    if (!paginationContainer) return;  // 如果页面上没有分页组件，直接返回
+    
+    console.log('初始化分页功能');
+    
+    // 获取所有分页链接
+    const pageLinks = paginationContainer.querySelectorAll('.page-number, .page-next');
+    
+    // 获取文章列表容器
+    const articleGrid = document.querySelector('.article-grid');
+    if (!articleGrid) return;  // 如果没有文章列表，直接返回
+    
+    // 获取当前页面的所有文章
+    const allArticles = Array.from(articleGrid.querySelectorAll('.article-card'));
+    
+    // 每页显示的文章数量
+    const articlesPerPage = 12;
+    
+    // 计算总页数
+    const totalPages = Math.ceil(allArticles.length / articlesPerPage);
+    
+    // 当前页码（默认为第1页）
+    let currentPage = 1;
+    
+    // 为页码添加点击事件
+    pageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 获取目标页码
+            let targetPage = currentPage;
+            
+            if (this.classList.contains('page-next')) {
+                // 下一页按钮
+                targetPage = currentPage < totalPages ? currentPage + 1 : currentPage;
+            } else {
+                // 数字页码按钮
+                targetPage = parseInt(this.textContent);
+            }
+            
+            // 如果目标页码有效且不是当前页
+            if (!isNaN(targetPage) && targetPage !== currentPage && targetPage > 0 && targetPage <= totalPages) {
+                // 更新当前页码
+                currentPage = targetPage;
+                
+                // 更新分页UI
+                updatePaginationUI();
+                
+                // 更新文章显示
+                updateArticlesDisplay();
+                
+                // 滚动到页面顶部
+                window.scrollTo({
+                    top: articleGrid.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // 更新分页UI
+    function updatePaginationUI() {
+        // 移除所有active类
+        paginationContainer.querySelectorAll('.page-number').forEach(page => {
+            page.classList.remove('active');
+        });
+        
+        // 给当前页添加active类
+        const currentPageElement = paginationContainer.querySelector(`.page-number:nth-child(${currentPage})`);
+        if (currentPageElement) {
+            currentPageElement.classList.add('active');
+        }
+        
+        // 更新下一页按钮状态
+        const nextPageButton = paginationContainer.querySelector('.page-next');
+        if (nextPageButton) {
+            if (currentPage >= totalPages) {
+                nextPageButton.classList.add('disabled');
+            } else {
+                nextPageButton.classList.remove('disabled');
+            }
+        }
+    }
+    
+    // 更新文章显示
+    function updateArticlesDisplay() {
+        // 计算当前页应该显示的文章索引范围
+        const startIndex = (currentPage - 1) * articlesPerPage;
+        const endIndex = Math.min(startIndex + articlesPerPage, allArticles.length);
+        
+        // 隐藏所有文章
+        allArticles.forEach(article => {
+            article.style.display = 'none';
+        });
+        
+        // 显示当前页的文章
+        for (let i = startIndex; i < endIndex; i++) {
+            if (allArticles[i]) {
+                allArticles[i].style.display = '';
+            }
+        }
+    }
+    
+    // 初始化显示第一页
+    updateArticlesDisplay();
 } 

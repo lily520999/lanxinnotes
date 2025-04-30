@@ -28,45 +28,38 @@ img {
 
 /* 哔哩哔哩图标样式 */
 .bilibili-icon,
-.footer-bilibili-img {
-    width: 18px !important;
-    height: 18px !important;
-    vertical-align: middle;
-    margin-right: 4px;
+.bilibili img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 50%;
 }
 
 .nav-link.bilibili,
-.nav-link.bilibili:hover {
-    color: #00a1d6;  /* 哔哩哔哩品牌色 */
+.footer-bilibili-img {
+    display: flex;
+    align-items: center;
 }
 
 .social-icon img[alt="哔哩哔哩"],
-.social-icon img[alt="哔哩哔哩"]:hover {
-    width: 18px !important;
-    height: 18px !important;
+.footer-bilibili-img {
     border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
 }
 
-/* 明确指定所有哔哩哔哩相关图标尺寸 */
-img[src*="youtube-logo.jpg"] {
-    width: 18px !important;
-    height: 18px !important;
+img[src*="bilibili-logo.png"] {
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .bilibili-subscription img,
-.bilibili-subscription .footer-bilibili-img {
-    width: 18px !important;
-    height: 18px !important;
-    margin-right: 10px;
-}
-
-.bilibili-icon,
-.footer-bilibili-img,
-img[alt="哔哩哔哩"],
-img[src*="youtube-logo.jpg"] {
-    width: 18px !important;
-    height: 18px !important;
+.bilibili-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 15px;
     border-radius: 50%;
 }
 
@@ -1152,6 +1145,14 @@ body.menu-open {
 
 .page-number:hover, .page-next:hover, .page-prev:hover {
     background-color: #f1f2f6;
+}
+
+/* 添加禁用状态样式 */
+.page-number.disabled, .page-next.disabled, .page-prev.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #f8f8f8;
 }
 
 .newsletter {
