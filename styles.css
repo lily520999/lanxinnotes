@@ -26,6 +26,28 @@ img {
     height: auto;
 }
 
+/* YouTube图标样式 */
+.youtube-icon {
+    width: 24px !important;
+    height: 24px !important;
+    margin-right: 5px;
+}
+
+.footer-youtube-img {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.nav-link.youtube {
+    display: flex;
+    align-items: center;
+}
+
+.social-icon img[alt="YouTube"] {
+    width: 20px !important;
+    height: 20px !important;
+}
+
 .container {
     width: 100%;
     max-width: 1200px;
