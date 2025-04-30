@@ -48,6 +48,96 @@ img {
     height: 20px !important;
 }
 
+/* 关于页面图片样式 */
+.about-img {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* 关于页面布局 */
+.about-section {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-image {
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* 团队成员样式 */
+.team-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-member {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 0 5px;
+}
+
+.member-role {
+    color: #f84c71;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.member-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .team-members {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .team-members {
+        grid-template-columns: 1fr;
+    }
+}
+
 .container {
     width: 100%;
     max-width: 1200px;
