@@ -206,7 +206,7 @@ function preloadImportantImages(basePaths = []) {
         'ai-tools.png',
         'ecommerce.png',
         'video-courses.jpg',
-        'youtube-logo.jpg'
+        'bilibili-logo.png'
     ];
     
     const isGitHubPages = window.location.hostname.includes('github.io');

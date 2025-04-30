@@ -1,4 +1,4 @@
-// Service Worker 版本
+﻿// Service Worker 版本
 const CACHE_VERSION = 'v1.2';
 const CACHE_NAME = `lanxin-cache-${CACHE_VERSION}`;
 
@@ -13,7 +13,7 @@ const urlsToCache = [
   '/images/ai-tools.png',
   '/images/ecommerce.png',
   '/images/video-courses.jpg',
-  '/images/youtube-logo.jpg'
+  '/images/bilibili-logo.png'
 ];
 
 // 安装 Service Worker 并缓存核心资源
