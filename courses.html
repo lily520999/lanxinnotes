@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览热门教程 - 兰心运营笔记</title>
+    <style>
+        body {
+            background-color: #1e3a8a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        
+        .redirect-container {
+            max-width: 500px;
+            padding: 40px;
+        }
+        
+        .redirect-logo {
+            margin-bottom: 30px;
+        }
+        
+        .redirect-logo-img {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .redirect-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .redirect-text {
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .redirect-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #f0f0f4;
+            color: #1e3a8a;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .redirect-btn:hover {
+            background-color: white;
+        }
+        
+        .loader {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        // 页面加载后自动重定向到YouTube频道
+        window.onload = function() {
+            setTimeout(function() {
+                window.location.href = "https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0";
+            }, 3000); // 3秒后重定向
+        };
+
+        if (window.location.hash === "#beginner") {
+            window.location.href = "https://space.bilibili.com/1798377475/collection/入门课程";
+        }
+
+        if (window.location.hash === "#advanced") {
+            window.location.href = "https://t.zsxq.com/CAfds";
+        }
+
+        if (window.location.hash === "#masterclass") {
+            window.location.href = "https://t.zsxq.com/CAfds";
+        }
+
+        if (window.location.hash === "#live") {
+            window.location.href = "https://space.bilibili.com/1798377475/collection/直播回放";
+        }
+    </script>
+</head>
+<body>
+    <div class="redirect-container">
+        <div class="redirect-logo">
+            <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="redirect-logo-img">
+        </div>
+        <h1 class="redirect-title">正在前往兰心运营笔记YouTube频道</h1>
+        <p class="redirect-text">
+            <span class="loader"></span>
+            我们将在3秒内自动跳转到YouTube频道，您将在那里找到所有热门教程视频。
+        </p>
+        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="redirect-btn">立即前往</a>
+    </div>
+</body>
+</html> 

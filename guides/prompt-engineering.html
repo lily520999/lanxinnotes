@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>AI提示词工程：从入门到精通 - 兰心运营笔记</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
+    <style>
+        .guide-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .guide-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .guide-meta .separator {
+            margin: 0 10px;
+        }
+        
+        .guide-image {
+            width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .course-module {
+            background-color: #f5f7ff;
+            border-left: 4px solid #1e3a8a;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .module-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+        
+        .lesson-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s;
+        }
+        
+        .lesson-item:hover {
+            background-color: #f0f4f8;
+        }
+        
+        .lesson-number {
+            width: 30px;
+            height: 30px;
+            background-color: #1e3a8a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .lesson-details {
+            flex: 1;
+        }
+        
+        .lesson-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .lesson-duration {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .lesson-preview {
+            margin-left: 15px;
+            padding: 5px 15px;
+            background-color: #1e3a8a;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .lesson-preview:hover {
+            background-color: #152a6a;
+        }
+        
+        .locked {
+            background-color: #ccc;
+        }
+        
+        .locked:hover {
+            background-color: #bbb;
+        }
+        
+        .vip-banner {
+            background-color: #f9f0ff;
+            border: 1px solid #d4b2ff;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .vip-icon {
+            font-size: 30px;
+            margin-right: 20px;
+            color: #8e44ad;
+        }
+        
+        .vip-message {
+            flex: 1;
+        }
+        
+        .vip-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #8e44ad;
+            margin-bottom: 5px;
+        }
+        
+        .vip-description {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .vip-button {
+            background-color: #8e44ad;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .vip-button:hover {
+            background-color: #6c3483;
+        }
+        
+        .instructor-section {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+        
+        .instructor-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .instructor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        
+        .instructor-info {
+            flex: 1;
+        }
+        
+        .instructor-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .instructor-title {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .instructor-bio {
+            line-height: 1.6;
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 15%;
+            background-color: #1e3a8a;
+            border-radius: 5px;
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="../images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img">
+                <a href="../index.html" class="logo-text">兰心运营笔记</a>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-item dropdown">
+                    <a href="../ai-tools.html" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link">视频教程 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <a href="../faq.html" class="nav-link">常见问题</a>
+                <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link youtube">
+                    <img src="../images/youtube-logo.png" alt="YouTube" class="youtube-icon">
+                    YouTube
+                </a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../login.html" class="btn btn-login">登录</a>
+                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员(1565元/年)</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">AI提示词工程：从入门到精通</h1>
+                <div class="breadcrumbs">
+                    <a href="../index.html">首页</a> &gt;
+                    <a href="../ai-tools.html">AI工具</a> &gt;
+                    <a href="../ai-tools.html#guides">使用指南</a> &gt;
+                    <span>提示词工程</span>
+                </div>
+            </div>
+        </section>
+
+        <article class="guide-content">
+            <div class="guide-meta">
+                <span class="guide-date">最近更新：2025年2月5日</span>
+                <span class="separator">|</span>
+                <span class="guide-author">讲师：陈明</span>
+                <span class="separator">|</span>
+                <span class="guide-lessons">总课时：12节</span>
+                <span class="separator">|</span>
+                <span class="guide-level">难度：初级到高级</span>
+            </div>
+
+            <img src="../images/ai-tools.png" alt="AI提示词工程" class="guide-image">
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-stats">
+                    <span>已完成: 15%</span>
+                    <span>共12课时</span>
+                </div>
+            </div>
+
+            <h2>课程简介</h2>
+            <p>在AI快速发展的时代，掌握提示词工程（Prompt Engineering）已成为每位运营专家的必备技能。本课程将带您从零开始，系统学习如何写出高效提示词，最大化AI工具的潜力，提升您的工作效率和创作质量。</p>
+            <p>无论您是刚接触AI工具的新手，还是希望进一步优化提示词技能的专业人士，这门课程都将为您提供系统化的知识和实用技巧，帮助您从入门水平快速提升到专业水准。</p>
+
+            <div class="course-module">
+                <div class="module-title">模块一：提示词工程基础（免费）</div>
+                <p>了解提示词工程的基本概念、重要性和核心原则，为系统学习打下坚实基础。</p>
+                <ul class="lesson-list">
+                    <li class="lesson-item">
+                        <div class="lesson-number">1</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">什么是提示词工程？为什么它如此重要？</div>
+                            <div class="lesson-duration">时长: 15分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview">免费学习</a>
+                    </li>
+                    <li class="lesson-item">
+                        <div class="lesson-number">2</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">提示词工程的核心原则和思维模式</div>
+                            <div class="lesson-duration">时长: 20分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview">免费学习</a>
+                    </li>
+                    <li class="lesson-item">
+                        <div class="lesson-number">3</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">主流AI模型特性及如何为不同模型优化提示词</div>
+                            <div class="lesson-duration">时长: 25分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="course-module">
+                <div class="module-title">模块二：基础提示词技巧与模式</div>
+                <p>掌握提示词的基本格式与结构，学习常用的提示词模式和技巧，提高AI输出的质量和准确性。</p>
+                <ul class="lesson-list">
+                    <li class="lesson-item">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">提示词的基本结构与必备元素</div>
+                            <div class="lesson-duration">时长: 22分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                    <li class="lesson-item">
+                        <div class="lesson-number">5</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">角色扮演与情境设定技巧</div>
+                            <div class="lesson-duration">时长: 30分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                    <li class="lesson-item">
+                        <div class="lesson-number">6</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">零样本、单样本与多样本学习技术</div>
+                            <div class="lesson-duration">时长: 28分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="course-module">
+                <div class="module-title">模块三：行业特定提示词应用</div>
+                <p>学习针对不同场景和行业的提示词优化方法，提高AI在特定任务上的表现。</p>
+                <ul class="lesson-list">
+                    <li class="lesson-item">
+                        <div class="lesson-number">7</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">内容创作与营销文案提示词优化</div>
+                            <div class="lesson-duration">时长: 35分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                    <li class="lesson-item">
+                        <div class="lesson-number">8</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">电商产品描述与SEO优化提示词</div>
+                            <div class="lesson-duration">时长: 32分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                    <li class="lesson-item">
+                        <div class="lesson-number">9</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">视觉AI提示词：Midjourney与DALL-E专项指南</div>
+                            <div class="lesson-duration">时长: 40分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="course-module">
+                <div class="module-title">模块四：高级提示词工程技术</div>
+                <p>深入学习复杂提示词技术，解决难题，创建自动化工作流，最大化AI工具价值。</p>
+                <ul class="lesson-list">
+                    <li class="lesson-item">
+                        <div class="lesson-number">10</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">链式思考与复杂推理提示词技术</div>
+                            <div class="lesson-duration">时长: 38分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                    <li class="lesson-item">
+                        <div class="lesson-number">11</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">提示词模板库构建与个性化工作流</div>
+                            <div class="lesson-duration">时长: 30分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                    <li class="lesson-item">
+                        <div class="lesson-number">12</div>
+                        <div class="lesson-details">
+                            <div class="lesson-title">提示词工程未来趋势与持续学习路径</div>
+                            <div class="lesson-duration">时长: 25分钟</div>
+                        </div>
+                        <a href="#" class="lesson-preview locked">会员专享</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="vip-banner">
+                <div class="vip-icon">👑</div>
+                <div class="vip-message">
+                    <h3 class="vip-title">解锁全部12节课程内容</h3>
+                    <p class="vip-description">加入会员，立即访问所有高级课程内容，获取独家提示词模板库，以及定期更新的最新技巧。</p>
+                    <a href="https://t.zsxq.com/CAfds" class="vip-button">立即加入会员</a>
+                </div>
+            </div>
+
+            <div class="instructor-section">
+                <h2>讲师介绍</h2>
+                <div class="instructor-header">
+                    <div class="instructor-info" style="margin-left: 0;">
+                        <h3 class="instructor-name">陈明</h3>
+                        <div class="instructor-title">AI内容创作专家 | 提示词工程顾问</div>
+                    </div>
+                </div>
+                <p class="instructor-bio">陈明是资深AI内容策略顾问，拥有超过5年的AI应用经验。他曾为多家知名企业提供AI内容优化服务，帮助客户通过优化提示词工程提升内容质量和工作效率。陈明的教学风格注重实用性和系统性，以清晰易懂的方式传授复杂概念，帮助学员快速掌握提示词工程的精髓。</p>
+            </div>
+
+            <h2>学员评价</h2>
+            <div class="testimonials">
+                <blockquote>
+                    "这门课程彻底改变了我使用AI工具的方式。通过系统学习提示词工程，我的内容创作效率提高了200%，而且质量更高。非常推荐给所有需要提高AI使用效率的运营者！"
+                    <footer>— 张小华，跨境电商运营主管</footer>
+                </blockquote>
+                <blockquote>
+                    "陈老师讲解非常清晰，从基础到高级的进阶非常合理。课程中的实例和模板直接应用到我的工作中，极大提升了我的工作效率。"
+                    <footer>— 李强，内容创作者</footer>
+                </blockquote>
+            </div>
+
+            <h2>常见问题</h2>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h3>这门课程适合什么级别的学员？</h3>
+                    <p>本课程设计为全面覆盖从入门到高级的提示词工程知识，适合各个水平的学习者。初学者可以从基础模块开始学习，而有经验的用户可以直接跳到更高级的模块。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>课程内容会定期更新吗？</h3>
+                    <p>是的，我们会根据AI技术的发展和新模型的推出定期更新课程内容，确保会员始终获得最新最实用的提示词技巧。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何获得课程的学习证书？</h3>
+                    <p>会员完成全部12节课程学习并通过测试后，可以获得课程完成证书，证明您已掌握提示词工程的核心技能。</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>准备好提升您的AI使用效率了吗？</h2>
+                <p>加入兰心运营笔记会员，立即解锁《AI提示词工程：从入门到精通》完整课程，以及更多专业内容创作和运营资源！</p>
+                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-large">立即加入会员</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="../images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img">
+                        <span class="footer-logo-text">兰心运营笔记</span>
+                    </div>
+                    <p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><img src="../images/youtube-logo.png" alt="YouTube"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">关于我们</a></li>
+                        <li><a href="../contact.html">联系我们</a></li>
+                        <li><a href="../faq.html">常见问题</a></li>
+                        <li><a href="../privacy.html">隐私政策</a></li>
+                        <li><a href="../terms.html">服务条款</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">关注我们</h4>
+                    <div class="footer-subscription">
+                        <div class="youtube-subscription">
+                            <img src="../images/youtube-logo.png" alt="YouTube频道" class="footer-youtube-img">
+                            <div class="youtube-info">
+                                <h5 class="youtube-title">YouTube频道</h5>
+                                <p class="youtube-description">点击订阅获取最新视频</p>
+                            </div>
+                        </div>
+                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="btn vip-btn" style="margin-top: 10px;">前往YouTube频道</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 模拟会员状态检查
+            const isVipMember = false; // 根据用户登录状态动态设置
+            
+            // 会员专享课程点击处理
+            const lockedLessons = document.querySelectorAll('.lesson-preview.locked');
+            
+            lockedLessons.forEach(lesson => {
+                lesson.addEventListener('click', function(e) {
+                    if (!isVipMember) {
+                        e.preventDefault();
+                        alert('该课程为会员专享内容，请先加入会员！');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择支付方式 - 兰心运营笔记</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .payment-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .payment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .payment-logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .payment-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .payment-plan {
+            background-color: #f5f7ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #1e3a8a;
+        }
+        
+        .plan-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 5px;
+        }
+        
+        .plan-price {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .plan-period {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .payment-method {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: #1e3a8a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-method.active {
+            border-color: #1e3a8a;
+            border-width: 3px;
+            background-color: #f5f7ff;
+            box-shadow: inset 0 0 10px rgba(30, 58, 138, 0.1);
+        }
+        
+        .payment-icon {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        
+        .payment-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .payment-description {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .qr-container {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: white;
+        }
+        
+        .qr-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .qr-instruction {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .complete-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1e3a8a;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .complete-btn:hover {
+            background-color: #17307a;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .back-btn:hover {
+            color: #1e3a8a;
+            text-decoration: underline;
+        }
+        
+        .payment-footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        /* 针对专业会员卡片的粉色标记 */
+        .recommended-badge {
+            display: inline-block;
+            background-color: #ff4d8d;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        #wechat-qr .qr-code {
+            border: 2px solid #07c160;
+        }
+        
+        #alipay-qr .qr-code {
+            border: 2px solid #1677ff;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const wechatQR = document.getElementById('wechat-qr');
+            const alipayQR = document.getElementById('alipay-qr');
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // 移除所有active类
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    
+                    // 添加active类到当前点击的方法
+                    this.classList.add('active');
+                    
+                    // 显示对应的二维码
+                    if (this.id === 'wechat-method') {
+                        wechatQR.style.display = 'block';
+                        alipayQR.style.display = 'none';
+                    } else if (this.id === 'alipay-method') {
+                        wechatQR.style.display = 'none';
+                        alipayQR.style.display = 'block';
+                    }
+                });
+            });
+            
+            // 默认选中微信支付
+            document.getElementById('wechat-method').click();
+        };
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img">
+                <a href="index.html" class="logo-text">兰心运营笔记</a>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link">视频教程 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <a href="faq.html" class="nav-link">常见问题</a>
+                <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link youtube">
+                    <img src="images/youtube-logo.png" alt="YouTube" class="youtube-icon">
+                    YouTube
+                </a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">登录</a>
+                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="payment-section">
+            <div class="container">
+                <div class="payment-container">
+                    <div class="payment-header">
+                        <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="payment-logo">
+                        <h1 class="payment-title">选择支付方式</h1>
+                        <p class="payment-subtitle">请选择您喜欢的支付方式完成订阅</p>
+                    </div>
+                    
+                    <div class="payment-plan">
+                        <div class="plan-name">专业会员 <span class="recommended-badge">推荐</span></div>
+                        <div class="plan-price">¥299 <span class="plan-period">/季度</span></div>
+                        <ul>
+                            <li>所有基础会员权益</li>
+                            <li>专业AI工具使用培训</li>
+                            <li>跨境电商选品分析</li>
+                            <li>每周3次视频教程</li>
+                            <li>一对一咨询(1次/月)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method" id="wechat-method">
+                            <img src="images/n1.%20wechat-pay.png" alt="微信支付" class="payment-icon">
+                            <div class="payment-name">微信支付</div>
+                            <div class="payment-description">使用微信扫码支付</div>
+                        </div>
+                        
+                        <div class="payment-method" id="alipay-method">
+                            <img src="images/n2.%20alipay.png" alt="支付宝" class="payment-icon">
+                            <div class="payment-name">支付宝</div>
+                            <div class="payment-description">使用支付宝扫码支付</div>
+                        </div>
+                    </div>
+                    
+                    <div class="qr-container" id="wechat-qr">
+                        <div class="qr-code">
+                            <!-- 这里放微信支付二维码图片 -->
+                            <img src="images/n3.%20wechat-qr.png" alt="微信支付二维码" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="qr-title">微信扫码支付</div>
+                        <div class="qr-instruction">请使用微信扫描上方二维码完成支付</div>
+                        <a href="payment-success.html?method=wechat" class="complete-btn">支付完成</a>
+                        <br>
+                        <a href="https://t.zsxq.com/CAfds" class="back-btn">返回会员页面</a>
+                    </div>
+                    
+                    <div class="qr-container" id="alipay-qr">
+                        <div class="qr-code">
+                            <!-- 这里放支付宝支付二维码图片 -->
+                            <img src="images/n4.%20alipay-qr.png" alt="支付宝支付二维码" style="width: 100%; height: 100%;">
+                        </div>
+                        <div class="qr-title">支付宝扫码支付</div>
+                        <div class="qr-instruction">请使用支付宝扫描上方二维码完成支付</div>
+                        <a href="payment-success.html?method=alipay" class="complete-btn">支付完成</a>
+                        <br>
+                        <a href="https://t.zsxq.com/CAfds" class="back-btn">返回会员页面</a>
+                    </div>
+                    
+                    <div class="payment-footer">
+                        <p>支付过程中遇到问题？请联系客服：contact@lanxin.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img">
+                        <span class="footer-logo-text">兰心运营笔记</span>
+                    </div>
+                    <p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><img src="images/instagram.png" alt="Instagram"></a>
+                        <a href="#" class="social-icon"><img src="images/twitter.png" alt="Twitter"></a>
+                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="social-icon"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" class="social-icon"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">关注我们</h4>
+                    <div class="footer-subscription">
+                        <div class="youtube-subscription">
+                            <img src="images/youtube-logo.png" alt="YouTube频道" class="footer-youtube-img">
+                            <div class="youtube-info">
+                                <h5 class="youtube-title">YouTube频道</h5>
+                                <p class="youtube-description">点击订阅获取最新视频</p>
+                            </div>
+                        </div>
+                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="btn vip-btn" style="margin-top: 10px;">前往YouTube频道</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

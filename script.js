@@ -22,9 +22,126 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     });
     
+    // 添加全局图片错误处理
+    handleImageErrors();
+    
     // 视频教程权限控制
     controlVideoAccess();
 });
+
+// 处理所有图片的加载错误
+function handleImageErrors() {
+    // 获取页面上所有图片元素
+    const allImages = document.querySelectorAll('img');
+    
+    // 为每个图片添加错误处理
+    allImages.forEach(img => {
+        // 保存原始图片路径
+        const originalSrc = img.src;
+        
+        // 添加图片懒加载
+        if (!img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+        
+        img.onerror = function() {
+            // 尝试修复常见的路径问题
+            if (originalSrc.includes('lanxin-logo.png')) {
+                // 尝试不同的路径
+                this.src = '/images/lanxin-logo.png';
+                console.log('尝试修复图片路径:', originalSrc, ' -> ', this.src);
+            } else if (originalSrc.includes('images/')) {
+                // 尝试使用根路径
+                const imageName = originalSrc.split('images/')[1];
+                // 先尝试根路径
+                this.src = '/images/' + imageName;
+                console.log('尝试修复图片路径 (根路径):', originalSrc, ' -> ', this.src);
+                
+                // 第二次失败时尝试相对路径
+                this.onerror = function() {
+                    this.src = 'images/' + imageName;
+                    console.log('尝试修复图片路径 (相对路径):', originalSrc, ' -> ', this.src);
+                    
+                    // 第三次失败时尝试GitHub Pages路径
+                    this.onerror = function() {
+                        if (window.location.hostname.includes('github.io')) {
+                            const repoName = window.location.pathname.split('/')[1];
+                            this.src = '/' + repoName + '/images/' + imageName;
+                            console.log('尝试修复图片路径 (GitHub Pages):', originalSrc, ' -> ', this.src);
+                        }
+                        
+                        // 最终失败时可以隐藏图片
+                        this.onerror = function() {
+                            console.log('图片加载失败，所有尝试均未成功:', originalSrc);
+                            // 保持图片显示，但添加边框指示加载失败
+                            this.style.border = '1px dashed #ccc';
+                            this.style.padding = '5px';
+                            this.onerror = null;
+                        };
+                    };
+                };
+            }
+        };
+    });
+    
+    // 检测网站是否在GitHub Pages上运行
+    if (window.location.hostname.includes('github.io')) {
+        // 修复GitHub Pages上的图片路径
+        fixGitHubPagesImagePaths();
+        // 预加载重要图片
+        preloadImportantImages();
+    }
+}
+
+// 预加载重要图片
+function preloadImportantImages() {
+    // 要预加载的重要图片列表
+    const importantImages = [
+        'images/lanxin-logo.png',
+        'images/ai-tools.png',
+        'images/ecommerce.png',
+        'images/video-courses.jpg',
+        'images/youtube-logo.png'
+    ];
+    
+    const repoName = window.location.pathname.split('/')[1];
+    
+    // 创建预加载元素
+    importantImages.forEach(imagePath => {
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preload';
+        preloadLink.as = 'image';
+        
+        // 使用正确的GitHub Pages路径
+        if (window.location.hostname.includes('github.io')) {
+            preloadLink.href = '/' + repoName + '/' + imagePath;
+        } else {
+            preloadLink.href = imagePath;
+        }
+        
+        document.head.appendChild(preloadLink);
+        console.log('预加载图片:', preloadLink.href);
+    });
+}
+
+// 修复GitHub Pages上的图片路径
+function fixGitHubPagesImagePaths() {
+    const repoName = window.location.pathname.split('/')[1];
+    const allImages = document.querySelectorAll('img');
+    
+    allImages.forEach(img => {
+        // 获取原始src
+        const originalSrc = img.getAttribute('src');
+        
+        // 如果是相对路径且不以/repoName开头
+        if (originalSrc && originalSrc.startsWith('images/')) {
+            // 修改为GitHub Pages上的正确路径
+            const newSrc = '/' + repoName + '/' + originalSrc;
+            img.setAttribute('src', newSrc);
+            console.log('GitHub Pages路径修复:', originalSrc, ' -> ', newSrc);
+        }
+    });
+}
 
 // 清理之前可能存在的菜单
 function cleanupPreviousMenu() {

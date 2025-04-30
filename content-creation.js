@@ -1,0 +1,339 @@
+document.addEventListener('DOMContentLoaded', function() {
+  // 工具数据 - 30个AI内容生成工具 (包含前5个已在HTML中硬编码的)
+  const toolsData = [
+    // 前5个在HTML中已经硬编码，这里添加额外的25个工具
+    {
+      name: "DALL·E 3",
+      rating: 4.7,
+      description: "OpenAI开发的图像生成模型，可根据文字描述创建高度逼真和创意性的图像",
+      tags: ["图像生成", "高清图像", "艺术风格"],
+      categories: ["design"],
+      website: "https://openai.com/dall-e-3"
+    },
+    {
+      name: "Grammarly",
+      rating: 4.7,
+      description: "AI驱动的写作助手，实时提供语法、拼写、风格和语调建议，提升文本质量",
+      tags: ["语法检查", "风格建议", "语气调整"],
+      categories: ["writing"],
+      website: "https://www.grammarly.com"
+    },
+    {
+      name: "智谱AI",
+      rating: 4.5,
+      description: "中科院智能研究中心孵化的大语言模型，擅长中文文本知识和应用",
+      tags: "文本知识,中文优化,专业解答",
+      categories: ["text-gen", "writing"],
+      website: "https://www.zhipuai.cn"
+    },
+    {
+      name: "Canva AI",
+      rating: 4.6,
+      description: "Canva平台集成的AI设计功能，帮助用户生成设计元素、文案和图像",
+      tags: ["图形生成", "文案建议", "设计辅助"],
+      categories: ["design"],
+      website: "https://www.canva.com"
+    },
+    {
+      name: "腾讯混元",
+      rating: 4.5,
+      description: "腾讯推出的国内大模型，擅长中文内容创作、知识问答和应用场景",
+      tags: ["中文化优化", "行业知识", "内容创作"],
+      categories: ["text-gen"],
+      website: "https://hunyuan.tencent.com"
+    },
+    {
+      name: "Writesonic",
+      rating: 4.5,
+      description: "专注于营销内容生成的AI写作助手，可创建博客、广告和产品描述",
+      tags: ["博客文章", "SEO优化", "广告文案"],
+      categories: ["marketing", "writing"],
+      website: "https://writesonic.com"
+    },
+    {
+      name: "Synthesia",
+      rating: 4.6,
+      description: "AI视频生成平台，可将文本转化为由虚拟人物呈现的视频内容，无需摄像设备",
+      tags: ["虚拟人物", "多语言支持", "自定义场景"],
+      categories: ["video"],
+      website: "https://www.synthesia.io"
+    },
+    {
+      name: "HeyGen",
+      rating: 4.7,
+      description: "专业AI视频生成工具，可创建高质量的逼真主播视频和营销内容",
+      tags: ["教学人物", "口型同步", "多语言视频"],
+      categories: ["video"],
+      website: "https://www.heygen.com"
+    },
+    {
+      name: "Firefly",
+      rating: 4.6,
+      description: "Adobe推出的AI创意工具，专注于商业安全的创意和设计资产生成",
+      tags: ["商业安全", "Adobe集成", "风格控制"],
+      categories: ["design"],
+      website: "https://firefly.adobe.com"
+    },
+    {
+      name: "Runway",
+      rating: 4.8,
+      description: "创意视频制作AI平台，可用于生成和编辑视频内容，支持多种创意效果",
+      tags: ["视频编辑", "特效生成", "镜头特效"],
+      categories: ["video"],
+      website: "https://runwayml.com"
+    },
+    {
+      name: "Descript",
+      rating: 4.7,
+      description: "AI驱动的音频和视频编辑平台，通过编辑文本来修改音视频内容",
+      tags: ["文本编辑", "声音克隆", "音频特效"],
+      categories: ["audio", "video"],
+      website: "https://www.descript.com"
+    },
+    {
+      name: "Murf AI",
+      rating: 4.6,
+      description: "AI语音生成器，可创建自然的声音和解说，用于视频、演示和有声读物",
+      tags: ["语音合成", "配音", "情感调整"],
+      categories: ["audio"],
+      website: "https://murf.ai"
+    },
+    {
+      name: "Riffusion",
+      rating: 4.5,
+      description: "基于AI的音乐生成工具，可根据文本描述创建原创音乐和音效",
+      tags: ["音乐生成", "音效生成", "创意音频"],
+      categories: ["audio"],
+      website: "https://www.riffusion.com"
+    },
+    {
+      name: "ElevenLabs",
+      rating: 4.8,
+      description: "先进的AI语音合成平台，可生成自然、真情丰富的人声",
+      tags: ["语音合成", "多语言支持", "情感控制"],
+      categories: ["audio"],
+      website: "https://elevenlabs.io"
+    },
+    {
+      name: "Notion AI",
+      rating: 4.6,
+      description: "集成在Notion中的AI助手，可以帮助用户写作、总结和头脑风暴",
+      tags: ["文档工具", "笔记助手", "内容总结"],
+      categories: ["writing"],
+      website: "https://www.notion.so/product/ai"
+    },
+    {
+      name: "Quillbot",
+      rating: 4.6,
+      description: "AI改写和语法工具，帮助用户改变文本表达、更改语气和风格",
+      tags: ["文本改写", "语法检查", "语气调整"],
+      categories: ["writing"],
+      website: "https://quillbot.com"
+    },
+    {
+      name: "Mem",
+      rating: 4.5,
+      description: "AI驱动的个人知识库，帮助组织记忆和思考，自动生成内容连接",
+      tags: ["智能笔记", "自动组织", "内容推荐"],
+      categories: ["writing"],
+      website: "https://mem.ai"
+    },
+    {
+      name: "Character.AI",
+      rating: 4.7,
+      description: "创建和与AI角色对话的平台，可用于故事创作、角色发展和创意写作",
+      tags: ["角色创作", "对话模拟", "故事创作"],
+      categories: ["writing"],
+      website: "https://character.ai"
+    },
+    {
+      name: "Leonardo.AI",
+      rating: 4.7,
+      description: "为游戏和创意项目打造的AI艺术生成平台，创建高质量的概念艺术和素材",
+      tags: ["游戏素材", "概念艺术", "风格一致"],
+      categories: ["design"],
+      website: "https://leonardo.ai"
+    },
+    {
+      name: "Gamma",
+      rating: 4.6,
+      description: "AI驱动的演示文稿创建工具，可快速生成专业美观的内容",
+      tags: ["一键生成", "美观设计", "内容丰富"],
+      categories: ["marketing"],
+      website: "https://gamma.app"
+    },
+    {
+      name: "Speechify",
+      rating: 4.6,
+      description: "将文本转换为自然语音的AI工具，支持多种声音和语言",
+      tags: ["文本朗读", "语速控制", "多声音选择"],
+      categories: ["audio"],
+      website: "https://speechify.com"
+    },
+    {
+      name: "Typeface",
+      rating: 4.7,
+      description: "企业级AI内容生成平台，整合品牌资产和指南，创建符合品牌调性的内容",
+      tags: ["品牌一致性", "团队协作", "内容审核"],
+      categories: ["brand"],
+      website: "https://typeface.ai"
+    },
+    {
+      name: "Suno",
+      rating: 4.8,
+      description: "AI音乐创作平台，通过文本描述生成完整的音乐作品，包括人声和伴奏",
+      tags: ["歌曲生成", "风格多样", "人声合成"],
+      categories: ["audio"],
+      website: "https://suno.ai"
+    },
+    {
+      name: "Stable Diffusion",
+      rating: 4.7,
+      description: "开源的AI图像生成模型，可在本地运行，支持创建精美图片、艺术作品和产品设计草图",
+      tags: ["本地部署", "开源模型", "社区扩展"],
+      categories: ["design"],
+      website: "https://stability.ai"
+    },
+    {
+      name: "Luma AI",
+      rating: 4.6,
+      description: "专注于3D和视频生成的AI平台，可创建动态视觉内容和AR资产",
+      tags: ["3D生成", "视频合成", "AR资产"],
+      categories: ["video", "design"],
+      website: "https://lumalabs.ai"
+    }
+  ];
+
+  // 获取DOM元素
+  const toolsGrid = document.getElementById('toolsGrid');
+  const searchInput = document.getElementById('searchInput');
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const loadMoreBtn = document.querySelector('.load-more-btn');
+
+  // 当前显示的工具数量和每次加载的数量
+  let displayedTools = 17; // 已在HTML中显示的工具数量
+  const loadIncrement = 6; // 每次点击"加载更多"时显示的额外工具数量
+  let activeCategory = 'all';
+  let searchTerm = '';
+
+  // 渲染工具卡片
+  function renderToolCard(tool) {
+    // 将标签字符串转换为数组(如果它是字符串)
+    const tags = typeof tool.tags === 'string' 
+      ? tool.tags.split(',') 
+      : tool.tags;
+    
+    // 获取主要分类用于标签
+    const primaryCategory = tool.categories[0];
+    const categoryLabels = {
+      'text-gen': '文本生成',
+      'writing': '写作辅助',
+      'marketing': '营销内容',
+      'design': '设计创作',
+      'video': '视频生成',
+      'audio': '音频创作',
+      'brand': '品牌内容'
+    };
+    
+    // 创建工具卡片的HTML
+    const cardHtml = `
+      <div class="tool-card" data-categories="${tool.categories.join(',')}">
+        <span class="category-label category-${primaryCategory}">${categoryLabels[primaryCategory] || '其他工具'}</span>
+        <div class="tool-header">
+          <h3 class="tool-name">${tool.name}</h3>
+          <div class="tool-rating">
+            <div class="stars">★★★★${tool.rating >= 4.5 ? '★' : '☆'}</div>
+            <span class="rating-value">${tool.rating}</span>
+          </div>
+        </div>
+        <p class="tool-description">${tool.description}</p>
+        <div class="tool-tags">
+          ${tags.map(tag => `<span class="tool-tag">${tag}</span>`).join('')}
+        </div>
+        <a href="${tool.website}" target="_blank" class="visit-btn">访问官网</a>
+      </div>
+    `;
+    
+    return cardHtml;
+  }
+
+  // 加载更多工具
+  function loadMoreTools() {
+    const endIndex = Math.min(displayedTools + loadIncrement, toolsData.length);
+    let html = '';
+    
+    for (let i = displayedTools; i < endIndex; i++) {
+      // 筛选分类
+      if (activeCategory === 'all' || toolsData[i].categories.includes(activeCategory)) {
+        // 搜索筛选
+        if (searchTerm === '' || 
+          toolsData[i].name.toLowerCase().includes(searchTerm) || 
+          toolsData[i].description.toLowerCase().includes(searchTerm)) {
+          html += renderToolCard(toolsData[i]);
+        }
+      }
+    }
+    
+    if (html !== '') {
+      toolsGrid.innerHTML += html;
+    }
+    
+    displayedTools = endIndex;
+    
+    // 隐藏"加载更多"按钮，如果所有工具都已加载
+    if (displayedTools >= toolsData.length) {
+      loadMoreBtn.style.display = 'none';
+    }
+  }
+
+  // 按分类筛选工具
+  function filterByCategory(category) {
+    activeCategory = category;
+    displayedTools = 0;
+    toolsGrid.innerHTML = '';
+    loadMoreTools();
+  }
+
+  // 搜索工具
+  function searchTools() {
+    searchTerm = searchInput.value.toLowerCase().trim();
+    displayedTools = 0;
+    toolsGrid.innerHTML = '';
+    loadMoreTools();
+  }
+
+  // 为类别按钮添加点击事件
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      filterByCategory(button.dataset.category);
+    });
+  });
+
+  // 为搜索框添加输入事件
+  searchInput.addEventListener('input', searchTools);
+
+  // 为加载更多按钮添加点击事件
+  loadMoreBtn.addEventListener('click', loadMoreTools);
+
+  // 初始加载
+  loadMoreTools();
+
+  // 添加滚动动画
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // 观察所有工具卡片和应用场景卡片
+  setTimeout(() => {
+    document.querySelectorAll('.tool-card, .application-card, .review-card').forEach(card => {
+      observer.observe(card);
+    });
+  }, 100);
+}); 

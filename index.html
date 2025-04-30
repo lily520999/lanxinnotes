@@ -7,6 +7,38 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>兰心运营笔记 - 提升运营效率的专业平台</title>
+    <!-- GitHub Pages 路径修复脚本 -->
+    <script>
+        // 检测是否是GitHub Pages环境
+        if (window.location.hostname.includes('github.io')) {
+            // 获取仓库名称
+            const repoName = window.location.pathname.split('/')[1];
+            
+            // 创建base标签
+            const baseTag = document.createElement('base');
+            baseTag.href = '/' + repoName + '/';
+            document.head.appendChild(baseTag);
+            
+            console.log('GitHub Pages 环境已检测，基础路径已设置为:', baseTag.href);
+        }
+    </script>
+    
+    <!-- Service Worker 注册 -->
+    <script>
+        // 检查浏览器是否支持Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // 注册Service Worker
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker 注册成功，范围:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker 注册失败:', error);
+                    });
+            });
+        }
+    </script>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
@@ -25,13 +57,13 @@
                     <a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="https://space.bilibili.com/1798377475" class="nav-link">视频教程 <span class="dropdown-arrow">▼</span></a>
+                    <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">视频教程 <span class="dropdown-arrow">▼</span></a>
                 </div>
                 <a href="faq.html" class="nav-link">常见问题</a>
             </nav>
             <div class="auth-buttons">
                 <a href="login.html" class="btn btn-login">登录</a>
-                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员(1565元/年)</a>
+                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">加入会员(1565元/年)</a>
             </div>
         </div>
     </header>
@@ -43,7 +75,7 @@
                     <h1 class="hero-title">提升你的<span class="highlight">运营效率</span><br>探索专业<span class="highlight">运营笔记</span></h1>
                     <p class="hero-description">汇聚AI工具、跨境电商和专业教程，助你掌握运营核心技能，提升业务增长。</p>
                     <div class="hero-buttons">
-                        <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">立即加入会员</a>
+                        <a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">立即加入会员</a>
                         <a href="hot-courses.html" class="btn btn-secondary">浏览热门教程</a>
                     </div>
                 </div>
@@ -103,7 +135,7 @@
                                 <span class="tag">跨境电商</span>
                                 <span class="tag">视频营销</span>
                             </div>
-                            <a href="https://space.bilibili.com/1798377475" class="category-link">查看全部 →</a>
+                            <a href="https://space.bilibili.com/1798377475" class="category-link" target="_blank">查看全部 →</a>
                         </div>
                     </div>
                 </div>
@@ -182,7 +214,7 @@
                     <div class="social-icons">
                         <a href="#" class="social-icon"></a>
                         <a href="#" class="social-icon"></a>
-                        <a href="https://space.bilibili.com/1798377475" class="social-icon"></a>
+                        <a href="https://space.bilibili.com/1798377475" class="social-icon" target="_blank"></a>
                         <a href="#" class="social-icon"></a>
                     </div>
                 </div>
@@ -207,7 +239,7 @@
                                 <p class="bilibili-description">点击关注获取最新视频</p>
                             </div>
                         </div>
-                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;">前往哔哩哔哩频道</a>
+                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">前往哔哩哔哩频道</a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即加入会员 - 兰心运营笔记</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .join-hero {
+            background-color: #1e3a8a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .join-container {
+            max-width: 500px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        
+        .join-logo {
+            margin-bottom: 30px;
+        }
+        
+        .join-logo-img {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .join-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .join-description {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .join-form {
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: #ff4d8d;
+            outline: none;
+        }
+        
+        .join-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #ff4d8d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 30px;
+        }
+        
+        .join-btn:hover {
+            background-color: #ff2d7d;
+        }
+        
+        .login-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .login-link a {
+            color: #ff4d8d;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <section class="join-hero">
+        <div class="join-container">
+            <div class="join-logo">
+                <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="join-logo-img">
+                <h1 class="join-title">欢迎加入兰心运营笔记会员</h1>
+                <p class="join-description">填写信息，立即获取AI工具教程、跨境电商指南和专属视频教程，助你成为运营高手</p>
+            </div>
+            
+            <form class="join-form">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" placeholder="请输入您的姓名" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" placeholder="请输入您的邮箱" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">手机号</label>
+                    <input type="tel" id="phone" placeholder="请输入您的手机号" required>
+                </div>
+                
+                <a href="payment.html" class="join-btn">立即加入会员</a>
+                
+                <div class="login-link">
+                    已有账号？<a href="login.html">立即登录</a> 或 <a href="https://t.zsxq.com/CAfds">查看会员方案详情</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html> 

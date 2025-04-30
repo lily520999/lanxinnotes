@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 兰心运营笔记</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .login-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .login-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .login-input:focus {
+            border-color: #4e7bef;
+            outline: none;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #4e7bef;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #3d63cc;
+        }
+        
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .login-options a {
+            color: #4e7bef;
+            text-decoration: none;
+        }
+        
+        .login-options a:hover {
+            text-decoration: underline;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+        }
+        
+        .register-link a {
+            color: #4e7bef;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img">
+                <a href="index.html" class="logo-text">兰心运营笔记</a>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link">视频教程 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link youtube">
+                    <img src="images/youtube-logo.png" alt="YouTube" class="youtube-icon">
+                    YouTube
+                </a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">登录</a>
+                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="login-section">
+            <div class="container">
+                <div class="login-container">
+                    <h2 class="login-title">欢迎回来</h2>
+                    <form class="login-form">
+                        <div class="login-form-group">
+                            <label for="email" class="login-label">邮箱</label>
+                            <input type="email" id="email" class="login-input" placeholder="请输入您的邮箱" required>
+                        </div>
+                        <div class="login-form-group">
+                            <label for="password" class="login-label">密码</label>
+                            <input type="password" id="password" class="login-input" placeholder="请输入您的密码" required>
+                        </div>
+                        <div class="login-options">
+                            <label>
+                                <input type="checkbox"> 记住我
+                            </label>
+                            <a href="#">忘记密码？</a>
+                        </div>
+                        <button type="submit" class="login-btn">登录</button>
+                    </form>
+                    
+                    <div class="register-link">
+                        还没有账号？<a href="register.html">立即注册</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img">
+                        <span class="footer-logo-text">兰心运营笔记</span>
+                    </div>
+                    <p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><img src="images/instagram.png" alt="Instagram"></a>
+                        <a href="#" class="social-icon"><img src="images/twitter.png" alt="Twitter"></a>
+                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="social-icon"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" class="social-icon"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">关注我们</h4>
+                    <div class="footer-subscription">
+                        <div class="youtube-subscription">
+                            <img src="images/youtube-logo.png" alt="YouTube频道" class="footer-youtube-img">
+                            <div class="youtube-info">
+                                <h5 class="youtube-title">YouTube频道</h5>
+                                <p class="youtube-description">点击订阅获取最新视频</p>
+                            </div>
+                        </div>
+                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="btn vip-btn" style="margin-top: 10px;">前往YouTube频道</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

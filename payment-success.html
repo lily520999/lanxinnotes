@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付成功 - 兰心运营笔记</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #ebf9f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: #2ecc71;
+        }
+        
+        .success-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .success-message {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .order-details {
+            background-color: #f5f7ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #555;
+        }
+        
+        .order-item:last-child {
+            margin-bottom: 0;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            font-weight: 600;
+        }
+        
+        .success-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .home-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #1e3a8a;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .home-btn:hover {
+            background-color: #17307a;
+        }
+        
+        .member-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #f5f7ff;
+            color: #1e3a8a;
+            border: 1px solid #1e3a8a;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .member-btn:hover {
+            background-color: #e8eeff;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img">
+                <a href="index.html" class="logo-text">兰心运营笔记</a>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link">视频教程 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="nav-link youtube">
+                    <img src="images/youtube-logo.png" alt="YouTube" class="youtube-icon">
+                    YouTube
+                </a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">登录</a>
+                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="success-section">
+            <div class="container">
+                <div class="success-container">
+                    <div class="success-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17l-4.17-4.17-1.42 1.41 5.59 5.59 12-12-1.41-1.41z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="success-title">支付成功！</h1>
+                    <p class="success-message">感谢您成为兰心运营笔记专业会员！<br>您现在可以访问所有专业会员特权内容。</p>
+                    
+                    <div class="order-details">
+                        <div class="order-item">
+                            <span>订单号</span>
+                            <span>LX2025042315789</span>
+                        </div>
+                        <div class="order-item">
+                            <span>会员方案</span>
+                            <span>专业会员 (季度)</span>
+                        </div>
+                        <div class="order-item">
+                            <span>支付方式</span>
+                            <span id="payment-method">微信支付</span>
+                        </div>
+                        <div class="order-item">
+                            <span>有效期至</span>
+                            <span>2025年8月10日</span>
+                        </div>
+                        <div class="order-item">
+                            <span>总计金额</span>
+                            <span>¥299.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="success-buttons">
+                        <a href="index.html" class="member-btn">返回首页</a>
+                        <a href="member-center.html" class="home-btn">进入会员中心</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img">
+                        <span class="footer-logo-text">兰心运营笔记</span>
+                    </div>
+                    <p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><img src="images/instagram.png" alt="Instagram"></a>
+                        <a href="#" class="social-icon"><img src="images/twitter.png" alt="Twitter"></a>
+                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="social-icon"><img src="images/youtube-logo.png" alt="YouTube"></a>
+                        <a href="#" class="social-icon"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">关注我们</h4>
+                    <div class="footer-subscription">
+                        <div class="youtube-subscription">
+                            <img src="images/youtube-logo.png" alt="YouTube频道" class="footer-youtube-img">
+                            <div class="youtube-info">
+                                <h5 class="youtube-title">YouTube频道</h5>
+                                <p class="youtube-description">点击订阅获取最新视频</p>
+                            </div>
+                        </div>
+                        <a href="https://www.youtube.com/@%E5%85%B0%E5%BF%83%E8%BF%90%E8%90%A5%E7%AC%94%E8%AE%B0" class="btn vip-btn" style="margin-top: 10px;">前往YouTube频道</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 获取从支付页面传递过来的支付方式
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paymentMethod = urlParams.get('method');
+            
+            if (paymentMethod === 'alipay') {
+                document.getElementById('payment-method').innerText = '支付宝';
+            } else {
+                document.getElementById('payment-method').innerText = '微信支付';
+            }
+        };
+    </script>
+</body>
+</html> 
