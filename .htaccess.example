@@ -1,0 +1,37 @@
+﻿# Enable compression
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and other content types
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/x-javascript
+
+  # Remove browser bugs for browsers that don't handle compression well
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# Set cache control
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Default cache for 1 month
+  ExpiresDefault "access plus 1 month"
+  
+  # HTML documents
+  ExpiresByType text/html "access plus 0 seconds"
+  
+  # CSS and JavaScript files cache for 1 year
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  
+  # Image files cache for 1 year
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  
+  # Font files cache for 1 year
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+</IfModule>

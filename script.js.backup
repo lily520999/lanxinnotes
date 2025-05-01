@@ -1,0 +1,702 @@
+// 等待DOM加载完成
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('网站初始化开始，当前环境:', window.siteEnvironment || '未检测到环境变量');
+    console.log('当前页面URL:', window.location.href);
+    
+    // 清理可能存在的旧移动菜单和下拉内容
+    cleanupPreviousMenu();
+    
+    // 首先初始化下拉菜单
+    initDropdowns();
+    
+    // 滚动效果
+    initScrollEffects();
+    
+    // 移动端导航菜单
+    initMobileNav();
+    
+    // 修复图片路径
+    fixImagePaths();
+    
+    // 为所有工具图标添加错误处理
+    document.querySelectorAll('.tool-icon').forEach(img => {
+        img.onerror = function() {
+            // 设置默认占位符图标
+            this.src = 'images/default-tool-icon.png';
+            // 防止无限循环
+            this.onerror = null;
+        };
+    });
+    
+    // 添加全局图片错误处理
+    handleImageErrors();
+    
+    // 视频教程权限控制
+    controlVideoAccess();
+    
+    // 初始化分页功能
+    initPagination();
+});
+
+// 处理所有图片的加载错误
+function handleImageErrors() {
+    // 获取页面上所有图片元素
+    const allImages = document.querySelectorAll('img');
+    console.log('处理图片加载错误，总图片数：', allImages.length);
+    
+    // 获取当前环境信息
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    const isCustomDomain = window.location.hostname === 'lanxinnotes.com' || window.location.hostname === 'www.lanxinnotes.com';
+    const repoName = isGitHubPages ? window.location.pathname.split('/')[1] : '';
+    
+    // 定义可能的基础路径
+    const basePaths = [];
+    
+    // 根据环境添加可能的基础路径
+    if (isGitHubPages) {
+        basePaths.push(`/${repoName}/images/`);
+        basePaths.push(`/${repoName}/`);
+    } 
+    
+    if (isCustomDomain) {
+        // 自定义域名环境
+        basePaths.push('/images/');
+        basePaths.push('/');
+    } else {
+        // 非自定义域名环境
+        basePaths.push('images/');
+        basePaths.push('./images/');
+        basePaths.push('../images/');
+        basePaths.push('');
+    }
+    
+    // 预加载重要图片
+    preloadImportantImages(basePaths);
+    
+    // 为每个图片添加错误处理
+    allImages.forEach(img => {
+        // 保存原始图片路径
+        const originalSrc = img.src;
+        const imageName = originalSrc.split('/').pop();
+        
+        // 添加图片懒加载
+        if (!img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+        
+        // 图片加载失败处理函数
+        img.onerror = function() {
+            console.log('图片加载失败:', originalSrc);
+            
+            // 阻止可能的无限循环
+            this.onerror = null;
+            
+            // 获取图片文件名
+            const fileName = imageName.split('?')[0]; // 移除URL参数
+            
+            // 尝试不同的路径
+            tryAlternativePaths(img, fileName, basePaths);
+        };
+    });
+}
+
+// 修复所有环境下的图片路径
+function fixImagePaths() {
+    console.log('开始修复图片路径');
+    const allImages = document.querySelectorAll('img');
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    const isCustomDomain = window.location.hostname === 'lanxinnotes.com' || window.location.hostname === 'www.lanxinnotes.com';
+    
+    allImages.forEach(img => {
+        // 获取原始src
+        const originalSrc = img.getAttribute('src');
+        console.log('检查图片路径:', originalSrc);
+        
+        if (originalSrc && !originalSrc.startsWith('http') && !originalSrc.startsWith('data:')) {
+            // 分析路径类型
+            if (originalSrc.includes('images/') || originalSrc.includes('/images/')) {
+                // 解析图片名称
+                const pathParts = originalSrc.split('/');
+                const imageName = pathParts[pathParts.length - 1];
+                
+                // 根据环境设置正确的路径
+                if (isGitHubPages) {
+                    const repoName = window.location.pathname.split('/')[1];
+                    const newSrc = '/' + repoName + '/images/' + imageName;
+                    img.setAttribute('src', newSrc);
+                    console.log('GitHub Pages路径修复:', originalSrc, ' -> ', newSrc);
+                } else if (isCustomDomain) {
+                    const newSrc = '/images/' + imageName;
+                    img.setAttribute('src', newSrc);
+                    console.log('自定义域名路径修复:', originalSrc, ' -> ', newSrc);
+                } else {
+                    // 本地环境保持相对路径
+                    if (!originalSrc.startsWith('images/')) {
+                        const newSrc = 'images/' + imageName;
+                        img.setAttribute('src', newSrc);
+                        console.log('本地环境路径修复:', originalSrc, ' -> ', newSrc);
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 尝试多个替代路径加载图片
+function tryAlternativePaths(imgElement, fileName, basePaths) {
+    let pathIndex = 0;
+    let success = false;
+    
+    // 创建一个测试用的隐藏图片元素
+    const testImg = new Image();
+    testImg.style.display = 'none';
+    document.body.appendChild(testImg);
+    
+    // 尝试下一个路径
+    function tryNextPath() {
+        if (pathIndex >= basePaths.length || success) {
+            // 所有路径都尝试过了或已成功，移除测试图片
+            document.body.removeChild(testImg);
+            
+            // 如果所有路径都失败，使用占位图
+            if (!success) {
+                console.log('所有路径尝试失败，使用占位图');
+                
+                // 设置图片对应的alt文本作为占位图的文本
+                let altText = imgElement.alt || '图片';
+                imgElement.src = 'https://via.placeholder.com/300?text=' + encodeURIComponent(altText);
+                imgElement.style.border = '1px dashed #ddd';
+                imgElement.style.background = '#f9f9f9';
+            }
+            return;
+        }
+        
+        // 构建完整路径
+        const path = basePaths[pathIndex] + fileName;
+        console.log('尝试路径:', path);
+        
+        // 设置测试图片的加载事件
+        testImg.onload = function() {
+            // 成功加载，设置原始图片的src
+            success = true;
+            imgElement.src = path;
+            console.log('图片加载成功:', path);
+            document.body.removeChild(testImg);
+        };
+        
+        testImg.onerror = function() {
+            // 加载失败，尝试下一个路径
+            pathIndex++;
+            setTimeout(tryNextPath, 0);
+        };
+        
+        // 开始尝试加载
+        testImg.src = path;
+    }
+    
+    // 开始首次尝试
+    tryNextPath();
+}
+
+// 预加载重要图片
+function preloadImportantImages(basePaths = []) {
+    // 要预加载的重要图片列表
+    const importantImages = [
+        'lanxin-logo.png',
+        'ai-tools.png',
+        'ecommerce.png',
+        'video-courses.jpg',
+        'bilibili-logo.png'
+    ];
+    
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    const isCustomDomain = window.location.hostname === 'lanxinnotes.com' || window.location.hostname === 'www.lanxinnotes.com';
+    
+    // 为每个重要图片尝试所有可能的路径
+    importantImages.forEach(imageName => {
+        // 如果没有提供basePaths，生成默认的路径集
+        const paths = basePaths.length > 0 ? basePaths : [];
+        
+        if (paths.length === 0) {
+            if (isGitHubPages) {
+                const repoName = window.location.pathname.split('/')[1];
+                paths.push(`/${repoName}/images/`);
+            } else if (isCustomDomain) {
+                paths.push('/images/');
+            } else {
+                paths.push('images/');
+            }
+        }
+        
+        // 为每个路径创建预加载链接
+        paths.forEach(path => {
+            const preloadLink = document.createElement('link');
+            preloadLink.rel = 'preload';
+            preloadLink.as = 'image';
+            preloadLink.href = path + imageName;
+            
+            document.head.appendChild(preloadLink);
+            console.log('预加载图片:', preloadLink.href);
+        });
+    });
+}
+
+// 清理之前可能存在的菜单
+function cleanupPreviousMenu() {
+    // 移除页面上可能已存在的下拉内容
+    document.querySelectorAll('.dropdown-content').forEach(menu => {
+        menu.remove();
+    });
+    
+    // 移除可能已经存在的移动菜单
+    document.querySelectorAll('.mobile-menu').forEach(menu => {
+        menu.remove();
+    });
+    
+    // 移除移动菜单按钮
+    document.querySelectorAll('.mobile-menu-btn').forEach(btn => {
+        btn.remove();
+    });
+    
+    // 恢复body状态
+    document.body.classList.remove('menu-open');
+}
+
+// 初始化下拉菜单
+function initDropdowns() {
+    // 修改选择器，只针对header中的dropdown元素
+    const dropdowns = document.querySelectorAll('.header .main-nav .dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.nav-link');
+        
+        // 创建下拉内容
+        const dropdownContent = document.createElement('div');
+        dropdownContent.className = 'dropdown-content';
+        
+        // 根据不同的导航项添加不同的下拉内容
+        if (link.textContent.includes('AI工具')) {
+            dropdownContent.innerHTML = `
+                <a href="ai-tools.html#tools">AI工具列表</a>
+                <a href="ai-tools.html#reviews">工具评测</a>
+                <a href="ai-tools.html#guides">使用指南</a>
+                <a href="ai-tools.html#comparison">工具对比</a>
+            `;
+        } else if (link.textContent.includes('跨境电商')) {
+            dropdownContent.innerHTML = `
+                <a href="ecommerce.html#amazon">亚马逊</a>
+                <a href="ecommerce.html#tiktok">TikTok Shop</a>
+                <a href="ecommerce.html#shopify">Shopify</a>
+                <a href="ecommerce.html#strategies">运营策略</a>
+            `;
+        } else if (link.textContent.includes('视频教程')) {
+            dropdownContent.innerHTML = `
+                <a href="courses.html#beginner">入门课程</a>
+                <a href="courses.html#advanced">进阶课程</a>
+                <a href="courses.html#masterclass">大师课</a>
+                <a href="courses.html#live">直播回放</a>
+            `;
+        }
+        
+        dropdown.appendChild(dropdownContent);
+        
+        // 添加鼠标经过事件监听
+        dropdown.addEventListener('mouseenter', function() {
+            dropdownContent.style.display = 'block';
+            setTimeout(() => {
+                dropdownContent.style.opacity = '1';
+                dropdownContent.style.transform = 'translateY(0)';
+            }, 10);
+        });
+        
+        dropdown.addEventListener('mouseleave', function() {
+            dropdownContent.style.opacity = '0';
+            dropdownContent.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                dropdownContent.style.display = 'none';
+            }, 300);
+        });
+    });
+}
+
+// 初始化滚动效果
+function initScrollEffects() {
+    // 滚动时导航栏效果
+    let lastScrollTop = 0;
+    const header = document.querySelector('.header');
+    
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // 向下滚动超过100px
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // 向上滚动或者在顶部
+            header.style.transform = 'translateY(0)';
+        }
+        
+        // 根据滚动位置改变导航栏样式
+        if (scrollTop > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    // 滚动动画效果
+    const animateElements = document.querySelectorAll('.category-card, .article-card, .plan-card, .vip-info');
+    
+    // 检查元素是否在视口内
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // 初始隐藏需要动画的元素
+    animateElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // 滚动时检查并触发动画
+    function checkScroll() {
+        animateElements.forEach(element => {
+            if (isInViewport(element) && element.style.opacity === '0') {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100);
+            }
+        });
+    }
+    
+    // 页面加载和滚动时触发动画
+    window.addEventListener('load', checkScroll);
+    window.addEventListener('scroll', checkScroll);
+}
+
+// 初始化移动端导航
+function initMobileNav() {
+    // 检查是否已有移动菜单，避免重复创建
+    if (document.querySelector('.mobile-menu')) {
+        return;
+    }
+    
+    // 创建移动端菜单按钮
+    const header = document.querySelector('.header .container');
+    const mobileMenuBtn = document.createElement('div');
+    mobileMenuBtn.className = 'mobile-menu-btn';
+    mobileMenuBtn.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+    `;
+    header.appendChild(mobileMenuBtn);
+    
+    // 创建移动端菜单
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    
+    // 复制导航链接到移动端菜单
+    const navLinks = document.querySelectorAll('.header .main-nav .nav-link');
+    const mobileNavContent = document.createElement('div');
+    mobileNavContent.className = 'mobile-nav-content';
+    
+    navLinks.forEach(link => {
+        const linkClone = link.cloneNode(true);
+        const menuItem = document.createElement('div');
+        menuItem.className = 'mobile-menu-item';
+        menuItem.appendChild(linkClone);
+        
+        // 如果是下拉菜单，添加展开功能
+        if (link.parentElement.classList.contains('dropdown')) {
+            const subMenu = document.createElement('div');
+            subMenu.className = 'mobile-submenu';
+            
+            // 使用相同的下拉内容逻辑构建子菜单
+            if (link.textContent.includes('AI工具')) {
+                subMenu.innerHTML = `
+                    <a href="ai-tools.html#tools">AI工具列表</a>
+                    <a href="ai-tools.html#reviews">工具评测</a>
+                    <a href="ai-tools.html#guides">使用指南</a>
+                    <a href="ai-tools.html#comparison">工具对比</a>
+                `;
+            } else if (link.textContent.includes('跨境电商')) {
+                subMenu.innerHTML = `
+                    <a href="ecommerce.html#amazon">亚马逊</a>
+                    <a href="ecommerce.html#tiktok">TikTok Shop</a>
+                    <a href="ecommerce.html#shopify">Shopify</a>
+                    <a href="ecommerce.html#strategies">运营策略</a>
+                `;
+            } else if (link.textContent.includes('视频教程')) {
+                subMenu.innerHTML = `
+                    <a href="courses.html#beginner">入门课程</a>
+                    <a href="courses.html#advanced">进阶课程</a>
+                    <a href="courses.html#masterclass">大师课</a>
+                    <a href="courses.html#live">直播回放</a>
+                `;
+            }
+            
+            menuItem.appendChild(subMenu);
+            
+            // 添加点击展开功能
+            linkClone.addEventListener('click', function(e) {
+                e.preventDefault();
+                subMenu.classList.toggle('active');
+            });
+        }
+        
+        mobileNavContent.appendChild(menuItem);
+    });
+    
+    mobileMenu.appendChild(mobileNavContent);
+    
+    // 添加认证按钮到移动菜单
+    const authButtons = document.querySelector('.header .auth-buttons').cloneNode(true);
+    authButtons.className = 'mobile-auth-buttons';
+    mobileMenu.appendChild(authButtons);
+    
+    document.body.appendChild(mobileMenu);
+    
+    // 移动菜单开关功能
+    mobileMenuBtn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    });
+    
+    // 点击外部关闭菜单
+    document.addEventListener('click', function(e) {
+        if (mobileMenu.classList.contains('active') && 
+            !mobileMenu.contains(e.target) && 
+            !mobileMenuBtn.contains(e.target)) {
+            mobileMenuBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+    
+    // 响应式调整
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
+            mobileMenuBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+}
+
+// 添加视频播放功能
+function initVideoPlayer() {
+    const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+    
+    videoThumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            const videoId = this.dataset.videoId;
+            const videoContainer = this.parentElement;
+            
+            // 创建iframe替换缩略图
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.className = 'video-iframe';
+            
+            // 替换缩略图
+            videoContainer.innerHTML = '';
+            videoContainer.appendChild(iframe);
+        });
+    });
+}
+
+// 添加电子邮件订阅功能
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+            
+            if (email && validateEmail(email)) {
+                // 模拟订阅成功
+                emailInput.value = '';
+                
+                // 创建成功提示
+                const successMessage = document.createElement('div');
+                successMessage.className = 'newsletter-success';
+                successMessage.textContent = '订阅成功！感谢您的关注。';
+                
+                // 在表单后插入成功提示
+                this.parentNode.appendChild(successMessage);
+                
+                // 5秒后移除提示
+                setTimeout(() => {
+                    successMessage.style.opacity = '0';
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 500);
+                }, 5000);
+            } else {
+                // 显示错误提示
+                emailInput.classList.add('error');
+                setTimeout(() => {
+                    emailInput.classList.remove('error');
+                }, 1000);
+            }
+        });
+    }
+});
+
+// 邮箱验证函数
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// 会员权限检查
+function checkMembershipAccess() {
+    // 从localStorage获取会员状态
+    const isMember = localStorage.getItem('isMember') === 'true';
+    return isMember;
+}
+
+// 视频教程权限控制
+function controlVideoAccess() {
+    const videoElements = document.querySelectorAll('.video-tutorial');
+    const isMember = checkMembershipAccess();
+    
+    videoElements.forEach(video => {
+        if (!isMember) {
+            // 非会员显示提示信息
+            const placeholder = document.createElement('div');
+            placeholder.className = 'video-placeholder';
+            placeholder.innerHTML = `
+                <div class="membership-required">
+                    <h3>会员专享内容</h3>
+                    <p>开通会员即可观看完整视频教程</p>
+                    <a href="membership.html" class="btn btn-primary">立即开通会员</a>
+                </div>
+            `;
+            video.parentNode.replaceChild(placeholder, video);
+        }
+    });
+}
+
+// 分页功能初始化
+function initPagination() {
+    const paginationContainer = document.querySelector('.pagination');
+    if (!paginationContainer) return;  // 如果页面上没有分页组件，直接返回
+    
+    console.log('初始化分页功能');
+    
+    // 获取所有分页链接
+    const pageLinks = paginationContainer.querySelectorAll('.page-number, .page-next');
+    
+    // 获取文章列表容器
+    const articleGrid = document.querySelector('.article-grid');
+    if (!articleGrid) return;  // 如果没有文章列表，直接返回
+    
+    // 获取当前页面的所有文章
+    const allArticles = Array.from(articleGrid.querySelectorAll('.article-card'));
+    
+    // 每页显示的文章数量
+    const articlesPerPage = 12;
+    
+    // 计算总页数
+    const totalPages = Math.ceil(allArticles.length / articlesPerPage);
+    
+    // 当前页码（默认为第1页）
+    let currentPage = 1;
+    
+    // 为页码添加点击事件
+    pageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 获取目标页码
+            let targetPage = currentPage;
+            
+            if (this.classList.contains('page-next')) {
+                // 下一页按钮
+                targetPage = currentPage < totalPages ? currentPage + 1 : currentPage;
+            } else {
+                // 数字页码按钮
+                targetPage = parseInt(this.textContent);
+            }
+            
+            // 如果目标页码有效且不是当前页
+            if (!isNaN(targetPage) && targetPage !== currentPage && targetPage > 0 && targetPage <= totalPages) {
+                // 更新当前页码
+                currentPage = targetPage;
+                
+                // 更新分页UI
+                updatePaginationUI();
+                
+                // 更新文章显示
+                updateArticlesDisplay();
+                
+                // 滚动到页面顶部
+                window.scrollTo({
+                    top: articleGrid.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // 更新分页UI
+    function updatePaginationUI() {
+        // 移除所有active类
+        paginationContainer.querySelectorAll('.page-number').forEach(page => {
+            page.classList.remove('active');
+        });
+        
+        // 给当前页添加active类
+        const currentPageElement = paginationContainer.querySelector(`.page-number:nth-child(${currentPage})`);
+        if (currentPageElement) {
+            currentPageElement.classList.add('active');
+        }
+        
+        // 更新下一页按钮状态
+        const nextPageButton = paginationContainer.querySelector('.page-next');
+        if (nextPageButton) {
+            if (currentPage >= totalPages) {
+                nextPageButton.classList.add('disabled');
+            } else {
+                nextPageButton.classList.remove('disabled');
+            }
+        }
+    }
+    
+    // 更新文章显示
+    function updateArticlesDisplay() {
+        // 计算当前页应该显示的文章索引范围
+        const startIndex = (currentPage - 1) * articlesPerPage;
+        const endIndex = Math.min(startIndex + articlesPerPage, allArticles.length);
+        
+        // 隐藏所有文章
+        allArticles.forEach(article => {
+            article.style.display = 'none';
+        });
+        
+        // 显示当前页的文章
+        for (let i = startIndex; i < endIndex; i++) {
+            if (allArticles[i]) {
+                allArticles[i].style.display = '';
+            }
+        }
+    }
+    
+    // 初始化显示第一页
+    updateArticlesDisplay();
+} 

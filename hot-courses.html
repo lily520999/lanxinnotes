@@ -1,291 +1,87 @@
-ï»¿<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>çƒ­é—¨æ•™ç¨‹ - å…°å¿ƒè¿è¥ç¬”è®°</title>
-    <!-- ç¯å¢ƒæ£€æµ‹å’ŒåŸºç¡€è·¯å¾„è®¾ç½® -->
-    <script>
-        // æ£€æµ‹ç½‘ç«™ç¯å¢ƒå¹¶è®¾ç½®åŸºç¡€è·¯å¾„
-        function detectEnvironment() {
-            const hostname = window.location.hostname;
-            const isGitHubPages = hostname.includes('github.io');
-            const isCustomDomain = hostname === 'lanxinnotes.com' || hostname === 'www.lanxinnotes.com';
-            const pathname = window.location.pathname;
-            
-            // åˆ›å»ºmetaæ ‡ç­¾è®°å½•ç¯å¢ƒä¿¡æ¯
-            const metaEnv = document.createElement('meta');
-            metaEnv.name = 'website-environment';
-            
-            if (isGitHubPages) {
-                // GitHub Pagesç¯å¢ƒ
-                const repoName = pathname.split('/')[1];
-                
-                // åˆ›å»ºbaseæ ‡ç­¾
-                const baseTag = document.createElement('base');
-                baseTag.href = '/' + repoName + '/';
-                document.head.appendChild(baseTag);
-                
-                metaEnv.content = 'github-pages';
-                console.log('GitHub Pages ç¯å¢ƒå·²æ£€æµ‹ï¼ŒåŸºç¡€è·¯å¾„å·²è®¾ç½®ä¸º:', baseTag.href);
-                
-                // æ·»åŠ ç¯å¢ƒå˜é‡åˆ°windowå¯¹è±¡
-                window.siteEnvironment = 'github-pages';
-                window.siteBasePath = '/' + repoName + '/';
-            } else if (isCustomDomain) {
-                // è‡ªå®šä¹‰åŸŸåç¯å¢ƒ
-                const baseTag = document.createElement('base');
-                baseTag.href = '/';
-                document.head.appendChild(baseTag);
-                
-                metaEnv.content = 'custom-domain';
-                console.log('è‡ªå®šä¹‰åŸŸåç¯å¢ƒå·²æ£€æµ‹ï¼ŒåŸºç¡€è·¯å¾„å·²è®¾ç½®ä¸º: /');
-                
-                // æ·»åŠ ç¯å¢ƒå˜é‡åˆ°windowå¯¹è±¡
-                window.siteEnvironment = 'custom-domain';
-                window.siteBasePath = '/';
-            } else {
-                // æœ¬åœ°å¼€å‘ç¯å¢ƒ
-                metaEnv.content = 'local-development';
-                console.log('æœ¬åœ°å¼€å‘ç¯å¢ƒå·²æ£€æµ‹');
-                
-                // æ·»åŠ ç¯å¢ƒå˜é‡åˆ°windowå¯¹è±¡
-                window.siteEnvironment = 'local-development';
-                window.siteBasePath = './';
-            }
-            
-            document.head.appendChild(metaEnv);
-        }
-        
-        // æ‰§è¡Œç¯å¢ƒæ£€æµ‹
-        detectEnvironment();
-    </script>
-    
-    <!-- Service Worker æ³¨å†Œ -->
-    <script>
-        // æ£€æŸ¥æµè§ˆå™¨æ˜¯å¦æ”¯æŒService Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                // è·å–Service Workerè·¯å¾„
-                let swPath = './service-worker.js';
-                if (window.siteEnvironment === 'github-pages') {
-                    swPath = window.siteBasePath + 'service-worker.js';
-                } else if (window.siteEnvironment === 'custom-domain') {
-                    swPath = '/service-worker.js';
-                }
-                
-                // æ³¨å†ŒService Worker
-                navigator.serviceWorker.register(swPath)
-                    .then(registration => {
-                        console.log('Service Worker æ³¨å†ŒæˆåŠŸï¼ŒèŒƒå›´:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.error('Service Worker æ³¨å†Œå¤±è´¥:', error);
-                    });
-            });
-        }
-    </script>
-    
-    <!-- å¤–éƒ¨æ ·å¼è¡¨ -->
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="logo-container">
-                <img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';">
-                <a href="index.html" class="logo-text">å…°å¿ƒè¿è¥ç¬”è®°</a>
-            </div>
-            <nav class="main-nav">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link">AIå·¥å…· <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="ecommerce.html" class="nav-link">è·¨å¢ƒç”µå•† <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">è§†é¢‘æ•™ç¨‹ <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <a href="faq.html" class="nav-link">å¸¸è§é—®é¢˜</a>
-            </nav>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">ç™»å½•</a>
-                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">åŠ å…¥ä¼šå‘˜(1565å…ƒ/å¹´)</a>
-            </div>
-        </div>
-    </header>
+<!DOCTYPE html><html lang="zh-CN"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <h1 class="page-title">çƒ­é—¨æ•™ç¨‹</h1>
-                <p class="page-description">ç²¾é€‰é«˜è´¨é‡çš„è¿è¥æ•™ç¨‹ï¼ŒåŠ©ä½ å¿«é€ŸæŒæ¡æ ¸å¿ƒæŠ€èƒ½ï¼Œæå‡è¿è¥æ•ˆç‡</p>
-            </div>
-        </section>
+  gtag('config', 'G-KNR4KPK379');
+</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>ÈÈÃÅ½Ì³Ì - À¼ĞÄÔËÓª±Ê¼Ç</title><script>
+ // ¼ì²âÍøÕ¾»·¾³²¢ÉèÖÃ»ù´¡Â·¾¶
+ function detectEnvironment() {
+ const hostname = window.location.hostname;
+ const isGitHubPages = hostname.includes('github.io');
+ const isCustomDomain = hostname === 'lanxinnotes.com' || hostname === 'www.lanxinnotes.com';
+ const pathname = window.location.pathname;
+ 
+ // ´´½¨meta±êÇ©¼ÇÂ¼»·¾³ĞÅÏ¢
+ const metaEnv = document.createElement('meta');
+ metaEnv.name = 'website-environment';
+ 
+ if (isGitHubPages) {
+ // GitHub Pages»·¾³
+ const repoName = pathname.split('/')[1];
+ 
+ // ´´½¨base±êÇ©
+ const baseTag = document.createElement('base');
+ baseTag.href = '/' + repoName + '/';
+ document.head.appendChild(baseTag);
+ 
+ metaEnv.content = 'github-pages';
+ console.log('GitHub Pages »·¾³ÒÑ¼ì²â£¬»ù´¡Â·¾¶ÒÑÉèÖÃÎª:', baseTag.href);
+ 
+ // Ìí¼Ó»·¾³±äÁ¿µ½window¶ÔÏó
+ window.siteEnvironment = 'github-pages';
+ window.siteBasePath = '/' + repoName + '/';
+ } else if (isCustomDomain) {
+ // ×Ô¶¨ÒåÓòÃû»·¾³
+ const baseTag = document.createElement('base');
+ baseTag.href = '/';
+ document.head.appendChild(baseTag);
+ 
+ metaEnv.content = 'custom-domain';
+ console.log('×Ô¶¨ÒåÓòÃû»·¾³ÒÑ¼ì²â£¬»ù´¡Â·¾¶ÒÑÉèÖÃÎª: /');
+ 
+ // Ìí¼Ó»·¾³±äÁ¿µ½window¶ÔÏó
+ window.siteEnvironment = 'custom-domain';
+ window.siteBasePath = '/';
+ } else {
+ // ±¾µØ¿ª·¢»·¾³
+ metaEnv.content = 'local-development';
+ console.log('±¾µØ¿ª·¢»·¾³ÒÑ¼ì²â');
+ 
+ // Ìí¼Ó»·¾³±äÁ¿µ½window¶ÔÏó
+ window.siteEnvironment = 'local-development';
+ window.siteBasePath = './';
+ }
+ 
+ document.head.appendChild(metaEnv);
+ }
+ 
+ // Ö´ĞĞ»·¾³¼ì²â
+ detectEnvironment();
+ </script><script>
+ // ¼ì²éä¯ÀÀÆ÷ÊÇ·ñÖ§³ÖService Worker
+ if ('serviceWorker' in navigator) {
+ window.addEventListener('load', () => {
+ // »ñÈ¡Service WorkerÂ·¾¶
+ let swPath = './service-worker.js';
+ if (window.siteEnvironment === 'github-pages') {
+ swPath = window.siteBasePath + 'service-worker.js';
+ } else if (window.siteEnvironment === 'custom-domain') {
+ swPath = '/service-worker.js';
+ }
+ 
+ // ×¢²áService Worker
+ navigator.serviceWorker.register(swPath)
+ .then(registration => {
+ console.log('Service Worker ×¢²á³É¹¦£¬·¶Î§:', registration.scope);
+ })
+ .catch(error => {
+ console.error('Service Worker ×¢²áÊ§°Ü:', error);
+ });
+ });
+ }
+ </script><link rel="stylesheet" href="styles.css"><script src="script.js" defer></script></head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">À¼ĞÄÔËÓª±Ê¼Ç</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="#" class="nav-link">AI¹¤¾ß <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="ecommerce.html" class="nav-link">¿ç¾³µçÉÌ <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">ÊÓÆµ½Ì³Ì <span class="dropdown-arrow">¨‹</span></a></div><a href="faq.html" class="nav-link">³£¼ûÎÊÌâ</a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">µÇÂ¼</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">¼ÓÈë»áÔ±(1565Ôª/Äê)</a></div></div></header><main><section class="page-header"><div class="container"><h1 class="page-title">ÈÈÃÅ½Ì³Ì</h1><p class="page-description">¾«Ñ¡¸ßÖÊÁ¿µÄÔËÓª½Ì³Ì£¬ÖúÄã¿ìËÙÕÆÎÕºËĞÄ¼¼ÄÜ£¬ÌáÉıÔËÓªĞ§ÂÊ</p></div></section><section class="courses-section"><div class="container"><h2 class="section-title" id="featured">¾«Ñ¡½Ì³Ì</h2><div class="courses-grid"><div class="course-card premium"><div class="course-image"><img src="images/video-courses.jpg" alt="AIÄÚÈİ´´×÷ÍêÈ«Ö¸ÄÏ" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=AIÄÚÈİ´´×÷';" loading="lazy"><div class="course-badge">ÈÈÃÅ</div><div class="premium-badge">»áÔ±×¨Ïí</div></div><div class="course-content"><h3 class="course-title">AIÄÚÈİ´´×÷ÍêÈ«Ö¸ÄÏ</h3><p class="course-description">´ÓÁã¿ªÊ¼Ñ§Ï°ÈçºÎÊ¹ÓÃAI¹¤¾ß´´½¨¸ßÖÊÁ¿ÄÚÈİ£¬Ìá¸ß´´×÷Ğ§ÂÊ10±¶</p><div class="course-meta"><span class="course-lessons">12¿ÎÊ±</span><span class="course-duration">3Ğ¡Ê±20·ÖÖÓ</span></div><a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">¼ÓÈë»áÔ±¹Û¿´</a></div></div><div class="course-card premium"><div class="course-image"><img src="images/ecommerce.png" alt="ÑÇÂíÑ·Ñ¡Æ·ÓëlistingÓÅ»¯" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=ÑÇÂíÑ·Ñ¡Æ·';" loading="lazy"><div class="course-badge">¾«Æ·</div><div class="premium-badge">»áÔ±×¨Ïí</div></div><div class="course-content"><h3 class="course-title">ÑÇÂíÑ·Ñ¡Æ·ÓëlistingÓÅ»¯</h3><p class="course-description">ÉîÈë½²½âÑÇÂíÑ·Ñ¡Æ·²ßÂÔ£¬ÒÔ¼°ÈçºÎÓÅ»¯listingÌá¸ß×ª»¯ÂÊ</p><div class="course-meta"><span class="course-lessons">10¿ÎÊ±</span><span class="course-duration">4Ğ¡Ê±15·ÖÖÓ</span></div><a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">¼ÓÈë»áÔ±¹Û¿´</a></div></div><div class="course-card premium"><div class="course-image"><img src="images/ai-tools.png" alt="Midjourney AI»æ»­´ÓÈëÃÅµ½¾«Í¨" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Midjourney';" loading="lazy"><div class="course-badge">ĞÂ¿Î</div><div class="premium-badge">»áÔ±×¨Ïí</div></div><div class="course-content"><h3 class="course-title">Midjourney AI»æ»­´ÓÈëÃÅµ½¾«Í¨</h3><p class="course-description">ÏêÏ¸½²½âMidjourney V6µÄÊ¹ÓÃ¼¼ÇÉ£¬°ïÖúÄã´´½¨¾ªÑŞµÄAIÍ¼Ïñ</p><div class="course-meta"><span class="course-lessons">8¿ÎÊ±</span><span class="course-duration">2Ğ¡Ê±45·ÖÖÓ</span></div><a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">¼ÓÈë»áÔ±¹Û¿´</a></div></div></div></div></section><section class="courses-section"><div class="container"><h2 class="section-title" id="beginner">ÈëÃÅ¿Î³Ì</h2><div class="courses-grid"><div class="course-card premium"><div class="course-image"><img src="images/video-courses.jpg" alt="¿ç¾³µçÉÌĞÂÊÖÈëÃÅ" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=¿ç¾³µçÉÌÈëÃÅ';" loading="lazy"><div class="premium-badge">»áÔ±×¨Ïí</div></div><div class="course-content"><h3 class="course-title">¿ç¾³µçÉÌĞÂÊÖÈëÃÅ</h3><p class="course-description">ÊÊºÏÁã»ù´¡Ñ§Ï°µÄ¿ç¾³µçÉÌÈëÃÅ¿Î³Ì£¬ÕÆÎÕ»ù±¾¸ÅÄîºÍ²Ù×÷</p><div class="course-meta"><span class="course-lessons">6¿ÎÊ±</span><span class="course-duration">1Ğ¡Ê±40·ÖÖÓ</span></div><a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">¼ÓÈë»áÔ±¹Û¿´</a></div></div><div class="course-card premium"><div class="course-image"><img src="images/ai-tools.png" alt="ChatGPT»ù´¡Ó¦ÓÃ½Ì³Ì" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=ChatGPT»ù´¡';" loading="lazy"><div class="premium-badge">»áÔ±×¨Ïí</div></div><div class="course-content"><h3 class="course-title">ChatGPT»ù´¡Ó¦ÓÃ½Ì³Ì</h3><p class="course-description">´ÓÁã¿ªÊ¼Ñ§Ï°ÈçºÎÊ¹ÓÃChatGPTÌá¸ß¹¤×÷Ğ§ÂÊºÍ´´×÷ÄÜÁ¦</p><div class="course-meta"><span class="course-lessons">5¿ÎÊ±</span><span class="course-duration">1Ğ¡Ê±20·ÖÖÓ</span></div><a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">¼ÓÈë»áÔ±¹Û¿´</a></div></div></div></div></section><section class="cta-section"><div class="container"><div class="cta-content"><h2>¼ÓÈë»áÔ±£¬½âËøËùÓĞ¸ß¼¶½Ì³Ì</h2><p>¹ºÂò»áÔ±ºó£¬Äú½«»ñµÃËùÓĞ½Ì³ÌµÄÍêÕû·ÃÎÊÈ¨ÏŞ£¬°üÀ¨Î´À´¸üĞÂµÄËùÓĞĞÂ¿Î³Ì</p><ul class="benefits-list"><li>»ñÈ¡50+×¨Òµ½Ì³Ì£¬³ÖĞø¸üĞÂ</li><li>ÉçÈº»¥¶¯ÓëÎÊ´ğÖ§³Ö</li><li>×¨Êô»áÔ±¸£ÀûÓë×ÊÔ´</li><li>ÓÅÏÈ»ñÈ¡×îĞÂ½Ì³Ì</li></ul><a href="https://t.zsxq.com/CAfds" class="btn btn-large btn-primary" target="_blank">Á¢¼´¼ÓÈë»áÔ± (1565Ôª/Äê)</a></div></div></section></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy"><span class="footer-logo-text">À¼ĞÄÔËÓª±Ê¼Ç</span></div><p class="footer-description">Ìá¹©¿ç¾³µçÉÌºÍÊÓÆµ½Ì³ÌµÈ×¨ÒµÄÚÈİ£¬ÖúÄã³ÉÎªÔËÓª¸ßÊÖ¡£</p></div><div class="footer-column"><h4 class="footer-heading">Ö§³Ö</h4><ul class="footer-links"><li><a href="about.html">¹ØÓÚÎÒÃÇ</a></li><li><a href="contact.html">ÁªÏµÎÒÃÇ</a></li><li><a href="faq.html">³£¼ûÎÊÌâ</a></li><li><a href="privacy.html">ÒşË½Õş²ß</a></li><li><a href="terms.html">·şÎñÌõ¿î</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">¹Ø×¢ÎÒÃÇ</h4><div class="footer-subscription"><div class="bilibili-subscription"><div class="bilibili-info"><h5 class="bilibili-title">ßÙÁ¨ßÙÁ¨ÆµµÀ</h5><p class="bilibili-description">µã»÷¹Ø×¢»ñÈ¡×îĞÂÊÓÆµ</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Ç°ÍùßÙÁ¨ßÙÁ¨ÆµµÀ</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 À¼ĞÄÔËÓª±Ê¼Ç. ±£ÁôËùÓĞÈ¨Àû.</p></div></div></footer></body></html> 
 
-        <section class="courses-section">
-            <div class="container">
-                <h2 class="section-title" id="featured">ç²¾é€‰æ•™ç¨‹</h2>
-                <div class="courses-grid">
-                    <!-- è¯¾ç¨‹1 -->
-                    <div class="course-card premium">
-                        <div class="course-image">
-                            <img src="images/video-courses.jpg" alt="AIå†…å®¹åˆ›ä½œå®Œå…¨æŒ‡å—" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=AIå†…å®¹åˆ›ä½œ';">
-                            <div class="course-badge">çƒ­é—¨</div>
-                            <div class="premium-badge">ä¼šå‘˜ä¸“äº«</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">AIå†…å®¹åˆ›ä½œå®Œå…¨æŒ‡å—</h3>
-                            <p class="course-description">ä»é›¶å¼€å§‹å­¦ä¹ å¦‚ä½•ä½¿ç”¨AIå·¥å…·åˆ›å»ºé«˜è´¨é‡å†…å®¹ï¼Œæé«˜åˆ›ä½œæ•ˆç‡10å€</p>
-                            <div class="course-meta">
-                                <span class="course-lessons">12è¯¾æ—¶</span>
-                                <span class="course-duration">3å°æ—¶20åˆ†é’Ÿ</span>
-                            </div>
-                            <a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">åŠ å…¥ä¼šå‘˜è§‚çœ‹</a>
-                        </div>
-                    </div>
-                    
-                    <!-- è¯¾ç¨‹2 -->
-                    <div class="course-card premium">
-                        <div class="course-image">
-                            <img src="images/ecommerce.png" alt="äºšé©¬é€Šé€‰å“ä¸listingä¼˜åŒ–" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=äºšé©¬é€Šé€‰å“';">
-                            <div class="course-badge">ç²¾å“</div>
-                            <div class="premium-badge">ä¼šå‘˜ä¸“äº«</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">äºšé©¬é€Šé€‰å“ä¸listingä¼˜åŒ–</h3>
-                            <p class="course-description">æ·±å…¥è®²è§£äºšé©¬é€Šé€‰å“ç­–ç•¥ï¼Œä»¥åŠå¦‚ä½•ä¼˜åŒ–listingæé«˜è½¬åŒ–ç‡</p>
-                            <div class="course-meta">
-                                <span class="course-lessons">10è¯¾æ—¶</span>
-                                <span class="course-duration">4å°æ—¶15åˆ†é’Ÿ</span>
-                            </div>
-                            <a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">åŠ å…¥ä¼šå‘˜è§‚çœ‹</a>
-                        </div>
-                    </div>
-                    
-                    <!-- è¯¾ç¨‹3 -->
-                    <div class="course-card premium">
-                        <div class="course-image">
-                            <img src="images/ai-tools.png" alt="Midjourney AIç»˜ç”»ä»å…¥é—¨åˆ°ç²¾é€š" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Midjourney';">
-                            <div class="course-badge">æ–°è¯¾</div>
-                            <div class="premium-badge">ä¼šå‘˜ä¸“äº«</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">Midjourney AIç»˜ç”»ä»å…¥é—¨åˆ°ç²¾é€š</h3>
-                            <p class="course-description">è¯¦ç»†è®²è§£Midjourney V6çš„ä½¿ç”¨æŠ€å·§ï¼Œå¸®åŠ©ä½ åˆ›å»ºæƒŠè‰³çš„AIå›¾åƒ</p>
-                            <div class="course-meta">
-                                <span class="course-lessons">8è¯¾æ—¶</span>
-                                <span class="course-duration">2å°æ—¶45åˆ†é’Ÿ</span>
-                            </div>
-                            <a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">åŠ å…¥ä¼šå‘˜è§‚çœ‹</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="courses-section">
-            <div class="container">
-                <h2 class="section-title" id="beginner">å…¥é—¨è¯¾ç¨‹</h2>
-                <div class="courses-grid">
-                    <!-- å…¥é—¨è¯¾ç¨‹1 -->
-                    <div class="course-card premium">
-                        <div class="course-image">
-                            <img src="images/video-courses.jpg" alt="è·¨å¢ƒç”µå•†æ–°æ‰‹å…¥é—¨" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=è·¨å¢ƒç”µå•†å…¥é—¨';">
-                            <div class="premium-badge">ä¼šå‘˜ä¸“äº«</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">è·¨å¢ƒç”µå•†æ–°æ‰‹å…¥é—¨</h3>
-                            <p class="course-description">é€‚åˆé›¶åŸºç¡€å­¦ä¹ çš„è·¨å¢ƒç”µå•†å…¥é—¨è¯¾ç¨‹ï¼ŒæŒæ¡åŸºæœ¬æ¦‚å¿µå’Œæ“ä½œ</p>
-                            <div class="course-meta">
-                                <span class="course-lessons">6è¯¾æ—¶</span>
-                                <span class="course-duration">1å°æ—¶40åˆ†é’Ÿ</span>
-                            </div>
-                            <a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">åŠ å…¥ä¼šå‘˜è§‚çœ‹</a>
-                        </div>
-                    </div>
-                    
-                    <!-- å…¥é—¨è¯¾ç¨‹2 -->
-                    <div class="course-card premium">
-                        <div class="course-image">
-                            <img src="images/ai-tools.png" alt="ChatGPTåŸºç¡€åº”ç”¨æ•™ç¨‹" class="course-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=ChatGPTåŸºç¡€';">
-                            <div class="premium-badge">ä¼šå‘˜ä¸“äº«</div>
-                        </div>
-                        <div class="course-content">
-                            <h3 class="course-title">ChatGPTåŸºç¡€åº”ç”¨æ•™ç¨‹</h3>
-                            <p class="course-description">ä»é›¶å¼€å§‹å­¦ä¹ å¦‚ä½•ä½¿ç”¨ChatGPTæé«˜å·¥ä½œæ•ˆç‡å’Œåˆ›ä½œèƒ½åŠ›</p>
-                            <div class="course-meta">
-                                <span class="course-lessons">5è¯¾æ—¶</span>
-                                <span class="course-duration">1å°æ—¶20åˆ†é’Ÿ</span>
-                            </div>
-                            <a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-block" target="_blank">åŠ å…¥ä¼šå‘˜è§‚çœ‹</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>åŠ å…¥ä¼šå‘˜ï¼Œè§£é”æ‰€æœ‰é«˜çº§æ•™ç¨‹</h2>
-                    <p>è´­ä¹°ä¼šå‘˜åï¼Œæ‚¨å°†è·å¾—æ‰€æœ‰æ•™ç¨‹çš„å®Œæ•´è®¿é—®æƒé™ï¼ŒåŒ…æ‹¬æœªæ¥æ›´æ–°çš„æ‰€æœ‰æ–°è¯¾ç¨‹</p>
-                    <ul class="benefits-list">
-                        <li>è·å–50+ä¸“ä¸šæ•™ç¨‹ï¼ŒæŒç»­æ›´æ–°</li>
-                        <li>ç¤¾ç¾¤äº’åŠ¨ä¸é—®ç­”æ”¯æŒ</li>
-                        <li>ä¸“å±ä¼šå‘˜ç¦åˆ©ä¸èµ„æº</li>
-                        <li>ä¼˜å…ˆè·å–æœ€æ–°æ•™ç¨‹</li>
-                    </ul>
-                    <a href="https://t.zsxq.com/CAfds" class="btn btn-large btn-primary" target="_blank">ç«‹å³åŠ å…¥ä¼šå‘˜ (1565å…ƒ/å¹´)</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';">
-                        <span class="footer-logo-text">å…°å¿ƒè¿è¥ç¬”è®°</span>
-                    </div>
-                    <p class="footer-description">æä¾›è·¨å¢ƒç”µå•†å’Œè§†é¢‘æ•™ç¨‹ç­‰ä¸“ä¸šå†…å®¹ï¼ŒåŠ©ä½ æˆä¸ºè¿è¥é«˜æ‰‹ã€‚</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">æ”¯æŒ</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">å…³äºæˆ‘ä»¬</a></li>
-                        <li><a href="contact.html">è”ç³»æˆ‘ä»¬</a></li>
-                        <li><a href="faq.html">å¸¸è§é—®é¢˜</a></li>
-                        <li><a href="privacy.html">éšç§æ”¿ç­–</a></li>
-                        <li><a href="terms.html">æœåŠ¡æ¡æ¬¾</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">å…³æ³¨æˆ‘ä»¬</h4>
-                    <div class="footer-subscription">
-                        <div class="bilibili-subscription">
-                            <div class="bilibili-info">
-                                <h5 class="bilibili-title">å“”å“©å“”å“©é¢‘é“</h5>
-                                <p class="bilibili-description">ç‚¹å‡»å…³æ³¨è·å–æœ€æ–°è§†é¢‘</p>
-                            </div>
-                        </div>
-                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">å‰å¾€å“”å“©å“”å“©é¢‘é“</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="copyright">Â© 2025 å…°å¿ƒè¿è¥ç¬”è®°. ä¿ç•™æ‰€æœ‰æƒåˆ©.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html> 

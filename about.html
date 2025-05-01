@@ -1,271 +1,67 @@
-ï»¿<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>å…³äºæˆ‘ä»¬ - å…°å¿ƒè¿è¥ç¬”è®°</title>
-    <!-- GitHub Pages è·¯å¾„ä¿®å¤è„šæœ¬ -->
-    <script>
-        // æ£€æµ‹ç½‘ç«™ç¯å¢ƒå¹¶è®¾ç½®åŸºç¡€è·¯å¾„
-        function detectEnvironment() {
-            const hostname = window.location.hostname;
-            const isGitHubPages = hostname.includes('github.io');
-            const isCustomDomain = hostname === 'lanxinnotes.com';
-            const pathname = window.location.pathname;
-            
-            // åˆ›å»ºmetaæ ‡ç­¾è®°å½•ç¯å¢ƒä¿¡æ¯
-            const metaEnv = document.createElement('meta');
-            metaEnv.name = 'website-environment';
-            
-            if (isGitHubPages) {
-                // GitHub Pagesç¯å¢ƒ
-                const repoName = pathname.split('/')[1];
-                
-                // åˆ›å»ºbaseæ ‡ç­¾
-                const baseTag = document.createElement('base');
-                baseTag.href = '/' + repoName + '/';
-                document.head.appendChild(baseTag);
-                
-                metaEnv.content = 'github-pages';
-                console.log('GitHub Pages ç¯å¢ƒå·²æ£€æµ‹ï¼ŒåŸºç¡€è·¯å¾„å·²è®¾ç½®ä¸º:', baseTag.href);
-            } else if (isCustomDomain) {
-                // è‡ªå®šä¹‰åŸŸåç¯å¢ƒ
-                const baseTag = document.createElement('base');
-                baseTag.href = '/';
-                document.head.appendChild(baseTag);
-                
-                metaEnv.content = 'custom-domain';
-                console.log('è‡ªå®šä¹‰åŸŸåç¯å¢ƒå·²æ£€æµ‹ï¼ŒåŸºç¡€è·¯å¾„å·²è®¾ç½®ä¸º: /');
-            } else {
-                // æœ¬åœ°å¼€å‘ç¯å¢ƒ
-                metaEnv.content = 'local-development';
-                console.log('æœ¬åœ°å¼€å‘ç¯å¢ƒå·²æ£€æµ‹');
-            }
-            
-            document.head.appendChild(metaEnv);
-        }
-        
-        // æ‰§è¡Œç¯å¢ƒæ£€æµ‹
-        detectEnvironment();
-    </script>
-    
-    <!-- Service Worker æ³¨å†Œ -->
-    <script>
-        // æ£€æŸ¥æµè§ˆå™¨æ˜¯å¦æ”¯æŒService Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                // æ³¨å†ŒService Worker
-                navigator.serviceWorker.register('./service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker æ³¨å†ŒæˆåŠŸï¼ŒèŒƒå›´:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.error('Service Worker æ³¨å†Œå¤±è´¥:', error);
-                    });
-            });
-        }
-    </script>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="logo-container">
-                <img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="logo-img">
-                <a href="index.html" class="logo-text">å…°å¿ƒè¿è¥ç¬”è®°</a>
-            </div>
-            <nav class="main-nav">
-                <div class="nav-item dropdown">
-                    <a href="ai-tools.html" class="nav-link">AIå·¥å…· <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="ecommerce.html" class="nav-link">è·¨å¢ƒç”µå•† <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="https://space.bilibili.com/1798377475" class="nav-link">è§†é¢‘æ•™ç¨‹ <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <a href="https://space.bilibili.com/1798377475" class="nav-link bilibili">å“”å“©å“”å“©</a>
-            </nav>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">ç™»å½•</a>
-                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">åŠ å…¥ä¼šå‘˜</a>
-            </div>
-        </div>
-    </header>
+<!DOCTYPE html><html lang="zh-CN"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <h1 class="page-title">å…³äºæˆ‘ä»¬</h1>
-                <p class="page-description">å…°å¿ƒè¿è¥ç¬”è®° - ä½ çš„è¿è¥æˆé•¿ä¼™ä¼´</p>
-            </div>
-        </section>
+  gtag('config', 'G-KNR4KPK379');
+</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>¹ØÓÚÎÒÃÇ - À¼ĞÄÔËÓª±Ê¼Ç</title><script>
+ // ¼ì²âÍøÕ¾»·¾³²¢ÉèÖÃ»ù´¡Â·¾¶
+ function detectEnvironment() {
+ const hostname = window.location.hostname;
+ const isGitHubPages = hostname.includes('github.io');
+ const isCustomDomain = hostname === 'lanxinnotes.com';
+ const pathname = window.location.pathname;
+ 
+ // ´´½¨meta±êÇ©¼ÇÂ¼»·¾³ĞÅÏ¢
+ const metaEnv = document.createElement('meta');
+ metaEnv.name = 'website-environment';
+ 
+ if (isGitHubPages) {
+ // GitHub Pages»·¾³
+ const repoName = pathname.split('/')[1];
+ 
+ // ´´½¨base±êÇ©
+ const baseTag = document.createElement('base');
+ baseTag.href = '/' + repoName + '/';
+ document.head.appendChild(baseTag);
+ 
+ metaEnv.content = 'github-pages';
+ console.log('GitHub Pages »·¾³ÒÑ¼ì²â£¬»ù´¡Â·¾¶ÒÑÉèÖÃÎª:', baseTag.href);
+ } else if (isCustomDomain) {
+ // ×Ô¶¨ÒåÓòÃû»·¾³
+ const baseTag = document.createElement('base');
+ baseTag.href = '/';
+ document.head.appendChild(baseTag);
+ 
+ metaEnv.content = 'custom-domain';
+ console.log('×Ô¶¨ÒåÓòÃû»·¾³ÒÑ¼ì²â£¬»ù´¡Â·¾¶ÒÑÉèÖÃÎª: /');
+ } else {
+ // ±¾µØ¿ª·¢»·¾³
+ metaEnv.content = 'local-development';
+ console.log('±¾µØ¿ª·¢»·¾³ÒÑ¼ì²â');
+ }
+ 
+ document.head.appendChild(metaEnv);
+ }
+ 
+ // Ö´ĞĞ»·¾³¼ì²â
+ detectEnvironment();
+ </script><script>
+ // ¼ì²éä¯ÀÀÆ÷ÊÇ·ñÖ§³ÖService Worker
+ if ('serviceWorker' in navigator) {
+ window.addEventListener('load', () => {
+ // ×¢²áService Worker
+ navigator.serviceWorker.register('./service-worker.js')
+ .then(registration => {
+ console.log('Service Worker ×¢²á³É¹¦£¬·¶Î§:', registration.scope);
+ })
+ .catch(error => {
+ console.error('Service Worker ×¢²áÊ§°Ü:', error);
+ });
+ });
+ }
+ </script><link rel="stylesheet" href="styles.css"><script src="script.js" defer></script></head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="logo-img" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">À¼ĞÄÔËÓª±Ê¼Ç</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="ai-tools.html" class="nav-link">AI¹¤¾ß <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="ecommerce.html" class="nav-link">¿ç¾³µçÉÌ <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link">ÊÓÆµ½Ì³Ì <span class="dropdown-arrow">¨‹</span></a></div><a href="https://space.bilibili.com/1798377475" class="nav-link bilibili">ßÙÁ¨ßÙÁ¨</a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">µÇÂ¼</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary">¼ÓÈë»áÔ±</a></div></div></header><main><section class="page-header"><div class="container"><h1 class="page-title">¹ØÓÚÎÒÃÇ</h1><p class="page-description">À¼ĞÄÔËÓª±Ê¼Ç - ÄãµÄÔËÓª³É³¤»ï°é</p></div></section><section class="about-section"><div class="container"><div class="about-content"><div class="about-image"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="about-img" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);" loading="lazy"></div><div class="about-text"><h2 class="section-title">ÎÒÃÇµÄ¹ÊÊÂ</h2><p>À¼ĞÄÔËÓª±Ê¼Ç³ÉÁ¢ÓÚ2022Äê£¬ÊÇÒ»¸ö×¨×¢ÓÚÔËÓªÖªÊ¶·ÖÏíµÄÆ½Ì¨¡£ÎÒÃÇµÄ´´Ê¼ÈËÀ¼ĞÄÓµÓĞ³¬¹ı10ÄêµÄÔËÓª¾­Ñé£¬ÔøÈÎÖ°ÓÚ¶à¼ÒÖªÃû»¥ÁªÍø¹«Ë¾£¬¸ºÔğ¹ıÊıÊ®¸ö¿ç¾³µçÉÌÏîÄ¿ºÍÄÚÈİ´´×÷ÏîÄ¿¡£</p><p>ÍÅ¶Ó³ÉÔ±À´×Ô²»Í¬µÄĞĞÒµ±³¾°£¬°üÀ¨¿ç¾³µçÉÌ×¨¼Ò¡¢ÄÚÈİ´´×÷µ¼Ê¦¡¢AI¹¤¾ßÑĞ¾¿Ô±ºÍÊÓÆµÓªÏú¹ËÎÊ£¬¹²Í¬ÖÂÁ¦ÓÚÎª¹ã´óÔËÓª´ÓÒµÕßºÍ´´ÒµÕßÌá¹©ÊµÓÃÇÒÇ°ÑØµÄÔËÓªÖªÊ¶¡£</p><p>ÎÒÃÇµÄÄ¿±êÊÇÍ¨¹ı×¨ÒµµÄÔËÓª±Ê¼Ç¡¢ÊµÕ½°¸Àı·ÖÎöºÍÇ°ÑØ¹¤¾ß½éÉÜ£¬°ïÖúÃ¿Ò»Î»Ñ§Ï°ÕßÌáÉıÔËÓªÄÜÁ¦£¬½â¾öÊµ¼Ê¹¤×÷ÖĞµÄÎÊÌâ£¬ÊµÏÖ¸öÈËºÍÆóÒµµÄ³É³¤¡£</p></div></div></div></section><section class="mission-section"><div class="container"><h2 class="section-title">ÎÒÃÇµÄÊ¹Ãü</h2><div class="mission-cards"><div class="mission-card"><div class="mission-icon"><i class="mission-icon-knowledge"></i></div><h3 class="mission-title">·ÖÏí×¨ÒµÖªÊ¶</h3><p class="mission-description">ÎÒÃÇÖÂÁ¦ÓÚ½«×¨Òµ¡¢ÊµÓÃµÄÔËÓªÖªÊ¶ºÍ¾­ÑéÏµÍ³»¯µØ·ÖÏí¸øÃ¿Ò»Î»ÓĞĞèÇóµÄÑ§Ï°Õß¡£</p></div><div class="mission-card"><div class="mission-icon"><i class="mission-icon-growth"></i></div><h3 class="mission-title">´Ù½øÄÜÁ¦³É³¤</h3><p class="mission-description">Í¨¹ıÊµÕ½°¸ÀıºÍ¿É²Ù×÷µÄ·½·¨ÂÛ£¬°ïÖúÑ§Ï°ÕßÕæÕıÕÆÎÕÔËÓª¼¼ÄÜ£¬ÌáÉıÖ°Òµ¾ºÕùÁ¦¡£</p></div><div class="mission-card"><div class="mission-icon"><i class="mission-icon-community"></i></div><h3 class="mission-title">¹¹½¨Ñ§Ï°ÉçÇø</h3><p class="mission-description">´î½¨Ò»¸ö¿ª·Å¡¢»¥ÖúµÄÑ§Ï°ÉçÇø£¬´Ù½øÖªÊ¶½»Á÷ºÍ×ÊÔ´¹²Ïí£¬¹²Í¬³É³¤¡£</p></div></div></div></section><section class="team-section"><div class="container"><h2 class="section-title">ºËĞÄÍÅ¶Ó</h2><div class="team-members"><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">À¼ĞÄ</h3><p class="member-role">´´Ê¼ÈË & Ê×Ï¯ÄÚÈİ¹Ù</p><p class="member-description">10+ÄêÔËÓª¾­Ñé£¬ÔøÈÎÖªÃû¿ç¾³µçÉÌÆ½Ì¨ÄÚÈİ×Ü¼à£¬ÉÃ³¤ÄÚÈİ²ßÂÔºÍ¿ç¾³µçÉÌÔËÓª¡£</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">ÕÅÃ÷</h3><p class="member-role">AI¹¤¾ßÑĞ¾¿Ô±</p><p class="member-description">Ç°Ä³´óĞÍAI¹«Ë¾²úÆ·¾­Àí£¬×¨×¢ÓÚAI¹¤¾ßÔÚÔËÓªÁìÓòµÄÓ¦ÓÃÑĞ¾¿ºÍ×î¼ÑÊµ¼ù·ÖÏí¡£</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">Àî»ª</h3><p class="member-role">¿ç¾³µçÉÌ¹ËÎÊ</p><p class="member-description">7ÄêÑÇÂíÑ·ÔËÓª¾­Ñé£¬Ôø°ïÖú¶à¼ÒÆóÒµÊµÏÖ°ÙÍòÃÀ½ğÏúÊÛ¶î£¬µçÉÌÔËÓªÊµÕ½×¨¼Ò¡£</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">Íõ·¼</h3><p class="member-role">ÊÓÆµÓªÏúÖ¸µ¼</p><p class="member-description">YouTubeºÍ¶¶ÒôÄÚÈİ´´×÷Õß£¬50Íò+·ÛË¿£¬ÉÃ³¤¶ÌÊÓÆµ²ßÂÔºÍÄÚÈİÓªÏú¡£</p></div></div></div></section><section class="join-community"><div class="container"><div class="community-content"><h2 class="community-title">³ÉÎªÀ¼ĞÄÔËÓª±Ê¼Ç»áÔ±</h2><p class="community-description">¼ÓÈëÎÒÃÇµÄ»áÔ±ÉçÇø£¬»ñÈ¡¶À¼ÒÄÚÈİ¡¢ÊµÕ½½Ì³ÌºÍ×¨ÒµÖ¸µ¼</p><div class="community-stats"><div class="stat-item"><span class="stat-value">5,000+</span><span class="stat-label">ÉçÇø³ÉÔ±</span></div><div class="stat-item"><span class="stat-value">200+</span><span class="stat-label">×¨Òµ½Ì³Ì</span></div><div class="stat-item"><span class="stat-value">Ã¿ÖÜ</span><span class="stat-label">ÏßÉÏ·ÖÏí»á</span></div></div><a href="https://t.zsxq.com/CAfds" class="btn btn-primary community-btn">Á¢¼´¼ÓÈë»áÔ±</a></div></div></section><div class="video-tutorial"><video controls><source src="ÊÓÆµÂ·¾¶.mp4" type="video/mp4"></video></div></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy"><span class="footer-logo-text">À¼ĞÄÔËÓª±Ê¼Ç</span></div><p class="footer-description">Ìá¹©¿ç¾³µçÉÌºÍÊÓÆµ½Ì³ÌµÈ×¨ÒµÄÚÈİ£¬ÖúÄã³ÉÎªÔËÓª¸ßÊÖ¡£</p></div><div class="footer-column"><h4 class="footer-heading">Ö§³Ö</h4><ul class="footer-links"><li><a href="about.html">¹ØÓÚÎÒÃÇ</a></li><li><a href="contact.html">ÁªÏµÎÒÃÇ</a></li><li><a href="faq.html">³£¼ûÎÊÌâ</a></li><li><a href="privacy.html">ÒşË½Õş²ß</a></li><li><a href="terms.html">·şÎñÌõ¿î</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">¹Ø×¢ÎÒÃÇ</h4><div class="footer-subscription"><div class="bilibili-subscription"><div class="bilibili-info"><h5 class="bilibili-title">ßÙÁ¨ßÙÁ¨ÆµµÀ</h5><p class="bilibili-description">µã»÷¹Ø×¢»ñÈ¡×îĞÂÊÓÆµ</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Ç°ÍùßÙÁ¨ßÙÁ¨ÆµµÀ</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 À¼ĞÄÔËÓª±Ê¼Ç. ±£ÁôËùÓĞÈ¨Àû.</p></div></div></footer></body></html> 
 
-        <section class="about-section">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="about-img" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
-                    </div>
-                    <div class="about-text">
-                        <h2 class="section-title">æˆ‘ä»¬çš„æ•…äº‹</h2>
-                        <p>å…°å¿ƒè¿è¥ç¬”è®°æˆç«‹äº2022å¹´ï¼Œæ˜¯ä¸€ä¸ªä¸“æ³¨äºè¿è¥çŸ¥è¯†åˆ†äº«çš„å¹³å°ã€‚æˆ‘ä»¬çš„åˆ›å§‹äººå…°å¿ƒæ‹¥æœ‰è¶…è¿‡10å¹´çš„è¿è¥ç»éªŒï¼Œæ›¾ä»»èŒäºå¤šå®¶çŸ¥åäº’è”ç½‘å…¬å¸ï¼Œè´Ÿè´£è¿‡æ•°åä¸ªè·¨å¢ƒç”µå•†é¡¹ç›®å’Œå†…å®¹åˆ›ä½œé¡¹ç›®ã€‚</p>
-                        <p>å›¢é˜Ÿæˆå‘˜æ¥è‡ªä¸åŒçš„è¡Œä¸šèƒŒæ™¯ï¼ŒåŒ…æ‹¬è·¨å¢ƒç”µå•†ä¸“å®¶ã€å†…å®¹åˆ›ä½œå¯¼å¸ˆã€AIå·¥å…·ç ”ç©¶å‘˜å’Œè§†é¢‘è¥é”€é¡¾é—®ï¼Œå…±åŒè‡´åŠ›äºä¸ºå¹¿å¤§è¿è¥ä»ä¸šè€…å’Œåˆ›ä¸šè€…æä¾›å®ç”¨ä¸”å‰æ²¿çš„è¿è¥çŸ¥è¯†ã€‚</p>
-                        <p>æˆ‘ä»¬çš„ç›®æ ‡æ˜¯é€šè¿‡ä¸“ä¸šçš„è¿è¥ç¬”è®°ã€å®æˆ˜æ¡ˆä¾‹åˆ†æå’Œå‰æ²¿å·¥å…·ä»‹ç»ï¼Œå¸®åŠ©æ¯ä¸€ä½å­¦ä¹ è€…æå‡è¿è¥èƒ½åŠ›ï¼Œè§£å†³å®é™…å·¥ä½œä¸­çš„é—®é¢˜ï¼Œå®ç°ä¸ªäººå’Œä¼ä¸šçš„æˆé•¿ã€‚</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mission-section">
-            <div class="container">
-                <h2 class="section-title">æˆ‘ä»¬çš„ä½¿å‘½</h2>
-                <div class="mission-cards">
-                    <div class="mission-card">
-                        <div class="mission-icon">
-                            <i class="mission-icon-knowledge"></i>
-                        </div>
-                        <h3 class="mission-title">åˆ†äº«ä¸“ä¸šçŸ¥è¯†</h3>
-                        <p class="mission-description">æˆ‘ä»¬è‡´åŠ›äºå°†ä¸“ä¸šã€å®ç”¨çš„è¿è¥çŸ¥è¯†å’Œç»éªŒç³»ç»ŸåŒ–åœ°åˆ†äº«ç»™æ¯ä¸€ä½æœ‰éœ€æ±‚çš„å­¦ä¹ è€…ã€‚</p>
-                    </div>
-
-                    <div class="mission-card">
-                        <div class="mission-icon">
-                            <i class="mission-icon-growth"></i>
-                        </div>
-                        <h3 class="mission-title">ä¿ƒè¿›èƒ½åŠ›æˆé•¿</h3>
-                        <p class="mission-description">é€šè¿‡å®æˆ˜æ¡ˆä¾‹å’Œå¯æ“ä½œçš„æ–¹æ³•è®ºï¼Œå¸®åŠ©å­¦ä¹ è€…çœŸæ­£æŒæ¡è¿è¥æŠ€èƒ½ï¼Œæå‡èŒä¸šç«äº‰åŠ›ã€‚</p>
-                    </div>
-
-                    <div class="mission-card">
-                        <div class="mission-icon">
-                            <i class="mission-icon-community"></i>
-                        </div>
-                        <h3 class="mission-title">æ„å»ºå­¦ä¹ ç¤¾åŒº</h3>
-                        <p class="mission-description">æ­å»ºä¸€ä¸ªå¼€æ”¾ã€äº’åŠ©çš„å­¦ä¹ ç¤¾åŒºï¼Œä¿ƒè¿›çŸ¥è¯†äº¤æµå’Œèµ„æºå…±äº«ï¼Œå…±åŒæˆé•¿ã€‚</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="team-section">
-            <div class="container">
-                <h2 class="section-title">æ ¸å¿ƒå›¢é˜Ÿ</h2>
-                <div class="team-members">
-                    <div class="team-member">
-                        <div class="member-avatar">
-                            <!-- ç§»é™¤äº†logoå›¾ç‰‡ -->
-                        </div>
-                        <h3 class="member-name">å…°å¿ƒ</h3>
-                        <p class="member-role">åˆ›å§‹äºº & é¦–å¸­å†…å®¹å®˜</p>
-                        <p class="member-description">10+å¹´è¿è¥ç»éªŒï¼Œæ›¾ä»»çŸ¥åè·¨å¢ƒç”µå•†å¹³å°å†…å®¹æ€»ç›‘ï¼Œæ“…é•¿å†…å®¹ç­–ç•¥å’Œè·¨å¢ƒç”µå•†è¿è¥ã€‚</p>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="member-avatar">
-                            <!-- ç§»é™¤äº†logoå›¾ç‰‡ -->
-                        </div>
-                        <h3 class="member-name">å¼ æ˜</h3>
-                        <p class="member-role">AIå·¥å…·ç ”ç©¶å‘˜</p>
-                        <p class="member-description">å‰æŸå¤§å‹AIå…¬å¸äº§å“ç»ç†ï¼Œä¸“æ³¨äºAIå·¥å…·åœ¨è¿è¥é¢†åŸŸçš„åº”ç”¨ç ”ç©¶å’Œæœ€ä½³å®è·µåˆ†äº«ã€‚</p>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="member-avatar">
-                            <!-- ç§»é™¤äº†logoå›¾ç‰‡ -->
-                        </div>
-                        <h3 class="member-name">æå</h3>
-                        <p class="member-role">è·¨å¢ƒç”µå•†é¡¾é—®</p>
-                        <p class="member-description">7å¹´äºšé©¬é€Šè¿è¥ç»éªŒï¼Œæ›¾å¸®åŠ©å¤šå®¶ä¼ä¸šå®ç°ç™¾ä¸‡ç¾é‡‘é”€å”®é¢ï¼Œç”µå•†è¿è¥å®æˆ˜ä¸“å®¶ã€‚</p>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="member-avatar">
-                            <!-- ç§»é™¤äº†logoå›¾ç‰‡ -->
-                        </div>
-                        <h3 class="member-name">ç‹èŠ³</h3>
-                        <p class="member-role">è§†é¢‘è¥é”€æŒ‡å¯¼</p>
-                        <p class="member-description">YouTubeå’ŒæŠ–éŸ³å†…å®¹åˆ›ä½œè€…ï¼Œ50ä¸‡+ç²‰ä¸ï¼Œæ“…é•¿çŸ­è§†é¢‘ç­–ç•¥å’Œå†…å®¹è¥é”€ã€‚</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="join-community">
-            <div class="container">
-                <div class="community-content">
-                    <h2 class="community-title">æˆä¸ºå…°å¿ƒè¿è¥ç¬”è®°ä¼šå‘˜</h2>
-                    <p class="community-description">åŠ å…¥æˆ‘ä»¬çš„ä¼šå‘˜ç¤¾åŒºï¼Œè·å–ç‹¬å®¶å†…å®¹ã€å®æˆ˜æ•™ç¨‹å’Œä¸“ä¸šæŒ‡å¯¼</p>
-                    <div class="community-stats">
-                        <div class="stat-item">
-                            <span class="stat-value">5,000+</span>
-                            <span class="stat-label">ç¤¾åŒºæˆå‘˜</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">200+</span>
-                            <span class="stat-label">ä¸“ä¸šæ•™ç¨‹</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">æ¯å‘¨</span>
-                            <span class="stat-label">çº¿ä¸Šåˆ†äº«ä¼š</span>
-                        </div>
-                    </div>
-                    <a href="https://t.zsxq.com/CAfds" class="btn btn-primary community-btn">ç«‹å³åŠ å…¥ä¼šå‘˜</a>
-                </div>
-            </div>
-        </section>
-
-        <div class="video-tutorial">
-            <video controls>
-                <source src="è§†é¢‘è·¯å¾„.mp4" type="video/mp4">
-            </video>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';">
-                        <span class="footer-logo-text">å…°å¿ƒè¿è¥ç¬”è®°</span>
-                    </div>
-                    <p class="footer-description">æä¾›è·¨å¢ƒç”µå•†å’Œè§†é¢‘æ•™ç¨‹ç­‰ä¸“ä¸šå†…å®¹ï¼ŒåŠ©ä½ æˆä¸ºè¿è¥é«˜æ‰‹ã€‚</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">æ”¯æŒ</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">å…³äºæˆ‘ä»¬</a></li>
-                        <li><a href="contact.html">è”ç³»æˆ‘ä»¬</a></li>
-                        <li><a href="faq.html">å¸¸è§é—®é¢˜</a></li>
-                        <li><a href="privacy.html">éšç§æ”¿ç­–</a></li>
-                        <li><a href="terms.html">æœåŠ¡æ¡æ¬¾</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">å…³æ³¨æˆ‘ä»¬</h4>
-                    <div class="footer-subscription">
-                        <div class="bilibili-subscription">
-                            <div class="bilibili-info">
-                                <h5 class="bilibili-title">å“”å“©å“”å“©é¢‘é“</h5>
-                                <p class="bilibili-description">ç‚¹å‡»å…³æ³¨è·å–æœ€æ–°è§†é¢‘</p>
-                            </div>
-                        </div>
-                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">å‰å¾€å“”å“©å“”å“©é¢‘é“</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="copyright">Â© 2025 å…°å¿ƒè¿è¥ç¬”è®°. ä¿ç•™æ‰€æœ‰æƒåˆ©.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html> 

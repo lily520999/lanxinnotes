@@ -1,252 +1,137 @@
-ï»¿<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>æ”¯ä»˜æˆåŠŸ - å…°å¿ƒè¿è¥ç¬”è®°</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .success-section {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .success-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background-color: #ebf9f0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-        
-        .success-icon svg {
-            width: 40px;
-            height: 40px;
-            fill: #2ecc71;
-        }
-        
-        .success-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        
-        .success-message {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        
-        .order-details {
-            background-color: #f5f7ff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-        
-        .order-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 15px;
-            color: #555;
-        }
-        
-        .order-item:last-child {
-            margin-bottom: 0;
-            padding-top: 10px;
-            border-top: 1px solid #ddd;
-            font-weight: 600;
-        }
-        
-        .success-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-        
-        .home-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #1e3a8a;
-            color: white;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .home-btn:hover {
-            background-color: #17307a;
-        }
-        
-        .member-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #f5f7ff;
-            color: #1e3a8a;
-            border: 1px solid #1e3a8a;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .member-btn:hover {
-            background-color: #e8eeff;
-        }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="logo-container">
-                <img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="logo-img">
-                <a href="index.html" class="logo-text">å…°å¿ƒè¿è¥ç¬”è®°</a>
-            </div>
-            <nav class="main-nav">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link">AIå·¥å…· <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link">è·¨å¢ƒç”µå•† <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">è§†é¢‘æ•™ç¨‹ <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <a href="https://space.bilibili.com/1798377475" class="nav-link bilibili" target="_blank">
-                    <img src="images/bilibili-logo.png" alt="å“”å“©å“”å“©" class="bilibili-icon">
-                    å“”å“©å“”å“©
-                </a>
-            </nav>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">ç™»å½•</a>
-                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">åŠ å…¥ä¼šå‘˜</a>
-            </div>
-        </div>
-    </header>
+<!DOCTYPE html><html lang="zh-CN"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <main>
-        <section class="success-section">
-            <div class="container">
-                <div class="success-container">
-                    <div class="success-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M9 16.17l-4.17-4.17-1.42 1.41 5.59 5.59 12-12-1.41-1.41z"></path>
-                        </svg>
-                    </div>
-                    <h1 class="success-title">æ”¯ä»˜æˆåŠŸï¼</h1>
-                    <p class="success-message">æ„Ÿè°¢æ‚¨æˆä¸ºå…°å¿ƒè¿è¥ç¬”è®°ä¸“ä¸šä¼šå‘˜ï¼<br>æ‚¨ç°åœ¨å¯ä»¥è®¿é—®æ‰€æœ‰ä¸“ä¸šä¼šå‘˜ç‰¹æƒå†…å®¹ã€‚</p>
-                    
-                    <div class="order-details">
-                        <div class="order-item">
-                            <span>è®¢å•å·</span>
-                            <span>LX2025042315789</span>
-                        </div>
-                        <div class="order-item">
-                            <span>ä¼šå‘˜æ–¹æ¡ˆ</span>
-                            <span>ä¸“ä¸šä¼šå‘˜ (å­£åº¦)</span>
-                        </div>
-                        <div class="order-item">
-                            <span>æ”¯ä»˜æ–¹å¼</span>
-                            <span id="payment-method">å¾®ä¿¡æ”¯ä»˜</span>
-                        </div>
-                        <div class="order-item">
-                            <span>æœ‰æ•ˆæœŸè‡³</span>
-                            <span>2025å¹´8æœˆ10æ—¥</span>
-                        </div>
-                        <div class="order-item">
-                            <span>æ€»è®¡é‡‘é¢</span>
-                            <span>Â¥299.00</span>
-                        </div>
-                    </div>
-                    
-                    <div class="success-buttons">
-                        <a href="index.html" class="member-btn">è¿”å›é¦–é¡µ</a>
-                        <a href="member-center.html" class="home-btn">è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+  gtag('config', 'G-KNR4KPK379');
+</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ö§¸¶³É¹¦ - À¼ĞÄÔËÓª±Ê¼Ç</title><link rel="stylesheet" href="styles.css"><style>
+ .success-section {
+ padding: 80px 0;
+ background-color: #f8f9fa;
+ min-height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ }
+ 
+ .success-container {
+ max-width: 600px;
+ margin: 0 auto;
+ padding: 40px;
+ background-color: #ffffff;
+ border-radius: 10px;
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+ text-align: center;
+ }
+ 
+ .success-icon {
+ width: 80px;
+ height: 80px;
+ background-color: #ebf9f0;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin: 0 auto 20px;
+ }
+ 
+ .success-icon svg {
+ width: 40px;
+ height: 40px;
+ fill: #2ecc71;
+ }
+ 
+ .success-title {
+ font-size: 28px;
+ font-weight: 700;
+ margin-bottom: 15px;
+ color: #333;
+ }
+ 
+ .success-message {
+ font-size: 16px;
+ color: #666;
+ margin-bottom: 30px;
+ line-height: 1.6;
+ }
+ 
+ .order-details {
+ background-color: #f5f7ff;
+ border-radius: 8px;
+ padding: 20px;
+ margin-bottom: 30px;
+ text-align: left;
+ }
+ 
+ .order-item {
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 10px;
+ font-size: 15px;
+ color: #555;
+ }
+ 
+ .order-item:last-child {
+ margin-bottom: 0;
+ padding-top: 10px;
+ border-top: 1px solid #ddd;
+ font-weight: 600;
+ }
+ 
+ .success-buttons {
+ display: flex;
+ gap: 15px;
+ justify-content: center;
+ }
+ 
+ .home-btn {
+ display: inline-block;
+ padding: 12px 25px;
+ background-color: #1e3a8a;
+ color: white;
+ border-radius: 6px;
+ font-size: 16px;
+ font-weight: 600;
+ text-decoration: none;
+ transition: background-color 0.3s;
+ }
+ 
+ .home-btn:hover {
+ background-color: #17307a;
+ }
+ 
+ .member-btn {
+ display: inline-block;
+ padding: 12px 25px;
+ background-color: #f5f7ff;
+ color: #1e3a8a;
+ border: 1px solid #1e3a8a;
+ border-radius: 6px;
+ font-size: 16px;
+ font-weight: 600;
+ text-decoration: none;
+ transition: all 0.3s;
+ }
+ 
+ .member-btn:hover {
+ background-color: #e8eeff;
+ }
+ </style></head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="logo-img" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">À¼ĞÄÔËÓª±Ê¼Ç</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="#" class="nav-link">AI¹¤¾ß <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="#" class="nav-link">¿ç¾³µçÉÌ <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">ÊÓÆµ½Ì³Ì <span class="dropdown-arrow">¨‹</span></a></div><a href="https://space.bilibili.com/1798377475" class="nav-link bilibili" target="_blank"><img src="images/bilibili-logo.png" alt="ßÙÁ¨ßÙÁ¨" class="bilibili-icon" loading="lazy" width="24" height="24">
+ ßÙÁ¨ßÙÁ¨
+ </a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">µÇÂ¼</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary">¼ÓÈë»áÔ±</a></div></div></header><main><section class="success-section"><div class="container"><div class="success-container"><div class="success-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17l-4.17-4.17-1.42 1.41 5.59 5.59 12-12-1.41-1.41z"></path></svg></div><h1 class="success-title">Ö§¸¶³É¹¦£¡</h1><p class="success-message">¸ĞĞ»Äú³ÉÎªÀ¼ĞÄÔËÓª±Ê¼Ç×¨Òµ»áÔ±£¡<br>ÄúÏÖÔÚ¿ÉÒÔ·ÃÎÊËùÓĞ×¨Òµ»áÔ±ÌØÈ¨ÄÚÈİ¡£</p><div class="order-details"><div class="order-item"><span>¶©µ¥ºÅ</span><span>LX2025042315789</span></div><div class="order-item"><span>»áÔ±·½°¸</span><span>×¨Òµ»áÔ± (¼¾¶È)</span></div><div class="order-item"><span>Ö§¸¶·½Ê½</span><span id="payment-method">Î¢ĞÅÖ§¸¶</span></div><div class="order-item"><span>ÓĞĞ§ÆÚÖÁ</span><span>2025Äê8ÔÂ10ÈÕ</span></div><div class="order-item"><span>×Ü¼Æ½ğ¶î</span><span>£¤299.00</span></div></div><div class="success-buttons"><a href="index.html" class="member-btn">·µ»ØÊ×Ò³</a><a href="member-center.html" class="home-btn">½øÈë»áÔ±ÖĞĞÄ</a></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="footer-logo-img" loading="lazy"><span class="footer-logo-text">À¼ĞÄÔËÓª±Ê¼Ç</span></div><p class="footer-description">Ìá¹©¿ç¾³µçÉÌºÍÊÓÆµ½Ì³ÌµÈ×¨ÒµÄÚÈİ£¬ÖúÄã³ÉÎªÔËÓª¸ßÊÖ¡£</p></div><div class="footer-column"><h4 class="footer-heading">Ö§³Ö</h4><ul class="footer-links"><li><a href="about.html">¹ØÓÚÎÒÃÇ</a></li><li><a href="contact.html">ÁªÏµÎÒÃÇ</a></li><li><a href="faq.html">³£¼ûÎÊÌâ</a></li><li><a href="privacy.html">ÒşË½Õş²ß</a></li><li><a href="terms.html">·şÎñÌõ¿î</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">¹Ø×¢ÎÒÃÇ</h4><div class="footer-subscription"><div class="bilibili-subscription"><img src="images/bilibili-logo.png" alt="ßÙÁ¨ßÙÁ¨ÆµµÀ" class="footer-bilibili-img" loading="lazy"><div class="bilibili-info"><h5 class="bilibili-title">ßÙÁ¨ßÙÁ¨ÆµµÀ</h5><p class="bilibili-description">µã»÷¶©ÔÄ»ñÈ¡×îĞÂÊÓÆµ</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Ç°ÍùßÙÁ¨ßÙÁ¨ÆµµÀ</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 À¼ĞÄÔËÓª±Ê¼Ç. ±£ÁôËùÓĞÈ¨Àû.</p></div></div></footer><script>
+ // »ñÈ¡´ÓÖ§¸¶Ò³Ãæ´«µİ¹ıÀ´µÄÖ§¸¶·½Ê½
+ window.onload = function() {
+ const urlParams = new URLSearchParams(window.location.search);
+ const paymentMethod = urlParams.get('method');
+ 
+ if (paymentMethod === 'alipay') {
+ document.getElementById('payment-method').innerText = 'Ö§¸¶±¦';
+ } else {
+ document.getElementById('payment-method').innerText = 'Î¢ĞÅÖ§¸¶';
+ }
+ };
+ </script></body></html> 
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="footer-logo-img">
-                        <span class="footer-logo-text">å…°å¿ƒè¿è¥ç¬”è®°</span>
-                    </div>
-                    <p class="footer-description">æä¾›è·¨å¢ƒç”µå•†å’Œè§†é¢‘æ•™ç¨‹ç­‰ä¸“ä¸šå†…å®¹ï¼ŒåŠ©ä½ æˆä¸ºè¿è¥é«˜æ‰‹ã€‚</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">æ”¯æŒ</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">å…³äºæˆ‘ä»¬</a></li>
-                        <li><a href="contact.html">è”ç³»æˆ‘ä»¬</a></li>
-                        <li><a href="faq.html">å¸¸è§é—®é¢˜</a></li>
-                        <li><a href="privacy.html">éšç§æ”¿ç­–</a></li>
-                        <li><a href="terms.html">æœåŠ¡æ¡æ¬¾</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">å…³æ³¨æˆ‘ä»¬</h4>
-                    <div class="footer-subscription">
-                        <div class="bilibili-subscription">
-                            <img src="images/bilibili-logo.png" alt="å“”å“©å“”å“©é¢‘é“" class="footer-bilibili-img">
-                            <div class="bilibili-info">
-                                <h5 class="bilibili-title">å“”å“©å“”å“©é¢‘é“</h5>
-                                <p class="bilibili-description">ç‚¹å‡»è®¢é˜…è·å–æœ€æ–°è§†é¢‘</p>
-                            </div>
-                        </div>
-                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">å‰å¾€å“”å“©å“”å“©é¢‘é“</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="copyright">Â© 2025 å…°å¿ƒè¿è¥ç¬”è®°. ä¿ç•™æ‰€æœ‰æƒåˆ©.</p>
-            </div>
-        </div>
-    </footer>
-    
-    <script>
-        // è·å–ä»æ”¯ä»˜é¡µé¢ä¼ é€’è¿‡æ¥çš„æ”¯ä»˜æ–¹å¼
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const paymentMethod = urlParams.get('method');
-            
-            if (paymentMethod === 'alipay') {
-                document.getElementById('payment-method').innerText = 'æ”¯ä»˜å®';
-            } else {
-                document.getElementById('payment-method').innerText = 'å¾®ä¿¡æ”¯ä»˜';
-            }
-        };
-    </script>
-</body>
-</html> 

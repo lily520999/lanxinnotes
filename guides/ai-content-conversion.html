@@ -1,600 +1,306 @@
-ï»¿<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>AIè¾…åŠ©å†…å®¹åˆ›ä½œï¼šæå‡è½¬åŒ–ç‡çš„ç§˜è¯€ - å…°å¿ƒè¿è¥ç¬”è®°</title>
-    <link rel="stylesheet" href="../styles.css">
-    <script src="../script.js" defer></script>
-    <style>
-        .guide-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .guide-meta {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .guide-meta .separator {
-            margin: 0 10px;
-        }
-        
-        .guide-image {
-            width: 100%;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
-        .course-module {
-            background-color: #f5f7ff;
-            border-left: 4px solid #1e3a8a;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .module-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1e3a8a;
-            margin-bottom: 15px;
-        }
-        
-        .lesson-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-        
-        .lesson-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            transition: background-color 0.3s;
-        }
-        
-        .lesson-item:hover {
-            background-color: #f0f4f8;
-        }
-        
-        .lesson-number {
-            width: 30px;
-            height: 30px;
-            background-color: #1e3a8a;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        
-        .lesson-details {
-            flex: 1;
-        }
-        
-        .lesson-title {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .lesson-duration {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .lesson-preview {
-            margin-left: 15px;
-            padding: 5px 15px;
-            background-color: #1e3a8a;
-            color: white;
-            border-radius: 20px;
-            font-size: 12px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .lesson-preview:hover {
-            background-color: #152a6a;
-        }
-        
-        .locked {
-            background-color: #ccc;
-        }
-        
-        .locked:hover {
-            background-color: #bbb;
-        }
-        
-        .vip-banner {
-            background-color: #f9f0ff;
-            border: 1px solid #d4b2ff;
-            border-radius: 8px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            margin: 30px 0;
-        }
-        
-        .vip-icon {
-            font-size: 30px;
-            margin-right: 20px;
-            color: #8e44ad;
-        }
-        
-        .vip-message {
-            flex: 1;
-        }
-        
-        .vip-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #8e44ad;
-            margin-bottom: 5px;
-        }
-        
-        .vip-description {
-            color: #666;
-            margin-bottom: 10px;
-        }
-        
-        .vip-button {
-            background-color: #8e44ad;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        .vip-button:hover {
-            background-color: #6c3483;
-        }
-        
-        .instructor-section {
-            margin: 40px 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-radius: 8px;
-        }
-        
-        .instructor-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .instructor-info {
-            flex: 1;
-        }
-        
-        .instructor-name {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .instructor-title {
-            color: #666;
-            margin-bottom: 10px;
-        }
-        
-        .instructor-bio {
-            line-height: 1.6;
-        }
-        
-        .progress-container {
-            margin: 30px 0;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            width: 15%;
-            background-color: #1e3a8a;
-            border-radius: 5px;
-        }
-        
-        .progress-stats {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .conversion-highlight {
-            background-color: #effaf5;
-            border-left: 4px solid #16a34a;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .conversion-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #16a34a;
-            margin-bottom: 10px;
-        }
-        
-        .case-study {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .case-study-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        
-        .case-study-metrics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 15px 0;
-        }
-        
-        .metric {
-            background-color: #fff;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            padding: 10px 15px;
-            min-width: 120px;
-        }
-        
-        .metric-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1e3a8a;
-            margin-bottom: 5px;
-        }
-        
-        .metric-label {
-            font-size: 12px;
-            color: #666;
-        }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="logo-container">
-                <img src="../images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="logo-img">
-                <a href="../index.html" class="logo-text">å…°å¿ƒè¿è¥ç¬”è®°</a>
-            </div>
-            <nav class="main-nav">
-                <div class="nav-item dropdown">
-                    <a href="../ai-tools.html" class="nav-link">AIå·¥å…· <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="../ecommerce.html" class="nav-link">è·¨å¢ƒç”µå•† <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="../courses.html" class="nav-link">è§†é¢‘æ•™ç¨‹ <span class="dropdown-arrow">â–¼</span></a>
-                </div>
-                <a href="../faq.html" class="nav-link">å¸¸è§é—®é¢˜</a>
-                <a href="https://space.bilibili.com/1798377475" class="nav-link bilibili" target="_blank">
-                    <img src="../images/bilibili-logo.png" alt="å“”å“©å“”å“©" class="bilibili-icon">
-                    å“”å“©å“”å“©
-                </a>
-            </nav>
-            <div class="auth-buttons">
-                <a href="../login.html" class="btn btn-login">ç™»å½•</a>
-                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">åŠ å…¥ä¼šå‘˜(1565å…ƒ/å¹´)</a>
-            </div>
-        </div>
-    </header>
+<!DOCTYPE html><html lang="zh-CN"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <h1 class="page-title">AIè¾…åŠ©å†…å®¹åˆ›ä½œï¼šæå‡è½¬åŒ–ç‡çš„ç§˜è¯€</h1>
-                <div class="breadcrumbs">
-                    <a href="../index.html">é¦–é¡µ</a> &gt;
-                    <a href="../ai-tools.html">AIå·¥å…·</a> &gt;
-                    <a href="../ai-tools.html#guides">ä½¿ç”¨æŒ‡å—</a> &gt;
-                    <span>AIå†…å®¹åˆ›ä½œ</span>
-                </div>
-            </div>
-        </section>
+  gtag('config', 'G-KNR4KPK379');
+</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>AI¸¨ÖúÄÚÈİ´´×÷£ºÌáÉı×ª»¯ÂÊµÄÃØ¾÷ - À¼ĞÄÔËÓª±Ê¼Ç</title><link rel="stylesheet" href="../styles.css"><script src="../script.js" defer></script><style>
+ .guide-content {
+ max-width: 800px;
+ margin: 0 auto;
+ padding: 20px;
+ }
+ 
+ .guide-meta {
+ display: flex;
+ align-items: center;
+ margin-bottom: 30px;
+ color: #666;
+ font-size: 14px;
+ }
+ 
+ .guide-meta .separator {
+ margin: 0 10px;
+ }
+ 
+ .guide-image {
+ width: 100%;
+ border-radius: 8px;
+ margin: 20px 0;
+ }
+ 
+ .course-module {
+ background-color: #f5f7ff;
+ border-left: 4px solid #1e3a8a;
+ padding: 20px;
+ margin: 30px 0;
+ border-radius: 0 8px 8px 0;
+ }
+ 
+ .module-title {
+ font-size: 20px;
+ font-weight: 700;
+ color: #1e3a8a;
+ margin-bottom: 15px;
+ }
+ 
+ .lesson-list {
+ list-style-type: none;
+ padding: 0;
+ margin: 20px 0;
+ }
+ 
+ .lesson-item {
+ display: flex;
+ align-items: center;
+ padding: 15px;
+ border-bottom: 1px solid #eee;
+ transition: background-color 0.3s;
+ }
+ 
+ .lesson-item:hover {
+ background-color: #f0f4f8;
+ }
+ 
+ .lesson-number {
+ width: 30px;
+ height: 30px;
+ background-color: #1e3a8a;
+ color: white;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin-right: 15px;
+ font-size: 14px;
+ font-weight: bold;
+ }
+ 
+ .lesson-details {
+ flex: 1;
+ }
+ 
+ .lesson-title {
+ font-weight: 600;
+ color: #333;
+ margin-bottom: 5px;
+ }
+ 
+ .lesson-duration {
+ font-size: 12px;
+ color: #666;
+ }
+ 
+ .lesson-preview {
+ margin-left: 15px;
+ padding: 5px 15px;
+ background-color: #1e3a8a;
+ color: white;
+ border-radius: 20px;
+ font-size: 12px;
+ text-decoration: none;
+ transition: background-color 0.3s;
+ }
+ 
+ .lesson-preview:hover {
+ background-color: #152a6a;
+ }
+ 
+ .locked {
+ background-color: #ccc;
+ }
+ 
+ .locked:hover {
+ background-color: #bbb;
+ }
+ 
+ .vip-banner {
+ background-color: #f9f0ff;
+ border: 1px solid #d4b2ff;
+ border-radius: 8px;
+ padding: 20px;
+ display: flex;
+ align-items: center;
+ margin: 30px 0;
+ }
+ 
+ .vip-icon {
+ font-size: 30px;
+ margin-right: 20px;
+ color: #8e44ad;
+ }
+ 
+ .vip-message {
+ flex: 1;
+ }
+ 
+ .vip-title {
+ font-size: 18px;
+ font-weight: 700;
+ color: #8e44ad;
+ margin-bottom: 5px;
+ }
+ 
+ .vip-description {
+ color: #666;
+ margin-bottom: 10px;
+ }
+ 
+ .vip-button {
+ background-color: #8e44ad;
+ color: white;
+ padding: 10px 20px;
+ border-radius: 5px;
+ text-decoration: none;
+ font-weight: 600;
+ transition: background-color 0.3s;
+ }
+ 
+ .vip-button:hover {
+ background-color: #6c3483;
+ }
+ 
+ .instructor-section {
+ margin: 40px 0;
+ padding: 20px;
+ background-color: #f5f5f5;
+ border-radius: 8px;
+ }
+ 
+ .instructor-header {
+ display: flex;
+ align-items: center;
+ margin-bottom: 20px;
+ }
+ 
+ .instructor-info {
+ flex: 1;
+ }
+ 
+ .instructor-name {
+ font-size: 20px;
+ font-weight: 700;
+ margin-bottom: 5px;
+ }
+ 
+ .instructor-title {
+ color: #666;
+ margin-bottom: 10px;
+ }
+ 
+ .instructor-bio {
+ line-height: 1.6;
+ }
+ 
+ .progress-container {
+ margin: 30px 0;
+ }
+ 
+ .progress-bar {
+ height: 10px;
+ background-color: #e0e0e0;
+ border-radius: 5px;
+ margin-bottom: 10px;
+ }
+ 
+ .progress-fill {
+ height: 100%;
+ width: 15%;
+ background-color: #1e3a8a;
+ border-radius: 5px;
+ }
+ 
+ .progress-stats {
+ display: flex;
+ justify-content: space-between;
+ font-size: 14px;
+ color: #666;
+ }
+ 
+ .conversion-highlight {
+ background-color: #effaf5;
+ border-left: 4px solid #16a34a;
+ padding: 20px;
+ margin: 30px 0;
+ border-radius: 0 8px 8px 0;
+ }
+ 
+ .conversion-title {
+ font-size: 18px;
+ font-weight: 700;
+ color: #16a34a;
+ margin-bottom: 10px;
+ }
+ 
+ .case-study {
+ background-color: #f8f9fa;
+ border-radius: 8px;
+ padding: 20px;
+ margin: 20px 0;
+ box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+ }
+ 
+ .case-study-title {
+ font-size: 18px;
+ font-weight: 600;
+ margin-bottom: 10px;
+ color: #333;
+ }
+ 
+ .case-study-metrics {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 15px;
+ margin: 15px 0;
+ }
+ 
+ .metric {
+ background-color: #fff;
+ border: 1px solid #eee;
+ border-radius: 6px;
+ padding: 10px 15px;
+ min-width: 120px;
+ }
+ 
+ .metric-value {
+ font-size: 24px;
+ font-weight: 700;
+ color: #1e3a8a;
+ margin-bottom: 5px;
+ }
+ 
+ .metric-label {
+ font-size: 12px;
+ color: #666;
+ }
+ </style></head><body><header class="header"><div class="container"><div class="logo-container"><img src="../images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="logo-img" loading="lazy" width="40" height="40"><a href="../index.html" class="logo-text">À¼ĞÄÔËÓª±Ê¼Ç</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="../ai-tools.html" class="nav-link">AI¹¤¾ß <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="../ecommerce.html" class="nav-link">¿ç¾³µçÉÌ <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="../courses.html" class="nav-link">ÊÓÆµ½Ì³Ì <span class="dropdown-arrow">¨‹</span></a></div><a href="../faq.html" class="nav-link">³£¼ûÎÊÌâ</a><a href="https://space.bilibili.com/1798377475" class="nav-link bilibili" target="_blank"><img src="../images/bilibili-logo.png" alt="ßÙÁ¨ßÙÁ¨" class="bilibili-icon" loading="lazy" width="24" height="24">
+ ßÙÁ¨ßÙÁ¨
+ </a></nav><div class="auth-buttons"><a href="../login.html" class="btn btn-login">µÇÂ¼</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary">¼ÓÈë»áÔ±(1565Ôª/Äê)</a></div></div></header><main><section class="page-header"><div class="container"><h1 class="page-title">AI¸¨ÖúÄÚÈİ´´×÷£ºÌáÉı×ª»¯ÂÊµÄÃØ¾÷</h1><div class="breadcrumbs"><a href="../index.html">Ê×Ò³</a> &gt;
+ <a href="../ai-tools.html">AI¹¤¾ß</a> &gt;
+ <a href="../ai-tools.html#guides">Ê¹ÓÃÖ¸ÄÏ</a> &gt;
+ <span>AIÄÚÈİ´´×÷</span></div></div></section><article class="guide-content"><div class="guide-meta"><span class="guide-date">×î½ü¸üĞÂ£º2025Äê2ÔÂ8ÈÕ</span><span class="separator">|</span><span class="guide-author">½²Ê¦£ºÍõÀö</span><span class="separator">|</span><span class="guide-lessons">×Ü¿ÎÊ±£º10½Ú</span><span class="separator">|</span><span class="guide-level">ÄÑ¶È£º¸ß¼¶</span></div><img src="../images/ai-tools.png" alt="AI¸¨ÖúÄÚÈİ´´×÷" class="guide-image" loading="lazy"><div class="progress-container"><div class="progress-bar"><div class="progress-fill"></div></div><div class="progress-stats"><span>ÒÑÍê³É: 15%</span><span>¹²10¿ÎÊ±</span></div></div><h2>¿Î³Ì¼ò½é</h2><p>ÔÚµ±½ñ¾ºÕù¼¤ÁÒµÄÊı×ÖÓªÏú»·¾³ÖĞ£¬½ö½ö´´×÷¸ßÖÊÁ¿ÄÚÈİÒÑ¾­²»¹»£¬ÄÚÈİ±ØĞëÄÜ¹»ÓĞĞ§×ª»¯ÓÃ»§¡£±¾¿Î³Ì½«ÉîÈëÌ½ÌÖÈçºÎ½áºÏAI¼¼ÊõÓëÈËÀà´´Òâ£¬´òÔì²»½öÎüÒıÑÛÇò£¬¸üÄÜÌá¸ß×ª»¯ÂÊµÄÓªÏúÄÚÈİ¡£</p><p>Í¨¹ıÏµÍ³Ñ§Ï°AI¸¨ÖúÄÚÈİ´´×÷µÄ¸ß¼¶¼¼ÇÉ£¬Äã½«ÕÆÎÕÈçºÎÀûÓÃ´óÓïÑÔÄ£ĞÍÌáÉıÄÚÈİÖÊÁ¿£¬Í¬Ê±±£³ÖÆ·ÅÆ¶ÀÌØĞÔºÍÈËÎÄÎÂ¶È£¬×îÖÕÊµÏÖ¸ü¸ßµÄÓªÏúROI¡£</p><div class="conversion-highlight"><h3 class="conversion-title">ÎªÊ²Ã´AIÄÚÈİ´´×÷ÄÜÌáÉı×ª»¯ÂÊ£¿</h3><p>¸ù¾İÎÒÃÇµÄÑĞ¾¿£¬ÕıÈ·Ó¦ÓÃAIÄÚÈİ´´×÷²ßÂÔµÄ¹«Ë¾Æ½¾ùÌáÉıÁË48%µÄÄÚÈİ×ª»¯ÂÊ£¬67%µÄÄÚÈİÉú²úĞ§ÂÊ£¬Í¬Ê±½µµÍÁË35%µÄÄÚÈİ´´×÷³É±¾¡£AI²»½öÄÜ°ïÖúÖÆ×÷¸ü¶àÄÚÈİ£¬¸üÄÜÍ¨¹ıÊı¾İ·ÖÎöºÍÄ£Ê½Ê¶±ğ£¬°ïÄãÖÆ×÷¸üÄÜ´ò¶¯Ä¿±êÊÜÖÚµÄÄÚÈİ¡£</p></div><div class="course-module"><div class="module-title">Ä£¿éÒ»£ºÄÚÈİ×ª»¯µÄºËĞÄÔ­Àí£¨²¿·ÖÃâ·Ñ£©</div><p>ÁË½âÊ²Ã´ÑùµÄÄÚÈİÄÜ¹»´¥·¢ÓÃ»§ĞĞ¶¯£¬ÒÔ¼°ÈçºÎÍ¨¹ıAI¼¼ÊõÔöÇ¿ÄÚÈİµÄ×ª»¯ÄÜÁ¦¡£</p><ul class="lesson-list"><li class="lesson-item"><div class="lesson-number">1</div><div class="lesson-details"><div class="lesson-title">½âÎö¸ß×ª»¯ÄÚÈİµÄºËĞÄÒªËØÓëĞÄÀí´¥·¢µã</div><div class="lesson-duration">Ê±³¤: 28·ÖÖÓ</div></div><a href="#" class="lesson-preview">Ãâ·ÑÑ§Ï°</a></li><li class="lesson-item"><div class="lesson-number">2</div><div class="lesson-details"><div class="lesson-title">AIÓëÈËÀà´´×÷µÄÍêÃÀ½áºÏ£º¸÷×ÔÓÅÊÆÓëĞ­Í¬·½·¨</div><div class="lesson-duration">Ê±³¤: 32·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li><li class="lesson-item"><div class="lesson-number">3</div><div class="lesson-details"><div class="lesson-title">×ª»¯Â©¶·ÖĞµÄÄÚÈİ²ßÂÔÓëAIÓ¦ÓÃ</div><div class="lesson-duration">Ê±³¤: 35·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li></ul></div><div class="course-module"><div class="module-title">Ä£¿é¶ş£ºAI¸¨ÖúµÄ¸ß×ª»¯ÄÚÈİ´´×÷ÊµÕ½</div><p>ÕÆÎÕÊ¹ÓÃAI¹¤¾ß´´½¨²»Í¬ÀàĞÍ¸ß×ª»¯ÂÊÄÚÈİµÄÊµÕ½¼¼ÇÉºÍÁ÷³Ì¡£</p><ul class="lesson-list"><li class="lesson-item"><div class="lesson-number">4</div><div class="lesson-details"><div class="lesson-title">µçÉÌ²úÆ·ÃèÊöµÄAIÓÅ»¯Óë×ª»¯¼¼ÇÉ</div><div class="lesson-duration">Ê±³¤: 40·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li><li class="lesson-item"><div class="lesson-number">5</div><div class="lesson-details"><div class="lesson-title">ÓªÏúÓÊ¼şÓëÂäµØÒ³µÄAIÇı¶¯´´×÷Á÷³Ì</div><div class="lesson-duration">Ê±³¤: 38·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li><li class="lesson-item"><div class="lesson-number">6</div><div class="lesson-details"><div class="lesson-title">AI´´×÷Éç½»Ã½ÌåÄÚÈİµÄ¶¨ÖÆ»¯Óë¸öĞÔ»¯²ßÂÔ</div><div class="lesson-duration">Ê±³¤: 35·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li></ul></div><div class="course-module"><div class="module-title">Ä£¿éÈı£ºAIÄÚÈİµÄ×ª»¯ÂÊÓÅ»¯Óë²âÊÔ</div><p>Ñ§Ï°ÈçºÎÊ¹ÓÃÊı¾İÇı¶¯·½·¨²»¶ÏÓÅ»¯AI´´×÷µÄÄÚÈİ£¬Ìá¸ß×ª»¯±íÏÖ¡£</p><ul class="lesson-list"><li class="lesson-item"><div class="lesson-number">7</div><div class="lesson-details"><div class="lesson-title">AI¸¨ÖúµÄA/B²âÊÔ£º¶à±äÁ¿ÄÚÈİÓÅ»¯·½·¨</div><div class="lesson-duration">Ê±³¤: 42·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li><li class="lesson-item"><div class="lesson-number">8</div><div class="lesson-details"><div class="lesson-title">AIÄÚÈİµÄ×ª»¯ÂÊ·ÖÎöÓëµü´úÓÅ»¯Á÷³Ì</div><div class="lesson-duration">Ê±³¤: 38·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li><li class="lesson-item"><div class="lesson-number">9</div><div class="lesson-details"><div class="lesson-title">´òÔì±Õ»·ÓÅ»¯ÏµÍ³£º´ÓÊı¾İµ½AIÄÚÈİµ÷Õû</div><div class="lesson-duration">Ê±³¤: 40·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li><li class="lesson-item"><div class="lesson-number">10</div><div class="lesson-details"><div class="lesson-title">Î´À´Ç÷ÊÆ£ºÉú³ÉÊ½AIÓë¸öĞÔ»¯ÄÚÈİ×ª»¯</div><div class="lesson-duration">Ê±³¤: 30·ÖÖÓ</div></div><a href="#" class="lesson-preview locked">»áÔ±×¨Ïí</a></li></ul></div><div class="case-study"><h3 class="case-study-title">°¸ÀıÑĞ¾¿£ºµçÉÌÆ½Ì¨²úÆ·Ò³ÃæÄÚÈİÓÅ»¯</h3><p>Ä³ÖªÃûµçÉÌÆ½Ì¨Ê¹ÓÃÎÒÃÇµÄAI¸¨ÖúÄÚÈİ´´×÷·½·¨£¬¶ÔÆä²úÆ·ÏêÇéÒ³½øĞĞÁËÈ«ÃæÓÅ»¯¡£Í¨¹ı½áºÏAIÉú³ÉµÄ²úÆ·ÃèÊöÓëÈË¹¤±à¼­µÄ¾«Ï¸µ÷Õû£¬ÊµÏÖÁËÏÔÖøµÄÒµ¼¨ÌáÉı¡£</p><div class="case-study-metrics"><div class="metric"><div class="metric-value">+42%</div><div class="metric-label">×ª»¯ÂÊÌáÉı</div></div><div class="metric"><div class="metric-value">-35%</div><div class="metric-label">ÄÚÈİ´´×÷Ê±¼ä</div></div><div class="metric"><div class="metric-value">+28%</div><div class="metric-label">¿Íµ¥¼ÛÌáÉı</div></div></div><p>¹Ø¼ü³É¹¦ÒòËØ£º¾«×¼µÄÊÜÖÚ¶´²ì¡¢AIÓëÈË¹¤µÄĞ­Í¬´´×÷Á÷³Ì¡¢³ÖĞøµÄÊı¾İ²âÊÔÓëÓÅ»¯¡£ÍêÕû°¸Àı·ÖÎöÇë¼û¿Î³ÌµÚ5¿Î¡£</p></div><div class="vip-banner"><div class="vip-icon">?</div><div class="vip-message"><h3 class="vip-title">½âËøÈ«²¿10½Ú¸ß¼¶ÄÚÈİ´´×÷¿Î³Ì</h3><p class="vip-description">¼ÓÈë»áÔ±£¬Á¢¼´»ñÈ¡ÍêÕû¿Î³Ì£¬°üÀ¨×ª»¯ÂÊÌáÉıÄ£°å¿â¡¢AIÌáÊ¾´Ê¼¯ºÏÒÔ¼°ÕæÊµ°¸Àı·ÖÎö¡£</p><a href="https://t.zsxq.com/CAfds" class="vip-button">Á¢¼´¼ÓÈë»áÔ±</a></div></div><div class="instructor-section"><h2>½²Ê¦½éÉÜ</h2><div class="instructor-header"><div class="instructor-info" style="margin-left: 0;"><h3 class="instructor-name">ÍõÀö</h3><div class="instructor-title">ÄÚÈİÓªÏú×¨¼Ò | AI´´×÷²ßÂÔ¹ËÎÊ</div></div></div><p class="instructor-bio">ÍõÀöÓµÓĞ³¬¹ı10ÄêµÄÄÚÈİÓªÏú¾­Ñé£¬ÔøÎª¶à¼ÒFortune 500¹«Ë¾Ìá¹©ÄÚÈİ²ßÂÔ×ÉÑ¯¡£Ëı×¨×¢ÓÚ½«AI¼¼ÊõÓë´«Í³ÄÚÈİÓªÏú½áºÏ£¬¿ª·¢ÁË¶àÌ×ÌáÉı×ª»¯ÂÊµÄÄÚÈİ´´×÷·½·¨ÂÛ¡£×÷ÎªAIÄÚÈİ´´×÷ÁìÓòµÄÏÈĞĞÕß£¬Ëı°ïÖúÊı°Ù¼ÒÆóÒµÊµÏÖÁËÄÚÈİÓªÏúµÄ×ªĞÍÉı¼¶£¬Æ½¾ùÌáÉı×ª»¯ÂÊ³¬¹ı40%¡£</p></div><h2>Ñ§Ô±ÆÀ¼Û</h2><div class="testimonials"><blockquote>
+ "ÕâÃÅ¿Î³Ì³¹µ×¸Ä±äÁËÎÒ¶ÔAIÄÚÈİ´´×÷µÄÈÏÖª¡£ÍõÀÏÊ¦µÄ·½·¨¼ÈÊµÓÃÓÖ¸ßĞ§£¬ÎÒÃÇÍÅ¶Ó²ÉÓÃºó£¬²©¿Í×ª»¯ÂÊÌáÉıÁË52%£¬¶ø¹¤×÷Á¿È´¼õÉÙÁË½üÒ»°ë¡£ÕæÕıµÄÓªÏúÄÚÈİ¸ïÃü£¡"
+ <footer>¡ª Áõ¾ü£¬B2BÄÚÈİÓªÏú×Ü¼à</footer></blockquote><blockquote>
+ "×÷ÎªÒ»ÃûµçÉÌÔËÓªÕß£¬ÎÒÒ»Ö±ÔÚÑ°ÕÒÄÜÕæÕıÌáÉı×ª»¯ÂÊµÄÄÚÈİ·½·¨¡£ÕâÃÅ¿Î²»½ö½Ì»áÎÒÈçºÎÊ¹ÓÃAI¹¤¾ß£¬¸üÖØÒªµÄÊÇÈçºÎÈÃAI´´×÷µÄÄÚÈİ±£³ÖÈËĞÔ»¯²¢´¥·¢ÓÃ»§ĞĞ¶¯¡£Ç¿ÁÒÍÆ¼ö£¡"
+ <footer>¡ª ÕÔÑ©£¬¿ç¾³µçÉÌÔËÓªÖ÷¹Ü</footer></blockquote></div><h2>³£¼ûÎÊÌâ</h2><div class="faq-section"><div class="faq-item"><h3>ÕâÃÅ¿Î³ÌĞèÒªÄÄĞ©Ç°ÖÃÖªÊ¶£¿</h3><p>±¾¿Î³ÌÊÊºÏÒÑ¾­¶Ô»ù´¡ÄÚÈİ´´×÷ºÍAI¹¤¾ßÓĞ³õ²½ÁË½âµÄÑ§Ô±¡£Èç¹ûÄãÊÇÄÚÈİÓªÏúĞÂÊÖ£¬½¨ÒéÏÈÑ§Ï°ÎÒÃÇµÄ¡¶ÄÚÈİ´´×÷»ù´¡¡·¿Î³Ì£»Èç¹ûÄã¶ÔAI¹¤¾ßÍêÈ«Ä°Éú£¬¿ÉÒÔÏÈÑ§Ï°¡¶AIÌáÊ¾´Ê¹¤³Ì¡·¿Î³Ì¡£</p></div><div class="faq-item"><h3>¿Î³ÌÖĞ»áÊ¹ÓÃÄÄĞ©AI¹¤¾ß£¿</h3><p>ÎÒÃÇ½«ÖØµã½²½âÈçºÎÊ¹ÓÃClaude¡¢ChatGPT¡¢MidjourneyµÈÖ÷Á÷AI¹¤¾ß½øĞĞÄÚÈİ´´×÷£¬µ«¿Î³ÌµÄºËĞÄÊÇ·½·¨ÂÛ¶ø·Ç¾ßÌå¹¤¾ß£¬Äã¿ÉÒÔÓ¦ÓÃÕâĞ©·½·¨µ½ÈÎºÎAI¹¤¾ßÖĞ¡£</p></div><div class="faq-item"><h3>ÈçºÎ½«¿Î³ÌÖªÊ¶Ó¦ÓÃµ½ÎÒµÄÊµ¼Ê¹¤×÷ÖĞ£¿</h3><p>Ã¿½Ú¿Î¶¼°üº¬ÏêÏ¸µÄÊµ²ÙÖ¸ÄÏºÍ¹¤×÷Á÷³Ì£¬Äã¿ÉÒÔÖ±½Ó½«ÆäÓ¦ÓÃµ½ÄãµÄÄÚÈİ´´×÷¹ı³ÌÖĞ¡£´ËÍâ£¬»áÔ±»¹¿ÉÒÔ»ñµÃ×¨ÊôµÄÌáÊ¾´ÊÄ£°å¿âºÍ°¸Àı·ÖÎö£¬°ïÖúÄã¸ü¿ìµØÊµÏÖÄÚÈİ×ª»¯ÂÊÌáÉı¡£</p></div></div><div class="cta-section"><h2>×¼±¸ºÃÌáÉıÄúµÄÄÚÈİ×ª»¯ÂÊÁËÂğ£¿</h2><p>¼ÓÈëÀ¼ĞÄÔËÓª±Ê¼Ç»áÔ±£¬Á¢¼´½âËø¡¶AI¸¨ÖúÄÚÈİ´´×÷£ºÌáÉı×ª»¯ÂÊµÄÃØ¾÷¡·ÍêÕû¿Î³Ì£¬ÒÔ¼°¸ü¶à×¨ÒµÄÚÈİ´´×÷ºÍÔËÓª×ÊÔ´£¡</p><a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-large">Á¢¼´¼ÓÈë»áÔ±</a></div></article></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="../images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="footer-logo-img" loading="lazy"><span class="footer-logo-text">À¼ĞÄÔËÓª±Ê¼Ç</span></div><p class="footer-description">Ìá¹©¿ç¾³µçÉÌºÍÊÓÆµ½Ì³ÌµÈ×¨ÒµÄÚÈİ£¬ÖúÄã³ÉÎªÔËÓª¸ßÊÖ¡£</p><div class="social-icons"><a href="#" class="social-icon"><img src="../images/bilibili-logo.png" alt="ßÙÁ¨ßÙÁ¨" loading="lazy"></a></div></div><div class="footer-column"><h4 class="footer-heading">Ö§³Ö</h4><ul class="footer-links"><li><a href="../about.html">¹ØÓÚÎÒÃÇ</a></li><li><a href="../contact.html">ÁªÏµÎÒÃÇ</a></li><li><a href="../faq.html">³£¼ûÎÊÌâ</a></li><li><a href="../privacy.html">ÒşË½Õş²ß</a></li><li><a href="../terms.html">·şÎñÌõ¿î</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">¹Ø×¢ÎÒÃÇ</h4><div class="footer-subscription"><div class="bilibili-subscription"><img src="../images/bilibili-logo.png" alt="ßÙÁ¨ßÙÁ¨ÆµµÀ" class="footer-bilibili-img" loading="lazy"><div class="bilibili-info"><h5 class="bilibili-title">ßÙÁ¨ßÙÁ¨ÆµµÀ</h5><p class="bilibili-description">µã»÷¶©ÔÄ»ñÈ¡×îĞÂÊÓÆµ</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Ç°ÍùßÙÁ¨ßÙÁ¨ÆµµÀ</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 À¼ĞÄÔËÓª±Ê¼Ç. ±£ÁôËùÓĞÈ¨Àû.</p></div></div></footer><script>
+ document.addEventListener('DOMContentLoaded', function() {
+ // Ä£Äâ»áÔ±×´Ì¬¼ì²é
+ const isVipMember = false; // ¸ù¾İÓÃ»§µÇÂ¼×´Ì¬¶¯Ì¬ÉèÖÃ
+ 
+ // »áÔ±×¨Ïí¿Î³Ìµã»÷´¦Àí
+ const lockedLessons = document.querySelectorAll('.lesson-preview.locked');
+ 
+ lockedLessons.forEach(lesson => {
+ lesson.addEventListener('click', function(e) {
+ if (!isVipMember) {
+ e.preventDefault();
+ alert('¸Ã¿Î³ÌÎª»áÔ±×¨ÏíÄÚÈİ£¬ÇëÏÈ¼ÓÈë»áÔ±£¡');
+ }
+ });
+ });
+ });
+ </script></body></html>
 
-        <article class="guide-content">
-            <div class="guide-meta">
-                <span class="guide-date">æœ€è¿‘æ›´æ–°ï¼š2025å¹´2æœˆ8æ—¥</span>
-                <span class="separator">|</span>
-                <span class="guide-author">è®²å¸ˆï¼šç‹ä¸½</span>
-                <span class="separator">|</span>
-                <span class="guide-lessons">æ€»è¯¾æ—¶ï¼š10èŠ‚</span>
-                <span class="separator">|</span>
-                <span class="guide-level">éš¾åº¦ï¼šé«˜çº§</span>
-            </div>
-
-            <img src="../images/ai-tools.png" alt="AIè¾…åŠ©å†…å®¹åˆ›ä½œ" class="guide-image">
-
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <div class="progress-stats">
-                    <span>å·²å®Œæˆ: 15%</span>
-                    <span>å…±10è¯¾æ—¶</span>
-                </div>
-            </div>
-
-            <h2>è¯¾ç¨‹ç®€ä»‹</h2>
-            <p>åœ¨å½“ä»Šç«äº‰æ¿€çƒˆçš„æ•°å­—è¥é”€ç¯å¢ƒä¸­ï¼Œä»…ä»…åˆ›ä½œé«˜è´¨é‡å†…å®¹å·²ç»ä¸å¤Ÿï¼Œå†…å®¹å¿…é¡»èƒ½å¤Ÿæœ‰æ•ˆè½¬åŒ–ç”¨æˆ·ã€‚æœ¬è¯¾ç¨‹å°†æ·±å…¥æ¢è®¨å¦‚ä½•ç»“åˆAIæŠ€æœ¯ä¸äººç±»åˆ›æ„ï¼Œæ‰“é€ ä¸ä»…å¸å¼•çœ¼çƒï¼Œæ›´èƒ½æé«˜è½¬åŒ–ç‡çš„è¥é”€å†…å®¹ã€‚</p>
-            <p>é€šè¿‡ç³»ç»Ÿå­¦ä¹ AIè¾…åŠ©å†…å®¹åˆ›ä½œçš„é«˜çº§æŠ€å·§ï¼Œä½ å°†æŒæ¡å¦‚ä½•åˆ©ç”¨å¤§è¯­è¨€æ¨¡å‹æå‡å†…å®¹è´¨é‡ï¼ŒåŒæ—¶ä¿æŒå“ç‰Œç‹¬ç‰¹æ€§å’Œäººæ–‡æ¸©åº¦ï¼Œæœ€ç»ˆå®ç°æ›´é«˜çš„è¥é”€ROIã€‚</p>
-
-            <div class="conversion-highlight">
-                <h3 class="conversion-title">ä¸ºä»€ä¹ˆAIå†…å®¹åˆ›ä½œèƒ½æå‡è½¬åŒ–ç‡ï¼Ÿ</h3>
-                <p>æ ¹æ®æˆ‘ä»¬çš„ç ”ç©¶ï¼Œæ­£ç¡®åº”ç”¨AIå†…å®¹åˆ›ä½œç­–ç•¥çš„å…¬å¸å¹³å‡æå‡äº†48%çš„å†…å®¹è½¬åŒ–ç‡ï¼Œ67%çš„å†…å®¹ç”Ÿäº§æ•ˆç‡ï¼ŒåŒæ—¶é™ä½äº†35%çš„å†…å®¹åˆ›ä½œæˆæœ¬ã€‚AIä¸ä»…èƒ½å¸®åŠ©åˆ¶ä½œæ›´å¤šå†…å®¹ï¼Œæ›´èƒ½é€šè¿‡æ•°æ®åˆ†æå’Œæ¨¡å¼è¯†åˆ«ï¼Œå¸®ä½ åˆ¶ä½œæ›´èƒ½æ‰“åŠ¨ç›®æ ‡å—ä¼—çš„å†…å®¹ã€‚</p>
-            </div>
-
-            <div class="course-module">
-                <div class="module-title">æ¨¡å—ä¸€ï¼šå†…å®¹è½¬åŒ–çš„æ ¸å¿ƒåŸç†ï¼ˆéƒ¨åˆ†å…è´¹ï¼‰</div>
-                <p>äº†è§£ä»€ä¹ˆæ ·çš„å†…å®¹èƒ½å¤Ÿè§¦å‘ç”¨æˆ·è¡ŒåŠ¨ï¼Œä»¥åŠå¦‚ä½•é€šè¿‡AIæŠ€æœ¯å¢å¼ºå†…å®¹çš„è½¬åŒ–èƒ½åŠ›ã€‚</p>
-                <ul class="lesson-list">
-                    <li class="lesson-item">
-                        <div class="lesson-number">1</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">è§£æé«˜è½¬åŒ–å†…å®¹çš„æ ¸å¿ƒè¦ç´ ä¸å¿ƒç†è§¦å‘ç‚¹</div>
-                            <div class="lesson-duration">æ—¶é•¿: 28åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview">å…è´¹å­¦ä¹ </a>
-                    </li>
-                    <li class="lesson-item">
-                        <div class="lesson-number">2</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">AIä¸äººç±»åˆ›ä½œçš„å®Œç¾ç»“åˆï¼šå„è‡ªä¼˜åŠ¿ä¸ååŒæ–¹æ³•</div>
-                            <div class="lesson-duration">æ—¶é•¿: 32åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                    <li class="lesson-item">
-                        <div class="lesson-number">3</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">è½¬åŒ–æ¼æ–—ä¸­çš„å†…å®¹ç­–ç•¥ä¸AIåº”ç”¨</div>
-                            <div class="lesson-duration">æ—¶é•¿: 35åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="course-module">
-                <div class="module-title">æ¨¡å—äºŒï¼šAIè¾…åŠ©çš„é«˜è½¬åŒ–å†…å®¹åˆ›ä½œå®æˆ˜</div>
-                <p>æŒæ¡ä½¿ç”¨AIå·¥å…·åˆ›å»ºä¸åŒç±»å‹é«˜è½¬åŒ–ç‡å†…å®¹çš„å®æˆ˜æŠ€å·§å’Œæµç¨‹ã€‚</p>
-                <ul class="lesson-list">
-                    <li class="lesson-item">
-                        <div class="lesson-number">4</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">ç”µå•†äº§å“æè¿°çš„AIä¼˜åŒ–ä¸è½¬åŒ–æŠ€å·§</div>
-                            <div class="lesson-duration">æ—¶é•¿: 40åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                    <li class="lesson-item">
-                        <div class="lesson-number">5</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">è¥é”€é‚®ä»¶ä¸è½åœ°é¡µçš„AIé©±åŠ¨åˆ›ä½œæµç¨‹</div>
-                            <div class="lesson-duration">æ—¶é•¿: 38åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                    <li class="lesson-item">
-                        <div class="lesson-number">6</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">AIåˆ›ä½œç¤¾äº¤åª’ä½“å†…å®¹çš„å®šåˆ¶åŒ–ä¸ä¸ªæ€§åŒ–ç­–ç•¥</div>
-                            <div class="lesson-duration">æ—¶é•¿: 35åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="course-module">
-                <div class="module-title">æ¨¡å—ä¸‰ï¼šAIå†…å®¹çš„è½¬åŒ–ç‡ä¼˜åŒ–ä¸æµ‹è¯•</div>
-                <p>å­¦ä¹ å¦‚ä½•ä½¿ç”¨æ•°æ®é©±åŠ¨æ–¹æ³•ä¸æ–­ä¼˜åŒ–AIåˆ›ä½œçš„å†…å®¹ï¼Œæé«˜è½¬åŒ–è¡¨ç°ã€‚</p>
-                <ul class="lesson-list">
-                    <li class="lesson-item">
-                        <div class="lesson-number">7</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">AIè¾…åŠ©çš„A/Bæµ‹è¯•ï¼šå¤šå˜é‡å†…å®¹ä¼˜åŒ–æ–¹æ³•</div>
-                            <div class="lesson-duration">æ—¶é•¿: 42åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                    <li class="lesson-item">
-                        <div class="lesson-number">8</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">AIå†…å®¹çš„è½¬åŒ–ç‡åˆ†æä¸è¿­ä»£ä¼˜åŒ–æµç¨‹</div>
-                            <div class="lesson-duration">æ—¶é•¿: 38åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                    <li class="lesson-item">
-                        <div class="lesson-number">9</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">æ‰“é€ é—­ç¯ä¼˜åŒ–ç³»ç»Ÿï¼šä»æ•°æ®åˆ°AIå†…å®¹è°ƒæ•´</div>
-                            <div class="lesson-duration">æ—¶é•¿: 40åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                    <li class="lesson-item">
-                        <div class="lesson-number">10</div>
-                        <div class="lesson-details">
-                            <div class="lesson-title">æœªæ¥è¶‹åŠ¿ï¼šç”Ÿæˆå¼AIä¸ä¸ªæ€§åŒ–å†…å®¹è½¬åŒ–</div>
-                            <div class="lesson-duration">æ—¶é•¿: 30åˆ†é’Ÿ</div>
-                        </div>
-                        <a href="#" class="lesson-preview locked">ä¼šå‘˜ä¸“äº«</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="case-study">
-                <h3 class="case-study-title">æ¡ˆä¾‹ç ”ç©¶ï¼šç”µå•†å¹³å°äº§å“é¡µé¢å†…å®¹ä¼˜åŒ–</h3>
-                <p>æŸçŸ¥åç”µå•†å¹³å°ä½¿ç”¨æˆ‘ä»¬çš„AIè¾…åŠ©å†…å®¹åˆ›ä½œæ–¹æ³•ï¼Œå¯¹å…¶äº§å“è¯¦æƒ…é¡µè¿›è¡Œäº†å…¨é¢ä¼˜åŒ–ã€‚é€šè¿‡ç»“åˆAIç”Ÿæˆçš„äº§å“æè¿°ä¸äººå·¥ç¼–è¾‘çš„ç²¾ç»†è°ƒæ•´ï¼Œå®ç°äº†æ˜¾è‘—çš„ä¸šç»©æå‡ã€‚</p>
-                <div class="case-study-metrics">
-                    <div class="metric">
-                        <div class="metric-value">+42%</div>
-                        <div class="metric-label">è½¬åŒ–ç‡æå‡</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">-35%</div>
-                        <div class="metric-label">å†…å®¹åˆ›ä½œæ—¶é—´</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">+28%</div>
-                        <div class="metric-label">å®¢å•ä»·æå‡</div>
-                    </div>
-                </div>
-                <p>å…³é”®æˆåŠŸå› ç´ ï¼šç²¾å‡†çš„å—ä¼—æ´å¯Ÿã€AIä¸äººå·¥çš„ååŒåˆ›ä½œæµç¨‹ã€æŒç»­çš„æ•°æ®æµ‹è¯•ä¸ä¼˜åŒ–ã€‚å®Œæ•´æ¡ˆä¾‹åˆ†æè¯·è§è¯¾ç¨‹ç¬¬5è¯¾ã€‚</p>
-            </div>
-
-            <div class="vip-banner">
-                <div class="vip-icon">âš¡</div>
-                <div class="vip-message">
-                    <h3 class="vip-title">è§£é”å…¨éƒ¨10èŠ‚é«˜çº§å†…å®¹åˆ›ä½œè¯¾ç¨‹</h3>
-                    <p class="vip-description">åŠ å…¥ä¼šå‘˜ï¼Œç«‹å³è·å–å®Œæ•´è¯¾ç¨‹ï¼ŒåŒ…æ‹¬è½¬åŒ–ç‡æå‡æ¨¡æ¿åº“ã€AIæç¤ºè¯é›†åˆä»¥åŠçœŸå®æ¡ˆä¾‹åˆ†æã€‚</p>
-                    <a href="https://t.zsxq.com/CAfds" class="vip-button">ç«‹å³åŠ å…¥ä¼šå‘˜</a>
-                </div>
-            </div>
-
-            <div class="instructor-section">
-                <h2>è®²å¸ˆä»‹ç»</h2>
-                <div class="instructor-header">
-                    <div class="instructor-info" style="margin-left: 0;">
-                        <h3 class="instructor-name">ç‹ä¸½</h3>
-                        <div class="instructor-title">å†…å®¹è¥é”€ä¸“å®¶ | AIåˆ›ä½œç­–ç•¥é¡¾é—®</div>
-                    </div>
-                </div>
-                <p class="instructor-bio">ç‹ä¸½æ‹¥æœ‰è¶…è¿‡10å¹´çš„å†…å®¹è¥é”€ç»éªŒï¼Œæ›¾ä¸ºå¤šå®¶Fortune 500å…¬å¸æä¾›å†…å®¹ç­–ç•¥å’¨è¯¢ã€‚å¥¹ä¸“æ³¨äºå°†AIæŠ€æœ¯ä¸ä¼ ç»Ÿå†…å®¹è¥é”€ç»“åˆï¼Œå¼€å‘äº†å¤šå¥—æå‡è½¬åŒ–ç‡çš„å†…å®¹åˆ›ä½œæ–¹æ³•è®ºã€‚ä½œä¸ºAIå†…å®¹åˆ›ä½œé¢†åŸŸçš„å…ˆè¡Œè€…ï¼Œå¥¹å¸®åŠ©æ•°ç™¾å®¶ä¼ä¸šå®ç°äº†å†…å®¹è¥é”€çš„è½¬å‹å‡çº§ï¼Œå¹³å‡æå‡è½¬åŒ–ç‡è¶…è¿‡40%ã€‚</p>
-            </div>
-
-            <h2>å­¦å‘˜è¯„ä»·</h2>
-            <div class="testimonials">
-                <blockquote>
-                    "è¿™é—¨è¯¾ç¨‹å½»åº•æ”¹å˜äº†æˆ‘å¯¹AIå†…å®¹åˆ›ä½œçš„è®¤çŸ¥ã€‚ç‹è€å¸ˆçš„æ–¹æ³•æ—¢å®ç”¨åˆé«˜æ•ˆï¼Œæˆ‘ä»¬å›¢é˜Ÿé‡‡ç”¨åï¼Œåšå®¢è½¬åŒ–ç‡æå‡äº†52%ï¼Œè€Œå·¥ä½œé‡å´å‡å°‘äº†è¿‘ä¸€åŠã€‚çœŸæ­£çš„è¥é”€å†…å®¹é©å‘½ï¼"
-                    <footer>â€” åˆ˜å†›ï¼ŒB2Bå†…å®¹è¥é”€æ€»ç›‘</footer>
-                </blockquote>
-                <blockquote>
-                    "ä½œä¸ºä¸€åç”µå•†è¿è¥è€…ï¼Œæˆ‘ä¸€ç›´åœ¨å¯»æ‰¾èƒ½çœŸæ­£æå‡è½¬åŒ–ç‡çš„å†…å®¹æ–¹æ³•ã€‚è¿™é—¨è¯¾ä¸ä»…æ•™ä¼šæˆ‘å¦‚ä½•ä½¿ç”¨AIå·¥å…·ï¼Œæ›´é‡è¦çš„æ˜¯å¦‚ä½•è®©AIåˆ›ä½œçš„å†…å®¹ä¿æŒäººæ€§åŒ–å¹¶è§¦å‘ç”¨æˆ·è¡ŒåŠ¨ã€‚å¼ºçƒˆæ¨èï¼"
-                    <footer>â€” èµµé›ªï¼Œè·¨å¢ƒç”µå•†è¿è¥ä¸»ç®¡</footer>
-                </blockquote>
-            </div>
-
-            <h2>å¸¸è§é—®é¢˜</h2>
-            <div class="faq-section">
-                <div class="faq-item">
-                    <h3>è¿™é—¨è¯¾ç¨‹éœ€è¦å“ªäº›å‰ç½®çŸ¥è¯†ï¼Ÿ</h3>
-                    <p>æœ¬è¯¾ç¨‹é€‚åˆå·²ç»å¯¹åŸºç¡€å†…å®¹åˆ›ä½œå’ŒAIå·¥å…·æœ‰åˆæ­¥äº†è§£çš„å­¦å‘˜ã€‚å¦‚æœä½ æ˜¯å†…å®¹è¥é”€æ–°æ‰‹ï¼Œå»ºè®®å…ˆå­¦ä¹ æˆ‘ä»¬çš„ã€Šå†…å®¹åˆ›ä½œåŸºç¡€ã€‹è¯¾ç¨‹ï¼›å¦‚æœä½ å¯¹AIå·¥å…·å®Œå…¨é™Œç”Ÿï¼Œå¯ä»¥å…ˆå­¦ä¹ ã€ŠAIæç¤ºè¯å·¥ç¨‹ã€‹è¯¾ç¨‹ã€‚</p>
-                </div>
-                <div class="faq-item">
-                    <h3>è¯¾ç¨‹ä¸­ä¼šä½¿ç”¨å“ªäº›AIå·¥å…·ï¼Ÿ</h3>
-                    <p>æˆ‘ä»¬å°†é‡ç‚¹è®²è§£å¦‚ä½•ä½¿ç”¨Claudeã€ChatGPTã€Midjourneyç­‰ä¸»æµAIå·¥å…·è¿›è¡Œå†…å®¹åˆ›ä½œï¼Œä½†è¯¾ç¨‹çš„æ ¸å¿ƒæ˜¯æ–¹æ³•è®ºè€Œéå…·ä½“å·¥å…·ï¼Œä½ å¯ä»¥åº”ç”¨è¿™äº›æ–¹æ³•åˆ°ä»»ä½•AIå·¥å…·ä¸­ã€‚</p>
-                </div>
-                <div class="faq-item">
-                    <h3>å¦‚ä½•å°†è¯¾ç¨‹çŸ¥è¯†åº”ç”¨åˆ°æˆ‘çš„å®é™…å·¥ä½œä¸­ï¼Ÿ</h3>
-                    <p>æ¯èŠ‚è¯¾éƒ½åŒ…å«è¯¦ç»†çš„å®æ“æŒ‡å—å’Œå·¥ä½œæµç¨‹ï¼Œä½ å¯ä»¥ç›´æ¥å°†å…¶åº”ç”¨åˆ°ä½ çš„å†…å®¹åˆ›ä½œè¿‡ç¨‹ä¸­ã€‚æ­¤å¤–ï¼Œä¼šå‘˜è¿˜å¯ä»¥è·å¾—ä¸“å±çš„æç¤ºè¯æ¨¡æ¿åº“å’Œæ¡ˆä¾‹åˆ†æï¼Œå¸®åŠ©ä½ æ›´å¿«åœ°å®ç°å†…å®¹è½¬åŒ–ç‡æå‡ã€‚</p>
-                </div>
-            </div>
-
-            <div class="cta-section">
-                <h2>å‡†å¤‡å¥½æå‡æ‚¨çš„å†…å®¹è½¬åŒ–ç‡äº†å—ï¼Ÿ</h2>
-                <p>åŠ å…¥å…°å¿ƒè¿è¥ç¬”è®°ä¼šå‘˜ï¼Œç«‹å³è§£é”ã€ŠAIè¾…åŠ©å†…å®¹åˆ›ä½œï¼šæå‡è½¬åŒ–ç‡çš„ç§˜è¯€ã€‹å®Œæ•´è¯¾ç¨‹ï¼Œä»¥åŠæ›´å¤šä¸“ä¸šå†…å®¹åˆ›ä½œå’Œè¿è¥èµ„æºï¼</p>
-                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary btn-large">ç«‹å³åŠ å…¥ä¼šå‘˜</a>
-            </div>
-        </article>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="../images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="footer-logo-img">
-                        <span class="footer-logo-text">å…°å¿ƒè¿è¥ç¬”è®°</span>
-                    </div>
-                    <p class="footer-description">æä¾›è·¨å¢ƒç”µå•†å’Œè§†é¢‘æ•™ç¨‹ç­‰ä¸“ä¸šå†…å®¹ï¼ŒåŠ©ä½ æˆä¸ºè¿è¥é«˜æ‰‹ã€‚</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><img src="../images/bilibili-logo.png" alt="å“”å“©å“”å“©"></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">æ”¯æŒ</h4>
-                    <ul class="footer-links">
-                        <li><a href="../about.html">å…³äºæˆ‘ä»¬</a></li>
-                        <li><a href="../contact.html">è”ç³»æˆ‘ä»¬</a></li>
-                        <li><a href="../faq.html">å¸¸è§é—®é¢˜</a></li>
-                        <li><a href="../privacy.html">éšç§æ”¿ç­–</a></li>
-                        <li><a href="../terms.html">æœåŠ¡æ¡æ¬¾</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">å…³æ³¨æˆ‘ä»¬</h4>
-                    <div class="footer-subscription">
-                        <div class="bilibili-subscription">
-                            <img src="../images/bilibili-logo.png" alt="å“”å“©å“”å“©é¢‘é“" class="footer-bilibili-img">
-                            <div class="bilibili-info">
-                                <h5 class="bilibili-title">å“”å“©å“”å“©é¢‘é“</h5>
-                                <p class="bilibili-description">ç‚¹å‡»è®¢é˜…è·å–æœ€æ–°è§†é¢‘</p>
-                            </div>
-                        </div>
-                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">å‰å¾€å“”å“©å“”å“©é¢‘é“</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="copyright">Â© 2025 å…°å¿ƒè¿è¥ç¬”è®°. ä¿ç•™æ‰€æœ‰æƒåˆ©.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // æ¨¡æ‹Ÿä¼šå‘˜çŠ¶æ€æ£€æŸ¥
-            const isVipMember = false; // æ ¹æ®ç”¨æˆ·ç™»å½•çŠ¶æ€åŠ¨æ€è®¾ç½®
-            
-            // ä¼šå‘˜ä¸“äº«è¯¾ç¨‹ç‚¹å‡»å¤„ç†
-            const lockedLessons = document.querySelectorAll('.lesson-preview.locked');
-            
-            lockedLessons.forEach(lesson => {
-                lesson.addEventListener('click', function(e) {
-                    if (!isVipMember) {
-                        e.preventDefault();
-                        alert('è¯¥è¯¾ç¨‹ä¸ºä¼šå‘˜ä¸“äº«å†…å®¹ï¼Œè¯·å…ˆåŠ å…¥ä¼šå‘˜ï¼');
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
