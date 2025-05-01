@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head>
+﻿<!DOCTYPE html><html lang="zh-CN"><head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
 <script>
@@ -7,61 +7,78 @@
   gtag('js', new Date());
 
   gtag('config', 'G-KNR4KPK379');
-</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>�������� - ������Ӫ�ʼ�</title><script>
- // �����վ���������û���·��
+</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>About Us - Lan Xin Notes</title><script>
+ // 检测网站环境并设置基础路径
  function detectEnvironment() {
  const hostname = window.location.hostname;
  const isGitHubPages = hostname.includes('github.io');
  const isCustomDomain = hostname === 'lanxinnotes.com';
  const pathname = window.location.pathname;
  
- // ����meta��ǩ��¼������Ϣ
+ // 创建meta标签记录环境信息
  const metaEnv = document.createElement('meta');
  metaEnv.name = 'website-environment';
  
  if (isGitHubPages) {
- // GitHub Pages����
+ // GitHub Pages环境
  const repoName = pathname.split('/')[1];
  
- // ����base��ǩ
+ // 创建base标签
  const baseTag = document.createElement('base');
  baseTag.href = '/' + repoName + '/';
  document.head.appendChild(baseTag);
  
  metaEnv.content = 'github-pages';
- console.log('GitHub Pages �����Ѽ�⣬����·��������Ϊ:', baseTag.href);
+ console.log('GitHub Pages 环境已检测，基础路径已设置为:', baseTag.href);
  } else if (isCustomDomain) {
- // �Զ�����������
+ // 自定义域名环境
  const baseTag = document.createElement('base');
  baseTag.href = '/';
  document.head.appendChild(baseTag);
  
  metaEnv.content = 'custom-domain';
- console.log('�Զ������������Ѽ�⣬����·��������Ϊ: /');
+ console.log('自定义域名环境已检测，基础路径已设置为: /');
  } else {
- // ���ؿ�������
+ // 本地开发环境
  metaEnv.content = 'local-development';
- console.log('���ؿ��������Ѽ��');
+ console.log('本地开发环境已检测');
  }
  
  document.head.appendChild(metaEnv);
  }
  
- // ִ�л������
+ // 执行环境检测
  detectEnvironment();
  </script><script>
- // ���������Ƿ�֧��Service Worker
+ // 检查浏览器是否支持Service Worker
  if ('serviceWorker' in navigator) {
  window.addEventListener('load', () => {
- // ע��Service Worker
+ // 注册Service Worker
  navigator.serviceWorker.register('./service-worker.js')
  .then(registration => {
- console.log('Service Worker ע��ɹ�����Χ:', registration.scope);
+ console.log('Service Worker 注册成功，范围:', registration.scope);
  })
  .catch(error => {
- console.error('Service Worker ע��ʧ��:', error);
+ console.error('Service Worker 注册失败:', error);
  });
  });
  }
- </script><link rel="stylesheet" href="styles.css"><script src="script.js" defer></script></head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="������Ӫ�ʼ�" class="logo-img" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">������Ӫ�ʼ�</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="ai-tools.html" class="nav-link">AI���� <span class="dropdown-arrow">��</span></a></div><div class="nav-item dropdown"><a href="ecommerce.html" class="nav-link">�羳���� <span class="dropdown-arrow">��</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link">��Ƶ�̳� <span class="dropdown-arrow">��</span></a></div><a href="https://space.bilibili.com/1798377475" class="nav-link bilibili">��������</a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">��¼</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary">�����Ա</a></div></div></header><main><section class="page-header"><div class="container"><h1 class="page-title">��������</h1><p class="page-description">������Ӫ�ʼ� - �����Ӫ�ɳ����</p></div></section><section class="about-section"><div class="container"><div class="about-content"><div class="about-image"><img src="images/lanxin-logo.png" alt="������Ӫ�ʼ�" class="about-img" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);" loading="lazy"></div><div class="about-text"><h2 class="section-title">���ǵĹ���</h2><p>������Ӫ�ʼǳ�����2022�꣬��һ��רע����Ӫ֪ʶ������ƽ̨�����ǵĴ�ʼ������ӵ�г���10�����Ӫ���飬����ְ�ڶ��֪����������˾���������ʮ���羳������Ŀ�����ݴ�����Ŀ��</p><p>�Ŷӳ�Ա���Բ�ͬ����ҵ�����������羳����ר�ҡ����ݴ�����ʦ��AI�����о�Ա����ƵӪ�����ʣ���ͬ������Ϊ�����Ӫ��ҵ�ߺʹ�ҵ���ṩʵ����ǰ�ص���Ӫ֪ʶ��</p><p>���ǵ�Ŀ����ͨ��רҵ����Ӫ�ʼǡ�ʵս����������ǰ�ع��߽��ܣ�����ÿһλѧϰ��������Ӫ���������ʵ�ʹ����е����⣬ʵ�ָ��˺���ҵ�ĳɳ���</p></div></div></div></section><section class="mission-section"><div class="container"><h2 class="section-title">���ǵ�ʹ��</h2><div class="mission-cards"><div class="mission-card"><div class="mission-icon"><i class="mission-icon-knowledge"></i></div><h3 class="mission-title">����רҵ֪ʶ</h3><p class="mission-description">���������ڽ�רҵ��ʵ�õ���Ӫ֪ʶ�;���ϵͳ���ط�����ÿһλ�������ѧϰ�ߡ�</p></div><div class="mission-card"><div class="mission-icon"><i class="mission-icon-growth"></i></div><h3 class="mission-title">�ٽ������ɳ�</h3><p class="mission-description">ͨ��ʵս�����Ϳɲ����ķ����ۣ�����ѧϰ������������Ӫ���ܣ�����ְҵ��������</p></div><div class="mission-card"><div class="mission-icon"><i class="mission-icon-community"></i></div><h3 class="mission-title">����ѧϰ����</h3><p class="mission-description">�һ�����š�������ѧϰ�������ٽ�֪ʶ��������Դ��������ͬ�ɳ���</p></div></div></div></section><section class="team-section"><div class="container"><h2 class="section-title">�����Ŷ�</h2><div class="team-members"><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">����</h3><p class="member-role">��ʼ�� & ��ϯ���ݹ�</p><p class="member-description">10+����Ӫ���飬����֪���羳����ƽ̨�����ܼ࣬�ó����ݲ��ԺͿ羳������Ӫ��</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">����</h3><p class="member-role">AI�����о�Ա</p><p class="member-description">ǰĳ����AI��˾��Ʒ������רע��AI��������Ӫ�����Ӧ���о������ʵ��������</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">�</h3><p class="member-role">�羳���̹���</p><p class="member-description">7������ѷ��Ӫ���飬�����������ҵʵ�ְ����������۶������Ӫʵսר�ҡ�</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">����</h3><p class="member-role">��ƵӪ��ָ��</p><p class="member-description">YouTube�Ͷ������ݴ����ߣ�50��+��˿���ó�����Ƶ���Ժ�����Ӫ����</p></div></div></div></section><section class="join-community"><div class="container"><div class="community-content"><h2 class="community-title">��Ϊ������Ӫ�ʼǻ�Ա</h2><p class="community-description">�������ǵĻ�Ա��������ȡ�������ݡ�ʵս�̳̺�רҵָ��</p><div class="community-stats"><div class="stat-item"><span class="stat-value">5,000+</span><span class="stat-label">������Ա</span></div><div class="stat-item"><span class="stat-value">200+</span><span class="stat-label">רҵ�̳�</span></div><div class="stat-item"><span class="stat-value">ÿ��</span><span class="stat-label">���Ϸ�����</span></div></div><a href="https://t.zsxq.com/CAfds" class="btn btn-primary community-btn">���������Ա</a></div></div></section><div class="video-tutorial"><video controls><source src="��Ƶ·��.mp4" type="video/mp4"></video></div></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="������Ӫ�ʼ�" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy"><span class="footer-logo-text">������Ӫ�ʼ�</span></div><p class="footer-description">�ṩ�羳���̺���Ƶ�̵̳�רҵ���ݣ������Ϊ��Ӫ���֡�</p></div><div class="footer-column"><h4 class="footer-heading">֧��</h4><ul class="footer-links"><li><a href="about.html">��������</a></li><li><a href="contact.html">��ϵ����</a></li><li><a href="faq.html">��������</a></li><li><a href="privacy.html">��˽����</a></li><li><a href="terms.html">��������</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">��ע����</h4><div class="footer-subscription"><div class="bilibili-subscription"><div class="bilibili-info"><h5 class="bilibili-title">��������Ƶ��</h5><p class="bilibili-description">�����ע��ȡ������Ƶ</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">ǰ����������Ƶ��</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 ������Ӫ�ʼ�. ��������Ȩ��.</p></div></div></footer></body></html> 
+ </script><link rel="stylesheet" href="styles.css"><script src="script.js" defer></script><meta name="description" content="Learn about the Lan Xin Notes team, mission and values. We are committed to providing high-quality content and tools for operators.">
+<meta name="keywords" content="Lan Xin Notes,about us,operation team,company introduction">
+<link rel="canonical" href="https://lanxinnotes.com/about.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Lan Xin Notes",
+  "url": "https://lanxinnotes.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://lanxinnotes.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+</head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">兰心运营笔记</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="ai-tools.html" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a></div><div class="nav-item dropdown"><a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link">视频教程 <span class="dropdown-arrow">▼</span></a></div><a href="https://space.bilibili.com/1798377475" class="nav-link bilibili">哔哩哔哩</a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">登录</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员</a></div></div></header><main><section class="page-header"><div class="container"><h1 class="page-title">关于我们</h1><p class="page-description">兰心运营笔记 - 你的运营成长伙伴</p></div></section><section class="about-section"><div class="container"><div class="about-content"><div class="about-image"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="about-img" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);" loading="lazy"></div><div class="about-text"><h2 class="section-title">我们的故事</h2><p>兰心运营笔记成立于2022年，是一个专注于运营知识分享的平台。我们的创始人兰心拥有超过10年的运营经验，曾任职于多家知名互联网公司，负责过数十个跨境电商项目和内容创作项目。</p><p>团队成员来自不同的行业背景，包括跨境电商专家、内容创作导师、AI工具研究员和视频营销顾问，共同致力于为广大运营从业者和创业者提供实用且前沿的运营知识。</p><p>我们的目标是通过专业的运营笔记、实战案例分析和前沿工具介绍，帮助每一位学习者提升运营能力，解决实际工作中的问题，实现个人和企业的成长。</p></div></div></div></section><section class="mission-section"><div class="container"><h2 class="section-title">我们的使命</h2><div class="mission-cards"><div class="mission-card"><div class="mission-icon"><i class="mission-icon-knowledge"></i></div><h3 class="mission-title">分享专业知识</h3><p class="mission-description">我们致力于将专业、实用的运营知识和经验系统化地分享给每一位有需求的学习者。</p></div><div class="mission-card"><div class="mission-icon"><i class="mission-icon-growth"></i></div><h3 class="mission-title">促进能力成长</h3><p class="mission-description">通过实战案例和可操作的方法论，帮助学习者真正掌握运营技能，提升职业竞争力。</p></div><div class="mission-card"><div class="mission-icon"><i class="mission-icon-community"></i></div><h3 class="mission-title">构建学习社区</h3><p class="mission-description">搭建一个开放、互助的学习社区，促进知识交流和资源共享，共同成长。</p></div></div></div></section><section class="team-section"><div class="container"><h2 class="section-title">核心团队</h2><div class="team-members"><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">兰心</h3><p class="member-role">创始人 & 首席内容官</p><p class="member-description">10+年运营经验，曾任知名跨境电商平台内容总监，擅长内容策略和跨境电商运营。</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">张明</h3><p class="member-role">AI工具研究员</p><p class="member-description">前某大型AI公司产品经理，专注于AI工具在运营领域的应用研究和最佳实践分享。</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">李华</h3><p class="member-role">跨境电商顾问</p><p class="member-description">7年亚马逊运营经验，曾帮助多家企业实现百万美金销售额，电商运营实战专家。</p></div><div class="team-member"><div class="member-avatar"></div><h3 class="member-name">王芳</h3><p class="member-role">视频营销指导</p><p class="member-description">YouTube和抖音内容创作者，50万+粉丝，擅长短视频策略和内容营销。</p></div></div></div></section><section class="join-community"><div class="container"><div class="community-content"><h2 class="community-title">成为兰心运营笔记会员</h2><p class="community-description">加入我们的会员社区，获取独家内容、实战教程和专业指导</p><div class="community-stats"><div class="stat-item"><span class="stat-value">5,000+</span><span class="stat-label">社区成员</span></div><div class="stat-item"><span class="stat-value">200+</span><span class="stat-label">专业教程</span></div><div class="stat-item"><span class="stat-value">每周</span><span class="stat-label">线上分享会</span></div></div><a href="https://t.zsxq.com/CAfds" class="btn btn-primary community-btn">立即加入会员</a></div></div></section><div class="video-tutorial"><video controls><source src="视频路径.mp4" type="video/mp4"></video></div></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy"><span class="footer-logo-text">兰心运营笔记</span></div><p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p></div><div class="footer-column"><h4 class="footer-heading">支持</h4><ul class="footer-links"><li><a href="about.html">关于我们</a></li><li><a href="contact.html">联系我们</a></li><li><a href="faq.html">常见问题</a></li><li><a href="privacy.html">隐私政策</a></li><li><a href="terms.html">服务条款</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">关注我们</h4><div class="footer-subscription"><div class="bilibili-subscription"><div class="bilibili-info"><h5 class="bilibili-title">哔哩哔哩频道</h5><p class="bilibili-description">点击关注获取最新视频</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">前往哔哩哔哩频道</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 兰心运营笔记. 保留所有权利.</p></div></div></footer></body></html> 
+
 

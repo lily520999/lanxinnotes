@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head>
+ï»¿<!DOCTYPE html><html lang="zh-CN"><head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
 <script>
@@ -7,63 +7,63 @@
   gtag('js', new Date());
 
   gtag('config', 'G-KNR4KPK379');
-</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>À¼ĞÄÔËÓª±Ê¼Ç - ÌáÉıÔËÓªĞ§ÂÊµÄ×¨ÒµÆ½Ì¨</title><script>
- // ¼ì²âÍøÕ¾»·¾³²¢ÉèÖÃ»ù´¡Â·¾¶
+</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>Lan Xin Notes - Professional Operation Platform</title><script>
+ // æ£€æµ‹ç½‘ç«™ç¯å¢ƒå¹¶è®¾ç½®åŸºç¡€è·¯å¾„
  function detectEnvironment() {
  const hostname = window.location.hostname;
  const isGitHubPages = hostname.includes('github.io');
  const isCustomDomain = hostname === 'lanxinnotes.com' || hostname === 'www.lanxinnotes.com';
  const pathname = window.location.pathname;
  
- console.log('µ±Ç°»·¾³ĞÅÏ¢ - Ö÷»úÃû:', hostname, 'Â·¾¶Ãû:', pathname);
+ console.log('å½“å‰ç¯å¢ƒä¿¡æ¯ - ä¸»æœºå:', hostname, 'è·¯å¾„å:', pathname);
  
- // ´´½¨meta±êÇ©¼ÇÂ¼»·¾³ĞÅÏ¢
+ // åˆ›å»ºmetaæ ‡ç­¾è®°å½•ç¯å¢ƒä¿¡æ¯
  const metaEnv = document.createElement('meta');
  metaEnv.name = 'website-environment';
  
- // ÒÆ³ı¿ÉÄÜ´æÔÚµÄÖØ¸´base±êÇ©
+ // ç§»é™¤å¯èƒ½å­˜åœ¨çš„é‡å¤baseæ ‡ç­¾
  const existingBase = document.querySelector('base');
  if (existingBase) {
  existingBase.remove();
  }
  
  if (isGitHubPages) {
- // GitHub Pages»·¾³
+ // GitHub Pagesç¯å¢ƒ
  const repoName = pathname.split('/')[1];
  
- // ´´½¨base±êÇ©
+ // åˆ›å»ºbaseæ ‡ç­¾
  const baseTag = document.createElement('base');
  baseTag.href = '/' + repoName + '/';
  document.head.appendChild(baseTag);
  
  metaEnv.content = 'github-pages';
- console.log('GitHub Pages »·¾³ÒÑ¼ì²â£¬»ù´¡Â·¾¶ÒÑÉèÖÃÎª:', baseTag.href);
+ console.log('GitHub Pages ç¯å¢ƒå·²æ£€æµ‹ï¼ŒåŸºç¡€è·¯å¾„å·²è®¾ç½®ä¸º:', baseTag.href);
  
- // Ìí¼Ó»·¾³±äÁ¿µ½window¶ÔÏó
+ // æ·»åŠ ç¯å¢ƒå˜é‡åˆ°windowå¯¹è±¡
  window.siteEnvironment = 'github-pages';
  window.siteBasePath = '/' + repoName + '/';
  } else if (isCustomDomain) {
- // ×Ô¶¨ÒåÓòÃû»·¾³
+ // è‡ªå®šä¹‰åŸŸåç¯å¢ƒ
  const baseTag = document.createElement('base');
  baseTag.href = '/';
  document.head.appendChild(baseTag);
  
  metaEnv.content = 'custom-domain';
- console.log('×Ô¶¨ÒåÓòÃû»·¾³ÒÑ¼ì²â£¬»ù´¡Â·¾¶ÒÑÉèÖÃÎª: /');
+ console.log('è‡ªå®šä¹‰åŸŸåç¯å¢ƒå·²æ£€æµ‹ï¼ŒåŸºç¡€è·¯å¾„å·²è®¾ç½®ä¸º: /');
  
- // Ìí¼Ó»·¾³±äÁ¿µ½window¶ÔÏó
+ // æ·»åŠ ç¯å¢ƒå˜é‡åˆ°windowå¯¹è±¡
  window.siteEnvironment = 'custom-domain';
  window.siteBasePath = '/';
  } else {
- // ±¾µØ¿ª·¢»·¾³»òÆäËû»·¾³
+ // æœ¬åœ°å¼€å‘ç¯å¢ƒæˆ–å…¶ä»–ç¯å¢ƒ
  metaEnv.content = 'local-development';
- console.log('±¾µØ¿ª·¢»·¾³ÒÑ¼ì²â');
+ console.log('æœ¬åœ°å¼€å‘ç¯å¢ƒå·²æ£€æµ‹');
  
- // Ìí¼Ó»·¾³±äÁ¿µ½window¶ÔÏó
+ // æ·»åŠ ç¯å¢ƒå˜é‡åˆ°windowå¯¹è±¡
  window.siteEnvironment = 'local-development';
  window.siteBasePath = './';
  
- // ´´½¨base±êÇ©È·±£±¾µØ×ÊÔ´ÕıÈ·¼ÓÔØ
+ // åˆ›å»ºbaseæ ‡ç­¾ç¡®ä¿æœ¬åœ°èµ„æºæ­£ç¡®åŠ è½½
  const baseTag = document.createElement('base');
  baseTag.href = './';
  document.head.appendChild(baseTag);
@@ -72,13 +72,13 @@
  document.head.appendChild(metaEnv);
  }
  
- // Ö´ĞĞ»·¾³¼ì²â
+ // æ‰§è¡Œç¯å¢ƒæ£€æµ‹
  detectEnvironment();
  </script><script>
- // ¼ì²éä¯ÀÀÆ÷ÊÇ·ñÖ§³ÖService Worker
+ // æ£€æŸ¥æµè§ˆå™¨æ˜¯å¦æ”¯æŒService Worker
  if ('serviceWorker' in navigator) {
  window.addEventListener('load', () => {
- // »ñÈ¡Service WorkerÂ·¾¶
+ // è·å–Service Workerè·¯å¾„
  let swPath = './service-worker.js';
  if (window.siteEnvironment === 'github-pages') {
  swPath = window.siteBasePath + 'service-worker.js';
@@ -86,13 +86,13 @@
  swPath = '/service-worker.js';
  }
  
- // ×¢²áService Worker
+ // æ³¨å†ŒService Worker
  navigator.serviceWorker.register(swPath)
  .then(registration => {
- console.log('Service Worker ×¢²á³É¹¦£¬·¶Î§:', registration.scope);
+ console.log('Service Worker æ³¨å†ŒæˆåŠŸï¼ŒèŒƒå›´:', registration.scope);
  })
  .catch(error => {
- console.error('Service Worker ×¢²áÊ§°Ü:', error);
+ console.error('Service Worker æ³¨å†Œå¤±è´¥:', error);
  });
  });
  }
@@ -114,7 +114,7 @@
  max-width: 100%;
  height: auto;
  }
- /* Ê×ÆÁÄÚÈİ»ù±¾ÑùÊ½ */
+ /* é¦–å±å†…å®¹åŸºæœ¬æ ·å¼ */
  .header {
  background-color: white;
  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -134,5 +134,34 @@
  }
  </style><link rel="stylesheet" href="styles.css"><script src="script.js" defer></script>    <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="script.js" as="script">
-</head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">À¼ĞÄÔËÓª±Ê¼Ç</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="#" class="nav-link">AI¹¤¾ß <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="ecommerce.html" class="nav-link">¿ç¾³µçÉÌ <span class="dropdown-arrow">¨‹</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">ÊÓÆµ½Ì³Ì <span class="dropdown-arrow">¨‹</span></a></div><a href="faq.html" class="nav-link">³£¼ûÎÊÌâ</a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">µÇÂ¼</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">¼ÓÈë»áÔ±(1565Ôª/Äê)</a></div></div></header><main><section class="hero"><div class="container hero-container"><div class="hero-text"><h1 class="hero-title">ÌáÉıÄãµÄ<span class="highlight">ÔËÓªĞ§ÂÊ</span><br>Ì½Ë÷×¨Òµ<span class="highlight">ÔËÓª±Ê¼Ç</span></h1><p class="hero-description">»ã¾ÛAI¹¤¾ß¡¢¿ç¾³µçÉÌºÍ×¨Òµ½Ì³Ì£¬ÖúÄãÕÆÎÕÔËÓªºËĞÄ¼¼ÄÜ£¬ÌáÉıÒµÎñÔö³¤¡£</p><div class="hero-buttons"><a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">Á¢¼´¼ÓÈë»áÔ±</a><a href="hot-courses.html" class="btn btn-secondary">ä¯ÀÀÈÈÃÅ½Ì³Ì</a></div></div><div class="hero-image"><img src="images/lanxin-logo.png" alt="ÔËÓª×¨¼Ò" class="hero-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/300';" loading="lazy"></div></div></section><section class="categories"><div class="container"><h2 class="section-title">ÄÚÈİ·ÖÀà</h2><p class="section-description">Ì½Ë÷·á¸»¶àÔªµÄÄÚÈİ·ÖÀà£¬¸ù¾İÄãµÄĞèÇóÑ¡ÔñĞËÈ¤µÄÁìÓò½øĞĞÉîÈëÑ§Ï°¡£</p><div class="category-grid"><div class="category-card"><div class="category-image"><img src="images/ai-tools.png" alt="AI¹¤¾ß" class="category-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=AI¹¤¾ß';" loading="lazy"></div><div class="category-content"><h3 class="category-title">AI¹¤¾ß</h3><p class="category-description">×îĞÂAI¹¤¾ßÆÀ²âÓëÊ¹ÓÃÖ¸ÄÏ£¬ÌáÉıĞ§ÂÊµÄ±Ø±¸ÖúÊÖ¡£</p><div class="category-tags"><span class="tag">ÄÚÈİ´´×÷</span><span class="tag">Êı¾İ·ÖÎö</span><span class="tag">Éç½»Ã½Ìå</span></div><a href="ai-tools.html" class="category-link">²é¿´È«²¿ ¡ú</a></div></div><div class="category-card"><div class="category-image"><img src="images/ecommerce.png" alt="¿ç¾³µçÉÌ" class="category-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=¿ç¾³µçÉÌ';" loading="lazy"></div><div class="category-content"><h3 class="category-title">¿ç¾³µçÉÌ</h3><p class="category-description">¿ç¾³µçÉÌÆ½Ì¨Ñ¡Ôñ¡¢ÔËÓª²ßÂÔÓëÊµÕ½°¸Àı·ÖÎö¡£</p><div class="category-tags"><span class="tag">ÑÇÂíÑ·</span><span class="tag">TikTok Shop</span><span class="tag">Shopify</span></div><a href="ecommerce.html" class="category-link">²é¿´È«²¿ ¡ú</a></div></div><div class="category-card"><div class="category-image"><img src="images/video-courses.jpg" alt="ÊÓÆµ½Ì³Ì" class="category-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=ÊÓÆµ½Ì³Ì';" loading="lazy"></div><div class="category-content"><h3 class="category-title">ÊÓÆµ½Ì³Ì</h3><p class="category-description">×¨ÒµÊÓÆµ½Ì³Ì£¬´ÓÈëÃÅµ½¾«Í¨µÄÔËÓª¼¼ÄÜÑ§Ï°¡£</p><div class="category-tags"><span class="tag">AI¹¤¾ß</span><span class="tag">¿ç¾³µçÉÌ</span><span class="tag">ÊÓÆµÓªÏú</span></div><a href="https://space.bilibili.com/1798377475" class="category-link" target="_blank">²é¿´È«²¿ ¡ú</a></div></div></div></div></section><section class="featured-articles"><div class="container"><div class="section-header"><h2 class="section-title">¾«Ñ¡ÎÄÕÂ</h2><a href="articles.html" class="view-all">²é¿´È«²¿ ¡ú</a></div><div class="article-grid"><article class="article-card no-image"><div class="article-tag">AI¹¤¾ß</div><div class="article-content"><h3 class="article-title">2025Äê×îÖµµÃ¹Ø×¢µÄ10¿îAIÔËÓª¹¤¾ß</h3><p class="article-excerpt">AIÕıÔÚ¸Ä±äÔËÓª·½Ê½£¬ÕâĞ©¹¤¾ß½«°ïÖúÄãÌáÉıĞ§ÂÊ£¬½µµÍÔËÓª³É±¾...</p><div class="article-meta"><span class="article-date">2025/2/15</span><span class="article-read-time">8·ÖÖÓ</span></div></div></article><article class="article-card no-image"><div class="article-tag">¿ç¾³µçÉÌ</div><div class="article-content"><h3 class="article-title">ÑÇÂíÑ·¿ç¾³µçÉÌÑ¡Æ·²ßÂÔÍêÈ«Ö¸ÄÏ</h3><p class="article-excerpt">ÈçºÎÔÚ¾ºÕù¼¤ÁÒµÄÑÇÂíÑ·Æ½Ì¨ÕÒµ½¸ßÓ¯ÀûµÄ²úÆ·£¿±¾ÎÄÌá¹©ÊµÓÃÑ¡Æ·²ßÂÔ...</p><div class="article-meta"><span class="article-date">2025/2/10</span><span class="article-read-time">12·ÖÖÓ</span></div></div></article><article class="article-card no-image"><div class="article-tag">ÊÓÆµ½Ì³Ì</div><div class="article-content"><h3 class="article-title">´ÓÁã¿ªÊ¼Ñ§ÊÓÆµÓªÏú£ºÄÚÈİ²ß»®µ½Êı¾İ·ÖÎö</h3><p class="article-excerpt">ÊÓÆµÄÚÈİÒÑ³ÉÎªµ±½ñÓªÏúµÄÖ÷Á÷£¬Ñ§Ï°ÈçºÎ²ß»®¡¢ÖÆ×÷ºÍ·ÖÎöÊÓÆµÓªÏúĞ§¹û...</p><div class="article-meta"><span class="article-date">2025/2/5</span><span class="article-read-time">15·ÖÖÓ</span></div></div></article><article class="article-card no-image"><div class="article-tag">»áÔ±ÔËÓª</div><div class="article-content"><h3 class="article-title">»áÔ±ÔËÓªÊµÕ½£ºÈçºÎÌá¸ßÁô´æÂÊºÍ¸´¹ºÂÊ</h3><p class="article-excerpt">»áÔ±ÔËÓªÊÇÆóÒµÔö³¤µÄºËĞÄ£¬±¾ÎÄ·ÖÏíÈçºÎ½¨Á¢ÓĞĞ§µÄ»áÔ±ÔËÓªÌåÏµ...</p><div class="article-meta"><span class="article-date">2025/1/28</span><span class="article-read-time">10·ÖÖÓ</span></div></div></article></div></div></section></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="À¼ĞÄÔËÓª±Ê¼Ç" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy"><span class="footer-logo-text">À¼ĞÄÔËÓª±Ê¼Ç</span></div><p class="footer-description">Ìá¹©¿ç¾³µçÉÌºÍÊÓÆµ½Ì³ÌµÈ×¨ÒµÄÚÈİ£¬ÖúÄã³ÉÎªÔËÓª¸ßÊÖ¡£</p></div><div class="footer-column"><h4 class="footer-heading">Ö§³Ö</h4><ul class="footer-links"><li><a href="about.html">¹ØÓÚÎÒÃÇ</a></li><li><a href="contact.html">ÁªÏµÎÒÃÇ</a></li><li><a href="faq.html">³£¼ûÎÊÌâ</a></li><li><a href="privacy.html">ÒşË½Õş²ß</a></li><li><a href="terms.html">·şÎñÌõ¿î</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">¹Ø×¢ÎÒÃÇ</h4><div class="footer-subscription"><div class="bilibili-subscription"><div class="bilibili-info"><h5 class="bilibili-title">ßÙÁ¨ßÙÁ¨ÆµµÀ</h5><p class="bilibili-description">µã»÷¹Ø×¢»ñÈ¡×îĞÂÊÓÆµ</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Ç°ÍùßÙÁ¨ßÙÁ¨ÆµµÀ</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 À¼ĞÄÔËÓª±Ê¼Ç. ±£ÁôËùÓĞÈ¨Àû.</p></div></div></footer></body></html> 
+<meta name="description" content="Lan Xin Notes offers AI tools, cross-border e-commerce and professional tutorials to help you master operational skills and grow your business.">
+<meta name="keywords" content="operation,AI tools,e-commerce,video tutorials,operation efficiency,Lan Xin Notes">
+<link rel="canonical" href="https://lanxinnotes.com/index.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Lan Xin Notes",
+  "url": "https://lanxinnotes.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://lanxinnotes.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lan Xin Notes",
+  "url": "https://lanxinnotes.com",
+  "logo": "https://lanxinnotes.com/images/lanxin-logo.png",
+  "sameAs": [
+    "https://space.bilibili.com/1798377475"
+  ]
+}
+</script>
+</head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">å…°å¿ƒè¿è¥ç¬”è®°</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="#" class="nav-link">AIå·¥å…· <span class="dropdown-arrow">â–¼</span></a></div><div class="nav-item dropdown"><a href="ecommerce.html" class="nav-link">è·¨å¢ƒç”µå•† <span class="dropdown-arrow">â–¼</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">è§†é¢‘æ•™ç¨‹ <span class="dropdown-arrow">â–¼</span></a></div><a href="faq.html" class="nav-link">å¸¸è§é—®é¢˜</a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">ç™»å½•</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">åŠ å…¥ä¼šå‘˜(1565å…ƒ/å¹´)</a></div></div></header><main><section class="hero"><div class="container hero-container"><div class="hero-text"><h1 class="hero-title">æå‡ä½ çš„<span class="highlight">è¿è¥æ•ˆç‡</span><br>æ¢ç´¢ä¸“ä¸š<span class="highlight">è¿è¥ç¬”è®°</span></h1><p class="hero-description">æ±‡èšAIå·¥å…·ã€è·¨å¢ƒç”µå•†å’Œä¸“ä¸šæ•™ç¨‹ï¼ŒåŠ©ä½ æŒæ¡è¿è¥æ ¸å¿ƒæŠ€èƒ½ï¼Œæå‡ä¸šåŠ¡å¢é•¿ã€‚</p><div class="hero-buttons"><a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">ç«‹å³åŠ å…¥ä¼šå‘˜</a><a href="hot-courses.html" class="btn btn-secondary">æµè§ˆçƒ­é—¨æ•™ç¨‹</a></div></div><div class="hero-image"><img src="images/lanxin-logo.png" alt="è¿è¥ä¸“å®¶" class="hero-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/300';" loading="lazy"></div></div></section><section class="categories"><div class="container"><h2 class="section-title">å†…å®¹åˆ†ç±»</h2><p class="section-description">æ¢ç´¢ä¸°å¯Œå¤šå…ƒçš„å†…å®¹åˆ†ç±»ï¼Œæ ¹æ®ä½ çš„éœ€æ±‚é€‰æ‹©å…´è¶£çš„é¢†åŸŸè¿›è¡Œæ·±å…¥å­¦ä¹ ã€‚</p><div class="category-grid"><div class="category-card"><div class="category-image"><img src="images/ai-tools.png" alt="AIå·¥å…·" class="category-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=AIå·¥å…·';" loading="lazy"></div><div class="category-content"><h3 class="category-title">AIå·¥å…·</h3><p class="category-description">æœ€æ–°AIå·¥å…·è¯„æµ‹ä¸ä½¿ç”¨æŒ‡å—ï¼Œæå‡æ•ˆç‡çš„å¿…å¤‡åŠ©æ‰‹ã€‚</p><div class="category-tags"><span class="tag">å†…å®¹åˆ›ä½œ</span><span class="tag">æ•°æ®åˆ†æ</span><span class="tag">ç¤¾äº¤åª’ä½“</span></div><a href="ai-tools.html" class="category-link">æŸ¥çœ‹å…¨éƒ¨ â†’</a></div></div><div class="category-card"><div class="category-image"><img src="images/ecommerce.png" alt="è·¨å¢ƒç”µå•†" class="category-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=è·¨å¢ƒç”µå•†';" loading="lazy"></div><div class="category-content"><h3 class="category-title">è·¨å¢ƒç”µå•†</h3><p class="category-description">è·¨å¢ƒç”µå•†å¹³å°é€‰æ‹©ã€è¿è¥ç­–ç•¥ä¸å®æˆ˜æ¡ˆä¾‹åˆ†æã€‚</p><div class="category-tags"><span class="tag">äºšé©¬é€Š</span><span class="tag">TikTok Shop</span><span class="tag">Shopify</span></div><a href="ecommerce.html" class="category-link">æŸ¥çœ‹å…¨éƒ¨ â†’</a></div></div><div class="category-card"><div class="category-image"><img src="images/video-courses.jpg" alt="è§†é¢‘æ•™ç¨‹" class="category-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=è§†é¢‘æ•™ç¨‹';" loading="lazy"></div><div class="category-content"><h3 class="category-title">è§†é¢‘æ•™ç¨‹</h3><p class="category-description">ä¸“ä¸šè§†é¢‘æ•™ç¨‹ï¼Œä»å…¥é—¨åˆ°ç²¾é€šçš„è¿è¥æŠ€èƒ½å­¦ä¹ ã€‚</p><div class="category-tags"><span class="tag">AIå·¥å…·</span><span class="tag">è·¨å¢ƒç”µå•†</span><span class="tag">è§†é¢‘è¥é”€</span></div><a href="https://space.bilibili.com/1798377475" class="category-link" target="_blank">æŸ¥çœ‹å…¨éƒ¨ â†’</a></div></div></div></div></section><section class="featured-articles"><div class="container"><div class="section-header"><h2 class="section-title">ç²¾é€‰æ–‡ç« </h2><a href="articles.html" class="view-all">æŸ¥çœ‹å…¨éƒ¨ â†’</a></div><div class="article-grid"><article class="article-card no-image"><div class="article-tag">AIå·¥å…·</div><div class="article-content"><h3 class="article-title">2025å¹´æœ€å€¼å¾—å…³æ³¨çš„10æ¬¾AIè¿è¥å·¥å…·</h3><p class="article-excerpt">AIæ­£åœ¨æ”¹å˜è¿è¥æ–¹å¼ï¼Œè¿™äº›å·¥å…·å°†å¸®åŠ©ä½ æå‡æ•ˆç‡ï¼Œé™ä½è¿è¥æˆæœ¬...</p><div class="article-meta"><span class="article-date">2025/2/15</span><span class="article-read-time">8åˆ†é’Ÿ</span></div></div></article><article class="article-card no-image"><div class="article-tag">è·¨å¢ƒç”µå•†</div><div class="article-content"><h3 class="article-title">äºšé©¬é€Šè·¨å¢ƒç”µå•†é€‰å“ç­–ç•¥å®Œå…¨æŒ‡å—</h3><p class="article-excerpt">å¦‚ä½•åœ¨ç«äº‰æ¿€çƒˆçš„äºšé©¬é€Šå¹³å°æ‰¾åˆ°é«˜ç›ˆåˆ©çš„äº§å“ï¼Ÿæœ¬æ–‡æä¾›å®ç”¨é€‰å“ç­–ç•¥...</p><div class="article-meta"><span class="article-date">2025/2/10</span><span class="article-read-time">12åˆ†é’Ÿ</span></div></div></article><article class="article-card no-image"><div class="article-tag">è§†é¢‘æ•™ç¨‹</div><div class="article-content"><h3 class="article-title">ä»é›¶å¼€å§‹å­¦è§†é¢‘è¥é”€ï¼šå†…å®¹ç­–åˆ’åˆ°æ•°æ®åˆ†æ</h3><p class="article-excerpt">è§†é¢‘å†…å®¹å·²æˆä¸ºå½“ä»Šè¥é”€çš„ä¸»æµï¼Œå­¦ä¹ å¦‚ä½•ç­–åˆ’ã€åˆ¶ä½œå’Œåˆ†æè§†é¢‘è¥é”€æ•ˆæœ...</p><div class="article-meta"><span class="article-date">2025/2/5</span><span class="article-read-time">15åˆ†é’Ÿ</span></div></div></article><article class="article-card no-image"><div class="article-tag">ä¼šå‘˜è¿è¥</div><div class="article-content"><h3 class="article-title">ä¼šå‘˜è¿è¥å®æˆ˜ï¼šå¦‚ä½•æé«˜ç•™å­˜ç‡å’Œå¤è´­ç‡</h3><p class="article-excerpt">ä¼šå‘˜è¿è¥æ˜¯ä¼ä¸šå¢é•¿çš„æ ¸å¿ƒï¼Œæœ¬æ–‡åˆ†äº«å¦‚ä½•å»ºç«‹æœ‰æ•ˆçš„ä¼šå‘˜è¿è¥ä½“ç³»...</p><div class="article-meta"><span class="article-date">2025/1/28</span><span class="article-read-time">10åˆ†é’Ÿ</span></div></div></article></div></div></section></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="å…°å¿ƒè¿è¥ç¬”è®°" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy"><span class="footer-logo-text">å…°å¿ƒè¿è¥ç¬”è®°</span></div><p class="footer-description">æä¾›è·¨å¢ƒç”µå•†å’Œè§†é¢‘æ•™ç¨‹ç­‰ä¸“ä¸šå†…å®¹ï¼ŒåŠ©ä½ æˆä¸ºè¿è¥é«˜æ‰‹ã€‚</p></div><div class="footer-column"><h4 class="footer-heading">æ”¯æŒ</h4><ul class="footer-links"><li><a href="about.html">å…³äºæˆ‘ä»¬</a></li><li><a href="contact.html">è”ç³»æˆ‘ä»¬</a></li><li><a href="faq.html">å¸¸è§é—®é¢˜</a></li><li><a href="privacy.html">éšç§æ”¿ç­–</a></li><li><a href="terms.html">æœåŠ¡æ¡æ¬¾</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">å…³æ³¨æˆ‘ä»¬</h4><div class="footer-subscription"><div class="bilibili-subscription"><div class="bilibili-info"><h5 class="bilibili-title">å“”å“©å“”å“©é¢‘é“</h5><p class="bilibili-description">ç‚¹å‡»å…³æ³¨è·å–æœ€æ–°è§†é¢‘</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">å‰å¾€å“”å“©å“”å“©é¢‘é“</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 å…°å¿ƒè¿è¥ç¬”è®°. ä¿ç•™æ‰€æœ‰æƒåˆ©.</p></div></div></footer></body></html> 
+
 
