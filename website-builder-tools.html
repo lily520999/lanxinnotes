@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KNR4KPK379');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>建站工具推荐 - 兰心运营笔记</title>
+    <meta name="description" content="最全面的建站工具推荐，包含WordPress、Shopify、Wix等主流建站平台对比，助你选择最适合的建站工具。">
+    <meta name="keywords" content="建站工具,WordPress,Shopify,Wix,网站建设,建站平台,兰心运营笔记">
+    
+    <script>
+        // 检测网站环境并设置基础路径
+        function detectEnvironment() {
+            const hostname = window.location.hostname;
+            const isGitHubPages = hostname.includes('github.io');
+            const isCustomDomain = hostname === 'lanxinnotes.com' || hostname === 'www.lanxinnotes.com';
+            const pathname = window.location.pathname;
+            
+            console.log('当前环境信息 - 主机名:', hostname, '路径名:', pathname);
+            
+            const metaEnv = document.createElement('meta');
+            metaEnv.name = 'website-environment';
+            
+            const existingBase = document.querySelector('base');
+            if (existingBase) {
+                existingBase.remove();
+            }
+            
+            if (isGitHubPages) {
+                const repoName = pathname.split('/')[1];
+                const baseTag = document.createElement('base');
+                baseTag.href = '/' + repoName + '/';
+                document.head.appendChild(baseTag);
+                metaEnv.content = 'github-pages';
+                console.log('GitHub Pages 环境已检测，基础路径已设置为:', baseTag.href);
+                window.siteEnvironment = 'github-pages';
+                window.siteBasePath = '/' + repoName + '/';
+            } else if (isCustomDomain) {
+                const baseTag = document.createElement('base');
+                baseTag.href = '/';
+                document.head.appendChild(baseTag);
+                metaEnv.content = 'custom-domain';
+                console.log('自定义域名环境已检测，基础路径已设置为: /');
+                window.siteEnvironment = 'custom-domain';
+                window.siteBasePath = '/';
+            } else {
+                metaEnv.content = 'local-development';
+                console.log('本地开发环境已检测');
+                window.siteEnvironment = 'local-development';
+                window.siteBasePath = './';
+                const baseTag = document.createElement('base');
+                baseTag.href = './';
+                document.head.appendChild(baseTag);
+            }
+            
+            document.head.appendChild(metaEnv);
+        }
+        
+        detectEnvironment();
+    </script>
+    
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-img, .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "rt67r6qseo");
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy" width="40" height="40">
+                <a href="index.html" class="logo-text">兰心运营笔记</a>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="website-builder-tools.html" class="nav-link">建站工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">视频教程 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <a href="faq.html" class="nav-link">常见问题</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">登录</a>
+                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary" target="_blank">加入会员(1565元/年)</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 页面顶部横幅 -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="page-title">建站工具推荐</h1>
+                    <p class="page-description">精选优质建站工具，助你快速搭建专业网站</p>
+                    <div class="breadcrumb">
+                        <a href="index.html">首页</a> > <span>建站工具</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工具分类 -->
+        <section class="tools-categories">
+            <div class="container">
+                <h2 class="section-title">建站工具分类</h2>
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">全部</button>
+                    <button class="tab-btn" data-category="cms">内容管理系统</button>
+                    <button class="tab-btn" data-category="ecommerce">电商建站</button>
+                    <button class="tab-btn" data-category="landing">落地页</button>
+                    <button class="tab-btn" data-category="drag-drop">拖拽建站</button>
+                </div>
+            </div>
+        </section>
+
+                        <!-- 工具列表 -->
+        <section class="tools-grid">
+            <div class="container">
+                <div class="tools-container">
+                    <!-- Bolt.new -->
+                    <div class="tool-card drag-drop" data-category="drag-drop">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">⚡</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Bolt.new</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.9</span>
+                                </div>
+                            </div>
+                            <div class="tool-price">免费试用</div>
+                        </div>
+                        <p class="tool-description">AI驱动的快速应用构建平台，通过简单对话即可创建完整的网站和应用，无需编程基础。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI对话建站</span>
+                            <span class="feature-tag">快速部署</span>
+                            <span class="feature-tag">无需编程</span>
+                            <span class="feature-tag">全栈应用</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://bolt.new" target="_blank" class="btn-primary">访问官网</a>
+                            <button class="btn-secondary tool-detail-btn" data-tool="bolt">查看详情</button>
+                        </div>
+                    </div>
+
+                    <!-- WordPress -->
+                    <div class="tool-card cms" data-category="cms">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder wordpress">WP</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">WordPress</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.8</span>
+                                </div>
+                            </div>
+                            <div class="tool-price">免费</div>
+                        </div>
+                        <p class="tool-description">全球最受欢迎的内容管理系统，拥有强大的插件生态和主题库，适合各种类型的网站建设。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开源免费</span>
+                            <span class="feature-tag">插件丰富</span>
+                            <span class="feature-tag">SEO友好</span>
+                            <span class="feature-tag">社区活跃</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://wordpress.org" class="btn-primary" target="_blank">访问官网</a>
+                            <button class="btn-secondary tool-details-btn">查看详情</button>
+                        </div>
+                    </div>
+
+                    <!-- Shopify -->
+                    <div class="tool-card ecommerce" data-category="ecommerce">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder shopify">SF</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Shopify</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                            </div>
+                            <div class="tool-price">$29/月</div>
+                        </div>
+                        <p class="tool-description">专业的电商建站平台，提供完整的在线商店解决方案，支持多种支付方式和物流集成。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">电商专业</span>
+                            <span class="feature-tag">支付集成</span>
+                            <span class="feature-tag">移动优化</span>
+                            <span class="feature-tag">数据分析</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://shopify.com" class="btn-primary" target="_blank">访问官网</a>
+                            <button class="btn-secondary tool-details-btn">查看详情</button>
+                        </div>
+                    </div>
+
+                    <!-- Wix -->
+                    <div class="tool-card drag-drop" data-category="drag-drop">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder wix">WX</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Wix</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.3</span>
+                                </div>
+                            </div>
+                            <div class="tool-price">免费起</div>
+                        </div>
+                        <p class="tool-description">简单易用的拖拽式建站工具，提供精美模板和AI网站生成器，适合新手快速建站。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">拖拽建站</span>
+                            <span class="feature-tag">AI生成</span>
+                            <span class="feature-tag">模板丰富</span>
+                            <span class="feature-tag">零代码</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://wix.com" class="btn-primary" target="_blank">访问官网</a>
+                            <button class="btn-secondary tool-details-btn">查看详情</button>
+                        </div>
+                    </div>
+
+                    <!-- Squarespace -->
+                    <div class="tool-card drag-drop" data-category="drag-drop">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder squarespace">SS</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Squarespace</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4</span>
+                                </div>
+                            </div>
+                            <div class="tool-price">$12/月</div>
+                        </div>
+                        <p class="tool-description">注重设计美观的建站平台，提供高质量模板和强大的视觉编辑器，适合创意类网站。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">设计精美</span>
+                            <span class="feature-tag">响应式</span>
+                            <span class="feature-tag">电商功能</span>
+                            <span class="feature-tag">SEO优化</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://squarespace.com" class="btn-primary" target="_blank">访问官网</a>
+                            <button class="btn-secondary tool-details-btn">查看详情</button>
+                        </div>
+                    </div>
+
+                    <!-- Webflow -->
+                    <div class="tool-card drag-drop" data-category="drag-drop">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder webflow">WF</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Webflow</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                            </div>
+                            <div class="tool-price">$12/月</div>
+                        </div>
+                        <p class="tool-description">专业级的可视化建站工具，支持复杂的动画效果和响应式设计，适合设计师和开发者。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">可视化设计</span>
+                            <span class="feature-tag">动画效果</span>
+                            <span class="feature-tag">CMS功能</span>
+                            <span class="feature-tag">代码导出</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://webflow.com" class="btn-primary" target="_blank">访问官网</a>
+                            <button class="btn-secondary tool-details-btn">查看详情</button>
+                        </div>
+                    </div>
+
+                    <!-- Unbounce -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder unbounce">UB</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Unbounce</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.2</span>
+                                </div>
+                            </div>
+                            <div class="tool-price">$80/月</div>
+                        </div>
+                        <p class="tool-description">专业的落地页构建工具，提供A/B测试功能和转化率优化工具，适合营销活动。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">落地页专精</span>
+                            <span class="feature-tag">A/B测试</span>
+                            <span class="feature-tag">转化优化</span>
+                            <span class="feature-tag">营销集成</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://unbounce.com" class="btn-primary" target="_blank">访问官网</a>
+                            <button class="btn-secondary tool-details-btn">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 建站教程推荐 -->
+        <section class="tutorials">
+            <div class="container">
+                <h2 class="section-title">建站教程推荐</h2>
+                <div class="tutorial-grid">
+                    <div class="tutorial-card">
+                        <div class="tutorial-image">
+                            <div class="tutorial-image-placeholder wordpress-tutorial">🔧</div>
+                        </div>
+                        <div class="tutorial-content">
+                            <h3 class="tutorial-title">WordPress零基础建站教程</h3>
+                            <p class="tutorial-description">从域名购买到网站上线，完整的WordPress建站流程详解。</p>
+                            <div class="tutorial-meta">
+                                <span class="tutorial-duration">45分钟</span>
+                                <span class="tutorial-level">初级</span>
+                            </div>
+                            <a href="#" class="tutorial-link">观看教程 →</a>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-card">
+                        <div class="tutorial-image">
+                            <div class="tutorial-image-placeholder shopify-tutorial">🛒</div>
+                        </div>
+                        <div class="tutorial-content">
+                            <h3 class="tutorial-title">Shopify电商网站搭建实战</h3>
+                            <p class="tutorial-description">手把手教你搭建专业的电商网站，从选品到上线销售。</p>
+                            <div class="tutorial-meta">
+                                <span class="tutorial-duration">60分钟</span>
+                                <span class="tutorial-level">中级</span>
+                            </div>
+                            <a href="#" class="tutorial-link">观看教程 →</a>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-card">
+                        <div class="tutorial-image">
+                            <div class="tutorial-image-placeholder wix-tutorial">🎨</div>
+                        </div>
+                        <div class="tutorial-content">
+                            <h3 class="tutorial-title">Wix拖拽建站速成指南</h3>
+                            <p class="tutorial-description">30分钟学会使用Wix快速搭建精美网站。</p>
+                            <div class="tutorial-meta">
+                                <span class="tutorial-duration">30分钟</span>
+                                <span class="tutorial-level">初级</span>
+                            </div>
+                            <a href="#" class="tutorial-link">观看教程 →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy">
+                        <span class="footer-logo-text">兰心运营笔记</span>
+                    </div>
+                    <p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">关注我们</h4>
+                    <div class="footer-subscription">
+                        <div class="bilibili-subscription">
+                            <div class="bilibili-info">
+                                <h5 class="bilibili-title">哔哩哔哩频道</h5>
+                                <p class="bilibili-description">点击关注获取最新视频</p>
+                            </div>
+                        </div>
+                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">前往哔哩哔哩频道</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* 统一的按钮样式 */
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1.4;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #64748b;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1.4;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        /* 建站工具页面专属样式 */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .tools-categories {
+            padding: 60px 0 40px;
+            background-color: #f8f9fa;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background-color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background-color: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tools-grid {
+            padding: 40px 0 80px;
+        }
+
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e1e5e9;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .tool-icon img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+        }
+
+        .tool-info {
+            flex-grow: 1;
+        }
+
+        .tool-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .tool-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 1rem;
+        }
+
+        .rating-score {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .tool-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #667eea;
+            background-color: #f0f2ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .tool-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tool-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .tutorials {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tutorial-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tutorial-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .tutorial-content {
+            padding: 1.5rem;
+        }
+
+        .tutorial-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .tutorial-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-duration,
+        .tutorial-level {
+            font-size: 0.85rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        .tutorial-duration {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .tutorial-level {
+            background-color: #fff3e0;
+            color: #f57c00;
+        }
+
+        .tutorial-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .tutorial-link:hover {
+            color: #5a67d8;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .tools-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .tool-card {
+                padding: 1.5rem;
+            }
+
+            .tool-actions {
+                flex-direction: column;
+            }
+
+            .category-tabs {
+                gap: 0.5rem;
+            }
+
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 工具筛选功能 */
+        .tool-card.hidden {
+            display: none;
+        }
+
+        /* 美观的占位图片样式 */
+        .tool-icon-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .tool-icon-placeholder.bolt {
+            background: linear-gradient(135deg, #1e293b, #3b82f6);
+        }
+
+        .tool-icon-placeholder.wordpress {
+            background: linear-gradient(135deg, #21759b, #2e9ccf);
+        }
+
+        .tool-icon-placeholder.shopify {
+            background: linear-gradient(135deg, #96bf48, #7ab55c);
+        }
+
+        .tool-icon-placeholder.wix {
+            background: linear-gradient(135deg, #faad4f, #ff8a00);
+        }
+
+        .tool-icon-placeholder.squarespace {
+            background: linear-gradient(135deg, #000000, #333333);
+        }
+
+        .tool-icon-placeholder.webflow {
+            background: linear-gradient(135deg, #4353ff, #6c5ce7);
+        }
+
+        .tool-icon-placeholder.unbounce {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .tutorial-image-placeholder {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tutorial-image-placeholder.wordpress-tutorial {
+            background: linear-gradient(135deg, #21759b, #2e9ccf);
+        }
+
+        .tutorial-image-placeholder.shopify-tutorial {
+            background: linear-gradient(135deg, #96bf48, #7ab55c);
+        }
+
+        .tutorial-image-placeholder.wix-tutorial {
+            background: linear-gradient(135deg, #faad4f, #ff8a00);
+        }
+    </style>
+
+    <script>
+        // 工具分类筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const toolCards = document.querySelectorAll('.tool-card');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 移除所有按钮的active类
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    // 添加active类到当前按钮
+                    btn.classList.add('active');
+
+                    const category = btn.getAttribute('data-category');
+
+                    // 筛选工具卡片
+                    toolCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // 工具详情按钮功能
+            const detailBtns = document.querySelectorAll('.tool-details-btn');
+            detailBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const toolCard = this.closest('.tool-card');
+                    const toolName = toolCard.querySelector('.tool-name').textContent;
+                    alert(`${toolName} 的详细信息将在会员专区提供，请加入会员获取完整教程和资源。`);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

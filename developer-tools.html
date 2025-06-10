@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KNR4KPK379');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>开发工具 - 兰心运营笔记</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="ai-tools.css">
+<script src="script.js" defer></script>
+<meta name="description" content="精选优质开发工具和平台，包括代码托管、设计工具、协作平台等，助力开发者提升效率">
+<meta name="keywords" content="开发工具,GitHub,GitLab,VS Code,Figma,代码托管,开发平台,兰心运营笔记">
+<link rel="canonical" href="https://lanxinnotes.com/developer-tools.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "兰心运营笔记",
+  "url": "https://lanxinnotes.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://lanxinnotes.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rt67r6qseo");
+</script>
+<style>
+/* 开发工具特色样式 */
+.developer-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.developer-hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.developer-hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* 开发工具占位图样式 */
+.tool-placeholder {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 48px;
+    margin-bottom: 20px;
+    background: var(--tool-gradient);
+}
+
+/* 各工具的特色渐变色 */
+.cursor-gradient { --tool-gradient: linear-gradient(135deg, #1e1e1e 0%, #3c82f6 100%); }
+.github-gradient { --tool-gradient: linear-gradient(135deg, #24292e 0%, #586069 100%); }
+.gitlab-gradient { --tool-gradient: linear-gradient(135deg, #fc6d26 0%, #e24329 100%); }
+.vscode-gradient { --tool-gradient: linear-gradient(135deg, #007acc 0%, #0e639c 100%); }
+.figma-gradient { --tool-gradient: linear-gradient(135deg, #f24e1e 0%, #a259ff 100%); }
+.docker-gradient { --tool-gradient: linear-gradient(135deg, #0db7ed 0%, #2496ed 100%); }
+.npm-gradient { --tool-gradient: linear-gradient(135deg, #cb3837 0%, #c12127 100%); }
+.postman-gradient { --tool-gradient: linear-gradient(135deg, #ff6c37 0%, #ff4605 100%); }
+.mongodb-gradient { --tool-gradient: linear-gradient(135deg, #47a248 0%, #4caf50 100%); }
+.slack-gradient { --tool-gradient: linear-gradient(135deg, #4a154b 0%, #350d36 100%); }
+.notion-gradient { --tool-gradient: linear-gradient(135deg, #000000 0%, #37352f 100%); }
+.openrouter-gradient { --tool-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); }
+.together-gradient { --tool-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+.fal-gradient { --tool-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+.replicate-gradient { --tool-gradient: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+.siliconflow-gradient { --tool-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+
+.developer-stats {
+    background: #f8f9fa;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.stat-item {
+    background: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #667eea;
+    display: block;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* 建站工具风格的开发工具卡片样式 */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #f1f5f9;
+    padding: 24px;
+}
+
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.tool-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 16px;
+}
+
+.tool-icon {
+    flex-shrink: 0;
+}
+
+.tool-icon-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tool-info {
+    flex: 1;
+}
+
+.tool-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+
+.tool-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stars {
+    color: #fbbf24;
+    font-size: 16px;
+}
+
+.rating-score {
+    color: #64748b;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.tool-price {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+.tool-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.tool-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.feature-tag {
+    background: #f8fafc;
+    color: #475569;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #e2e8f0;
+}
+
+.tool-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* 统一的按钮样式 */
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: #64748b;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 2px solid #e2e8f0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #3b82f6;
+    color: #3b82f6;
+    transform: translateY(-1px);
+}
+
+/* 开发工具图标渐变 */
+.cursor { background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%); }
+.github { background: linear-gradient(135deg, #24292e 0%, #586069 100%); }
+.gitlab { background: linear-gradient(135deg, #fc6d26 0%, #e24329 100%); }
+.vscode { background: linear-gradient(135deg, #007acc 0%, #0e639c 100%); }
+.figma { background: linear-gradient(135deg, #f24e1e 0%, #a259ff 100%); }
+.docker { background: linear-gradient(135deg, #0db7ed 0%, #2496ed 100%); }
+.npm { background: linear-gradient(135deg, #cb3837 0%, #c12127 100%); }
+.postman { background: linear-gradient(135deg, #ff6c37 0%, #ff4605 100%); }
+.mongodb { background: linear-gradient(135deg, #47a248 0%, #4caf50 100%); }
+.slack { background: linear-gradient(135deg, #4a154b 0%, #350d36 100%); }
+
+@media (max-width: 768px) {
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tool-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .tool-price {
+        margin-left: 0;
+        align-self: center;
+    }
+}
+</style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-item dropdown">
+                <a href="ai-tools.html" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="website-builder-tools.html" class="nav-link">建站工具 <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="developer-tools.html" class="nav-link">开发工具 <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">视频教程 <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <a href="faq.html" class="nav-link">常见问题</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn btn-login">登录</a>
+            <a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="developer-hero">
+        <div class="container">
+            <h1>开发工具资源</h1>
+            <p>精选优质开发工具和平台，提升开发效率和协作体验</p>
+            <div class="tools-search">
+                <input type="text" placeholder="搜索开发工具..." class="search-input">
+                <button class="search-btn">搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-list" id="tools">
+        <div class="container">
+            <h2 class="section-title">2025年必备开发工具</h2>
+            <p class="section-description">为开发者精选的高效开发工具和平台</p>
+            
+            <div class="tools-filter">
+                <span class="filter-label">筛选:</span>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="code">代码托管</button>
+                    <button class="filter-btn" data-filter="design">设计工具</button>
+                    <button class="filter-btn" data-filter="editor">编辑器</button>
+                    <button class="filter-btn" data-filter="devops">DevOps</button>
+                    <button class="filter-btn" data-filter="collaboration">协作工具</button>
+                    <button class="filter-btn" data-filter="ai-platform">AI平台</button>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                <!-- Cursor -->
+                <div class="tool-card editor" data-category="editor">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder cursor">⚡</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Cursor</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.9</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费</div>
+                    </div>
+                    <p class="tool-description">AI驱动的代码编辑器，提供智能代码补全、自然语言编程和代码库理解功能。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">AI编程</span>
+                        <span class="feature-tag">智能补全</span>
+                        <span class="feature-tag">自然语言</span>
+                        <span class="feature-tag">代码理解</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.cursor.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- GitHub -->
+                <div class="tool-card code" data-category="code">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder github">🐱</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">GitHub</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.9</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费</div>
+                    </div>
+                    <p class="tool-description">全球最大的代码托管平台，支持版本控制、协作开发和项目管理。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Git版本控制</span>
+                        <span class="feature-tag">协作开发</span>
+                        <span class="feature-tag">CI/CD</span>
+                        <span class="feature-tag">社区丰富</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://github.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- GitLab -->
+                <div class="tool-card code" data-category="code devops">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder gitlab">🦊</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">GitLab</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.7</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费起</div>
+                    </div>
+                    <p class="tool-description">一站式DevOps平台，集成代码管理、CI/CD、项目管理于一体。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">DevOps</span>
+                        <span class="feature-tag">私有部署</span>
+                        <span class="feature-tag">安全扫描</span>
+                        <span class="feature-tag">全流程管理</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://gitlab.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- VS Code -->
+                <div class="tool-card editor" data-category="editor">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder vscode">💻</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Visual Studio Code</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.8</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费</div>
+                    </div>
+                    <p class="tool-description">微软开发的免费代码编辑器，支持多种编程语言和丰富插件。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">免费开源</span>
+                        <span class="feature-tag">插件丰富</span>
+                        <span class="feature-tag">跨平台</span>
+                        <span class="feature-tag">调试功能</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://code.visualstudio.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- Figma -->
+                <div class="tool-card design" data-category="design collaboration">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder figma">🎨</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Figma</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.6</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费起</div>
+                    </div>
+                    <p class="tool-description">基于浏览器的协作设计工具，支持原型设计和团队协作。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">UI设计</span>
+                        <span class="feature-tag">原型设计</span>
+                        <span class="feature-tag">实时协作</span>
+                        <span class="feature-tag">云端同步</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://figma.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- Docker -->
+                <div class="tool-card devops" data-category="devops">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder docker">🐳</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Docker</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费起</div>
+                    </div>
+                    <p class="tool-description">容器化平台，简化应用部署和环境管理。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">容器化</span>
+                        <span class="feature-tag">微服务</span>
+                        <span class="feature-tag">部署简化</span>
+                        <span class="feature-tag">环境统一</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://docker.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- NPM -->
+                <div class="tool-card code" data-category="code">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder npm">📦</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">NPM</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.3</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费</div>
+                    </div>
+                    <p class="tool-description">Node.js包管理器，拥有庞大的开源库生态系统。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">包管理</span>
+                        <span class="feature-tag">依赖管理</span>
+                        <span class="feature-tag">脚本运行</span>
+                        <span class="feature-tag">生态丰富</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://npmjs.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- Postman -->
+                <div class="tool-card collaboration" data-category="collaboration">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder postman">📮</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Postman</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.6</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费起</div>
+                    </div>
+                    <p class="tool-description">API开发和测试的协作平台，支持团队协作和自动化测试。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">API测试</span>
+                        <span class="feature-tag">团队协作</span>
+                        <span class="feature-tag">自动化</span>
+                        <span class="feature-tag">文档生成</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://postman.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- MongoDB -->
+                <div class="tool-card devops" data-category="devops">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder mongodb">🍃</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">MongoDB</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.4</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费起</div>
+                    </div>
+                    <p class="tool-description">领先的NoSQL数据库，支持文档存储和高可扩展性。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">NoSQL</span>
+                        <span class="feature-tag">文档存储</span>
+                        <span class="feature-tag">高扩展</span>
+                        <span class="feature-tag">云服务</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://mongodb.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- Slack -->
+                <div class="tool-card collaboration" data-category="collaboration">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder slack">💬</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Slack</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.2</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费起</div>
+                    </div>
+                    <p class="tool-description">团队协作和沟通平台，支持频道、直聊和丰富的集成。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">团队沟通</span>
+                        <span class="feature-tag">频道管理</span>
+                        <span class="feature-tag">应用集成</span>
+                        <span class="feature-tag">文件共享</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://slack.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- OpenRouter -->
+                <div class="tool-card ai-platform" data-category="ai-platform">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder openrouter-gradient">🔀</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">OpenRouter</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.6</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">按量付费</div>
+                    </div>
+                    <p class="tool-description">AI模型API路由平台，提供多种大语言模型的统一接口，支持GPT、Claude、Gemini等主流模型。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">多模型路由</span>
+                        <span class="feature-tag">统一接口</span>
+                        <span class="feature-tag">价格透明</span>
+                        <span class="feature-tag">高可用性</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://openrouter.ai/" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- Together AI -->
+                <div class="tool-card ai-platform" data-category="ai-platform">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder together-gradient">🤝</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Together AI</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">按量付费</div>
+                    </div>
+                    <p class="tool-description">专业的AI模型推理平台，提供高性能GPU集群和优化的推理服务，支持开源大语言模型。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">开源模型</span>
+                        <span class="feature-tag">高性能GPU</span>
+                        <span class="feature-tag">推理优化</span>
+                        <span class="feature-tag">成本效益</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.together.ai" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- Fal.ai -->
+                <div class="tool-card ai-platform" data-category="ai-platform">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder fal-gradient">⚡</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Fal.ai</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.4</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">按量付费</div>
+                    </div>
+                    <p class="tool-description">快速AI模型API平台，专注于图像生成、语音处理等多媒体AI应用，提供毫秒级响应时间。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">图像生成</span>
+                        <span class="feature-tag">语音处理</span>
+                        <span class="feature-tag">毫秒响应</span>
+                        <span class="feature-tag">多媒体AI</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://fal.ai/" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- Replicate -->
+                <div class="tool-card ai-platform" data-category="ai-platform">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder replicate-gradient">🔁</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Replicate</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.7</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">按量付费</div>
+                    </div>
+                    <p class="tool-description">AI模型部署和API平台，支持一键部署开源AI模型，提供丰富的预训练模型库和简单的API接口。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">模型部署</span>
+                        <span class="feature-tag">开源模型库</span>
+                        <span class="feature-tag">一键部署</span>
+                        <span class="feature-tag">简单API</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://replicate.com" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+
+                <!-- SiliconFlow -->
+                <div class="tool-card ai-platform" data-category="ai-platform">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder siliconflow-gradient">🇨🇳</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">SiliconFlow</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.3</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">免费额度</div>
+                    </div>
+                    <p class="tool-description">国产AI推理平台，提供稳定的大语言模型API服务，支持主流开源模型，有免费额度且价格亲民。</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">国产平台</span>
+                        <span class="feature-tag">免费额度</span>
+                        <span class="feature-tag">价格亲民</span>
+                        <span class="feature-tag">稳定服务</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://siliconflow.cn/" class="btn-primary" target="_blank">访问官网</a>
+                        <button class="btn-secondary tool-details-btn">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="developer-stats">
+        <div class="container">
+            <h2 class="section-title">开发者生态数据</h2>
+            <p class="section-description">了解全球开发者使用工具的趋势和统计</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">100M+</span>
+                    <span class="stat-label">GitHub 开发者用户</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">330M+</span>
+                    <span class="stat-label">代码仓库数量</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">70%</span>
+                    <span class="stat-label">开发者使用 VS Code</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2M+</span>
+                    <span class="stat-label">NPM 包数量</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-community">
+        <div class="container">
+            <div class="community-content">
+                <h2 class="community-title">加入开发者交流社区</h2>
+                <p class="community-description">与专业开发者交流工具使用经验，分享开发技巧和最佳实践</p>
+                <div class="community-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">3,000+</span>
+                        <span class="stat-label">开发者成员</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">500+</span>
+                        <span class="stat-label">技术分享</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">每周</span>
+                        <span class="stat-label">技术交流会</span>
+                    </div>
+                </div>
+                <a href="https://t.zsxq.com/CAfds" class="btn btn-primary community-btn">立即加入会员</a>
+            </div>
+            <div class="community-image">
+                <p class="community-img-text">与优秀的开发者一起成长，掌握最新技术趋势</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-columns">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img" loading="lazy">
+                    <span class="footer-logo-text">兰心运营笔记</span>
+                </div>
+                <p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">支持</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="faq.html">常见问题</a></li>
+                    <li><a href="privacy.html">隐私政策</a></li>
+                    <li><a href="terms.html">服务条款</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">关注我们</h4>
+                <div class="footer-subscription">
+                    <div class="bilibili-subscription">
+                        <div class="bilibili-info">
+                            <h5 class="bilibili-title">哔哩哔哩频道</h5>
+                            <p class="bilibili-description">点击订阅获取最新视频</p>
+                        </div>
+                    </div>
+                    <p class="newsletter-text">订阅我们的电子邮件，及时获取最新运营知识和独家内容。</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="您的邮箱" class="newsletter-input">
+                        <button type="submit" class="newsletter-btn">发送</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 工具筛选功能
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const toolCards = document.querySelectorAll('.tool-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filterValue = this.getAttribute('data-filter');
+            
+            // 更新按钮状态
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 筛选工具卡片
+            toolCards.forEach(card => {
+                if (filterValue === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const categories = card.getAttribute('data-category');
+                    if (categories.includes(filterValue)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+    
+    // 搜索功能
+    const searchInput = document.querySelector('.search-input');
+    const searchBtn = document.querySelector('.search-btn');
+    
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        if (searchTerm.length > 0) {
+            toolCards.forEach(card => {
+                const toolName = card.querySelector('.tool-name').textContent.toLowerCase();
+                const toolDesc = card.querySelector('.tool-description').textContent.toLowerCase();
+                const toolFeatures = card.querySelector('.tool-features').textContent.toLowerCase();
+                
+                if (toolName.includes(searchTerm) || 
+                    toolDesc.includes(searchTerm) || 
+                    toolFeatures.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // 重置筛选按钮状态
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            filterButtons[0].classList.add('active');
+        } else {
+            // 如果搜索框为空，显示所有工具
+            toolCards.forEach(card => {
+                card.style.display = 'block';
+            });
+        }
+    }
+    
+    if (searchBtn) {
+        searchBtn.addEventListener('click', performSearch);
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
+});
+</script>
+</body>
+</html> 
