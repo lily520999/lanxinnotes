@@ -125,13 +125,16 @@
             </div>
             <nav class="main-nav">
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
+                    <a href="ai-tools.html" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
                 </div>
                 <div class="nav-item dropdown">
                     <a href="website-builder-tools.html" class="nav-link">建站工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="developer-tools.html" class="nav-link">开发工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
                 </div>
                 <div class="nav-item dropdown">
                     <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">视频教程 <span class="dropdown-arrow">▼</span></a>
@@ -392,7 +395,7 @@
                                 <span class="tutorial-duration">45分钟</span>
                                 <span class="tutorial-level">初级</span>
                             </div>
-                            <a href="#" class="tutorial-link">观看教程 →</a>
+                            <a href="wordpress-tutorial.html" class="tutorial-link">观看教程 →</a>
                         </div>
                     </div>
 
@@ -407,7 +410,7 @@
                                 <span class="tutorial-duration">60分钟</span>
                                 <span class="tutorial-level">中级</span>
                             </div>
-                            <a href="#" class="tutorial-link">观看教程 →</a>
+                            <a href="shopify-tutorial.html" class="tutorial-link">观看教程 →</a>
                         </div>
                     </div>
 
@@ -422,7 +425,7 @@
                                 <span class="tutorial-duration">30分钟</span>
                                 <span class="tutorial-level">初级</span>
                             </div>
-                            <a href="#" class="tutorial-link">观看教程 →</a>
+                            <a href="wix-tutorial.html" class="tutorial-link">观看教程 →</a>
                         </div>
                     </div>
                 </div>
@@ -540,6 +543,7 @@
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            color: white;
         }
 
         .breadcrumb {
@@ -619,6 +623,7 @@
             align-items: center;
             margin-bottom: 1rem;
             gap: 1rem;
+            /* 移除边框，使布局更简洁 */
         }
 
         .tool-icon img {
@@ -689,6 +694,35 @@
         .tool-actions {
             display: flex;
             gap: 1rem;
+        }
+
+        /* 工具卡片按钮对齐优化 */
+        .tool-card {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+        }
+
+        .tool-description {
+            flex-grow: 1 !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .tool-features {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .tool-actions {
+            margin-top: auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 15px !important;
+        }
+
+        .btn-primary, .btn-secondary {
+            flex: 1 !important;
+            max-width: 150px !important;
         }
 
         .tutorials {

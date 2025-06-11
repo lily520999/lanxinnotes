@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wix拖拽建站速成指南 - 兰心运营笔记</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .tutorial-header {
+            background: linear-gradient(135deg, #faad4f, #ff8a00);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .tutorial-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .tutorial-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .tutorial-content {
+            padding: 60px 0;
+        }
+        .content-section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #faad4f;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #faad4f;
+        }
+        .step-item {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #faad4f;
+        }
+        .step-number {
+            background: #faad4f;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .step-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .tip-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #28a745;
+        }
+        .tip-title {
+            font-weight: 600;
+            color: #28a745;
+            margin-bottom: 0.5rem;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9ecef;
+        }
+        .btn-nav {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-back {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-back:hover {
+            background: #5a6268;
+            color: white;
+        }
+        .btn-next {
+            background: #faad4f;
+            color: white;
+        }
+        .btn-next:hover {
+            background: #ff8a00;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="tutorial-header">
+        <div class="container">
+            <h1 class="tutorial-title">Wix拖拽建站速成指南</h1>
+            <p class="tutorial-subtitle">无需编程，20分钟快速建站</p>
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i> 预计时间：20分钟
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> 难度：入门
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-users"></i> 适合人群：完全零基础
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-content">
+        <div class="container">
+            <div class="content-section">
+                <h2 class="section-title">Wix平台介绍</h2>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Wix的优势特点</h3>
+                    <div class="step-description">
+                        <p>Wix是全球领先的拖拽式建站平台，具有以下优势：</p>
+                        <ul>
+                            <li><strong>完全可视化</strong>：所见即所得，无需任何代码</li>
+                            <li><strong>模板丰富</strong>：500+专业设计模板</li>
+                            <li><strong>功能强大</strong>：内置电商、博客、预约等功能</li>
+                            <li><strong>移动优化</strong>：自动适配手机和平板</li>
+                            <li><strong>SEO友好</strong>：内置SEO优化工具</li>
+                            <li><strong>免费使用</strong>：可免费创建和发布网站</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <div class="tip-title"><i class="fas fa-lightbulb"></i> 小贴士</div>
+                        <p>Wix特别适合个人网站、小企业官网、作品展示等需求。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">注册和开始</h2>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">注册Wix账户</h3>
+                    <div class="step-description">
+                        <p>创建您的Wix账户：</p>
+                        <ol>
+                            <li>访问 <strong>wix.com</strong></li>
+                            <li>点击"免费建站"</li>
+                            <li>选择注册方式（邮箱或社交账号）</li>
+                            <li>填写基本信息</li>
+                            <li>验证邮箱地址</li>
+                            <li>完成注册</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">选择创建方式</h3>
+                    <div class="step-description">
+                        <p>Wix提供两种建站方式：</p>
+                        <ul>
+                            <li><strong>Wix ADI</strong>：AI自动生成，回答几个问题即可</li>
+                            <li><strong>Wix Editor</strong>：手动设计，自由度更高</li>
+                        </ul>
+                        <p><strong>推荐新手选择Wix Editor</strong>，可以更好地学习和控制网站设计。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">选择和定制模板</h2>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">选择合适的模板</h3>
+                    <div class="step-description">
+                        <p>从丰富的模板库中选择：</p>
+                        <ol>
+                            <li>选择网站类型（商业、个人、在线商店等）</li>
+                            <li>浏览相关模板</li>
+                            <li>预览模板效果</li>
+                            <li>选择最符合需求的模板</li>
+                            <li>点击"编辑此模板"</li>
+                        </ol>
+                        
+                        <p><strong>热门模板类型：</strong></p>
+                        <ul>
+                            <li>商业网站：专业企业形象</li>
+                            <li>作品集：展示个人作品</li>
+                            <li>餐厅：菜单和预订功能</li>
+                            <li>摄影：图片展示优化</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">自定义网站内容</h3>
+                    <div class="step-description">
+                        <p>个性化您的网站：</p>
+                        <ol>
+                            <li><strong>替换文字</strong>：双击文字直接编辑</li>
+                            <li><strong>更换图片</strong>：点击图片选择"更改图片"</li>
+                            <li><strong>修改颜色</strong>：选择元素后调整颜色</li>
+                            <li><strong>调整布局</strong>：拖拽元素到合适位置</li>
+                            <li><strong>添加内容</strong>：从左侧菜单添加新元素</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">添加功能和页面</h2>
+                
+                <div class="step-item">
+                    <div class="step-number">6</div>
+                    <h3 class="step-title">添加新页面</h3>
+                    <div class="step-description">
+                        <p>创建网站的其他页面：</p>
+                        <ol>
+                            <li>点击顶部的"页面"菜单</li>
+                            <li>选择"添加页面"</li>
+                            <li>选择页面类型（关于、联系、博客等）</li>
+                            <li>自定义页面名称</li>
+                            <li>设计页面内容</li>
+                            <li>设置页面在菜单中的显示</li>
+                        </ol>
+                        
+                        <p><strong>建议创建的页面：</strong></p>
+                        <ul>
+                            <li>关于我们</li>
+                            <li>服务/产品</li>
+                            <li>联系我们</li>
+                            <li>博客（可选）</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">7</div>
+                    <h3 class="step-title">添加应用功能</h3>
+                    <div class="step-description">
+                        <p>通过Wix App Market增强网站功能：</p>
+                        <ol>
+                            <li>点击左侧的"应用市场"</li>
+                            <li>浏览或搜索需要的功能</li>
+                            <li>安装免费或付费应用</li>
+                            <li>配置应用设置</li>
+                            <li>将应用添加到页面</li>
+                        </ol>
+                        
+                        <p><strong>推荐应用：</strong></p>
+                        <ul>
+                            <li><strong>Wix Chat</strong>：在线客服聊天</li>
+                            <li><strong>Wix Bookings</strong>：在线预约系统</li>
+                            <li><strong>Wix Stores</strong>：在线商店</li>
+                            <li><strong>Wix Blog</strong>：博客功能</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">优化和发布</h2>
+                
+                <div class="step-item">
+                    <div class="step-number">8</div>
+                    <h3 class="step-title">移动端优化</h3>
+                    <div class="step-description">
+                        <p>确保网站在移动设备上的显示效果：</p>
+                        <ol>
+                            <li>点击顶部的"移动"图标</li>
+                            <li>预览移动版本效果</li>
+                            <li>调整移动端的布局</li>
+                            <li>隐藏不必要的元素</li>
+                            <li>测试触摸操作</li>
+                            <li>确认加载速度</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <div class="tip-title"><i class="fas fa-mobile-alt"></i> 移动优化技巧</div>
+                        <p>超过60%的用户通过手机访问网站，移动端优化至关重要。</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">9</div>
+                    <h3 class="step-title">SEO设置</h3>
+                    <div class="step-description">
+                        <p>优化搜索引擎排名：</p>
+                        <ol>
+                            <li>点击"设置" → "SEO工具"</li>
+                            <li>设置网站标题和描述</li>
+                            <li>为每个页面设置SEO标题</li>
+                            <li>添加关键词</li>
+                            <li>设置社交分享图片</li>
+                            <li>连接Google Analytics</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">10</div>
+                    <h3 class="step-title">发布网站</h3>
+                    <div class="step-description">
+                        <p>让您的网站上线：</p>
+                        <ol>
+                            <li>点击右上角的"发布"</li>
+                            <li>选择域名选项：
+                                <ul>
+                                    <li>免费Wix域名（如：yourname.wixsite.com/mysite）</li>
+                                    <li>连接已有域名</li>
+                                    <li>购买新域名</li>
+                                </ul>
+                            </li>
+                            <li>确认发布设置</li>
+                            <li>点击"发布网站"</li>
+                            <li>分享网站链接</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <div class="tip-title"><i class="fas fa-rocket"></i> 发布成功！</div>
+                        <p>恭喜！您的网站已经成功上线，可以分享给朋友和客户了。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">后续管理</h2>
+                
+                <div class="step-item">
+                    <div class="step-number">11</div>
+                    <h3 class="step-title">网站管理和更新</h3>
+                    <div class="step-description">
+                        <p>保持网站活跃和更新：</p>
+                        <ul>
+                            <li>定期更新内容</li>
+                            <li>回复访客留言</li>
+                            <li>查看网站统计数据</li>
+                            <li>优化加载速度</li>
+                            <li>更新联系信息</li>
+                            <li>备份网站数据</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="shopify-tutorial.html" class="btn-nav btn-back">
+                    <i class="fas fa-arrow-left"></i> 上一教程：Shopify电商建站
+                </a>
+                <a href="website-builder-tools.html" class="btn-nav btn-next">
+                    返回建站工具 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
