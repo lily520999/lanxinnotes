@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -198,8 +198,8 @@
 }
 
 .tool-price {
-    background: #f1f5f9;
-    color: #475569;
+    background: #e0e7ff;
+    color: #5b21b6;
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 12px;
@@ -223,8 +223,8 @@
 }
 
 .feature-tag {
-    background: #f8fafc;
-    color: #475569;
+    background: #dbeafe;
+    color: #1e40af;
     padding: 4px 12px;
     border-radius: 16px;
     font-size: 12px;
@@ -238,7 +238,7 @@
 
 /* 统一的按钮样式 */
 .btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     padding: 12px 24px;
     border-radius: 8px;
@@ -257,9 +257,9 @@
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
+    background: linear-gradient(135deg, #5a67d8, #667eea);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .btn-secondary {
@@ -299,225 +299,15 @@
 .mongodb { background: linear-gradient(135deg, #47a248 0%, #4caf50 100%); }
 .slack { background: linear-gradient(135deg, #4a154b 0%, #350d36 100%); }
 
-/* 重置所有工具卡片样式，采用建站工具页面的简洁设计 */
-.tools-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
-    gap: 2rem !important;
-    margin-bottom: 40px !important;
-}
-
+/* 工具卡片Flexbox布局 */
 .tool-card {
-    background: white !important;
-    border-radius: 0 !important;
-    padding: 2rem !important;
-    box-shadow: none !important;
-    transition: all 0.3s ease !important;
-    border: none !important;
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
-}
-
-.tool-card:hover {
-    transform: none !important;
-    box-shadow: none !important;
-}
-
-.tool-header {
-    display: flex !important;
-    align-items: center !important;
-    margin-bottom: 1rem !important;
-    gap: 1rem !important;
-    /* 移除所有边框和分割线 */
-    border: none !important;
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
-}
-
-.tool-icon {
-    flex-shrink: 0 !important;
-    width: 60px !important;
-    height: 60px !important;
-    border-radius: 10px !important;
-}
-
-.tool-info {
-    flex-grow: 1 !important;
-}
-
-.tool-name {
-    font-size: 1.3rem !important;
-    font-weight: 600 !important;
-    margin-bottom: 0.5rem !important;
-    color: #333 !important;
-    overflow: visible !important;
-    white-space: normal !important;
-    text-overflow: unset !important;
-    line-height: 1.4 !important;
-}
-
-.tool-rating {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    margin: 0 !important;
-}
-
-.stars {
-    color: #ffc107 !important;
-    font-size: 1rem !important;
-    line-height: 1 !important;
-}
-
-.rating-score {
-    font-size: 0.9rem !important;
-    color: #666 !important;
-    font-weight: 500 !important;
-    line-height: 1 !important;
-}
-
-.tool-price {
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    color: #667eea !important;
-    background-color: #f0f2ff !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 20px !important;
-    align-self: flex-start !important;
-    margin-left: auto !important;
-}
-
-.tool-description {
-    color: #666 !important;
-    line-height: 1.6 !important;
-    margin-bottom: 1.5rem !important;
-    flex-grow: 1 !important;
-    font-size: 14px !important;
-    /* 移除固定高度和文本截断 */
-    height: auto !important;
-    min-height: auto !important;
-    overflow: visible !important;
-    -webkit-line-clamp: unset !important;
-    -webkit-box-orient: unset !important;
-}
-
-.tool-features {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 0.5rem !important;
-    margin-bottom: 1.5rem !important;
-}
-
-.feature-tag {
-    background-color: #e3f2fd !important;
-    color: #1976d2 !important;
-    padding: 0.3rem 0.8rem !important;
-    border-radius: 15px !important;
-    font-size: 0.85rem !important;
-    font-weight: 500 !important;
-    border: none !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .tool-actions {
-    margin-top: auto !important;
-    display: flex !important;
-    gap: 1rem !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-}
-
-/* 按钮样式统一，完全移除边框 */
-.btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-    color: white !important;
-    padding: 12px 24px !important;
-    border-radius: 8px !important;
-    text-decoration: none !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-    border: none !important;
-    cursor: pointer !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    transition: all 0.3s ease !important;
-    text-align: center !important;
-    flex: 1 !important;
-    max-width: 150px !important;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
-}
-
-.btn-secondary {
-    background: #f8fafc !important;
-    color: #64748b !important;
-    padding: 12px 24px !important;
-    border-radius: 8px !important;
-    text-decoration: none !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-    border: none !important;
-    cursor: pointer !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    transition: all 0.3s ease !important;
-    text-align: center !important;
-    flex: 1 !important;
-    max-width: 150px !important;
-}
-
-.btn-secondary:hover {
-    background: #e2e8f0 !important;
-    color: #3b82f6 !important;
-    transform: translateY(-1px) !important;
-}
-
-/* 响应式设计 */
-@media (max-width: 1200px) {
-    .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .tools-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-    }
-    
-    .tool-card {
-        padding: 1.5rem !important;
-    }
-    
-    .tool-header {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 12px !important;
-    }
-    
-    .tool-price {
-        margin-left: 0 !important;
-        align-self: center !important;
-    }
-    
-    .tool-actions {
-        flex-direction: column !important;
-        gap: 15px !important;
-    }
-    
-    .btn-primary, .btn-secondary {
-        width: 100% !important;
-        max-width: none !important;
-    }
+    margin-top: auto;
 }
 </style>
 </head>
@@ -593,7 +383,7 @@
                                 <span class="rating-score">4.9</span>
                             </div>
                         </div>
-                        <div class="tool-price">免费</div>
+                        <div class="tool-price">$20/月</div>
                     </div>
                     <p class="tool-description">AI驱动的代码编辑器，提供智能代码补全、自然语言编程和代码库理解功能。</p>
                     <div class="tool-features">
@@ -604,7 +394,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://www.cursor.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -632,7 +421,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://github.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -660,7 +448,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://gitlab.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -688,7 +475,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://code.visualstudio.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -716,7 +502,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://figma.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -744,7 +529,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://docker.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -772,7 +556,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://npmjs.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -800,7 +583,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://postman.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -828,7 +610,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://mongodb.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -856,7 +637,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://slack.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -884,7 +664,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://openrouter.ai/" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -912,7 +691,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://www.together.ai" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -940,7 +718,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://fal.ai/" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -968,7 +745,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://replicate.com" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
 
@@ -996,7 +772,6 @@
                     </div>
                     <div class="tool-actions">
                         <a href="https://siliconflow.cn/" class="btn-primary" target="_blank">访问官网</a>
-                        <button class="btn-secondary tool-details-btn">查看详情</button>
                     </div>
                 </div>
             </div>

@@ -202,9 +202,8 @@
                             <span class="feature-tag">无需编程</span>
                             <span class="feature-tag">全栈应用</span>
                         </div>
-                        <div class="tool-actions">
+                        <div class="tool-buttons">
                             <a href="https://bolt.new" target="_blank" class="btn-primary">访问官网</a>
-                            <button class="btn-secondary tool-detail-btn" data-tool="bolt">查看详情</button>
                         </div>
                     </div>
 
@@ -230,9 +229,8 @@
                             <span class="feature-tag">SEO友好</span>
                             <span class="feature-tag">社区活跃</span>
                         </div>
-                        <div class="tool-actions">
+                        <div class="tool-buttons">
                             <a href="https://wordpress.org" class="btn-primary" target="_blank">访问官网</a>
-                            <button class="btn-secondary tool-details-btn">查看详情</button>
                         </div>
                     </div>
 
@@ -258,9 +256,8 @@
                             <span class="feature-tag">移动优化</span>
                             <span class="feature-tag">数据分析</span>
                         </div>
-                        <div class="tool-actions">
+                        <div class="tool-buttons">
                             <a href="https://shopify.com" class="btn-primary" target="_blank">访问官网</a>
-                            <button class="btn-secondary tool-details-btn">查看详情</button>
                         </div>
                     </div>
 
@@ -286,9 +283,8 @@
                             <span class="feature-tag">模板丰富</span>
                             <span class="feature-tag">零代码</span>
                         </div>
-                        <div class="tool-actions">
+                        <div class="tool-buttons">
                             <a href="https://wix.com" class="btn-primary" target="_blank">访问官网</a>
-                            <button class="btn-secondary tool-details-btn">查看详情</button>
                         </div>
                     </div>
 
@@ -314,9 +310,8 @@
                             <span class="feature-tag">电商功能</span>
                             <span class="feature-tag">SEO优化</span>
                         </div>
-                        <div class="tool-actions">
+                        <div class="tool-buttons">
                             <a href="https://squarespace.com" class="btn-primary" target="_blank">访问官网</a>
-                            <button class="btn-secondary tool-details-btn">查看详情</button>
                         </div>
                     </div>
 
@@ -342,9 +337,8 @@
                             <span class="feature-tag">CMS功能</span>
                             <span class="feature-tag">代码导出</span>
                         </div>
-                        <div class="tool-actions">
+                        <div class="tool-buttons">
                             <a href="https://webflow.com" class="btn-primary" target="_blank">访问官网</a>
-                            <button class="btn-secondary tool-details-btn">查看详情</button>
                         </div>
                     </div>
 
@@ -370,9 +364,8 @@
                             <span class="feature-tag">转化优化</span>
                             <span class="feature-tag">营销集成</span>
                         </div>
-                        <div class="tool-actions">
+                        <div class="tool-buttons">
                             <a href="https://unbounce.com" class="btn-primary" target="_blank">访问官网</a>
-                            <button class="btn-secondary tool-details-btn">查看详情</button>
                         </div>
                     </div>
                 </div>
@@ -475,7 +468,7 @@
     <style>
         /* 统一的按钮样式 */
         .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             padding: 12px 24px;
             border-radius: 8px;
@@ -494,9 +487,9 @@
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, #2563eb, #1e40af);
+            background: linear-gradient(135deg, #5a67d8, #667eea);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .btn-secondary {
@@ -599,130 +592,121 @@
 
         .tools-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
         }
 
         .tool-card {
             background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid #e1e5e9;
+            padding: 24px;
         }
 
         .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
         }
 
         .tool-header {
             display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            gap: 1rem;
-            /* 移除边框，使布局更简洁 */
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 16px;
+        }
+
+        .tool-icon {
+            flex-shrink: 0;
         }
 
         .tool-icon img {
             width: 60px;
             height: 60px;
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
         .tool-info {
-            flex-grow: 1;
+            flex: 1;
         }
 
         .tool-name {
-            font-size: 1.3rem;
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #333;
+            color: #1e293b;
+            margin: 0 0 8px 0;
         }
 
         .tool-rating {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
         }
 
         .stars {
-            color: #ffc107;
-            font-size: 1rem;
+            color: #fbbf24;
+            font-size: 16px;
         }
 
         .rating-score {
-            font-size: 0.9rem;
-            color: #666;
+            color: #64748b;
             font-weight: 500;
+            font-size: 14px;
         }
 
         .tool-price {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #667eea;
-            background-color: #f0f2ff;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            background: #e0e7ff;
+            color: #5b21b6;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-left: auto;
+            align-self: flex-start;
         }
 
         .tool-description {
-            color: #666;
+            color: #64748b;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 16px;
+            font-size: 14px;
         }
 
         .tool-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            gap: 8px;
+            margin-bottom: 20px;
         }
 
         .feature-tag {
-            background-color: #e3f2fd;
-            color: #1976d2;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
             font-weight: 500;
         }
 
-        .tool-actions {
+        .tool-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 12px;
         }
 
         /* 工具卡片按钮对齐优化 */
         .tool-card {
-            display: flex !important;
-            flex-direction: column !important;
-            height: 100% !important;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
-        .tool-description {
-            flex-grow: 1 !important;
-            margin-bottom: 1.5rem !important;
-        }
-
-        .tool-features {
-            margin-bottom: 1.5rem !important;
-        }
-
-        .tool-actions {
-            margin-top: auto !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            gap: 15px !important;
-        }
-
-        .btn-primary, .btn-secondary {
-            flex: 1 !important;
-            max-width: 150px !important;
+        .tool-buttons {
+            margin-top: auto;
+            display: flex;
+            gap: 12px;
         }
 
         .tutorials {
@@ -823,7 +807,7 @@
                 padding: 1.5rem;
             }
 
-            .tool-actions {
+            .tool-buttons {
                 flex-direction: column;
             }
 

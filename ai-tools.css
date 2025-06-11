@@ -126,19 +126,20 @@ a.filter-btn:hover {
 /* 工具网格 - 完全无边框设计 */
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 0;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
     margin-bottom: 40px;
 }
 
 /* 工具卡片 - 彻底移除所有边框和阴影 */
 .tool-card {
     background: white;
-    border: none;
-    border-radius: 0;
-    padding: 2rem;
-    box-shadow: none;
-    transition: none;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -146,77 +147,79 @@ a.filter-btn:hover {
 }
 
 .tool-card:hover {
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* 工具头部信息 */
 .tool-header {
     display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    gap: 1rem;
-    border: none;
-    border-bottom: none;
-    padding-bottom: 0;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 16px;
 }
 
 .tool-icon {
     flex-shrink: 0;
+}
+
+.tool-icon-placeholder {
     width: 60px;
     height: 60px;
-    border-radius: 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .tool-info {
-    flex-grow: 1;
+    flex: 1;
 }
 
 .tool-name {
-    font-size: 1.3rem;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #333;
-    line-height: 1.4;
+    color: #1e293b;
+    margin: 0 0 8px 0;
 }
 
 .tool-rating {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin: 0;
+    gap: 8px;
 }
 
 .stars {
-    color: #ffc107;
-    font-size: 1rem;
-    line-height: 1;
+    color: #fbbf24;
+    font-size: 16px;
 }
 
 .rating-score {
-    font-size: 0.9rem;
-    color: #666;
+    color: #64748b;
     font-weight: 500;
-    line-height: 1;
+    font-size: 14px;
 }
 
 .tool-price {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #667eea;
-    background-color: #f0f2ff;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    align-self: flex-start;
+    background: #e0e7ff;
+    color: #5b21b6;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
     margin-left: auto;
+    align-self: flex-start;
 }
 
 /* 工具描述 */
 .tool-description {
-    color: #666;
+    color: #64748b;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
+    margin-bottom: 16px;
     font-size: 14px;
 }
 
@@ -224,33 +227,29 @@ a.filter-btn:hover {
 .tool-features {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
 .feature-tag {
-    background-color: #e3f2fd;
-    color: #1976d2;
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.85rem;
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
     font-weight: 500;
-    border: none;
 }
 
 /* 工具操作按钮 */
 .tool-actions {
-    margin-top: auto;
     display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
 }
 
-/* 按钮样式 - 无边框 */
-.btn-primary,
-.tool-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* 统一的按钮样式 */
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     padding: 12px 24px;
     border-radius: 8px;
@@ -263,15 +262,13 @@ a.filter-btn:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-width: 120px;
     transition: all 0.3s ease;
     text-align: center;
-    flex: 1;
-    max-width: 150px;
 }
 
-.btn-primary:hover,
-.tool-btn:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%);
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a67d8, #667eea);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
@@ -331,11 +328,11 @@ a.filter-btn:hover {
 
     .tools-grid {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 24px;
     }
 
     .tool-card {
-        padding: 1.5rem;
+        padding: 20px;
     }
 
     .tool-header {
@@ -351,14 +348,11 @@ a.filter-btn:hover {
     }
 
     .tool-actions {
-        flex-direction: column;
-        gap: 15px;
+        justify-content: center;
     }
 
-    .btn-primary,
-    .btn-secondary,
-    .tool-btn {
-        width: 100%;
-        max-width: none;
+    .btn-primary {
+        width: auto;
+        min-width: 150px;
     }
 }

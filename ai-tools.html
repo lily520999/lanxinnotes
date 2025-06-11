@@ -48,8 +48,10 @@
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 1px solid #f1f5f9;
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .tool-card:hover {
@@ -109,14 +111,15 @@
 }
 
 .tool-price {
-    background: #f1f5f9;
-    color: #475569;
+    background: #e0e7ff;
+    color: #5b21b6;
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 12px;
     font-weight: 500;
     white-space: nowrap;
     margin-left: auto;
+    align-self: flex-start;
 }
 
 .tool-description {
@@ -134,23 +137,23 @@
 }
 
 .feature-tag {
-    background: #f8fafc;
-    color: #475569;
+    background: #dbeafe;
+    color: #1e40af;
     padding: 4px 12px;
     border-radius: 16px;
     font-size: 12px;
     font-weight: 500;
-    border: 1px solid #e2e8f0;
 }
 
 .tool-actions {
     display: flex;
     gap: 12px;
+    margin-top: auto;
 }
 
 /* 统一的按钮样式 */
 .btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     padding: 12px 24px;
     border-radius: 8px;
@@ -169,9 +172,9 @@
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
+    background: linear-gradient(135deg, #5a67d8, #667eea);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .btn-secondary {
@@ -260,7 +263,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://yeka.ai" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -288,7 +290,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://openai.com/chatgpt/pricing/" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -316,7 +317,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://claude.ai" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -344,7 +344,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://www.midjourney.com" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -372,7 +371,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://openai.com/dall-e-3" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -400,7 +398,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://stability.ai/" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -428,7 +425,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://leonardo.ai" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -456,7 +452,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://www.copy.ai" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -484,7 +479,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://firefly.adobe.com" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -512,7 +506,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://raphael.app" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -540,7 +533,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://runwayml.com" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 
@@ -568,7 +560,6 @@
         </div>
         <div class="tool-actions">
             <a href="https://www.canva.com" class="btn-primary" target="_blank">访问官网</a>
-            <button class="btn-secondary tool-details-btn">查看详情</button>
         </div>
     </div>
 </div>
