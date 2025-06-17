@@ -100,6 +100,18 @@
             height: 40px;
             border-radius: 50%;
         }
+
+        .tool-price-badge {
+          display: inline-block;
+          background: #e0e7ff;
+          color: #5b21b6;
+          font-size: 13px;
+          font-weight: 600;
+          border-radius: 8px;
+          padding: 2px 12px;
+          margin-top: 6px;
+          margin-bottom: 8px;
+        }
     </style>
     
     <link rel="stylesheet" href="styles.css">
@@ -155,9 +167,15 @@
                 <div class="page-header-content">
                     <h1 class="page-title">建站工具推荐</h1>
                     <p class="page-description">精选优质建站工具，助你快速搭建专业网站</p>
-                    <div class="breadcrumb">
-                        <a href="index.html">首页</a> > <span>建站工具</span>
-                    </div>
+                    <!-- 搜索栏 -->
+                    <section class="tools-search" style="background:transparent;padding:0;margin-top:24px;">
+                        <div class="container" style="max-width:600px;display:flex;justify-content:center;">
+                            <form id="tool-search-form" style="display:flex;width:100%;">
+                                <input id="tool-search-input" type="text" placeholder="搜索建站工具..." style="flex:1;padding:16px 20px;font-size:18px;border-radius:12px 0 0 12px;border: none;outline:none;box-sizing:border-box;">
+                                <button type="submit" id="tool-search-btn" style="padding:0 36px;background:linear-gradient(90deg,#ff5f7e,#ff7eb3);color:#fff;font-size:18px;font-weight:600;border:none;border-radius:0 12px 12px 0;cursor:pointer;transition:background 0.2s;">搜索</button>
+                            </form>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section>
@@ -176,7 +194,7 @@
             </div>
         </section>
 
-                        <!-- 工具列表 -->
+        <!-- 工具列表 -->
         <section class="tools-grid">
             <div class="container">
                 <div class="tools-container">
@@ -192,8 +210,8 @@
                                     <span class="stars">★★★★★</span>
                                     <span class="rating-score">4.9</span>
                                 </div>
+                                <span class="tool-price-badge">免费</span>
                             </div>
-                            <div class="tool-price">免费试用</div>
                         </div>
                         <p class="tool-description">AI驱动的快速应用构建平台，通过简单对话即可创建完整的网站和应用，无需编程基础。</p>
                         <div class="tool-features">
@@ -219,8 +237,8 @@
                                     <span class="stars">★★★★★</span>
                                     <span class="rating-score">4.8</span>
                                 </div>
+                                <span class="tool-price-badge">免费</span>
                             </div>
-                            <div class="tool-price">免费</div>
                         </div>
                         <p class="tool-description">全球最受欢迎的内容管理系统，拥有强大的插件生态和主题库，适合各种类型的网站建设。</p>
                         <div class="tool-features">
@@ -246,8 +264,8 @@
                                     <span class="stars">★★★★☆</span>
                                     <span class="rating-score">4.5</span>
                                 </div>
+                                <span class="tool-price-badge">$29/月起</span>
                             </div>
-                            <div class="tool-price">$29/月</div>
                         </div>
                         <p class="tool-description">专业的电商建站平台，提供完整的在线商店解决方案，支持多种支付方式和物流集成。</p>
                         <div class="tool-features">
@@ -273,8 +291,8 @@
                                     <span class="stars">★★★★☆</span>
                                     <span class="rating-score">4.3</span>
                                 </div>
+                                <span class="tool-price-badge">免费/付费</span>
                             </div>
-                            <div class="tool-price">免费起</div>
                         </div>
                         <p class="tool-description">简单易用的拖拽式建站工具，提供精美模板和AI网站生成器，适合新手快速建站。</p>
                         <div class="tool-features">
@@ -300,8 +318,8 @@
                                     <span class="stars">★★★★☆</span>
                                     <span class="rating-score">4.4</span>
                                 </div>
+                                <span class="tool-price-badge">免费</span>
                             </div>
-                            <div class="tool-price">$12/月</div>
                         </div>
                         <p class="tool-description">注重设计美观的建站平台，提供高质量模板和强大的视觉编辑器，适合创意类网站。</p>
                         <div class="tool-features">
@@ -327,8 +345,8 @@
                                     <span class="stars">★★★★★</span>
                                     <span class="rating-score">4.6</span>
                                 </div>
+                                <span class="tool-price-badge">免费</span>
                             </div>
-                            <div class="tool-price">$12/月</div>
                         </div>
                         <p class="tool-description">专业级的可视化建站工具，支持复杂的动画效果和响应式设计，适合设计师和开发者。</p>
                         <div class="tool-features">
@@ -354,8 +372,8 @@
                                     <span class="stars">★★★★☆</span>
                                     <span class="rating-score">4.2</span>
                                 </div>
+                                <span class="tool-price-badge">免费</span>
                             </div>
-                            <div class="tool-price">$80/月</div>
                         </div>
                         <p class="tool-description">专业的落地页构建工具，提供A/B测试功能和转化率优化工具，适合营销活动。</p>
                         <div class="tool-features">
@@ -366,6 +384,2035 @@
                         </div>
                         <div class="tool-buttons">
                             <a href="https://unbounce.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Firebase Studio -->
+                    <div class="tool-card cms" data-category="cms">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder firebase">🔥</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Firebase Studio</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">Google Firebase的全套开发工具包，提供后端服务、数据库、认证和托管等一站式解决方案。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">后端服务</span>
+                            <span class="feature-tag">实时数据库</span>
+                            <span class="feature-tag">用户认证</span>
+                            <span class="feature-tag">云托管</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://firebase.studio" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Lovable.dev -->
+                    <div class="tool-card drag-drop" data-category="drag-drop">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder lovable-build">💖</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Lovable.dev</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">AI驱动的网站构建平台，通过自然语言对话即可创建完整的网站和应用，无需编程知识。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI对话建站</span>
+                            <span class="feature-tag">零代码</span>
+                            <span class="feature-tag">快速部署</span>
+                            <span class="feature-tag">响应式设计</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://lovable.dev" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Shipixen -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SX</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Shipixen</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">开源的 Next.js SaaS 启动模板，帮助你快速构建现代 SaaS 着陆页和用户系统。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Next.js</span>
+                            <span class="feature-tag">SaaS模板</span>
+                            <span class="feature-tag">开源</span>
+                            <span class="feature-tag">Tailwind CSS</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://shipixen.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Launch UI Components -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder webflow">LC</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Launch UI Components</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.3</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">提供数百个可复制粘贴的 Tailwind CSS 组件，支持快速构建美观界面。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Tailwind组件</span>
+                            <span class="feature-tag">React支持</span>
+                            <span class="feature-tag">复制即用</span>
+                            <span class="feature-tag">响应式</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.launchuicomponents.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Shadcn Landing Page -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder wordpress">SL</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Shadcn Landing Page</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.2</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">基于 shadcn/ui 与 Next.js 的开源着陆页模板，快速启动你的项目。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">shadcn/ui</span>
+                            <span class="feature-tag">Next.js</span>
+                            <span class="feature-tag">开源</span>
+                            <span class="feature-tag">模板</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://github.com/nobruf/shadcn-landing-page" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Tailus UI -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder squarespace">TU</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Tailus UI</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">Tailus 提供丰富的 Tailwind CSS 模板和组件，覆盖营销、页眉页脚等多种场景。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Tailwind CSS</span>
+                            <span class="feature-tag">营销模板</span>
+                            <span class="feature-tag">响应式</span>
+                            <span class="feature-tag">组件库</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://tailus.io/templates/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- ZippyStarter Theme Generator -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder unbounce">ZS</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">ZippyStarter Theme Generator</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.3</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">在线生成 shadcn/ui 主题配色，一键定制 Tailwind 颜色方案。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">主题生成</span>
+                            <span class="feature-tag">shadcn/ui</span>
+                            <span class="feature-tag">Tailwind</span>
+                            <span class="feature-tag">在线工具</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://zippystarter.com/tools/shadcn-ui-theme-generator" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Cleanup.pictures -->
+                    <!-- Cleanup.pictures 卡片已移至 AI工具 页面 -->
+                    <!-- 原位置留空 -->
+
+                    <!-- MagicUI -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder webflow">MU</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">MagicUI</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">高质量的动画与交互组件库，基于 Tailwind &amp; shadcn/ui。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">动画组件</span>
+                            <span class="feature-tag">Tailwind</span>
+                            <span class="feature-tag">React</span>
+                            <span class="feature-tag">shadcn/ui</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://magicui.design/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Aceternity UI -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder lovable-build">AU</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Aceternity UI</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">提供丰富的 React + Tailwind 组件与营销模板，加速产品上线。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">React组件</span>
+                            <span class="feature-tag">模板</span>
+                            <span class="feature-tag">Tailwind</span>
+                            <span class="feature-tag">动画</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://ui.aceternity.com/components" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Tailwind UI Blocks -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder squarespace">TB</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Tailwind UI Blocks</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">Tailwind CSS 官方团队提供的营销区块集合，可轻松组合页面。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">官方出品</span>
+                            <span class="feature-tag">Tailwind区块</span>
+                            <span class="feature-tag">响应式</span>
+                            <span class="feature-tag">复制粘贴</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://tailwindcss.com/plus/ui-blocks" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- ReactBits -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder wix">RB</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">ReactBits</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.3</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">收集常用的 React &amp; Next.js 代码片段与 UI 示例，快速提升开发效率。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">React片段</span>
+                            <span class="feature-tag">Next.js示例</span>
+                            <span class="feature-tag">复制即用</span>
+                            <span class="feature-tag">教程</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.reactbits.dev" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Nutlope Open Source -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">NP</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Nutlope Open Source</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">Nutlope 维护的多款开源 SaaS 模板与 AI 示例，供开发者学习与复用。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI示例</span>
+                            <span class="feature-tag">SaaS模板</span>
+                            <span class="feature-tag">开源</span>
+                            <span class="feature-tag">Next.js</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://github.com/Nutlope" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Vercel Templates -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder webflow">VT</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Vercel Templates</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.8</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">Vercel官方提供的Next.js模板集合，包含各种类型的应用模板，快速启动项目开发。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Next.js</span>
+                            <span class="feature-tag">官方模板</span>
+                            <span class="feature-tag">一键部署</span>
+                            <span class="feature-tag">高质量</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://vercel.com/templates?framework=Next.js" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- CodeCanyon -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder wordpress">CC</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">CodeCanyon</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">Envato旗下的代码市场，提供各种网站脚本、插件和应用程序，质量有保障。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">代码市场</span>
+                            <span class="feature-tag">插件</span>
+                            <span class="feature-tag">脚本</span>
+                            <span class="feature-tag">应用</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://codecanyon.net" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- ThemeForest -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder squarespace">TF</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">ThemeForest</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球最大的WordPress主题和网站模板市场，提供高质量的设计资源。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">主题市场</span>
+                            <span class="feature-tag">WordPress</span>
+                            <span class="feature-tag">模板</span>
+                            <span class="feature-tag">设计资源</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://themeforest.net" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Product Hunt -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">PH</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Product Hunt</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.8</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">发现最新产品和创意的平台，是产品发布和获取早期用户的重要渠道。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">产品发布</span>
+                            <span class="feature-tag">社区</span>
+                            <span class="feature-tag">创新</span>
+                            <span class="feature-tag">早期用户</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://producthunt.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Hacker News -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder webflow">HN</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Hacker News</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">Y Combinator运营的技术社区，分享技术新闻、创业故事和编程资源。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">技术社区</span>
+                            <span class="feature-tag">创业</span>
+                            <span class="feature-tag">编程</span>
+                            <span class="feature-tag">新闻</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://news.ycombinator.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Indie Hackers -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder lovable-build">IH</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Indie Hackers</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">独立开发者和创业者的社区，分享创业经验和收入数据。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">独立开发</span>
+                            <span class="feature-tag">创业社区</span>
+                            <span class="feature-tag">经验分享</span>
+                            <span class="feature-tag">收入数据</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://indiehackers.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- BetaList -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder squarespace">BL</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">BetaList</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">展示和发现新产品、创业项目的平台，帮助产品获取早期用户。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">产品发布</span>
+                            <span class="feature-tag">早期用户</span>
+                            <span class="feature-tag">创业项目</span>
+                            <span class="feature-tag">市场验证</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://betalist.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Reddit -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder webflow">RD</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Reddit</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球最大社区平台，涵盖技术、创业、产品等多领域讨论。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">社区</span>
+                            <span class="feature-tag">技术</span>
+                            <span class="feature-tag">创业</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://reddit.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- V2EX -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder wordpress">V2</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">V2EX</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">中文技术社区，讨论编程、创业、产品设计等话题。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">技术社区</span>
+                            <span class="feature-tag">中文</span>
+                            <span class="feature-tag">创业</span>
+                            <span class="feature-tag">产品设计</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://v2ex.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- 小众软件 -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder squarespace">小众</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">小众软件</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">分享优质软件和工具的博客，帮助用户发现实用的小众软件。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">软件推荐</span>
+                            <span class="feature-tag">工具分享</span>
+                            <span class="feature-tag">中文</span>
+                            <span class="feature-tag">实用工具</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://appinn.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- 即刻 -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder lovable-build">即刻</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">即刻</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.3</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">中文兴趣社区，可以关注感兴趣的话题和创作者，获取最新动态。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">兴趣社区</span>
+                            <span class="feature-tag">中文</span>
+                            <span class="feature-tag">话题订阅</span>
+                            <span class="feature-tag">创作者</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://okjk.co" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- AnyVoice -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">AV</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">AnyVoice</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">3秒AI声音克隆，支持多语言，超逼真语音生成，适合内容创作和原型设计。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI语音</span>
+                            <span class="feature-tag">声音克隆</span>
+                            <span class="feature-tag">多语言</span>
+                            <span class="feature-tag">实时生成</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://anyvoice.net/zh" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Indie Hackers -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder lovable-build">IH</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Indie Hackers</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">独立开发者和创业者社区，分享创业经验、项目和收入数据。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">创业社区</span>
+                            <span class="feature-tag">独立开发</span>
+                            <span class="feature-tag">经验分享</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://indiehackers.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Reddit -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder webflow">RD</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Reddit</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球最大社区平台，涵盖技术、创业、产品等多领域讨论。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">社区</span>
+                            <span class="feature-tag">技术</span>
+                            <span class="feature-tag">创业</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://reddit.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Coze 模板市场 -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">CZ</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Coze 模板市场</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">丰富的AI与自动化Bot模板，助力快速搭建智能应用。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI模板</span>
+                            <span class="feature-tag">自动化</span>
+                            <span class="feature-tag">Bot</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.coze.cn/template" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Google AdSense -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">GA</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Google AdSense</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球领先的网站变现广告平台，支持多种广告样式和结算方式。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">广告变现</span>
+                            <span class="feature-tag">Google</span>
+                            <span class="feature-tag">流量变现</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.google.com/adsense" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- ReadMake.com -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">RM</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">ReadMake.com</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">内容创作者与开发者的协作平台，支持文档、教程、项目管理。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">内容创作</span>
+                            <span class="feature-tag">协作</span>
+                            <span class="feature-tag">教程</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://readmake.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Affiliate Marketing -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">AM</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Affiliate Marketing</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">联盟营销知识与工具，助力网站主和内容创作者变现。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">联盟营销</span>
+                            <span class="feature-tag">变现</span>
+                            <span class="feature-tag">推广</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.affiliate.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Printful -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">PF</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Printful</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">一站式按需印刷和电商解决方案，支持全球发货和品牌定制。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">电商</span>
+                            <span class="feature-tag">按需印刷</span>
+                            <span class="feature-tag">品牌定制</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.printful.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Printify -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">PY</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Printify</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球按需印刷平台，助力创作者和商家轻松拓展商品品类。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">按需印刷</span>
+                            <span class="feature-tag">电商</span>
+                            <span class="feature-tag">定制</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://printify.com" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- ShareGPT -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SG</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">ShareGPT</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">对话内容一键分享工具，支持OpenAI对话记录的快速分享。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI工具</span>
+                            <span class="feature-tag">对话分享</span>
+                            <span class="feature-tag">OpenAI</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://sharegpt.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- ProSEO AI -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">PS</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">ProSEO AI</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">AI驱动的SEO优化平台，提升网站排名和流量，智能内容建议。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SEO</span>
+                            <span class="feature-tag">AI优化</span>
+                            <span class="feature-tag">内容建议</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.proseoai.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- avatarai.me -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">AA</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">avatarai.me</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">AI头像生成平台，支持多风格高质量头像定制，适合社交和品牌。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI头像</span>
+                            <span class="feature-tag">定制</span>
+                            <span class="feature-tag">图片生成</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://avatarai.me" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- AugmentCode -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">AC</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">AugmentCode</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">AI驱动的开发平台，支持自动补全、代码生成和上下文理解。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI开发</span>
+                            <span class="feature-tag">自动补全</span>
+                            <span class="feature-tag">代码生成</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.augmentcode.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Node.js -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">ND</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Node.js</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.9</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">开源跨平台JavaScript运行环境，适合构建高性能Web应用和服务端。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开发</span>
+                            <span class="feature-tag">JavaScript</span>
+                            <span class="feature-tag">开源</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://nodejs.org" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Git -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">GT</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Git</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.9</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">分布式版本控制系统，适合团队协作和开源项目管理。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开发</span>
+                            <span class="feature-tag">版本控制</span>
+                            <span class="feature-tag">开源</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://git-scm.com/downloads" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Chinese (Simplified) Language Pack -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">ZH</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Chinese (Simplified) Language Pack</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">为开发工具和平台提供简体中文本地化支持，提升用户体验。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">本地化</span>
+                            <span class="feature-tag">中文</span>
+                            <span class="feature-tag">插件</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Material Icon Theme -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">MI</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Material Icon Theme</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">为编辑器提供美观的Material风格图标，提升开发体验。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开发</span>
+                            <span class="feature-tag">图标</span>
+                            <span class="feature-tag">美化</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Prettier - Code Formatter -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">PR</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Prettier - Code Formatter</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">流行的代码格式化工具，支持多种语言和编辑器插件。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开发</span>
+                            <span class="feature-tag">格式化</span>
+                            <span class="feature-tag">插件</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://prettier.io/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Live Server -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">LS</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Live Server</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">本地开发实时预览工具，支持热重载和多端同步。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开发</span>
+                            <span class="feature-tag">本地预览</span>
+                            <span class="feature-tag">热重载</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://ritwickdey.github.io/live-server/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Bracket Pair Colorizer -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">BP</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Bracket Pair Colorizer</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">为代码编辑器提供括号高亮配色，提升代码可读性。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开发</span>
+                            <span class="feature-tag">高亮</span>
+                            <span class="feature-tag">插件</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Code Spell Checker -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">CS</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Code Spell Checker</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">代码拼写检查插件，支持多语言和自定义词库。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开发</span>
+                            <span class="feature-tag">拼写检查</span>
+                            <span class="feature-tag">插件</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Path Intellisense -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">PI</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Path Intellisense</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">智能路径补全插件，提升文件引用效率，支持多种编辑器。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">开发</span>
+                            <span class="feature-tag">路径补全</span>
+                            <span class="feature-tag">插件</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Claude Code -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">CC</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Claude Code</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">AI代码助手，支持自然语言编程、代码生成和优化。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI开发</span>
+                            <span class="feature-tag">代码助手</span>
+                            <span class="feature-tag">自然语言</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- CodePen -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">CP</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">CodePen</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.8</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">前端开发在线演示与协作平台，支持HTML、CSS、JS实时预览。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">前端</span>
+                            <span class="feature-tag">在线编辑</span>
+                            <span class="feature-tag">协作</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://codepen.io/pen" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- W3Schools CSS编辑器 -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">WS</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">W3Schools CSS编辑器</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">在线CSS代码编辑与预览工具，适合学习和快速测试样式。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">CSS</span>
+                            <span class="feature-tag">在线编辑</span>
+                            <span class="feature-tag">学习</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.w3schools.com/css/css_editor.asp" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- TweakCN编辑器 -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">TC</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">TweakCN编辑器</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">中文在线代码编辑器，支持多种语言和实时预览。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">在线编辑</span>
+                            <span class="feature-tag">中文</span>
+                            <span class="feature-tag">实时预览</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://tweakcn.com/editor/theme" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- shadcn/ui主题 -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SC</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">shadcn/ui主题</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">基于React和Tailwind的现代化UI组件库，提供丰富的主题和组件。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">UI组件</span>
+                            <span class="feature-tag">React</span>
+                            <span class="feature-tag">Tailwind</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://ui.shadcn.com/themes" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Supabase文档 -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SB</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Supabase文档</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">开源Firebase替代品，提供数据库、认证、存储等后端服务。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">后端</span>
+                            <span class="feature-tag">数据库</span>
+                            <span class="feature-tag">认证</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://supabase.com/docs" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- 豆包AI编程助手 -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">DB</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">豆包AI编程助手</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">AI驱动的中文编程助手，支持代码生成、调试和学习。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI开发</span>
+                            <span class="feature-tag">中文</span>
+                            <span class="feature-tag">编程助手</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.doubao.com/chat/coding" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Clerk -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">CL</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Clerk</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.8</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全功能用户管理与认证平台，支持多种UI组件和API，适配主流前端框架。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">认证</span>
+                            <span class="feature-tag">用户管理</span>
+                            <span class="feature-tag">SaaS</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://clerk.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- NextAuth.js -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">NA</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">NextAuth.js</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">Next.js生态下的开源认证解决方案，支持多种登录方式和自定义扩展。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">认证</span>
+                            <span class="feature-tag">开源</span>
+                            <span class="feature-tag">Next.js</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://next-auth.js.org/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Better Auth -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">BA</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Better Auth</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">TypeScript生态下的全功能认证框架，支持多租户、插件和多种登录方式。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">认证</span>
+                            <span class="feature-tag">TypeScript</span>
+                            <span class="feature-tag">多租户</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.better-auth.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Paddle -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">PD</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Paddle</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">付费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球SaaS支付与订阅管理平台，支持税务合规和多币种结算。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">支付</span>
+                            <span class="feature-tag">订阅</span>
+                            <span class="feature-tag">SaaS</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://paddle.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Creem -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">CR</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Creem</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">付费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">一站式SaaS支付和订阅管理平台，助力全球化收款。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">支付</span>
+                            <span class="feature-tag">订阅</span>
+                            <span class="feature-tag">SaaS</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://creem.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Stripe -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">ST</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Stripe</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.8</span>
+                                </div>
+                                <span class="tool-price-badge">付费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球领先的支付平台，支持在线收款、订阅、发票等多种功能。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">支付</span>
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">API</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://stripe.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Starter Kit -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SK</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Starter Kit</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">开箱即用的SaaS/建站项目模板，助力快速启动产品开发。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">模板</span>
+                            <span class="feature-tag">Starter</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- mksaas -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">MK</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">mksaas</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">SaaS建站与管理平台，支持多种业务场景和自动化部署。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">建站</span>
+                            <span class="feature-tag">自动化</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://mksaas.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- ShipAny -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SA</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">ShipAny</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">付费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">一站式跨境物流解决方案，支持多平台集成与自动化发货。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">物流</span>
+                            <span class="feature-tag">自动化</span>
+                            <span class="feature-tag">SaaS</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- MakerKit -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">MK</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">MakerKit</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">SaaS产品开发Starter Kit，集成用户管理、订阅、支付等功能。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">Starter</span>
+                            <span class="feature-tag">开发</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- SupaStarter -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SS</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">SupaStarter</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">基于Supabase的SaaS项目启动模板，集成认证、支付等常用功能。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">Supabase</span>
+                            <span class="feature-tag">Starter</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Shipfast -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SF</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Shipfast</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">极简SaaS启动模板，助力开发者快速上线产品。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">Starter</span>
+                            <span class="feature-tag">开发</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="#" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- MongoDB -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">MG</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">MongoDB</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球流行的NoSQL数据库，适合高并发和大数据场景。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">数据库</span>
+                            <span class="feature-tag">NoSQL</span>
+                            <span class="feature-tag">云服务</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://mongodb.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- saasykit -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SK</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">saasykit</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">SaaS产品开发Starter Kit，集成常用功能和最佳实践。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">Starter</span>
+                            <span class="feature-tag">开发</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://saasykit.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- starterkit-chi.vercel.app -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SK</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">StarterKit (Vercel)</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">开源SaaS项目启动模板，适合Vercel平台快速部署。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">Starter</span>
+                            <span class="feature-tag">Vercel</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://starterkit-chi.vercel.app/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Google Cloud Console -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">GC</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Google Cloud Console</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">谷歌云服务管理平台，支持云计算、存储、AI等多种服务。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">云服务</span>
+                            <span class="feature-tag">AI</span>
+                            <span class="feature-tag">开发</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://console.cloud.google.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- wish-ashy-phi.vercel.app -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">WA</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Wish (Vercel)</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">开源SaaS愿望清单项目，适合Vercel平台部署和二次开发。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">开源</span>
+                            <span class="feature-tag">Vercel</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://wish-ashy-phi.vercel.app/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- dokploy -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">DP</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Dokploy</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">一键式云端部署工具，支持多种开发语言和框架。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">部署</span>
+                            <span class="feature-tag">云服务</span>
+                            <span class="feature-tag">自动化</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://dokploy.com/install.sh" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- same.new -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SN</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">same.new</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">极简SaaS项目生成器，快速搭建新项目。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SaaS</span>
+                            <span class="feature-tag">生成器</span>
+                            <span class="feature-tag">开发</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://same.new/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Google Trends -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">GT</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Google Trends</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">谷歌趋势分析工具，洞察全球热门话题和搜索趋势。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">数据分析</span>
+                            <span class="feature-tag">趋势</span>
+                            <span class="feature-tag">Google</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://trends.google.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- SEMrush -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">SR</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">SEMrush</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">付费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球领先的SEO与市场分析工具，支持关键词、流量、竞品等多维度分析。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SEO</span>
+                            <span class="feature-tag">数据分析</span>
+                            <span class="feature-tag">市场</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="http://semrush.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Ahrefs -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">AH</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Ahrefs</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="tool-price-badge">付费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">专业SEO分析平台，提供网站流量、外链、关键词等深度数据。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">SEO</span>
+                            <span class="feature-tag">数据分析</span>
+                            <span class="feature-tag">市场</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://ahrefs.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- TextStudio -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">TS</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">TextStudio</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">在线文本设计与生成工具，支持多种字体和样式。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">文本生成</span>
+                            <span class="feature-tag">设计</span>
+                            <span class="feature-tag">在线工具</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.textstudio.com/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- YesChat AI -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">YC</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">YesChat AI</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">多模型AI聊天与问答平台，支持多语言和丰富插件。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">AI</span>
+                            <span class="feature-tag">聊天</span>
+                            <span class="feature-tag">多语言</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://www.yeschat.ai/" class="btn-primary" target="_blank">访问官网</a>
+                        </div>
+                    </div>
+
+                    <!-- Unsplash -->
+                    <div class="tool-card landing" data-category="landing">
+                        <div class="tool-header">
+                            <div class="tool-icon">
+                                <div class="tool-icon-placeholder bolt">UP</div>
+                            </div>
+                            <div class="tool-info">
+                                <h3 class="tool-name">Unsplash</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.8</span>
+                                </div>
+                                <span class="tool-price-badge">免费</span>
+                            </div>
+                        </div>
+                        <p class="tool-description">全球高质量免费高清图片库，适合设计、建站等多场景使用。</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">图片</span>
+                            <span class="feature-tag">设计</span>
+                            <span class="feature-tag">素材</span>
+                        </div>
+                        <div class="tool-buttons">
+                            <a href="https://unsplash.com/" class="btn-primary" target="_blank">访问官网</a>
                         </div>
                     </div>
                 </div>
@@ -598,12 +2645,32 @@
         }
 
         .tool-card {
-            background: white;
+            border-radius: 24px;
+            box-shadow: 0 6px 32px rgba(80, 80, 120, 0.10);
+            background: #fff;
+            padding: 32px 28px 28px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            transition: box-shadow 0.2s;
+            min-width: 340px;
+            max-width: 420px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .tool-price-badge {
+            position: absolute;
+            right: 28px;
+            top: 28px;
+            background: #ede9fe;
+            color: #7c3aed;
+            font-size: 14px;
+            font-weight: 500;
             border-radius: 16px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            padding: 24px;
+            padding: 6px 20px;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+            margin: 0;
         }
 
         .tool-card:hover {
@@ -656,18 +2723,6 @@
             font-size: 14px;
         }
 
-        .tool-price {
-            background: #e0e7ff;
-            color: #5b21b6;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-            white-space: nowrap;
-            margin-left: auto;
-            align-self: flex-start;
-        }
-
         .tool-description {
             color: #64748b;
             line-height: 1.6;
@@ -692,8 +2747,9 @@
         }
 
         .tool-buttons {
+            margin-top: auto;
             display: flex;
-            gap: 12px;
+            justify-content: flex-start;
         }
 
         /* 工具卡片按钮对齐优化 */
@@ -706,7 +2762,7 @@
         .tool-buttons {
             margin-top: auto;
             display: flex;
-            gap: 12px;
+            justify-content: flex-start;
         }
 
         .tutorials {
@@ -868,6 +2924,14 @@
             background: linear-gradient(135deg, #ff6b6b, #ee5a24);
         }
 
+        .tool-icon-placeholder.firebase {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+        }
+
+        .tool-icon-placeholder.lovable-build {
+            background: linear-gradient(135deg, #ff1b7d, #ff4081);
+        }
+
         .tutorial-image-placeholder {
             width: 100%;
             height: 200px;
@@ -928,7 +2992,34 @@
                     alert(`${toolName} 的详细信息将在会员专区提供，请加入会员获取完整教程和资源。`);
                 });
             });
+
+            // 搜索栏功能
+            const searchInput = document.getElementById('tool-search-input');
+            const searchForm = document.getElementById('tool-search-form');
+            if (searchInput) {
+                function doSearch() {
+                    const keyword = searchInput.value.trim().toLowerCase();
+                    toolCards.forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        if (text.includes(keyword)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                }
+                searchInput.addEventListener('input', doSearch);
+                if (searchForm) {
+                    searchForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        doSearch();
+                    });
+                }
+            }
         });
     </script>
 </body>
+</html> 
+</html> 
+</html> 
 </html> 
