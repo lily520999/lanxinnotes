@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KNR4KPK379');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付 - 兰心运营笔记</title>
+    <meta name="description" content="选择您的支付方式，加入兰心运营笔记会员，获取专业的AI工具和跨境电商指导">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+        .payment-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .payment-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .payment-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .payment-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .payment-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .payment-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plan-card.recommended {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+        
+        .plan-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .plan-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .plan-price {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .price-amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .price-currency {
+            font-size: 24px;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .price-period {
+            font-size: 16px;
+            color: #666;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            padding: 10px 0;
+            color: #555;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .plan-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .select-plan-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .select-plan-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .payment-methods {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .payment-methods.active {
+            display: block;
+        }
+        
+        .method-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .method-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .method-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        
+        .method-content {
+            display: none;
+        }
+        
+        .method-content.active {
+            display: block;
+        }
+        
+        /* Stripe 支付表单 */
+        .stripe-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        #card-element {
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            background-color: white;
+        }
+        
+        #card-element.StripeElement--focus {
+            border-color: #667eea;
+        }
+        
+        #card-errors {
+            color: #fa755a;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .pay-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pay-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .pay-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* 二维码支付 */
+        .qr-payment {
+            text-align: center;
+        }
+        
+        .qr-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .qr-tab {
+            padding: 10px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .qr-tab.active {
+            border-color: #667eea;
+            background: #f5f7ff;
+        }
+        
+        .qr-icon {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .qr-container {
+            display: none;
+        }
+        
+        .qr-container.active {
+            display: block;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .qr-instruction {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .security-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .security-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .security-icon {
+            font-size: 24px;
+        }
+        
+        @media (max-width: 768px) {
+            .payment-plans {
+                grid-template-columns: 1fr;
+            }
+            
+            .plan-card.recommended {
+                transform: none;
+            }
+            
+            .method-tabs {
+                flex-direction: column;
+            }
+            
+            .qr-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-logo">
+                <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="nav-logo-img" 
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" 
+                     loading="lazy">
+                <span class="nav-logo-text">兰心运营笔记</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="ai-tools.html" class="nav-link">AI工具</a></li>
+                <li class="nav-item"><a href="ecommerce.html" class="nav-link">跨境电商</a></li>
+                <li class="nav-item"><a href="content-creation.html" class="nav-link">内容创作</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">关于我们</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">联系我们</a></li>
+                <li class="nav-item"><a href="login.html" class="nav-link login-btn">登录</a></li>
+                <li class="nav-item language-switch">
+                    <a href="payment-enhanced-en.html" class="nav-link">English</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="payment-section">
+            <div class="payment-container">
+                <div class="payment-header">
+                    <h1 class="payment-title">选择您的会员计划</h1>
+                    <p class="payment-subtitle">解锁专业的AI工具指导和跨境电商策略，提升您的运营效率</p>
+                </div>
+                
+                <!-- 会员计划选择 -->
+                <div class="payment-plans">
+                    <!-- 基础会员 -->
+                    <div class="plan-card" data-plan="basic" data-price="99" data-period="月">
+                        <div class="plan-name">基础会员</div>
+                        <div class="plan-price">
+                            <span class="price-currency">¥</span>
+                            <span class="price-amount">99</span>
+                            <span class="price-period">/月</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>访问所有AI工具评测</li>
+                            <li>基础跨境电商指南</li>
+                            <li>每周1次视频教程</li>
+                            <li>社区讨论权限</li>
+                            <li>邮件支持</li>
+                        </ul>
+                        <button class="select-plan-btn" onclick="selectPlan('basic', 99, '月')">选择基础会员</button>
+                    </div>
+                    
+                    <!-- 专业会员 -->
+                    <div class="plan-card recommended" data-plan="pro" data-price="299" data-period="季度">
+                        <div class="plan-badge">最受欢迎</div>
+                        <div class="plan-name">专业会员</div>
+                        <div class="plan-price">
+                            <span class="price-currency">¥</span>
+                            <span class="price-amount">299</span>
+                            <span class="price-period">/季度</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>所有基础会员权益</li>
+                            <li>专业AI工具使用培训</li>
+                            <li>跨境电商选品分析</li>
+                            <li>每周3次视频教程</li>
+                            <li>一对一咨询(1次/月)</li>
+                            <li>独家资源下载</li>
+                        </ul>
+                        <button class="select-plan-btn" onclick="selectPlan('pro', 299, '季度')">选择专业会员</button>
+                    </div>
+                    
+                    <!-- 企业会员 -->
+                    <div class="plan-card" data-plan="enterprise" data-price="999" data-period="年">
+                        <div class="plan-name">企业会员</div>
+                        <div class="plan-price">
+                            <span class="price-currency">¥</span>
+                            <span class="price-amount">999</span>
+                            <span class="price-period">/年</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>所有专业会员权益</li>
+                            <li>定制化培训方案</li>
+                            <li>企业级技术支持</li>
+                            <li>团队协作工具</li>
+                            <li>优先客户服务</li>
+                            <li>API访问权限</li>
+                        </ul>
+                        <button class="select-plan-btn" onclick="selectPlan('enterprise', 999, '年')">选择企业会员</button>
+                    </div>
+                </div>
+                
+                <!-- 支付方式 -->
+                <div class="payment-methods" id="payment-methods">
+                    <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #333;">选择支付方式</h3>
+                    
+                    <div class="method-tabs">
+                        <div class="method-tab active" onclick="switchPaymentMethod('card')">
+                            💳 信用卡支付
+                        </div>
+                        <div class="method-tab" onclick="switchPaymentMethod('qr')">
+                            📱 扫码支付
+                        </div>
+                        <div class="method-tab" onclick="switchPaymentMethod('paypal')">
+                            🌐 PayPal
+                        </div>
+                    </div>
+                    
+                    <!-- 信用卡支付 -->
+                    <div class="method-content active" id="card-payment">
+                        <form id="payment-form" class="stripe-form">
+                            <div class="form-group">
+                                <label for="email" class="form-label">邮箱地址</label>
+                                <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="card-element" class="form-label">信用卡信息</label>
+                                <div id="card-element">
+                                    <!-- Stripe Elements 将在这里创建表单字段 -->
+                                </div>
+                                <div id="card-errors" role="alert"></div>
+                            </div>
+                            
+                            <button type="submit" id="submit-button" class="pay-button">
+                                <span id="button-text">立即支付 ¥<span id="amount">299</span></span>
+                                <span id="spinner" style="display: none;">处理中...</span>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- 扫码支付 -->
+                    <div class="method-content" id="qr-payment">
+                        <div class="qr-payment">
+                            <div class="qr-tabs">
+                                <div class="qr-tab active" onclick="switchQRMethod('wechat')">
+                                    <img src="images/n1. wechat-pay.png" alt="微信支付" class="qr-icon">
+                                    微信支付
+                                </div>
+                                <div class="qr-tab" onclick="switchQRMethod('alipay')">
+                                    <img src="images/n2. alipay.png" alt="支付宝" class="qr-icon">
+                                    支付宝
+                                </div>
+                            </div>
+                            
+                            <div class="qr-container active" id="wechat-qr">
+                                <div class="qr-code">
+                                    <img src="images/n3. wechat-qr.png" alt="微信支付二维码">
+                                </div>
+                                <p class="qr-instruction">请使用微信扫描上方二维码完成支付</p>
+                                <button class="pay-button" onclick="window.location.href='payment-success.html?method=wechat'">
+                                    支付完成
+                                </button>
+                            </div>
+                            
+                            <div class="qr-container" id="alipay-qr">
+                                <div class="qr-code">
+                                    <img src="images/n4. alipay-qr.png" alt="支付宝支付二维码">
+                                </div>
+                                <p class="qr-instruction">请使用支付宝扫描上方二维码完成支付</p>
+                                <button class="pay-button" onclick="window.location.href='payment-success.html?method=alipay'">
+                                    支付完成
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PayPal 支付 -->
+                    <div class="method-content" id="paypal-payment">
+                        <div style="text-align: center;">
+                            <div id="paypal-button-container"></div>
+                            <p style="color: #666; margin-top: 20px;">
+                                点击上方按钮将跳转到PayPal完成支付
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 安全信息 -->
+                <div class="security-info">
+                    <div class="security-icons">
+                        <span class="security-icon">🔒</span>
+                        <span class="security-icon">🛡️</span>
+                        <span class="security-icon">✅</span>
+                    </div>
+                    <p><strong>安全保障</strong></p>
+                    <p>我们使用业界标准的SSL加密技术保护您的支付信息，支持7天无理由退款</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img" 
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" 
+                             loading="lazy">
+                        <span class="footer-logo-text">兰心运营笔记</span>
+                    </div>
+                    <p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">关注我们</h4>
+                    <div class="footer-subscription">
+                        <div class="bilibili-subscription">
+                            <div class="bilibili-info">
+                                <h5 class="bilibili-title">哔哩哔哩频道</h5>
+                                <p class="bilibili-description">点击关注获取最新视频</p>
+                            </div>
+                        </div>
+                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" 
+                           style="margin-top: 10px;" target="_blank">前往哔哩哔哩频道</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=CNY"></script>
+    
+    <script>
+        // Stripe 配置
+        const stripe = Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY'); // 替换为您的Stripe公钥
+        const elements = stripe.elements();
+        
+        // 创建卡片元素
+        const cardElement = elements.create('card', {
+            style: {
+                base: {
+                    fontSize: '16px',
+                    color: '#424770',
+                    '::placeholder': {
+                        color: '#aab7c4',
+                    },
+                },
+            },
+        });
+        
+        cardElement.mount('#card-element');
+        
+        // 处理卡片验证错误
+        cardElement.on('change', ({error}) => {
+            const displayError = document.getElementById('card-errors');
+            if (error) {
+                displayError.textContent = error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        
+        // 当前选择的计划
+        let selectedPlan = {
+            name: 'pro',
+            price: 299,
+            period: '季度'
+        };
+        
+        // 选择计划
+        function selectPlan(planName, price, period) {
+            selectedPlan = { name: planName, price: price, period: period };
+            
+            // 更新价格显示
+            document.getElementById('amount').textContent = price;
+            
+            // 显示支付方式
+            document.getElementById('payment-methods').classList.add('active');
+            
+            // 滚动到支付方式
+            document.getElementById('payment-methods').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+            
+            // 更新所有计划卡片的选中状态
+            document.querySelectorAll('.plan-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelector(`[data-plan="${planName}"]`).classList.add('selected');
+        }
+        
+        // 切换支付方式
+        function switchPaymentMethod(method) {
+            // 更新标签页
+            document.querySelectorAll('.method-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // 更新内容
+            document.querySelectorAll('.method-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${method}-payment`).classList.add('active');
+            
+            // 如果是PayPal，初始化PayPal按钮
+            if (method === 'paypal') {
+                initPayPal();
+            }
+        }
+        
+        // 切换二维码支付方式
+        function switchQRMethod(method) {
+            document.querySelectorAll('.qr-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.closest('.qr-tab').classList.add('active');
+            
+            document.querySelectorAll('.qr-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            document.getElementById(`${method}-qr`).classList.add('active');
+        }
+        
+        // Stripe 支付处理
+        document.getElementById('payment-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            const submitButton = document.getElementById('submit-button');
+            const buttonText = document.getElementById('button-text');
+            const spinner = document.getElementById('spinner');
+            
+            submitButton.disabled = true;
+            buttonText.style.display = 'none';
+            spinner.style.display = 'inline';
+            
+            // 创建支付意图
+            const {error, paymentIntent} = await stripe.confirmCardPayment(
+                'pi_YOUR_PAYMENT_INTENT_CLIENT_SECRET', // 这需要从后端获取
+                {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: {
+                            email: document.getElementById('email').value,
+                        },
+                    }
+                }
+            );
+            
+            if (error) {
+                document.getElementById('card-errors').textContent = error.message;
+                submitButton.disabled = false;
+                buttonText.style.display = 'inline';
+                spinner.style.display = 'none';
+            } else {
+                // 支付成功，跳转到成功页面
+                window.location.href = `payment-success.html?method=stripe&plan=${selectedPlan.name}`;
+            }
+        });
+        
+        // PayPal 初始化
+        function initPayPal() {
+            if (document.getElementById('paypal-button-container').innerHTML) {
+                return; // 已经初始化过了
+            }
+            
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: selectedPlan.price.toString(),
+                                currency_code: 'CNY'
+                            },
+                            description: `兰心运营笔记 - ${selectedPlan.name}会员 (${selectedPlan.period})`
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        // 支付成功，跳转到成功页面
+                        window.location.href = `payment-success.html?method=paypal&plan=${selectedPlan.name}&transaction=${details.id}`;
+                    });
+                },
+                onError: function(err) {
+                    console.error('PayPal支付错误:', err);
+                    alert('支付过程中出现错误，请重试或选择其他支付方式');
+                }
+            }).render('#paypal-button-container');
+        }
+        
+        // 页面加载时默认选择专业会员
+        window.addEventListener('load', function() {
+            selectPlan('pro', 299, '季度');
+        });
+    </script>
+</body>
+</html> 

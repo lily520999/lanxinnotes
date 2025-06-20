@@ -1,136 +1,397 @@
-﻿<!DOCTYPE html><html lang="zh-CN"><head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KNR4KPK379');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>登录 - 兰心运营笔记</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .login-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-container {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 50px 40px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .login-subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .login-form-group {
+            margin-bottom: 25px;
+        }
+        
+        .login-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+            box-sizing: border-box;
+        }
+        
+        .login-input:focus {
+            border-color: #667eea;
+            outline: none;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+        
+        .remember-me input[type="checkbox"] {
+            margin-right: 8px;
+            accent-color: #667eea;
+        }
+        
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .login-btn:active {
+            transform: translateY(0);
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            color: #999;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #e1e5e9;
+        }
+        
+        .divider span {
+            background-color: white;
+            padding: 0 15px;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 15px;
+        }
+        
+        .register-link a {
+            color: #667eea;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-login {
+            margin-top: 20px;
+        }
+        
+        .social-btn {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            background-color: white;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-btn:hover {
+            border-color: #667eea;
+            background-color: #f8f9fa;
+        }
+        
+        @media (max-width: 768px) {
+            .login-container {
+                margin: 20px;
+                padding: 40px 30px;
+            }
+            
+            .login-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+    
+    <script src="script.js" defer></script>
+    
+    <meta name="description" content="登录兰心运营笔记，访问专业运营内容、AI工具评测和跨境电商教程。">
+    <meta name="keywords" content="登录,兰心运营笔记,运营,AI工具,跨境电商">
+    <link rel="canonical" href="https://lanxinnotes.com/login.html">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "兰心运营笔记",
+        "url": "https://lanxinnotes.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://lanxinnotes.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "rt67r6qseo");
+    </script>
+</head>
 
-  gtag('config', 'G-KNR4KPK379');
-</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lan Xin Notes - Professional Operation Knowledge Sharing Platform</title><link rel="stylesheet" href="styles.css"><style>
- .login-section {
- padding: 80px 0;
- background-color: #f8f9fa;
- }
- 
- .login-container {
- max-width: 500px;
- margin: 0 auto;
- padding: 40px;
- background-color: #ffffff;
- border-radius: 10px;
- box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
- }
- 
- .login-title {
- text-align: center;
- margin-bottom: 30px;
- color: #333;
- font-size: 28px;
- font-weight: 700;
- }
- 
- .login-form-group {
- margin-bottom: 20px;
- }
- 
- .login-label {
- display: block;
- margin-bottom: 8px;
- font-weight: 500;
- color: #333;
- }
- 
- .login-input {
- width: 100%;
- padding: 12px 15px;
- border: 1px solid #ddd;
- border-radius: 6px;
- font-size: 16px;
- transition: border-color 0.3s;
- }
- 
- .login-input:focus {
- border-color: #4e7bef;
- outline: none;
- }
- 
- .login-btn {
- width: 100%;
- padding: 14px;
- background-color: #4e7bef;
- color: white;
- border: none;
- border-radius: 6px;
- font-size: 16px;
- font-weight: 600;
- cursor: pointer;
- transition: background-color 0.3s;
- }
- 
- .login-btn:hover {
- background-color: #3d63cc;
- }
- 
- .login-options {
- display: flex;
- justify-content: space-between;
- margin-top: 20px;
- color: #666;
- font-size: 14px;
- }
- 
- .login-options a {
- color: #4e7bef;
- text-decoration: none;
- }
- 
- .login-options a:hover {
- text-decoration: underline;
- }
- 
- .register-link {
- text-align: center;
- margin-top: 30px;
- color: #666;
- }
- 
- .register-link a {
- color: #4e7bef;
- font-weight: 600;
- text-decoration: none;
- }
- 
- .register-link a:hover {
- text-decoration: underline;
- }
- </style><script src="script.js" defer></script><meta name="description" content="Lan Xin Notes provides AI tool reviews, cross-border e-commerce guides and professional operation tutorials to help you improve operation capabilities and business growth.">
-<meta name="keywords" content="operation,AI tools,cross-border e-commerce,video tutorials,Lan Xin Notes">
-<link rel="canonical" href="https://lanxinnotes.com/login.html">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Lan Xin Notes",
-  "url": "https://lanxinnotes.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://lanxinnotes.com/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "rt67r6qseo");
-</script>
-</head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">兰心运营笔记</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="#" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a></div><div class="nav-item dropdown"><a href="#" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">视频教程 <span class="dropdown-arrow">▼</span></a></div><a href="https://space.bilibili.com/1798377475" class="nav-link bilibili" target="_blank"><img src="images/bilibili-logo.png" alt="哔哩哔哩" class="bilibili-icon" loading="lazy" width="24" height="24">
- 哔哩哔哩
- </a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">登录</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员</a></div></div></header><main><section class="login-section"><div class="container"><div class="login-container"><h2 class="login-title">欢迎回来</h2><form class="login-form"><div class="login-form-group"><label for="email" class="login-label">邮箱</label><input type="email" id="email" class="login-input" placeholder="请输入您的邮箱" required></div><div class="login-form-group"><label for="password" class="login-label">密码</label><input type="password" id="password" class="login-input" placeholder="请输入您的密码" required></div><div class="login-options"><label><input type="checkbox"> 记住我
- </label><a href="#">忘记密码？</a></div><button type="submit" class="login-btn">登录</button></form><div class="register-link">
- 还没有账号？<a href="register.html">立即注册</a></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img" loading="lazy"><span class="footer-logo-text">兰心运营笔记</span></div><p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p></div><div class="footer-column"><h4 class="footer-heading">支持</h4><ul class="footer-links"><li><a href="about.html">关于我们</a></li><li><a href="contact.html">联系我们</a></li><li><a href="faq.html">常见问题</a></li><li><a href="privacy.html">隐私政策</a></li><li><a href="terms.html">服务条款</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">关注我们</h4><div class="footer-subscription"><div class="bilibili-subscription"><img src="images/bilibili-logo.png" alt="哔哩哔哩频道" class="footer-bilibili-img" loading="lazy"><div class="bilibili-info"><h5 class="bilibili-title">哔哩哔哩频道</h5><p class="bilibili-description">点击订阅获取最新视频</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">前往哔哩哔哩频道</a></div></div></div><div class="footer-bottom"><p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p></div></div></footer></body></html> 
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img" loading="lazy" width="40" height="40">
+                <a href="index.html" class="logo-text">兰心运营笔记</a>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-item dropdown">
+                    <a href="ai-tools.html" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="website-builder-tools.html" class="nav-link">建站工具 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">视频教程 <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <a href="faq.html" class="nav-link">常见问题</a>
+            </nav>
+            <!-- Language switcher -->
+            <div class="language-switcher">
+                <button id="lang-btn" class="lang-btn" onclick="window.location.href='login-en.html'">
+                    <span id="lang-text">English</span>
+                </button>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">登录</a>
+                <a href="payment.html" class="btn btn-primary" target="_blank">加入会员</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="login-section">
+            <div class="container">
+                <div class="login-container">
+                    <h2 class="login-title">欢迎回来</h2>
+                    <p class="login-subtitle">登录您的账户，访问专业运营内容</p>
+                    
+                    <form class="login-form" id="loginForm">
+                        <div class="login-form-group">
+                            <label for="email" class="login-label">邮箱地址</label>
+                            <input type="email" id="email" class="login-input" placeholder="请输入您的邮箱地址" required>
+                        </div>
+                        
+                        <div class="login-form-group">
+                            <label for="password" class="login-label">密码</label>
+                            <input type="password" id="password" class="login-input" placeholder="请输入您的密码" required>
+                        </div>
+                        
+                        <div class="login-options">
+                            <label class="remember-me">
+                                <input type="checkbox" id="remember"> 
+                                记住我
+                            </label>
+                            <a href="forgot-password.html" class="forgot-password">忘记密码？</a>
+                        </div>
+                        
+                        <button type="submit" class="login-btn">登录</button>
+                    </form>
+                    
+                    <div class="divider">
+                        <span>或</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="social-btn" onclick="alert('微信登录功能即将上线！')">
+                            使用微信登录
+                        </button>
+                        <button class="social-btn" onclick="alert('QQ登录功能即将上线！')">
+                            使用QQ登录
+                        </button>
+                    </div>
+                    
+                    <div class="register-link">
+                        还没有账号？<a href="register.html">立即注册</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img" loading="lazy">
+                        <span class="footer-logo-text">兰心运营笔记</span>
+                    </div>
+                    <p class="footer-description">提供AI工具、建站工具、跨境电商和视频教程等专业内容，助你成为运营高手。</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-heading">关注我们</h4>
+                    <div class="footer-subscription">
+                        <p>关注公众号获取最新内容和活动通知</p>
+                        <div class="bilibili-subscription">
+                            <div class="bilibili-info">
+                                <h5 class="bilibili-title">哔哩哔哩频道</h5>
+                                <p class="bilibili-description">点击关注获取最新视频</p>
+                            </div>
+                            <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" target="_blank">前往哔哩哔哩频道</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 兰心运营笔记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 登录表单处理
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                // 这里通常会将数据发送到后端
+                alert('登录功能即将实现！');
+                console.log('登录尝试:', { email, password });
+            } else {
+                alert('请填写所有字段');
+            }
+        });
+    </script>
+</body>
+</html> 
 
 

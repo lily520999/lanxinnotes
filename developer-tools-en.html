@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KNR4KPK379');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer Tools - Lan Xin Notes</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="ai-tools.css">
+<script src="script.js" defer></script>
+<meta name="description" content="Curated high-quality development tools and platforms, including code hosting, design tools, collaboration platforms to help developers improve efficiency">
+<meta name="keywords" content="developer tools,GitHub,GitLab,VS Code,Figma,code hosting,development platform,Lan Xin Notes">
+<link rel="canonical" href="https://lanxinnotes.com/developer-tools-en.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Lan Xin Notes",
+  "url": "https://lanxinnotes.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://lanxinnotes.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rt67r6qseo");
+</script>
+<style>
+/* Developer tools feature styles */
+.developer-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.developer-hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.developer-hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Tool placeholder styles */
+.tool-placeholder {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 48px;
+    margin-bottom: 20px;
+    background: var(--tool-gradient);
+}
+
+/* Unified tool card styles */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.tool-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 16px;
+}
+
+.tool-icon {
+    flex-shrink: 0;
+}
+
+.tool-icon-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tool-info {
+    flex: 1;
+}
+
+.tool-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+
+.tool-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stars {
+    color: #fbbf24;
+    font-size: 16px;
+}
+
+.rating-score {
+    color: #64748b;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.tool-price {
+    background: #e0e7ff;
+    color: #5b21b6;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+.tool-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.tool-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.feature-tag {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tool-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+}
+
+/* Unified button styles */
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a67d8, #667eea);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #f8fafc;
+    color: #64748b;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: #e2e8f0;
+    color: #3b82f6;
+    transform: translateY(-1px);
+}
+
+/* Tool icon gradients */
+.cursor { background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%); }
+.github { background: linear-gradient(135deg, #24292e 0%, #586069 100%); }
+.gitlab { background: linear-gradient(135deg, #fc6d26 0%, #e24329 100%); }
+.vscode { background: linear-gradient(135deg, #007acc 0%, #0e639c 100%); }
+.figma { background: linear-gradient(135deg, #f24e1e 0%, #a259ff 100%); }
+.docker { background: linear-gradient(135deg, #0db7ed 0%, #2496ed 100%); }
+.npm { background: linear-gradient(135deg, #cb3837 0%, #c12127 100%); }
+.postman { background: linear-gradient(135deg, #ff6c37 0%, #ff4605 100%); }
+.mongodb { background: linear-gradient(135deg, #47a248 0%, #4caf50 100%); }
+.slack { background: linear-gradient(135deg, #4a154b 0%, #350d36 100%); }
+.notion { background: linear-gradient(135deg, #000000 0%, #37352f 100%); }
+.openrouter { background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); }
+.together { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+.fal { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+.replicate { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+.siliconflow { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+.tailwind { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+.stitch { background: linear-gradient(135deg, #4285f4 0%, #34a853 100%); }
+
+.developer-stats {
+    background: #f8f9fa;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.stat-item {
+    background: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #667eea;
+    display: block;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="logo-img" 
+                 onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" 
+                 loading="lazy" width="40" height="40">
+            <a href="index-en.html" class="logo-text">Lan Xin Notes</a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="nav-item dropdown">
+                <a href="ai-tools-en.html" class="nav-link">AI Tools <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="website-builder-tools-en.html" class="nav-link">Website Tools <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="developer-tools-en.html" class="nav-link">Developer Tools <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="ecommerce-en.html" class="nav-link">E-commerce <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">Video Tutorials <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <a href="faq-en.html" class="nav-link">FAQ</a>
+        </nav>
+        
+        <!-- Language switcher -->
+        <div class="language-switcher">
+            <button id="lang-btn" class="lang-btn" onclick="window.location.href='developer-tools.html'">
+                <span id="lang-text">中文</span>
+            </button>
+        </div>
+        
+        <div class="auth-buttons">
+            <a href="login-en.html" class="btn btn-login">Login</a>
+            <a href="payment-en.html" class="btn btn-primary" target="_blank">Join Membership</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="developer-hero">
+        <div class="container">
+            <h1>Developer Tools Resources</h1>
+            <p>Curated high-quality development tools and platforms to enhance development efficiency and collaboration</p>
+            <div class="tools-search">
+                <input type="text" placeholder="Search developer tools..." class="search-input">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-list" id="tools">
+        <div class="container">
+            <h2 class="section-title">Essential Developer Tools 2025</h2>
+            <p class="section-description">Carefully selected efficient development tools and platforms for developers</p>
+            
+            <div class="tools-filter">
+                <span class="filter-label">Filter:</span>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="code">Code Hosting</button>
+                    <button class="filter-btn" data-filter="design">Design Tools</button>
+                    <button class="filter-btn" data-filter="editor">Editors</button>
+                    <button class="filter-btn" data-filter="devops">DevOps</button>
+                    <button class="filter-btn" data-filter="collaboration">Collaboration</button>
+                    <button class="filter-btn" data-filter="ai-platform">AI Platforms</button>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                <!-- Cursor -->
+                <div class="tool-card editor" data-category="editor">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder cursor">⚡</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Cursor</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.9</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$20/month</div>
+                    </div>
+                    <p class="tool-description">AI-powered code editor with intelligent code completion, natural language programming, and codebase understanding.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">AI Programming</span>
+                        <span class="feature-tag">Smart Completion</span>
+                        <span class="feature-tag">Natural Language</span>
+                        <span class="feature-tag">Code Understanding</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.cursor.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- GitHub -->
+                <div class="tool-card code" data-category="code">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder github">🐙</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">GitHub</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.8</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">Free</div>
+                    </div>
+                    <p class="tool-description">World's leading development platform for version control, collaboration, and code hosting with powerful CI/CD features.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Version Control</span>
+                        <span class="feature-tag">CI/CD</span>
+                        <span class="feature-tag">Collaboration</span>
+                        <span class="feature-tag">Open Source</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://github.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- VS Code -->
+                <div class="tool-card editor" data-category="editor">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder vscode">📝</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Visual Studio Code</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.7</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">Free</div>
+                    </div>
+                    <p class="tool-description">Lightweight but powerful source code editor with rich ecosystem of extensions and built-in Git support.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Extensions</span>
+                        <span class="feature-tag">Git Integration</span>
+                        <span class="feature-tag">IntelliSense</span>
+                        <span class="feature-tag">Debugging</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://code.visualstudio.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Figma -->
+                <div class="tool-card design" data-category="design">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder figma">🎨</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Figma</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.6</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$12/month</div>
+                    </div>
+                    <p class="tool-description">Collaborative interface design tool for creating prototypes, wireframes, and design systems in real-time.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Real-time Collaboration</span>
+                        <span class="feature-tag">Prototyping</span>
+                        <span class="feature-tag">Design Systems</span>
+                        <span class="feature-tag">Components</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.figma.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Docker -->
+                <div class="tool-card devops" data-category="devops">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder docker">🐳</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Docker</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$5/month</div>
+                    </div>
+                    <p class="tool-description">Platform for developing, shipping, and running applications using containerization technology.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Containerization</span>
+                        <span class="feature-tag">Microservices</span>
+                        <span class="feature-tag">DevOps</span>
+                        <span class="feature-tag">Scalability</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.docker.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Slack -->
+                <div class="tool-card collaboration" data-category="collaboration">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder slack">💬</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Slack</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.4</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$7.25/month</div>
+                    </div>
+                    <p class="tool-description">Business communication platform that brings teams together with channels, messaging, and integrations.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Team Chat</span>
+                        <span class="feature-tag">Channels</span>
+                        <span class="feature-tag">Integrations</span>
+                        <span class="feature-tag">File Sharing</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://slack.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Notion -->
+                <div class="tool-card collaboration" data-category="collaboration">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder notion">📋</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Notion</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.6</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$8/month</div>
+                    </div>
+                    <p class="tool-description">All-in-one workspace for notes, tasks, wikis, and databases with powerful collaboration features.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Documentation</span>
+                        <span class="feature-tag">Project Management</span>
+                        <span class="feature-tag">Databases</span>
+                        <span class="feature-tag">Templates</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.notion.so" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- GitLab -->
+                <div class="tool-card code" data-category="code">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder gitlab">🦊</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">GitLab</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.3</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$19/month</div>
+                    </div>
+                    <p class="tool-description">Complete DevOps platform with Git repository management, CI/CD, and project management features.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">DevOps Platform</span>
+                        <span class="feature-tag">CI/CD</span>
+                        <span class="feature-tag">Issue Tracking</span>
+                        <span class="feature-tag">Security</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://gitlab.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Postman -->
+                <div class="tool-card devops" data-category="devops">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder postman">📮</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Postman</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.4</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$12/month</div>
+                    </div>
+                    <p class="tool-description">API development environment for building, testing, and documenting APIs with collaboration features.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">API Testing</span>
+                        <span class="feature-tag">Documentation</span>
+                        <span class="feature-tag">Automation</span>
+                        <span class="feature-tag">Monitoring</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.postman.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- MongoDB -->
+                <div class="tool-card devops" data-category="devops">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder mongodb">🍃</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">MongoDB</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.2</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$57/month</div>
+                    </div>
+                    <p class="tool-description">Document-oriented NoSQL database with flexible schema and powerful querying capabilities.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">NoSQL</span>
+                        <span class="feature-tag">Document DB</span>
+                        <span class="feature-tag">Scalability</span>
+                        <span class="feature-tag">Cloud Service</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://www.mongodb.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- OpenRouter -->
+                <div class="tool-card ai-platform" data-category="ai-platform">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder openrouter">🤖</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">OpenRouter</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.3</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">Pay-per-use</div>
+                    </div>
+                    <p class="tool-description">Unified API for accessing multiple AI models including GPT, Claude, and Llama with competitive pricing.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Multiple Models</span>
+                        <span class="feature-tag">Unified API</span>
+                        <span class="feature-tag">Cost Effective</span>
+                        <span class="feature-tag">Easy Integration</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://openrouter.ai" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Replicate -->
+                <div class="tool-card ai-platform" data-category="ai-platform">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder replicate">🔄</div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Replicate</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.1</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">Pay-per-use</div>
+                    </div>
+                    <p class="tool-description">Platform for running machine learning models in the cloud with simple API and pre-trained models.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">ML Models</span>
+                        <span class="feature-tag">Cloud Computing</span>
+                        <span class="feature-tag">API Access</span>
+                        <span class="feature-tag">Pre-trained</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://replicate.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="developer-stats">
+        <div class="container">
+            <h2 class="section-title">Developer Community Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">100M+</span>
+                    <div class="stat-label">GitHub Users</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">73%</span>
+                    <div class="stat-label">Developers Use VS Code</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">13M+</span>
+                    <div class="stat-label">Docker Downloads</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">85%</span>
+                    <div class="stat-label">Teams Use Collaboration Tools</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-columns">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="footer-logo-img" 
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" 
+                         loading="lazy">
+                    <span class="footer-logo-text">Lan Xin Notes</span>
+                </div>
+                <p class="footer-description">Providing cross-border e-commerce and video tutorials to help you become an operational expert.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4 class="footer-heading">Support</h4>
+                <ul class="footer-links">
+                    <li><a href="about-en.html">About Us</a></li>
+                    <li><a href="contact-en.html">Contact Us</a></li>
+                    <li><a href="faq-en.html">FAQ</a></li>
+                    <li><a href="privacy-en.html">Privacy Policy</a></li>
+                    <li><a href="terms-en.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4 class="footer-heading">Follow Us</h4>
+                <div class="footer-subscription">
+                    <div class="bilibili-subscription">
+                        <div class="bilibili-info">
+                            <h5 class="bilibili-title">Bilibili Channel</h5>
+                            <p class="bilibili-description">Click to follow for latest videos</p>
+                        </div>
+                    </div>
+                    <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" 
+                       style="margin-top: 10px;" target="_blank">Go to Bilibili Channel</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 Lan Xin Notes. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

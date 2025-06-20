@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment - Lan Xin Notes</title>
+    <meta name="description" content="Choose your payment method to join Lan Xin Notes membership and get professional AI tools and cross-border e-commerce guidance">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+    .payment-section {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+        min-height: 100vh;
+    }
+
+    .payment-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .payment-logo {
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .payment-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .payment-subtitle {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .payment-plan {
+        background-color: #f5f7ff;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-left: 4px solid #1e3a8a;
+    }
+
+    .plan-name {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .recommended-badge {
+        display: inline-block;
+        background-color: #ff4d8d;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+
+    .plan-price {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .plan-period {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .payment-plan ul {
+        list-style: none;
+        margin-top: 15px;
+    }
+
+    .payment-plan li {
+        padding: 5px 0;
+        position: relative;
+        padding-left: 20px;
+    }
+
+    .payment-plan li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #22c55e;
+        font-weight: bold;
+    }
+
+    .payment-methods {
+        text-align: center;
+    }
+
+    .creem-payment-section h3 {
+        margin-bottom: 30px;
+        color: #1e3a8a;
+        font-size: 24px;
+    }
+
+    .creem-card {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 40px;
+        background: linear-gradient(135deg, #fff, #fef7f7);
+        border: 3px solid #ff4d8d;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(255, 77, 141, 0.2);
+    }
+
+    .creem-icon {
+        font-size: 80px;
+        margin-bottom: 20px;
+    }
+
+    .creem-card h2 {
+        color: #1e3a8a;
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .creem-features {
+        margin: 30px 0;
+        text-align: left;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    .feature-check {
+        color: #22c55e;
+        margin-right: 10px;
+        font-size: 20px;
+    }
+
+    .price-display {
+        margin: 30px 0;
+    }
+
+    .price-amount {
+        font-size: 48px;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin-bottom: 5px;
+    }
+
+    .price-period {
+        font-size: 18px;
+        color: #666;
+    }
+
+    .creem-pay-btn {
+        background: linear-gradient(135deg, #ff4d8d, #ff6b9d);
+        color: white;
+        border: none;
+        padding: 20px 50px;
+        border-radius: 30px;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+        box-shadow: 0 6px 20px rgba(255, 77, 141, 0.4);
+        transition: all 0.3s ease;
+        margin-top: 20px;
+    }
+
+    .creem-pay-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 77, 141, 0.5);
+    }
+
+    .security-info {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #888;
+    }
+
+    .creem-payment-area {
+        display: none;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .processing-card {
+        padding: 40px;
+        background: #f8f9ff;
+        border-radius: 15px;
+        border: 2px solid #ff4d8d;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .loading-spinner {
+        margin: 30px auto;
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #ff4d8d;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    .manual-redirect {
+        color: #ff4d8d;
+        text-decoration: none;
+        font-weight: 600;
+        border: 2px solid #ff4d8d;
+        padding: 10px 20px;
+        border-radius: 25px;
+        display: inline-block;
+        margin-top: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .manual-redirect:hover {
+        background-color: #ff4d8d;
+        color: white;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .payment-footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+    }
+
+    @media (max-width: 768px) {
+        .creem-card {
+            padding: 30px 20px !important;
+            margin: 0 20px !important;
+        }
+        .creem-pay-btn {
+            font-size: 18px !important;
+            padding: 18px 40px !important;
+        }
+    }
+    </style>
+    
+    <script>
+    // Creem payment processing function
+    function startCreemPayment() {
+        // Show payment processing area
+        document.getElementById('creem-payment').style.display = 'block';
+        
+        // Hide payment method selection
+        document.querySelector('.payment-methods').style.display = 'none';
+        
+        // Simulate API call to create Creem payment session
+        setTimeout(() => {
+            // This should call the actual Creem API
+            // For now, redirect to success page as demo
+            window.location.href = 'payment-success.html?method=creem&amount=39';
+        }, 3000);
+    }
+
+    // Page initialization after loading
+    window.onload = function() {
+        // Add event for manual redirect button
+        const manualRedirect = document.querySelector('.manual-redirect');
+        if (manualRedirect) {
+            manualRedirect.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'payment-success.html?method=creem&amount=39';
+            });
+        }
+    };
+    </script>
+    
+    <meta name="description" content="Secure payment for Lan Xin Notes premium membership using Creem payment platform.">
+    <meta name="keywords" content="payment,membership,AI tools,cross-border e-commerce,Lan Xin Notes">
+    <link rel="canonical" href="https://lanxinnotes.com/payment-en.html">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Lan Xin Notes",
+      "url": "https://lanxinnotes.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://lanxinnotes.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "rt67r6qseo");
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="logo-img" loading="lazy" width="40" height="40">
+            <a href="index-en.html" class="logo-text">Lan Xin Notes</a>
+        </div>
+        <nav class="main-nav">
+            <div class="nav-item dropdown">
+                <a href="ai-tools-en.html" class="nav-link">AI Tools <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="ecommerce-en.html" class="nav-link">E-commerce <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="content-creation-en.html" class="nav-link">Content Creation <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <a href="faq-en.html" class="nav-link">FAQ</a>
+            <a href="https://space.bilibili.com/1798377475" class="nav-link bilibili" target="_blank">
+                <img src="images/bilibili-logo.png" alt="Bilibili" class="bilibili-icon" loading="lazy" width="24" height="24">
+                Bilibili
+            </a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login-en.html" class="btn btn-login">Login</a>
+            <a href="payment-en.html" class="btn btn-primary">Join Membership</a>
+            <div style="margin-left: 15px;">
+                <a href="payment.html" style="color: #666; text-decoration: none; font-size: 14px;">中文</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-container">
+                <div class="payment-header">
+                    
+                    <h1 class="payment-title">Secure Payment</h1>
+                    <p class="payment-subtitle">Complete your subscription with Creem secure payment platform</p>
+                </div>
+                
+                <div class="payment-plan">
+                    <div class="plan-name">Professional Membership <span class="recommended-badge">Recommended</span></div>
+                    <div class="plan-price">$39 <span class="plan-period">/quarter</span></div>
+                    <ul>
+                        <li>All basic membership benefits</li>
+                        <li>Professional AI tools training</li>
+                        <li>Cross-border e-commerce product analysis</li>
+                        <li>3 video tutorials per week</li>
+                        <li>One-on-one consultation (1 time/month)</li>
+                    </ul>
+                </div>
+                
+                <div class="payment-methods">
+                    <!-- Only Payment Method - Creem -->
+                    <div class="creem-payment-section">
+                        <h3>🍦 Safe & Convenient Payment</h3>
+                        
+                        <div class="creem-card">
+                            <div class="creem-icon">🍦</div>
+                            
+                            <h2>Creem Payment</h2>
+                            
+                            <div class="creem-features">
+                                <div class="feature-item">
+                                    <span class="feature-check">✅</span>
+                                    <span>Payment platform designed for AI startups</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-check">✅</span>
+                                    <span>Direct deposit to Alipay, RMB settlement</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-check">✅</span>
+                                    <span>First €1000 revenue completely free</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-check">✅</span>
+                                    <span>Only 2.9% transaction fee, no hidden costs</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-check">✅</span>
+                                    <span>Bank-level security encryption, global compliance</span>
+                                </div>
+                            </div>
+
+                            <div class="price-display">
+                                <div class="price-amount">$39</div>
+                                <div class="price-period">Professional Membership / Quarter</div>
+                            </div>
+
+                            <button class="creem-pay-btn" onclick="startCreemPayment()">Pay Now</button>
+
+                            <div class="security-info">
+                                <p>🔒 256-bit SSL encryption protection</p>
+                                <p>Supports Visa, MasterCard, Alipay, WeChat Pay</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creem Payment Processing Area -->
+                <div class="creem-payment-area" id="creem-payment">
+                    <div class="processing-card">
+                        <div style="font-size: 60px; margin-bottom: 20px;">🍦</div>
+                        <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 24px;">Redirecting to Secure Payment Page</h3>
+                        <p style="color: #666; margin-bottom: 30px; font-size: 16px;">Please wait, we are creating a secure payment session for you...</p>
+                        
+                        <div class="loading-spinner"></div>
+                        
+                        <p style="font-size: 14px; color: #999; margin-top: 20px;">If the page doesn't redirect automatically, please click the button below</p>
+                        <a href="#" class="manual-redirect">Manual Redirect to Payment</a>
+                    </div>
+                </div>
+
+                <div class="payment-footer">
+                    <p>Having trouble with payment? Please contact customer service: contact@lanxin.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-columns">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="footer-logo-img" loading="lazy">
+                    <span class="footer-logo-text">Lan Xin Notes</span>
+                </div>
+                <p class="footer-description">Providing professional content on cross-border e-commerce and video tutorials to help you become an operation expert.</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">Support</h4>
+                <ul class="footer-links">
+                    <li><a href="about-en.html">About Us</a></li>
+                    <li><a href="contact-en.html">Contact Us</a></li>
+                    <li><a href="faq-en.html">FAQ</a></li>
+                    <li><a href="privacy-en.html">Privacy Policy</a></li>
+                    <li><a href="terms-en.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">Follow Us</h4>
+                <div class="footer-subscription">
+                    <div class="bilibili-subscription">
+                        <img src="images/bilibili-logo.png" alt="Bilibili Channel" class="footer-bilibili-img" loading="lazy">
+                        <div class="bilibili-info">
+                            <h5 class="bilibili-title">Bilibili Channel</h5>
+                            <p class="bilibili-description">Subscribe to get the latest videos</p>
+                        </div>
+                    </div>
+                    <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Visit Bilibili Channel</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 Lan Xin Notes. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html> 

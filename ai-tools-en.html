@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KNR4KPK379');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools - Lan Xin Notes</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="ai-tools.css">
+<script src="script.js" defer></script>
+<meta name="description" content="Explore the latest AI tool reviews and usage guides, essential assistants for improving operational efficiency. AI drawing, AI writing, data analysis tools and more.">
+<meta name="keywords" content="AI tools,AI writing,AI drawing,efficiency tools,AI reviews,Lan Xin Notes">
+<link rel="canonical" href="https://lanxinnotes.com/ai-tools-en.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Lan Xin Notes",
+  "url": "https://lanxinnotes.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://lanxinnotes.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rt67r6qseo");
+</script>
+
+<style>
+/* AI tools card styles */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.tool-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 16px;
+}
+
+.tool-icon {
+    flex-shrink: 0;
+}
+
+.tool-icon-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tool-info {
+    flex: 1;
+}
+
+.tool-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+
+.tool-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stars {
+    color: #fbbf24;
+    font-size: 16px;
+}
+
+.rating-score {
+    color: #64748b;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.tool-price {
+    background: #e0e7ff;
+    color: #5b21b6;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: auto;
+    align-self: flex-start;
+}
+
+.tool-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.tool-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.feature-tag {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tool-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a67d8, #667eea);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: #64748b;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 2px solid #e2e8f0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #475569;
+}
+
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: white !important;
+}
+
+.page-description {
+    font-size: 20px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: white !important;
+}
+
+.tools-section {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #1e293b;
+}
+
+.section-description {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .page-title {
+        font-size: 36px;
+        color: white !important;
+    }
+    
+    .page-description {
+        font-size: 18px;
+        color: white !important;
+    }
+}
+</style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy" width="40" height="40">
+            <a href="index-en.html" class="logo-text">Lan Xin Notes</a>
+        </div>
+        <nav class="main-nav">
+            <div class="nav-item dropdown">
+                <a href="ai-tools-en.html" class="nav-link">AI Tools <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="website-builder-tools-en.html" class="nav-link">Website Tools <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="developer-tools-en.html" class="nav-link">Developer Tools <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="ecommerce-en.html" class="nav-link">E-commerce <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">Video Tutorials <span class="dropdown-arrow">▼</span></a>
+            </div>
+            <a href="faq-en.html" class="nav-link">FAQ</a>
+        </nav>
+        <!-- Language switcher -->
+        <div class="language-switcher">
+            <button id="lang-btn" class="lang-btn" onclick="window.location.href='ai-tools.html'">
+                <span id="lang-text">中文</span>
+            </button>
+        </div>
+        <div class="auth-buttons">
+            <a href="login-en.html" class="btn btn-login">Login</a>
+            <a href="payment-en.html" class="btn btn-primary" target="_blank">Join Membership ($218/year)</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">AI Tools</h1>
+            <p class="page-description">Discover the latest AI tools and reviews to boost your productivity and operational efficiency</p>
+            <div class="tools-search">
+                <input type="text" placeholder="Search AI tools..." class="search-input">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-section">
+        <div class="container">
+            <h2 class="section-title">Featured AI Tools</h2>
+            <p class="section-description">Carefully selected AI tools to help you improve work efficiency and enhance creativity</p>
+            
+            <div class="tools-grid">
+                <!-- ChatGPT -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder" style="background: linear-gradient(135deg, #10a37f, #1a7f64);">
+                                🤖
+                            </div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">ChatGPT</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.8/5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">Freemium</div>
+                    </div>
+                    <p class="tool-description">
+                        OpenAI's conversational AI assistant that can help with writing, coding, analysis, and creative tasks. Supports multiple languages and various use cases.
+                    </p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Text Generation</span>
+                        <span class="feature-tag">Code Assistant</span>
+                        <span class="feature-tag">Data Analysis</span>
+                        <span class="feature-tag">Multilingual</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://chat.openai.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Midjourney -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder" style="background: linear-gradient(135deg, #8b5cf6, #a855f7);">
+                                🎨
+                            </div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Midjourney</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-score">4.7/5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$10/month</div>
+                    </div>
+                    <p class="tool-description">
+                        AI-powered image generation tool that creates stunning artwork from text prompts. Perfect for designers, marketers, and content creators.
+                    </p>
+                    <div class="tool-features">
+                        <span class="feature-tag">AI Art</span>
+                        <span class="feature-tag">High Quality</span>
+                        <span class="feature-tag">Creative</span>
+                        <span class="feature-tag">Commercial Use</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://midjourney.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Claude -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+                                🧠
+                            </div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Claude</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.6/5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">Free</div>
+                    </div>
+                    <p class="tool-description">
+                        Anthropic's AI assistant focused on helpful, harmless, and honest interactions. Excellent for research, writing, and complex reasoning tasks.
+                    </p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Research</span>
+                        <span class="feature-tag">Writing</span>
+                        <span class="feature-tag">Analysis</span>
+                        <span class="feature-tag">Safe AI</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://claude.ai" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Notion AI -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder" style="background: linear-gradient(135deg, #000000, #374151);">
+                                📝
+                            </div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Notion AI</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.5/5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">$10/month</div>
+                    </div>
+                    <p class="tool-description">
+                        AI-powered writing assistant integrated into Notion workspace. Helps with content creation, summarization, and data organization.
+                    </p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Writing</span>
+                        <span class="feature-tag">Productivity</span>
+                        <span class="feature-tag">Organization</span>
+                        <span class="feature-tag">Integration</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://notion.so" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Canva AI -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder" style="background: linear-gradient(135deg, #00c4cc, #7c3aed);">
+                                🎨
+                            </div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Canva AI</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.4/5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">Freemium</div>
+                    </div>
+                    <p class="tool-description">
+                        AI-enhanced design platform with magic tools for background removal, text generation, and design automation. Perfect for social media content.
+                    </p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Design</span>
+                        <span class="feature-tag">Templates</span>
+                        <span class="feature-tag">Social Media</span>
+                        <span class="feature-tag">Easy to Use</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://canva.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Grammarly -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <div class="tool-icon-placeholder" style="background: linear-gradient(135deg, #15803d, #16a34a);">
+                                ✍️
+                            </div>
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">Grammarly</h3>
+                            <div class="tool-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-score">4.3/5</span>
+                            </div>
+                        </div>
+                        <div class="tool-price">Freemium</div>
+                    </div>
+                    <p class="tool-description">
+                        AI-powered writing assistant that checks grammar, spelling, and style. Helps improve writing clarity and effectiveness across all platforms.
+                    </p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Grammar Check</span>
+                        <span class="feature-tag">Style Guide</span>
+                        <span class="feature-tag">Plagiarism</span>
+                        <span class="feature-tag">Browser Extension</span>
+                    </div>
+                    <div class="tool-actions">
+                        <a href="https://grammarly.com" class="btn-primary" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-columns">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy">
+                    <span class="footer-logo-text">Lan Xin Notes</span>
+                </div>
+                <p class="footer-description">Providing cross-border e-commerce and video tutorials to help you become an operational expert.</p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">Support</h4>
+                <ul class="footer-links">
+                    <li><a href="about-en.html">About Us</a></li>
+                    <li><a href="contact-en.html">Contact Us</a></li>
+                    <li><a href="faq-en.html">FAQ</a></li>
+                    <li><a href="privacy-en.html">Privacy Policy</a></li>
+                    <li><a href="terms-en.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">Follow Us</h4>
+                <div class="footer-subscription">
+                    <div class="bilibili-subscription">
+                        <div class="bilibili-info">
+                            <h5 class="bilibili-title">Bilibili Channel</h5>
+                            <p class="bilibili-description">Click to follow for latest videos</p>
+                        </div>
+                    </div>
+                    <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Go to Bilibili Channel</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 Lan Xin Notes. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html> 

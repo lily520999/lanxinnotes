@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KNR4KPK379');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>About Us - Lan Xin Notes</title>
+<script>
+ // Detect website environment and set base path
+ function detectEnvironment() {
+ const hostname = window.location.hostname;
+ const isGitHubPages = hostname.includes('github.io');
+ const isCustomDomain = hostname === 'lanxinnotes.com';
+ const pathname = window.location.pathname;
+ 
+ // Create meta tag to record environment info
+ const metaEnv = document.createElement('meta');
+ metaEnv.name = 'website-environment';
+ 
+ if (isGitHubPages) {
+ // GitHub Pages environment
+ const repoName = pathname.split('/')[1];
+ 
+ // Create base tag
+ const baseTag = document.createElement('base');
+ baseTag.href = '/' + repoName + '/';
+ document.head.appendChild(baseTag);
+ 
+ metaEnv.content = 'github-pages';
+ console.log('GitHub Pages environment detected, base path set to:', baseTag.href);
+ } else if (isCustomDomain) {
+ // Custom domain environment
+ const baseTag = document.createElement('base');
+ baseTag.href = '/';
+ document.head.appendChild(baseTag);
+ 
+ metaEnv.content = 'custom-domain';
+ console.log('Custom domain environment detected, base path set to: /');
+ } else {
+ // Local development environment
+ metaEnv.content = 'local-development';
+ console.log('Local development environment detected');
+ }
+ 
+ document.head.appendChild(metaEnv);
+ }
+ 
+ // Execute environment detection
+ detectEnvironment();
+</script>
+<script>
+ // Check if browser supports Service Worker
+ if ('serviceWorker' in navigator) {
+ window.addEventListener('load', () => {
+ // Register Service Worker
+ navigator.serviceWorker.register('./service-worker.js')
+ .then(registration => {
+ console.log('Service Worker registered successfully, scope:', registration.scope);
+ })
+ .catch(error => {
+ console.error('Service Worker registration failed:', error);
+ });
+ });
+ }
+</script>
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+<meta name="description" content="Learn about the Lan Xin Notes team, mission and values. We are committed to providing high-quality content and tools for operators.">
+<meta name="keywords" content="Lan Xin Notes,about us,operation team,company introduction">
+<link rel="canonical" href="https://lanxinnotes.com/about-en.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Lan Xin Notes",
+  "url": "https://lanxinnotes.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://lanxinnotes.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rt67r6qseo");
+</script>
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <div class="logo-container">
+      <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="logo-img" loading="lazy" width="40" height="40">
+      <a href="index-en.html" class="logo-text">Lan Xin Notes</a>
+    </div>
+    <nav class="main-nav">
+      <div class="nav-item dropdown">
+        <a href="ai-tools-en.html" class="nav-link">AI Tools <span class="dropdown-arrow">▼</span></a>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="website-builder-tools-en.html" class="nav-link">Website Tools <span class="dropdown-arrow">▼</span></a>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="developer-tools-en.html" class="nav-link">Developer Tools <span class="dropdown-arrow">▼</span></a>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="ecommerce-en.html" class="nav-link">E-commerce <span class="dropdown-arrow">▼</span></a>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">Video Tutorials <span class="dropdown-arrow">▼</span></a>
+      </div>
+      <a href="faq-en.html" class="nav-link">FAQ</a>
+    </nav>
+    <!-- Language switcher -->
+    <div class="language-switcher">
+      <button id="lang-btn" class="lang-btn" onclick="window.location.href='about.html'">
+        <span id="lang-text">中文</span>
+      </button>
+    </div>
+    <div class="auth-buttons">
+                  <a href="login-en.html" class="btn btn-login">Login</a>
+      <a href="payment-en.html" class="btn btn-primary" target="_blank">Join Membership</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">About Us</h1>
+      <p class="page-description">Lan Xin Notes - Your Operational Growth Partner</p>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="section-title">Our Story</h2>
+          <p>Lan Xin Notes was founded in 2022 as a platform dedicated to sharing operational knowledge. Our founder, Lan Xin, has over 10 years of operational experience and has worked at several well-known internet companies, responsible for dozens of cross-border e-commerce and content creation projects.</p>
+          <p>Our team members come from different industry backgrounds, including cross-border e-commerce experts, content creation mentors, AI tool researchers, and video marketing consultants, all committed to providing practical and cutting-edge operational knowledge to operators and entrepreneurs.</p>
+          <p>Our goal is to help every learner improve their operational capabilities, solve practical work problems, and achieve personal and business growth through professional operational notes, practical case analyses, and cutting-edge tool introductions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission-section">
+    <div class="container">
+      <h2 class="section-title">Our Mission</h2>
+      <div class="mission-cards">
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="mission-icon-knowledge"></i>
+          </div>
+          <h3 class="mission-title">Share Professional Knowledge</h3>
+          <p class="mission-description">We are committed to systematically sharing professional and practical operational knowledge and experience with every learner in need.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="mission-icon-growth"></i>
+          </div>
+          <h3 class="mission-title">Promote Skill Development</h3>
+          <p class="mission-description">Through practical cases and actionable methodologies, we help learners truly master operational skills and enhance their professional competitiveness.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="mission-icon-community"></i>
+          </div>
+          <h3 class="mission-title">Build Learning Community</h3>
+          <p class="mission-description">Create an open and supportive learning community that promotes knowledge exchange and resource sharing for mutual growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <h2 class="section-title">Core Team</h2>
+      <div class="team-members">
+        <div class="team-member">
+          <div class="member-avatar"></div>
+          <h3 class="member-name">Lan Xin</h3>
+          <p class="member-role">Founder & Chief Content Officer</p>
+          <p class="member-description">10+ years of operational experience, former Content Director at a well-known cross-border e-commerce platform, specializing in content strategy and cross-border e-commerce operations.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar"></div>
+          <h3 class="member-name">Zhang Ming</h3>
+          <p class="member-role">AI Tools Researcher</p>
+          <p class="member-description">Former Product Manager at a major AI company, focused on AI tool applications in operations and sharing best practices.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar"></div>
+          <h3 class="member-name">Li Hua</h3>
+          <p class="member-role">Cross-border E-commerce Consultant</p>
+          <p class="member-description">7 years of Amazon operations experience, helped multiple companies achieve millions in sales revenue, e-commerce operations expert.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar"></div>
+          <h3 class="member-name">Wang Fang</h3>
+          <p class="member-role">Video Marketing Guide</p>
+          <p class="member-description">YouTube and TikTok content creator with 500K+ followers, specializing in short video strategy and content marketing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="join-community">
+    <div class="container">
+      <div class="community-content">
+        <h2 class="community-title">Become a Lan Xin Notes Member</h2>
+        <p class="community-description">Join our membership community to get exclusive content, practical tutorials, and professional guidance</p>
+        <div class="community-stats">
+          <div class="stat-item">
+            <span class="stat-value">5,000+</span>
+            <span class="stat-label">Community Members</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">200+</span>
+            <span class="stat-label">Professional Tutorials</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">Weekly</span>
+            <span class="stat-label">Online Sharing Sessions</span>
+          </div>
+        </div>
+        <a href="payment-en.html" class="btn btn-primary community-btn" target="_blank">Join Membership Now</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy">
+          <span class="footer-logo-text">Lan Xin Notes</span>
+        </div>
+        <p class="footer-description">Providing cross-border e-commerce and video tutorials to help you become an operational expert.</p>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-heading">Support</h4>
+        <ul class="footer-links">
+          <li><a href="about-en.html">About Us</a></li>
+          <li><a href="contact-en.html">Contact Us</a></li>
+          <li><a href="faq-en.html">FAQ</a></li>
+          <li><a href="privacy-en.html">Privacy Policy</a></li>
+          <li><a href="terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-heading">Follow Us</h4>
+        <div class="footer-subscription">
+          <div class="bilibili-subscription">
+            <div class="bilibili-info">
+              <h5 class="bilibili-title">Bilibili Channel</h5>
+              <p class="bilibili-description">Click to follow for latest videos</p>
+            </div>
+          </div>
+          <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Go to Bilibili Channel</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">© 2025 Lan Xin Notes. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.page-description {
+    font-size: 20px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.about-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-text {
+    width: 100%;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #1e293b;
+}
+
+.about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.mission-section {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.mission-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 48px;
+}
+
+.mission-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mission-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.mission-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+}
+
+.mission-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #1e293b;
+}
+
+.mission-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64748b;
+}
+
+.team-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 48px;
+}
+
+.team-member {
+    text-align: center;
+    padding: 32px 24px;
+    background: #f8fafc;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-4px);
+}
+
+.member-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.member-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #1e293b;
+}
+
+.member-role {
+    font-size: 16px;
+    color: #667eea;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.member-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #64748b;
+}
+
+.join-community {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+.community-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.community-description {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 48px;
+}
+
+.community-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 48px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.community-btn {
+    font-size: 18px;
+    padding: 16px 32px;
+    background: white;
+    color: #667eea;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.community-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 36px;
+    }
+    
+    .page-description {
+        font-size: 18px;
+    }
+    
+    .about-content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .mission-cards {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .team-members {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .community-stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .community-title {
+        font-size: 28px;
+    }
+}
+</style>
+</body>
+</html> 

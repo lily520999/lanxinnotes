@@ -1,13 +1,26 @@
-﻿<!DOCTYPE html><html lang="zh-CN"><head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KNR4KPK379');
-</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lan Xin Notes - Professional Operation Knowledge Sharing Platform</title><link rel="stylesheet" href="styles.css"><style>
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KNR4KPK379');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付 - 兰心运营笔记</title>
+    <meta name="description" content="选择您的支付方式，加入兰心运营笔记会员，获取专业的AI工具和跨境电商指导">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=CNY"></script><style>
  .payment-section {
  padding: 80px 0;
  background-color: #f8f9fa;
@@ -204,33 +217,105 @@
  #alipay-qr .qr-code {
  border: 2px solid #1677ff;
  }
- </style><script>
- window.onload = function() {
- const paymentMethods = document.querySelectorAll('.payment-method');
- const wechatQR = document.getElementById('wechat-qr');
- const alipayQR = document.getElementById('alipay-qr');
- 
- paymentMethods.forEach(method => {
- method.addEventListener('click', function() {
- // 移除所有active类
- paymentMethods.forEach(m => m.classList.remove('active'));
- 
- // 添加active类到当前点击的方法
- this.classList.add('active');
- 
- // 显示对应的二维码
- if (this.id === 'wechat-method') {
- wechatQR.style.display = 'block';
- alipayQR.style.display = 'none';
- } else if (this.id === 'alipay-method') {
- wechatQR.style.display = 'none';
- alipayQR.style.display = 'block';
+
+ /* 新增样式 */
+ .primary-payment {
+ text-align: center;
+ margin-bottom: 30px;
  }
- });
- });
+
+ .payment-method.featured {
+ border: 3px solid #ff4d8d;
+ background: linear-gradient(135deg, #fff, #fef7f7);
+ box-shadow: 0 8px 25px rgba(255, 77, 141, 0.15);
+ transform: scale(1.02);
+ }
+
+ .payment-method.small {
+ border: 1px solid #ddd;
+ border-radius: 8px;
+ text-align: center;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ }
+
+ .payment-method.small:hover {
+ border-color: #ff4d8d;
+ transform: translateY(-2px);
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ }
+
+ .pay-now-btn:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 6px 20px rgba(255, 77, 141, 0.4);
+ }
+
+ @keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+ }
+
+ .alternative-payments {
+ border-top: 1px solid #eee;
+ padding-top: 30px;
+ }
+
+ @media (max-width: 768px) {
+ .other-methods {
+ flex-direction: column;
+ }
+ .payment-method.small {
+ min-width: 100%;
+ }
+ }
+
+ .creem-pay-btn:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 8px 25px rgba(255, 77, 141, 0.5);
+ }
+
+ .manual-redirect:hover {
+ background-color: #ff4d8d;
+ color: white;
+ }
+
+ @media (max-width: 768px) {
+ .creem-card {
+ padding: 30px 20px !important;
+ margin: 0 20px !important;
+ }
+ .creem-pay-btn {
+ font-size: 18px !important;
+ padding: 18px 40px !important;
+ }
+ }
+ </style><script>
+ // Creem支付处理函数
+ function startCreemPayment() {
+ // 显示支付处理区域
+ document.getElementById('creem-payment').style.display = 'block';
  
- // 默认选中微信支付
- document.getElementById('wechat-method').click();
+ // 隐藏支付方式选择
+ document.querySelector('.payment-methods').style.display = 'none';
+ 
+ // 模拟API调用创建Creem支付会话
+ setTimeout(() => {
+ // 这里应该调用实际的Creem API
+ // 现在先跳转到成功页面作为演示
+ window.location.href = 'payment-success.html?method=creem&amount=39';
+ }, 3000);
+ }
+
+ // 页面加载完成后的初始化
+ window.onload = function() {
+ // 为手动跳转按钮添加事件
+ const manualRedirect = document.querySelector('.manual-redirect');
+ if (manualRedirect) {
+ manualRedirect.addEventListener('click', function(e) {
+ e.preventDefault();
+ window.location.href = 'payment-success.html?method=creem&amount=39';
+ });
+ }
  };
  </script><meta name="description" content="Lan Xin Notes provides AI tool reviews, cross-border e-commerce guides and professional operation tutorials to help you improve operation capabilities and business growth.">
 <meta name="keywords" content="operation,AI tools,cross-border e-commerce,video tutorials,Lan Xin Notes">
@@ -257,6 +342,108 @@
 </script>
 </head><body><header class="header"><div class="container"><div class="logo-container"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="logo-img" loading="lazy" width="40" height="40"><a href="index.html" class="logo-text">兰心运营笔记</a></div><nav class="main-nav"><div class="nav-item dropdown"><a href="#" class="nav-link">AI工具 <span class="dropdown-arrow">▼</span></a></div><div class="nav-item dropdown"><a href="ecommerce.html" class="nav-link">跨境电商 <span class="dropdown-arrow">▼</span></a></div><div class="nav-item dropdown"><a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">视频教程 <span class="dropdown-arrow">▼</span></a></div><a href="faq.html" class="nav-link">常见问题</a><a href="https://space.bilibili.com/1798377475" class="nav-link bilibili" target="_blank"><img src="images/bilibili-logo.png" alt="哔哩哔哩" class="bilibili-icon" loading="lazy" width="24" height="24">
  哔哩哔哩
- </a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">登录</a><a href="https://t.zsxq.com/CAfds" class="btn btn-primary">加入会员</a></div></div></header><main><section class="payment-section"><div class="container"><div class="payment-container"><div class="payment-header"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="payment-logo" loading="lazy"><h1 class="payment-title">选择支付方式</h1><p class="payment-subtitle">请选择您喜欢的支付方式完成订阅</p></div><div class="payment-plan"><div class="plan-name">专业会员 <span class="recommended-badge">推荐</span></div><div class="plan-price">￥299 <span class="plan-period">/季度</span></div><ul><li>所有基础会员权益</li><li>专业AI工具使用培训</li><li>跨境电商选品分析</li><li>每周3次视频教程</li><li>一对一咨询(1次/月)</li></ul></div><div class="payment-methods"><div class="payment-method" id="wechat-method"><img src="images/n1.%20wechat-pay.png" alt="微信支付" class="payment-icon" loading="lazy"><div class="payment-name">微信支付</div><div class="payment-description">使用微信扫码支付</div></div><div class="payment-method" id="alipay-method"><img src="images/n2.%20alipay.png" alt="支付宝" class="payment-icon" loading="lazy"><div class="payment-name">支付宝</div><div class="payment-description">使用支付宝扫码支付</div></div></div><div class="qr-container" id="wechat-qr"><div class="qr-code"><img src="images/n3.%20wechat-qr.png" alt="微信支付二维码" style="width: 100%; height: 100%;" loading="lazy"></div><div class="qr-title">微信扫码支付</div><div class="qr-instruction">请使用微信扫描上方二维码完成支付</div><a href="payment-success.html?method=wechat" class="complete-btn">支付完成</a><br><a href="https://t.zsxq.com/CAfds" class="back-btn">返回会员页面</a></div><div class="qr-container" id="alipay-qr"><div class="qr-code"><img src="images/n4.%20alipay-qr.png" alt="支付宝支付二维码" style="width: 100%; height: 100%;" loading="lazy"></div><div class="qr-title">支付宝扫码支付</div><div class="qr-instruction">请使用支付宝扫描上方二维码完成支付</div><a href="payment-success.html?method=alipay" class="complete-btn">支付完成</a><br><a href="https://t.zsxq.com/CAfds" class="back-btn">返回会员页面</a></div><div class="payment-footer"><p>支付过程中遇到问题？请联系客服：contact@lanxin.com</p></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img" loading="lazy"><span class="footer-logo-text">兰心运营笔记</span></div><p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p></div><div class="footer-column"><h4 class="footer-heading">支持</h4><ul class="footer-links"><li><a href="about.html">关于我们</a></li><li><a href="contact.html">联系我们</a></li><li><a href="faq.html">常见问题</a></li><li><a href="privacy.html">隐私政策</a></li><li><a href="terms.html">服务条款</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">关注我们</h4><div class="footer-subscription"><div class="bilibili-subscription"><img src="images/bilibili-logo.png" alt="哔哩哔哩频道" class="footer-bilibili-img" loading="lazy"><div class="bilibili-info"><h5 class="bilibili-title">哔哩哔哩频道</h5><p class="bilibili-description">点击订阅获取最新视频</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">前往哔哩哔哩频道</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 兰心运营笔记. 保留所有权利.</p></div></div></footer></body></html> 
+ </a></nav><div class="auth-buttons"><a href="login.html" class="btn btn-login">登录</a><a href="payment.html" class="btn btn-primary">加入会员</a></div></div></header><main><section class="payment-section"><div class="container"><div class="payment-container"><div class="payment-header"><h1 class="payment-title">安全支付</h1><p class="payment-subtitle">使用Creem安全支付平台完成订阅</p></div><div class="payment-plan"><div class="plan-name">专业会员 <span class="recommended-badge">推荐</span></div><div class="plan-price">$39 <span class="plan-period">/季度</span></div><ul><li>所有基础会员权益</li><li>专业AI工具使用培训</li><li>跨境电商选品分析</li><li>每周3次视频教程</li><li>一对一咨询(1次/月)</li></ul></div>                <div class="payment-methods">
+                    <!-- 唯一支付方式 - Creem -->
+                    <div class="creem-payment-section" style="text-align: center;">
+                        <h3 style="margin-bottom: 30px; color: #1e3a8a; font-size: 24px;">🍦 安全便捷支付</h3>
+                        
+                        <div class="creem-card" style="
+                            max-width: 500px;
+                            margin: 0 auto;
+                            padding: 40px;
+                            background: linear-gradient(135deg, #fff, #fef7f7);
+                            border: 3px solid #ff4d8d;
+                            border-radius: 20px;
+                            box-shadow: 0 10px 30px rgba(255, 77, 141, 0.2);
+                        ">
+                            <div class="creem-icon" style="font-size: 80px; margin-bottom: 20px;">🍦</div>
+                            
+                            <h2 style="color: #1e3a8a; margin-bottom: 15px; font-size: 28px;">Creem支付</h2>
+                            
+                            <div class="creem-features" style="margin: 30px 0; text-align: left;">
+                                <div style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px;">
+                                    <span style="color: #22c55e; margin-right: 10px; font-size: 20px;">✅</span>
+                                    <span>专为AI初创公司设计的支付平台</span>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px;">
+                                    <span style="color: #22c55e; margin-right: 10px; font-size: 20px;">✅</span>
+                                    <span>支付宝直接到账，人民币结算</span>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px;">
+                                    <span style="color: #22c55e; margin-right: 10px; font-size: 20px;">✅</span>
+                                    <span>前€1000收入完全免费</span>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px;">
+                                    <span style="color: #22c55e; margin-right: 10px; font-size: 20px;">✅</span>
+                                    <span>仅需2.9%手续费，无隐藏费用</span>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 15px; font-size: 16px;">
+                                    <span style="color: #22c55e; margin-right: 10px; font-size: 20px;">✅</span>
+                                    <span>银行级安全加密，全球合规</span>
+                                </div>
+                            </div>
+
+                            <div class="price-display" style="margin: 30px 0;">
+                                <div style="font-size: 48px; font-weight: 700; color: #1e3a8a; margin-bottom: 5px;">$39</div>
+                                <div style="font-size: 18px; color: #666;">专业会员 / 季度</div>
+                            </div>
+
+                            <button class="creem-pay-btn" onclick="startCreemPayment()" style="
+                                background: linear-gradient(135deg, #ff4d8d, #ff6b9d);
+                                color: white;
+                                border: none;
+                                padding: 20px 50px;
+                                border-radius: 30px;
+                                font-size: 20px;
+                                font-weight: 700;
+                                cursor: pointer;
+                                width: 100%;
+                                max-width: 300px;
+                                box-shadow: 0 6px 20px rgba(255, 77, 141, 0.4);
+                                transition: all 0.3s ease;
+                                margin-top: 20px;
+                            ">立即支付</button>
+
+                            <div style="margin-top: 20px; font-size: 14px; color: #888;">
+                                <p>🔒 256位SSL加密保护</p>
+                                <p>支持Visa、MasterCard、支付宝、微信支付</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creem支付处理区域 -->
+                <div class="creem-payment-area" id="creem-payment" style="display: none; margin-top: 30px; text-align: center;">
+                    <div style="padding: 40px; background: #f8f9ff; border-radius: 15px; border: 2px solid #ff4d8d; max-width: 500px; margin: 0 auto;">
+                        <div style="font-size: 60px; margin-bottom: 20px;">🍦</div>
+                        <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 24px;">正在跳转到安全支付页面</h3>
+                        <p style="color: #666; margin-bottom: 30px; font-size: 16px;">请稍候，我们正在为您创建安全的支付会话...</p>
+                        
+                        <div class="loading-spinner" style="
+                            margin: 30px auto; 
+                            width: 50px; 
+                            height: 50px; 
+                            border: 5px solid #f3f3f3; 
+                            border-top: 5px solid #ff4d8d; 
+                            border-radius: 50%; 
+                            animation: spin 1s linear infinite;
+                        "></div>
+                        
+                        <p style="font-size: 14px; color: #999; margin-top: 20px;">如果页面没有自动跳转，请点击下方按钮</p>
+                        <a href="#" class="manual-redirect" style="
+                            color: #ff4d8d; 
+                            text-decoration: none; 
+                            font-weight: 600;
+                            border: 2px solid #ff4d8d;
+                            padding: 10px 20px;
+                            border-radius: 25px;
+                            display: inline-block;
+                            margin-top: 15px;
+                            transition: all 0.3s ease;
+                        ">手动跳转支付</a>
+                    </div>
+                </div>
+
+                <div class="payment-footer"><p>支付过程中遇到问题？请联系客服：contact@lanxin.com</p></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer-columns"><div class="footer-column"><div class="footer-logo"><img src="images/lanxin-logo.png" alt="兰心运营笔记" class="footer-logo-img" loading="lazy"><span class="footer-logo-text">兰心运营笔记</span></div><p class="footer-description">提供跨境电商和视频教程等专业内容，助你成为运营高手。</p></div><div class="footer-column"><h4 class="footer-heading">支持</h4><ul class="footer-links"><li><a href="about.html">关于我们</a></li><li><a href="contact.html">联系我们</a></li><li><a href="faq.html">常见问题</a></li><li><a href="privacy.html">隐私政策</a></li><li><a href="terms.html">服务条款</a></li></ul></div><div class="footer-column"><h4 class="footer-heading">关注我们</h4><div class="footer-subscription"><div class="bilibili-subscription"><img src="images/bilibili-logo.png" alt="哔哩哔哩频道" class="footer-bilibili-img" loading="lazy"><div class="bilibili-info"><h5 class="bilibili-title">哔哩哔哩频道</h5><p class="bilibili-description">点击订阅获取最新视频</p></div></div><a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">前往哔哩哔哩频道</a></div></div></div><div class="footer-bottom"><p class="copyright">? 2025 兰心运营笔记. 保留所有权利.</p></div></div></footer></body></html> 
 
 

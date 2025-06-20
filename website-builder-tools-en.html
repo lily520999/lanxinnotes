@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNR4KPK379"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KNR4KPK379');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Website Builder Tools - Lan Xin Notes</title>
+    <meta name="description" content="Comprehensive website builder tools recommendations including WordPress, Shopify, Wix and other mainstream platforms to help you choose the best website building tool.">
+    <meta name="keywords" content="website builder tools,WordPress,Shopify,Wix,website building,website platforms,Lan Xin Notes">
+    
+    <script>
+        // Detect website environment and set base path
+        function detectEnvironment() {
+            const hostname = window.location.hostname;
+            const isGitHubPages = hostname.includes('github.io');
+            const isCustomDomain = hostname === 'lanxinnotes.com' || hostname === 'www.lanxinnotes.com';
+            const pathname = window.location.pathname;
+            
+            console.log('Current environment info - hostname:', hostname, 'pathname:', pathname);
+            
+            const metaEnv = document.createElement('meta');
+            metaEnv.name = 'website-environment';
+            
+            const existingBase = document.querySelector('base');
+            if (existingBase) {
+                existingBase.remove();
+            }
+            
+            if (isGitHubPages) {
+                const repoName = pathname.split('/')[1];
+                const baseTag = document.createElement('base');
+                baseTag.href = '/' + repoName + '/';
+                document.head.appendChild(baseTag);
+                metaEnv.content = 'github-pages';
+                console.log('GitHub Pages environment detected, base path set to:', baseTag.href);
+                window.siteEnvironment = 'github-pages';
+                window.siteBasePath = '/' + repoName + '/';
+            } else if (isCustomDomain) {
+                const baseTag = document.createElement('base');
+                baseTag.href = '/';
+                document.head.appendChild(baseTag);
+                metaEnv.content = 'custom-domain';
+                console.log('Custom domain environment detected, base path set to: /');
+                window.siteEnvironment = 'custom-domain';
+                window.siteBasePath = '/';
+            } else {
+                metaEnv.content = 'local-development';
+                console.log('Local development environment detected');
+                window.siteEnvironment = 'local-development';
+                window.siteBasePath = './';
+                const baseTag = document.createElement('base');
+                baseTag.href = './';
+                document.head.appendChild(baseTag);
+            }
+            
+            document.head.appendChild(metaEnv);
+        }
+        
+        detectEnvironment();
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-img, .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .tool-price-badge {
+          display: inline-block;
+          background: #e0e7ff;
+          color: #5b21b6;
+          font-size: 13px;
+          font-weight: 600;
+          border-radius: 8px;
+          padding: 2px 12px;
+          margin-top: 6px;
+          margin-bottom: 8px;
+        }
+
+        /* Page header styles */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: white !important;
+        }
+
+        .page-description {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+            color: white !important;
+        }
+
+        /* Tools categories */
+        .tools-categories {
+            padding: 60px 0;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1e293b;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            color: #64748b;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Tools grid */
+        .tools-grid {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .tool-card {
+            background: white !important;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .tool-price-badge {
+            position: absolute;
+            right: 24px;
+            top: 24px;
+            background: #e0e7ff;
+            color: #5b21b6;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 12px;
+            padding: 6px 16px;
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 16px;
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .tool-info h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0 0 8px 0;
+        }
+
+        .tool-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 16px;
+        }
+
+        .rating-score {
+            color: #64748b;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .tool-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .tool-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .feature-tag {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .tool-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1.4;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a67d8, #667eea);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 36px;
+                color: white !important;
+            }
+            
+            .page-description {
+                font-size: 18px;
+                color: white !important;
+            }
+            
+            .tools-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .tool-card {
+                padding: 24px;
+                background: white !important;
+            }
+            
+            .category-tabs {
+                gap: 8px;
+            }
+            
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "rt67r6qseo");
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy" width="40" height="40">
+                <a href="index-en.html" class="logo-text">Lan Xin Notes</a>
+            </div>
+            <nav class="main-nav">
+                <div class="nav-item dropdown">
+                    <a href="ai-tools-en.html" class="nav-link">AI Tools <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="website-builder-tools-en.html" class="nav-link">Website Tools <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="developer-tools-en.html" class="nav-link">Developer Tools <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="ecommerce-en.html" class="nav-link">E-commerce <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="https://space.bilibili.com/1798377475" class="nav-link" target="_blank">Video Tutorials <span class="dropdown-arrow">▼</span></a>
+                </div>
+                <a href="faq-en.html" class="nav-link">FAQ</a>
+            </nav>
+            <!-- Language switcher -->
+            <div class="language-switcher">
+                <button id="lang-btn" class="lang-btn" onclick="window.location.href='website-builder-tools.html'">
+                    <span id="lang-text">中文</span>
+                </button>
+            </div>
+            <div class="auth-buttons">
+                <a href="login-en.html" class="btn btn-login">Login</a>
+                <a href="payment-en.html" class="btn btn-primary" target="_blank">Join Membership ($218/year)</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page header banner -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="page-title">Website Builder Tools</h1>
+                    <p class="page-description">Curated quality website building tools to help you quickly build professional websites</p>
+                    <!-- Search bar -->
+                    <section class="tools-search" style="background:transparent;padding:0;margin-top:24px;">
+                        <div class="container" style="max-width:600px;display:flex;justify-content:center;">
+                            <form id="tool-search-form" style="display:flex;width:100%;">
+                                <input id="tool-search-input" type="text" placeholder="Search website tools..." style="flex:1;padding:16px 20px;font-size:18px;border-radius:12px 0 0 12px;border: none;outline:none;box-sizing:border-box;">
+                                <button type="submit" id="tool-search-btn" style="padding:0 36px;background:linear-gradient(90deg,#ff5f7e,#ff7eb3);color:#fff;font-size:18px;font-weight:600;border:none;border-radius:0 12px 12px 0;cursor:pointer;transition:background 0.2s;">Search</button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool categories -->
+        <section class="tools-categories">
+            <div class="container">
+                <h2 class="section-title">Website Tool Categories</h2>
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All</button>
+                    <button class="tab-btn" data-category="cms">CMS</button>
+                    <button class="tab-btn" data-category="ecommerce">E-commerce</button>
+                    <button class="tab-btn" data-category="landing">Landing Pages</button>
+                    <button class="tab-btn" data-category="drag-drop">Drag & Drop</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools list -->
+        <section class="tools-grid">
+            <div class="container">
+                <div class="tools-container">
+                    
+                    <!-- WordPress -->
+                    <div class="tool-card" data-category="cms">
+                        <div class="tool-price-badge">Free</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">🌐</div>
+                            <div class="tool-info">
+                                <h3>WordPress</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.8/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">The world's most popular content management system, powering over 40% of all websites. Highly customizable with thousands of themes and plugins.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Open Source</span>
+                            <span class="feature-tag">SEO Friendly</span>
+                            <span class="feature-tag">Plugins</span>
+                            <span class="feature-tag">Themes</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://wordpress.org" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Shopify -->
+                    <div class="tool-card" data-category="ecommerce">
+                        <div class="tool-price-badge">$29/month</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">🛒</div>
+                            <div class="tool-info">
+                                <h3>Shopify</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.7/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">Leading e-commerce platform that powers over 1 million businesses worldwide. Complete solution for online stores with payment processing and inventory management.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">E-commerce</span>
+                            <span class="feature-tag">Payment Gateway</span>
+                            <span class="feature-tag">Mobile Responsive</span>
+                            <span class="feature-tag">App Store</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://shopify.com" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Wix -->
+                    <div class="tool-card" data-category="drag-drop">
+                        <div class="tool-price-badge">Free</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">🎨</div>
+                            <div class="tool-info">
+                                <h3>Wix</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">User-friendly drag-and-drop website builder with AI-powered design assistance. Perfect for beginners who want professional-looking websites without coding.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Drag & Drop</span>
+                            <span class="feature-tag">AI Design</span>
+                            <span class="feature-tag">Templates</span>
+                            <span class="feature-tag">App Market</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://wix.com" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Squarespace -->
+                    <div class="tool-card" data-category="drag-drop">
+                        <div class="tool-price-badge">$12/month</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">📐</div>
+                            <div class="tool-info">
+                                <h3>Squarespace</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">Beautiful, designer-quality templates with built-in e-commerce functionality. Great for creative professionals and small businesses seeking elegant designs.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Design Focus</span>
+                            <span class="feature-tag">Built-in SEO</span>
+                            <span class="feature-tag">Analytics</span>
+                            <span class="feature-tag">Mobile Ready</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://squarespace.com" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Webflow -->
+                    <div class="tool-card" data-category="drag-drop">
+                        <div class="tool-price-badge">$12/month</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">💎</div>
+                            <div class="tool-info">
+                                <h3>Webflow</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-score">4.6/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">Professional web design platform that combines visual design with clean code. Perfect for designers who want complete creative control without coding.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Visual Design</span>
+                            <span class="feature-tag">Clean Code</span>
+                            <span class="feature-tag">CMS</span>
+                            <span class="feature-tag">Hosting</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://webflow.com" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Framer -->
+                    <div class="tool-card" data-category="drag-drop">
+                        <div class="tool-price-badge">Free</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">⚡</div>
+                            <div class="tool-info">
+                                <h3>Framer</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.3/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">Modern website builder with advanced animations and interactions. Great for creating dynamic, engaging websites with smooth user experiences.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Animations</span>
+                            <span class="feature-tag">Interactions</span>
+                            <span class="feature-tag">Responsive</span>
+                            <span class="feature-tag">Fast Loading</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://framer.com" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Ghost -->
+                    <div class="tool-card" data-category="cms">
+                        <div class="tool-price-badge">$9/month</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">👻</div>
+                            <div class="tool-info">
+                                <h3>Ghost</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.5/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">Modern publishing platform focused on content creators and publishers. Clean, fast, and optimized for blogging and newsletters.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Publishing</span>
+                            <span class="feature-tag">Newsletter</span>
+                            <span class="feature-tag">SEO Built-in</span>
+                            <span class="feature-tag">Membership</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://ghost.org" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Notion -->
+                    <div class="tool-card" data-category="cms">
+                        <div class="tool-price-badge">Free</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">📝</div>
+                            <div class="tool-info">
+                                <h3>Notion</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.4/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">All-in-one workspace that can be used to create simple websites and documentation sites. Great for teams and knowledge management.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Documentation</span>
+                            <span class="feature-tag">Collaboration</span>
+                            <span class="feature-tag">Database</span>
+                            <span class="feature-tag">Templates</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://notion.so" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Unbounce -->
+                    <div class="tool-card" data-category="landing">
+                        <div class="tool-price-badge">$80/month</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">🚀</div>
+                            <div class="tool-info">
+                                <h3>Unbounce</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.3/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">Leading landing page builder with A/B testing and conversion optimization tools. Perfect for marketers focused on lead generation and sales.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">A/B Testing</span>
+                            <span class="feature-tag">Conversion</span>
+                            <span class="feature-tag">Analytics</span>
+                            <span class="feature-tag">Integrations</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://unbounce.com" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                    <!-- Leadpages -->
+                    <div class="tool-card" data-category="landing">
+                        <div class="tool-price-badge">$37/month</div>
+                        <div class="tool-header">
+                            <div class="tool-icon">📄</div>
+                            <div class="tool-info">
+                                <h3>Leadpages</h3>
+                                <div class="tool-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-score">4.2/5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="tool-description">Easy-to-use landing page builder with conversion-focused templates and lead generation tools. Great for small businesses and entrepreneurs.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Lead Generation</span>
+                            <span class="feature-tag">Templates</span>
+                            <span class="feature-tag">Pop-ups</span>
+                            <span class="feature-tag">Integration</span>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="https://leadpages.com" class="btn-primary" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/lanxin-logo.png" alt="Lan Xin Notes" class="footer-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/40';" loading="lazy">
+                        <span class="footer-logo-text">Lan Xin Notes</span>
+                    </div>
+                    <p class="footer-description">Providing cross-border e-commerce and video tutorials to help you become an operational expert.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="about-en.html">About Us</a></li>
+                        <li><a href="contact-en.html">Contact Us</a></li>
+                        <li><a href="faq-en.html">FAQ</a></li>
+                        <li><a href="privacy-en.html">Privacy Policy</a></li>
+                        <li><a href="terms-en.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Follow Us</h4>
+                    <div class="footer-subscription">
+                        <div class="bilibili-subscription">
+                            <div class="bilibili-info">
+                                <h5 class="bilibili-title">Bilibili Channel</h5>
+                                <p class="bilibili-description">Click to follow for latest videos</p>
+                            </div>
+                        </div>
+                        <a href="https://space.bilibili.com/1798377475" class="btn vip-btn" style="margin-top: 10px;" target="_blank">Go to Bilibili Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Lan Xin Notes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tool search and filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('tool-search-input');
+            const searchBtn = document.getElementById('tool-search-btn');
+            const searchForm = document.getElementById('tool-search-form');
+            const toolCards = document.querySelectorAll('.tool-card');
+            const categoryTabs = document.querySelectorAll('.tab-btn');
+
+            // Search functionality
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                toolCards.forEach(card => {
+                    const toolName = card.querySelector('h3').textContent.toLowerCase();
+                    const toolDesc = card.querySelector('.tool-description').textContent.toLowerCase();
+                    const toolFeatures = card.querySelector('.tool-features').textContent.toLowerCase();
+                    
+                    if (searchTerm === '' || 
+                        toolName.includes(searchTerm) || 
+                        toolDesc.includes(searchTerm) || 
+                        toolFeatures.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // Category filter functionality
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active tab
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter tools
+                    toolCards.forEach(card => {
+                        if (category === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            const cardCategory = card.getAttribute('data-category');
+                            if (cardCategory === category) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // Clear search
+                    searchInput.value = '';
+                });
+            });
+
+            // Search event listeners
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                performSearch();
+            });
+
+            searchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                performSearch();
+            });
+
+            searchInput.addEventListener('keyup', performSearch);
+        });
+    </script>
+</body>
+</html> 
